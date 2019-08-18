@@ -35,7 +35,7 @@
 
 
     <!-- customers btn -->
-    <a href="#" class="sidebar-btn">
+    <a href="/customers" class="sidebar-btn">
         <i class="fa fa-2x fa-vcard-o text-danger"></i>
         <p>مشتریان</p>
     </a>
