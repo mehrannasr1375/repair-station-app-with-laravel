@@ -6,5 +6,5 @@
 
 - this will be complete with my codding over time!
 
-- my personal website: http://ww.01system.ir
+- my personal website: http://www.01system.ir
 
