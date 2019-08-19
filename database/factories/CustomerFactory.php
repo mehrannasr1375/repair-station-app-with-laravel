@@ -8,7 +8,7 @@ $factory->define(Customer::class, function (Faker $faker) {
         'created_at' => now(),
         'updated_at' => now(),
         'name' => $faker->name,
-        'is_partner' => 0,
+        'is_partner' => 1,
         'mobile_1' => $faker->phoneNumber,
         'mobile_2' => $faker->phoneNumber,
         'tell_1' => $faker->phoneNumber,

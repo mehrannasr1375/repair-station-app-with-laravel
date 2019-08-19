@@ -9,35 +9,33 @@ class CustomersController extends Controller
 {
 
 
-    // Display a listing of the resource.
     public function index()
     {
-        $customers = Customer::all();
-        //dd($customers);
-        return view('customers.index', compact('customers'));
+        $partners = Customer::where('is_partner',1)->paginate(4);
+        $customers = Customer::where('is_partner',0)->paginate(4);
+        return view('customers.index', compact('customers','partners'));
     }
 
 
 
-    // Show the form for creating a new resource.
     public function create()
     {
-        
+        return view('customers.create');
     }
 
 
 
-    // Store a newly created resource in storage.
-    // @param  \Illuminate\Http\Request  $request
     public function store(Request $request)
     {
-        
+        $data = $request->validete([
+            '' => '',
+        ]);
+        Customer::create($data);
+        return redirect('/customers');
     }
 
 
 
-    // Display the specified resource.
-    // @param  \App\Customer  $customer
     public function show(Customer $customer)
     {
         
@@ -45,8 +43,6 @@ class CustomersController extends Controller
 
 
 
-    // Show the form for editing the specified resource.
-    // @param  \App\Customer  $customer
     public function edit(Customer $customer)
     {
         
@@ -54,9 +50,6 @@ class CustomersController extends Controller
 
 
 
-    // Update the specified resource in storage.
-    // @param  \Illuminate\Http\Request  $request
-    // @param  \App\Customer  $customer
     public function update(Request $request, Customer $customer)
     {
         
@@ -64,8 +57,6 @@ class CustomersController extends Controller
 
 
 
-    // Remove the specified resource from storage.
-    // @param  \App\Customer  $customer
     public function destroy(Customer $customer)
     {
         

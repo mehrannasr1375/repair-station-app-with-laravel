@@ -212,7 +212,7 @@ a:hover {
 /*-----------------------------------------| common |--------------------------------------*/
 
 
-table.tbl-1{
+table.tbl-1 {
     /*background-color: rgba(0, 116, 255, 0.51);*/
     text-align: center;
     min-width: 480px;
@@ -232,16 +232,16 @@ table.tbl-1 tr td:first-child {
     padding-right: 20px;
     text-align: right;
 }
-table.tbl-1 tr:first-child{
+table.tbl-1 tr:first-child {
     border-bottom: 4px solid rgba(132, 162, 178, 0.6);
 }
-table.tbl-1 tr:hover{
+table.tbl-1 tr:hover {
     transition: .3s ease background-color;
     background-color: rgba(111, 177, 255, 0.3);
     border-right: inset 2px deepskyblue;
     border-left: inset 2px deepskyblue;
 }
-table.tbl-1 tr:first-child:hover{
+table.tbl-1 tr:first-child:hover {
     background-color: rgb(242, 245, 247);
     transition: .2s ease background-color;
     border-right: inset 1px transparent;
@@ -252,40 +252,57 @@ table.tbl-1 i:hover {
 }
 
 
-.top-search{
+.top-search {
     display: flex;
     justify-content: center;
+    margin-top: -1px;
     padding: 20px;
     padding-bottom: 5px !important;
-    margin-right: 30px !important;
-    margin-bottom: 30px !important;
-    border-bottom: 1px solid rgb(235, 235, 235);
+    margin-left: -16px;
+    margin-right: -16px;
+    background: linear-gradient(rgba(100, 191, 191, 0.521), rgba(100, 191, 191, 0.0));
 }
-.top-search > p:first-child{
+.top-search > p:first-child {
     line-height: 2.5;
     text-align: center;
     font-size: 13px;
 }
-.top-search > *{
+.top-search > * {
     margin-right: 5px;
 }
-.top-search select{
-    width: 120px;
+.top-search select {
+    width: 100px;
+    height: 34px;
+    font-size: 12px !important;
+}
+.top-search input {
+    width: 200px;
     height: 34px;
 }
-.top-search input{
-    width: 180px;
-    height: 34px;
+.top-search i {
+    line-height: 2;
 }
-.r-s-cancel{
+.r-s-cancel {
     text-align: center;
     padding-top: 4px;
     margin-right: 12px;
     cursor: pointer;
     transition: .2s all;
 }
-.r-s-cancel:hover i{
+.r-s-cancel:hover i {
     color: rgba(196, 4, 15, 0.82) !important;
+}
+
+
+.page-item a {
+    color:rgb(179, 174, 174) !important;
+}
+.page-item.active .page-link { 
+    background-color: white !important;
+    font-weight: 900;
+    color: black;
+    border-color: rgb(224, 224, 224) !important;
+    text-decoration: underline !important;
 }
 
 

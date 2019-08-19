@@ -17,6 +17,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/rtl.css') }}" rel="stylesheet">
     <link href="{{ asset('css/public.css') }}" rel="stylesheet">
 </head>
 
@@ -43,7 +44,7 @@
     
     
             <!-- Customizable Content -->
-            <div id="content">
+            <div id="content" class="px-3">
                 @yield('content')
             </div>
             

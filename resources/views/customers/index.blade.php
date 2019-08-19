@@ -44,22 +44,26 @@
                         <th>صورت حساب</th>
                     </tr>
                     @foreach ($customers as $customer)
-                    <tr>
-                        <td>1</td>
-                        <td>{{ $customer->id }}</td>
-                        <td>{{ $customer->name }}</td>
-                        <td><a href=""><i class="fa fa-2x text-secondary fa-address-book-o pl-2"></i></a></td>
-                        <td><a href=""><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
-                        <td>4</td>
-                        <td>1</td>
-                        <td>5</td>
-                        <td>275000</td>
-                        <td>120000</td>
-                        <td><a href=""><i class="fa fa-2x text-success fa-money pl-2"></i></a></td>
-                    </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>{{ $customer->id }}</td>
+                            <td>{{ $customer->name }}</td>
+                            <td><a href=""><i class="fa fa-2x text-secondary fa-address-book-o pl-2"></i></a></td>
+                            <td><a href=""><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><a href=""><i class="fa fa-2x text-success fa-money pl-2"></i></a></td>
+                        </tr>
                     @endforeach
                 </table>
-                
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        {{ $customers->links() }}
+                    </div>
+                </div>
             </div>
 
 
@@ -80,23 +84,36 @@
                         <th>بستانکار</th>
                         <th>صورت حساب</th>
                     </tr>
-                    @foreach ($customers as $customer)
+                    @foreach ($partners as $partner)
                         <tr>
                             <td>1</td>
-                            <td>{{ $customer->id }}</td>
-                            <td>{{ $customer->name }}</td>
+                            <td>{{ $partner->id }}</td>
+                            <td>{{ $partner->name }}</td>
                             <td><a href=""><i class="fa fa-2x text-secondary fa-address-book-o pl-2"></i></a></td>
                             <td><a href=""><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
-                            <td>4</td>
-                            <td>1</td>
-                            <td>5</td>
-                            <td>275000</td>
-                            <td>120000</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td><a href=""><i class="fa fa-2x text-success fa-money pl-2"></i></a></td>
                         </tr>
                     @endforeach
                 </table>
-                
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        {{ $partners->links() }}
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- New Customer Btn --->
+            <div class="row">
+                <div class="col-12 d-flex justify-content-end">
+                    <a href="/customers/create" class="btn btn-sm btn-outline-secondary">مشتری جدید</a>
+                </div>
             </div>
 
 
