@@ -306,6 +306,39 @@ table.tbl-1 i:hover {
 }
 
 
+input:focus, textarea:focus,select:focus,button:focus {
+    outline: none !important;
+    box-shadow: inset 0 0 1px 3px rgba(116, 222, 222, 0.38) !important;
+    border:2px solid rgba(102, 128, 141, 0.65) !important ;
+}
+
+
+.hover-bottom-e {
+    position: relative !important;
+}
+.hover-bottom-e:after {
+    position: absolute;
+    z-index: 100;
+    content: '';
+    right: 50%;
+    left:50%;
+    width:0;
+    height: 2px;
+    background-color: #4f3f95;
+    transition: .2s ease-out all;
+}
+.hover-bottom-e:hover:after {
+    right: 0;
+    left:0;
+    width:100%;
+    border-color: transparent !important;
+    transition: .2s ease-out all;
+}
+.hover-bottom-e:after {
+    bottom: 0;
+}
+
+
 /*-----------------------------------------| Customers |-----------------------------------------*/
 
 
@@ -323,9 +356,101 @@ table.tbl-1 i:hover {
     color: rgb(79, 151, 151) !important;
     background-color: rgba(100, 191, 191, 0.09) !important;
 }
+#repairing table a {
+    color: black !important;
+}
+
+/*-----------------------------------------| new order |-----------------------------------------*/
 
 
-/*-----------------------------------------|  |-----------------------------------------*/
+#create-customer {
+    padding-top: 35px;
+    padding-left: 20px;
+    /*background-color: rgba(178, 151, 255, 0.64);*/
+}
+#create-customer form > div {
+    padding: 20px;
+    padding-top: 40px;
+    margin-bottom: 50px;
+    box-shadow: 0px 10px 50px -12px #a0a0a0;
+    border-right: 2px solid #9f61ff;
+}
+#create-customer .form-control {
+    background-color: white !important;
+}
+#create-customer .con {
+    position: relative;
+    padding-top: 35px !important;
+    padding-bottom: 15px !important;
+    border-radius: 15px 0 15px 0;
+}
+#create-customer .con > div:first-child {
+    position: absolute;
+    top: -15px;
+    padding: 0 18px;
+    margin-right: -27px !important;
+    border-radius: 40% 15% 15% 15%;
+    background-color: #ffffff;
+    font-size: 13px;
+    border: 1px solid #e9e9e9;
+    border-right: 3px solid #9f61ff;
+}
+
+#create-customer .label {
+    font-size: 12px !important;
+    color: #9a9a9a;
+}
+#create-customer #n-o-plus-phone {
+    font-size: 14px !important;
+    cursor: pointer;
+    /*height: 38px;*/
+    width: 38px;
+}
+#create-customer #n-o-plus-phone i {
+    padding-top: 3px;
+    font-size: 25px !important;
+    margin-right: -32px !important;
+}
+#create-customer #n-o-plus-phone:hover i {
+    color: #41a141 !important;
+    transition-duration: .3s;
+}
+#create-customer #n-o-problem, #n-o-objects, #n-o-participants {
+    min-height: 100px !important;
+    overflow: hidden;
+}
+#create-customer #n-o-objects span {
+    display: inline-block;
+    border-bottom: 2px solid #1B88CA !important;
+    font-size: 13px;
+    margin: 5px !important;
+    padding: 2px 6px;
+    padding-left: 2px;
+    background-color: rgba(224, 233, 245, 0.48);
+    cursor: pointer;
+    box-shadow: 0 6px 15px -10px #232323;
+    transition-duration:.1s;
+}
+#create-customer #n-o-objects span:hover {
+    box-shadow: 0 0 0 0;
+}
+#create-customer #n-o-objects span:after {
+    font-family: FontAwesome;
+    content: "\f00d";
+    padding: 4px;
+    margin-right: 8px;
+}
+#create-customer #n-o-objects span:hover:after {
+    color:red !important;
+}
+
+#create-customer .form-control, #new-order .form-control~* {
+    height:35px !important;
+}
+#create-customer #n-o-objects~.input-group-append {
+    height:auto !important;
+}
+
 
 /*-----------------------------------------|  |-----------------------------------------*/
 

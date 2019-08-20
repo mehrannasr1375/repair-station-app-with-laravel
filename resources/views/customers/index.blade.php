@@ -1,3 +1,10 @@
+
+<!--
+     This view will be used for Show a list of customers
+-->
+
+
+
 @extends('layouts.app')
 
 @section('content')
@@ -16,7 +23,7 @@
                 <a class="nav-link active" href="#partner" data-toggle="tab">همکار</a>
             </li>
             <li class="nav-item hover-bottom-e">
-                <a class="nav-link" href="#normal"  data-toggle="tab">مشتری</a>
+                <a class="nav-link" href="#normal" data-toggle="tab">مشتری</a>
             </li>
         </ul>
 
@@ -27,50 +34,9 @@
 
 
 
-            <!-- Customers Table -->
+            <!-- Partners Table -->
             <div class="tab-pane active show" id="partner">
                 <table class="tbl-1">
-                    <tr>
-                        <th style="width:40px">#</th>
-                        <th>شناسه</th>
-                        <th>نام و نام خانوادگی</th>
-                        <th>جزئیات</th>
-                        <th>لیست قطعات</th>
-                        <th>قطعات موجود</th>
-                        <th>قطعات آماده</th>
-                        <th>کل قطعات</th>
-                        <th>بدهکار</th>
-                        <th>بستانکار</th>
-                        <th>صورت حساب</th>
-                    </tr>
-                    @foreach ($customers as $customer)
-                        <tr>
-                            <td>1</td>
-                            <td>{{ $customer->id }}</td>
-                            <td>{{ $customer->name }}</td>
-                            <td><a href=""><i class="fa fa-2x text-secondary fa-address-book-o pl-2"></i></a></td>
-                            <td><a href=""><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href=""><i class="fa fa-2x text-success fa-money pl-2"></i></a></td>
-                        </tr>
-                    @endforeach
-                </table>
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-center">
-                        {{ $customers->links() }}
-                    </div>
-                </div>
-            </div>
-
-
-
-            <!-- Partners Table --->
-            <div class="tab-pane" id="normal">
-                <table class="tab-pane tbl-1">
                     <tr>
                         <th style="width:40px">#</th>
                         <th>شناسه</th>
@@ -88,7 +54,7 @@
                         <tr>
                             <td>1</td>
                             <td>{{ $partner->id }}</td>
-                            <td>{{ $partner->name }}</td>
+                            <td><a href="/customers/{{ $partner->id }}/edit">{{ $partner->name }}</a></td>
                             <td><a href=""><i class="fa fa-2x text-secondary fa-address-book-o pl-2"></i></a></td>
                             <td><a href=""><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
                             <td></td>
@@ -103,6 +69,47 @@
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center">
                         {{ $partners->links() }}
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Customers Table --->
+            <div class="tab-pane" id="normal">
+                <table class="tab-pane tbl-1">
+                    <tr>
+                        <th style="width:40px">#</th>
+                        <th>شناسه</th>
+                        <th>نام و نام خانوادگی</th>
+                        <th>جزئیات</th>
+                        <th>لیست قطعات</th>
+                        <th>قطعات موجود</th>
+                        <th>قطعات آماده</th>
+                        <th>کل قطعات</th>
+                        <th>بدهکار</th>
+                        <th>بستانکار</th>
+                        <th>صورت حساب</th>
+                    </tr>
+                    @foreach ($customers as $customer)
+                        <tr>
+                            <td>1</td>
+                            <td>{{ $customer->id }}</td>
+                            <td><a href="/customers/{{ $customer->id }}/edit">{{ $customer->name }}</a></td>
+                            <td><a href=""><i class="fa fa-2x text-secondary fa-address-book-o pl-2"></i></a></td>
+                            <td><a href=""><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><a href=""><i class="fa fa-2x text-success fa-money pl-2"></i></a></td>
+                        </tr>
+                    @endforeach
+                </table>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        {{ $customers->links() }}
                     </div>
                 </div>
             </div>
