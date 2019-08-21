@@ -10,10 +10,11 @@ class CreateCustomersTable extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->bigIncrements('id')->autoIncrement();        // primary-key
+            $table->bigIncrements('id')->autoIncrement(); //PK
+            
             $table->timestamps();
             $table->string('name');
-            $table->tinyInteger('is_partner')->default(0);
+            $table->boolean('is_partner')->default(false);
             $table->unsignedBigInteger('mobile_1')->nullable();	 //max 11
             $table->unsignedBigInteger('mobile_2')->nullable();	 
             $table->unsignedBigInteger('tell_1')->nullable();	 //max 13
