@@ -36,10 +36,7 @@ class CustomersController extends Controller
             'mobile_2' => '',
             'address' => ''
         ]);
-        if ( $request->has('is_partner'))
-            $data['is_partner'] = true;
-        else 
-            $data['is_partner'] = false;
+        $data['is_partner'] = $request->has('is_partner') ? true:false;
         Customer::create($data);
         return redirect('/customers');
     }
@@ -68,10 +65,7 @@ class CustomersController extends Controller
             'mobile_2' => '',
             'address' => ''
         ]);
-        if ( $request->has('is_partner'))
-            $data['is_partner'] = true;
-        else 
-            $data['is_partner'] = false;
+        $data['is_partner'] = $request->has('is_partner') ? true:false;
         $customer->update($data);
         return redirect('/customers/' . $customer->id . '/edit');
     }

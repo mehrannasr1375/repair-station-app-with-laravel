@@ -12,7 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/publuc.js') }}"></script>
+    <script src="{{ asset('js/public.js') }}"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
