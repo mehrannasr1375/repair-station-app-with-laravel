@@ -17,7 +17,7 @@
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="404">
-              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
             </state>
           </provider>
         </entry>
@@ -25,7 +25,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/public.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2552">
+            <state relative-caret-position="4862">
               <caret line="221" selection-start-line="221" selection-end-line="221" />
               <folding>
                 <element signature="e#23#121#0" />
@@ -178,18 +178,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="RepairStation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RepairStation" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -232,6 +222,7 @@
       <workItem from="1565947305642" duration="1772000" />
       <workItem from="1565949117811" duration="1776000" />
       <workItem from="1565986878180" duration="896000" />
+      <workItem from="1566398160819" duration="3000" />
     </task>
     <task id="LOCAL-00001" summary="Revert &quot;add readme.md&quot;&#10;&#10;This reverts commit 5104213d">
       <created>1565987124628</created>
@@ -244,14 +235,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17060000" />
+    <option name="totallyTimeSpent" value="17063000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1168" height="840" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.2066787" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.21028881" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32647464" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
@@ -299,19 +290,27 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Revert &quot;add readme.md&quot;&#10;&#10;This reverts commit 5104213d" />
     <option name="LAST_COMMIT_MESSAGE" value="Revert &quot;add readme.md&quot;&#10;&#10;This reverts commit 5104213d" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php" />
     <entry file="file://$PROJECT_DIR$/public/css/app.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -330,13 +329,13 @@
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="404">
-          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/public.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2552">
+        <state relative-caret-position="4862">
           <caret line="221" selection-start-line="221" selection-end-line="221" />
           <folding>
             <element signature="e#23#121#0" />
