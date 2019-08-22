@@ -17,7 +17,6 @@
 
 
 
-
         <!-- Customers && Partners container -->
         <div class="tbl-main-con">
 
@@ -72,7 +71,6 @@
 
 
         </div>
-
 
 
     </div>

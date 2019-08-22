@@ -3,7 +3,7 @@
 
 
     <!-- dashboard btn -->
-    <a href="#" class="sidebar-btn">
+    <a href="/" class="sidebar-btn">
         <i class="fa fa-2x fa-dashboard text-secondary"></i>
         <p>پیشخوان</p>
     </a>
@@ -11,7 +11,7 @@
 
 
     <!-- add order btn -->
-    <a href="#" class="sidebar-btn">
+    <a href="/orders/create" class="sidebar-btn">
         <i class="fa fa-2x fa-plus-circle text-success"></i>
         <p>افزودن قطعه</p>
     </a>
@@ -19,7 +19,7 @@
 
 
     <!-- prepaired btn -->
-    <a href="#" class="sidebar-btn">
+    <a href="/prepaired" class="sidebar-btn">
         <i class="fa fa-2x fa-check-circle text-info"></i>
         <p>قطعات آماده تحویل</p>
     </a>
@@ -27,7 +27,7 @@
 
 
     <!-- repairing btn -->
-    <a href="#" class="sidebar-btn">
+    <a href="/repairing" class="sidebar-btn">
         <i class="fa fa-2x fa-wrench text-purple"></i>
         <p>قطعات در حال تعمیر</p>
     </a>

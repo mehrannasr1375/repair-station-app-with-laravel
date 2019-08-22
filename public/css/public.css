@@ -342,17 +342,17 @@ input:focus, textarea:focus,select:focus,button:focus {
 /*-----------------------------------------| Customers |-----------------------------------------*/
 
 
-#repairing .nav {
+#repairing .nav, #new-order .nav {
     padding: 0 !important;
     text-align: center;
     overflow: hidden;
     border-radius: 10px 10px 10px 10px / 40px 40px 40px 40px;
     box-shadow: 0 0 5px 0 lightblue;
 }
-#repairing .nav li a {
+#repairing .nav li a, #new-order .nav li a {
     border: 0px !important;
 }
-#repairing .nav li a.active {
+#repairing .nav li a.active, #new-order .nav li a.active {
     color: rgb(79, 151, 151) !important;
     background-color: rgba(100, 191, 191, 0.09) !important;
 }

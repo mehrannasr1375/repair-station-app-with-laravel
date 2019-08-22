@@ -6,8 +6,8 @@ Auth::routes();
 
 
 
-// Home
-Route::view('/', 'layouts.app');
+// Dashboard
+Route::get('/', 'DashboardController@index');
 
 
 
@@ -27,6 +27,17 @@ Route::get('/orders', 'OrdersController@index');
 Route::get('/orders/create', 'OrdersController@create');
 Route::get('/orders/show', 'OrdersController@show');
 Route::get('/orders/{order}/edit', 'OrdersController@edit');
+
+
+
+// Prepaired Orders
+Route::get('/prepaired', 'PrepairedOrdersController@index');
+
+
+
+// Prepaired Orders
+Route::get('/repairing', 'RepairingOrdersController@index');
+
 
 
 
