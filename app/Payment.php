@@ -6,7 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
+
+    public $timestamps = false;
+    protected $guarded = [];
+    
+    
     public function order() {
         return $this->belongsTo(\App\Order::class);
     }
+
 }

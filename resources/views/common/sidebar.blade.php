@@ -43,7 +43,7 @@
 
 
     <!-- history btn -->
-    <a href="#" class="sidebar-btn">
+    <a href="/orders" class="sidebar-btn">
         <i class="fa fa-2x fa-clock-o text-warning"></i>
         <p>کل سابقه</p>
     </a>
