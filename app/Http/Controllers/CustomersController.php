@@ -11,8 +11,8 @@ class CustomersController extends Controller
 
     public function index()
     {
-        $partners  = Customer::where('is_partner', 1)->orderBy('id', 'desc')->paginate(4);
-        $customers = Customer::where('is_partner', 0)->orderBy('id', 'desc')->paginate(4);
+        $partners  = Customer::where('is_partner', 1)->orderBy('id', 'desc')->paginate(8);
+        $customers = Customer::where('is_partner', 0)->orderBy('id', 'desc')->paginate(8);
         return view('customers.index', compact('customers','partners'));
     }
 

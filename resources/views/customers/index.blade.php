@@ -50,9 +50,10 @@
                         <th>بستانکار</th>
                         <th>صورت حساب</th>
                     </tr>
+                    <?php $i=1; ?>
                     @foreach ($partners as $partner)
                         <tr>
-                            <td>1</td>
+                            <td>{{ $i }}</td>
                             <td>{{ $partner->id }}</td>
                             <td><a href="/customers/{{ $partner->id }}/edit">{{ $partner->name }}</a></td>
                             <td><a href=""><i class="fa fa-2x text-secondary fa-address-book-o pl-2"></i></a></td>
@@ -64,6 +65,7 @@
                             <td></td>
                             <td><a href=""><i class="fa fa-2x text-success fa-money pl-2"></i></a></td>
                         </tr>
+                        <?php $i++; ?>
                     @endforeach
                 </table>
                 <div class="row">
@@ -91,9 +93,10 @@
                         <th>بستانکار</th>
                         <th>صورت حساب</th>
                     </tr>
+                    <?php $i=1; ?>
                     @foreach ($customers as $customer)
                         <tr>
-                            <td>1</td>
+                            <td>{{ $i }}</td>
                             <td>{{ $customer->id }}</td>
                             <td><a href="/customers/{{ $customer->id }}/edit">{{ $customer->name }}</a></td>
                             <td><a href=""><i class="fa fa-2x text-secondary fa-address-book-o pl-2"></i></a></td>
@@ -105,6 +108,7 @@
                             <td></td>
                             <td><a href=""><i class="fa fa-2x text-success fa-money pl-2"></i></a></td>
                         </tr>
+                        <?php $i++; ?>
                     @endforeach
                 </table>
                 <div class="row">

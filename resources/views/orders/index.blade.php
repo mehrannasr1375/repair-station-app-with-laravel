@@ -28,31 +28,29 @@
                 <table class="tbl-1">
                     <tr>
                         <th style="width:40px">#</th>
-                        <th>شناسه</th>
+                        <th style="width:40px">شناسه</th>
                         <th>نام و نام خانوادگی</th>
                         <th>جزئیات</th>
-                        <th>لیست قطعات</th>
-                        <th>قطعات موجود</th>
-                        <th>قطعات آماده</th>
-                        <th>کل قطعات</th>
-                        <th>بدهکار</th>
-                        <th>بستانکار</th>
-                        <th>صورت حساب</th>
+                        <th>نوع دستگاه</th>
+                        <th>عیب</th>
+                        <th>تاریخ دریافت</th>
+                        <th style="width:60px">وضعیت تعمیر</th>
+                        <th style="width:60px">وضعیت تحویل</th>      
                     </tr>
+                    <?php $i=1; ?>
                     @foreach ($orders as $order)
                         <tr>
-                            <td>1</td>
+                            <td>{{ $i }}</td>
                             <td>{{ $order->id }}</td>
-                            <td><a href="/customers/{{ $order->id }}/edit">{{ $order->id }}</a></td>
-                            <td><a href=""><i class="fa fa-2x text-secondary fa-address-book-o pl-2"></i></a></td>
-                            <td><a href=""><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href=""><i class="fa fa-2x text-success fa-money pl-2"></i></a></td>
+                            <td>{{ $order->customer->name }}</td>
+                            <td><a href="/orders/{{ $order->id }}/edit"><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
+                            <td>{{ $order->device_type }}</td>
+                            <td>{{ $order->problem }}</td>
+                            <td>{{ $order->receive_date }}</td>
+                            <td>{{ $order->status_code }}</td>
+                            <td>{{ $order->checkout }}</td>
                         </tr>
+                        <?php $i++; ?>
                     @endforeach
                 </table>
                 <div class="row">
@@ -67,7 +65,7 @@
             <!-- New Order Btn --->
             <div class="row">
                 <div class="col-12 d-flex justify-content-end">
-                    <a href="" class="btn btn-sm btn-outline-secondary">سفارش جدید</a>
+                    <a href="/orders/create" class="btn btn-sm btn-outline-secondary">سفارش جدید</a>
                 </div>
             </div>
 

@@ -10,7 +10,7 @@ class OrdersController extends Controller
     
     public function index()
     {
-        $orders = Order::where('status_code',1)->orderBy('id', 'desc')->paginate(5);
+        $orders = Order::where('status_code','>=',1)->orderBy('id', 'desc')->paginate(10);
         return view('orders.index', compact('orders'));
     }
 
@@ -18,7 +18,7 @@ class OrdersController extends Controller
     
     public function create()
     {
-        
+        return view('orders.create');        
     }
 
    
@@ -31,15 +31,12 @@ class OrdersController extends Controller
 
     
     public function show(Order $order)
-    {
-        
+    {       
+        return view('orders.edit', compact('order'));
     }
-
-
-    
     public function edit(Order $order)
     {
-        
+        return view('orders.edit', compact('order'));
     }
 
 

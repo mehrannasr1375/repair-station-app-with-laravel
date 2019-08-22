@@ -24,3 +24,9 @@ Route::delete('/customers/{customer}', 'CustomersController@destroy');
 
 // Orders history
 Route::get('/orders', 'OrdersController@index');
+Route::get('/orders/create', 'OrdersController@create');
+Route::get('/orders/show', 'OrdersController@show');
+Route::get('/orders/{order}/edit', 'OrdersController@edit');
+
+
+
