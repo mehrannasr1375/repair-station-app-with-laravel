@@ -21,12 +21,20 @@ class CreateOrdersTable extends Migration
             $table->dateTime('receive_date')->nullable();
             $table->dateTime('delivery_date')->nullable();
             $table->tinyInteger('status_code');
+            /*
+             * 0 : repairing
+             * 1 : repaired
+             * 2 : not repairable
+             * 3 : no problem
+             * 4 : rejected by customer
+             */
+
             $table->string('problem')->nullable();
             $table->string('problem_details')->nullable();
             $table->string('repair_info')->nullable();
             $table->string('delivery_note')->nullable();
             $table->boolean('opened_earlier')->default(false);
-            $table->bigInteger('discount_amount')->nullable();
+            $table->bigInteger('discount_amount')->nullable()->default(0);
             $table->boolean('checkout')->default(false);
             $table->string('participants_csv')->nullable();
 

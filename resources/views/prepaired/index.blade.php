@@ -41,15 +41,13 @@
                         <td>{{ $order->customer->name }}</td>
                         <td>{{ $order->device_type }}</td>
                         <td>{{ $order->problem }}</td>
-                            
-
                         <td><a href=""><i class="fa fa-2x text-secondary fa-pencil-square-o"></i></a></td>
                         <td><a href=""><i class="fa fa-2x fa-info-circle text-secondary"></i></a></td>
                         <td><a href=""><i class="fa fa-2x text-secondary fa-plane pl-2"></i></a></td>
-                        <td><a href=""><i class="fa fa-2x text-success fa-heartbeat pl-2"></i></a></td>
+                        <!--<td><a href=""><i class="fa fa-2x text-success fa-heartbeat pl-2"></i></a></td>-->
+                        <td style="width:90px;">{{ $order->status_code }}</td>                        
                         <td>{{ $order->receive_date }}</td>
-                        <td>sum</td>
-                            
+                        <td>sum</td>   
                     </tr>
                     <?php $i++; ?>
                 @endforeach

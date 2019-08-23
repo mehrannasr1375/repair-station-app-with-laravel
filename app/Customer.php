@@ -8,6 +8,9 @@ class Customer extends Model
 {
 
     protected $guarded = [];
+    protected $attributes = [
+        'is_partner' => false,
+    ];
 
     
     public function orders() {

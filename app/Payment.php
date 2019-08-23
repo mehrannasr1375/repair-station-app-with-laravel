@@ -9,6 +9,9 @@ class Payment extends Model
 
     public $timestamps = false;
     protected $guarded = [];
+    protected $attributes = [
+    ];
+    
     
     
     public function order() {

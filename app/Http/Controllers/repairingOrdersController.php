@@ -10,7 +10,7 @@ class repairingOrdersController extends Controller
     
     public function index()
     {
-        $orders = Order::where('status_code','>=',1)->orderBy('id', 'desc')->paginate(10);
+        $orders = Order::where('status_code', 0)->orderBy('id', 'desc')->paginate(10);
         return view('repairing.index', compact('orders'));
     }
 

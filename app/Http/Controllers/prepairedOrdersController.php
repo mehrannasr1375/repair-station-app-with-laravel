@@ -10,7 +10,12 @@ class prepairedOrdersController extends Controller
     
     public function index()
     {
-        $orders = Order::where('status_code','>=',1)->orderBy('id', 'desc')->paginate(10);
+        $orders = Order::where('status_code',1)
+                        ->orWhere('status_code',2)
+                        ->orWhere('status_code',3)
+                        ->orWhere('status_code',4)
+                        ->orderBy('id', 'desc')
+                        ->paginate(10);
         return view('prepaired.index', compact('orders'));
     }
 

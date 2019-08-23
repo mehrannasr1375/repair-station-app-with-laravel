@@ -33,7 +33,7 @@
                         <th>نوع دستگاه</th>
                         <th>عیب</th>
                         <th>تاریخ دریافت</th>
-                        <th style="width:60px">وضعیت تعمیر</th>
+                        <th style="width:80px">وضعیت تعمیر</th>
                         <th style="width:60px">وضعیت تحویل</th>      
                     </tr>
                     <?php $i=1; ?>
