@@ -7,6 +7,8 @@
 
 @extends('layouts.app')
 
+@section('page','مشتریان')
+
 @section('content')
     <div id="repairing">
 

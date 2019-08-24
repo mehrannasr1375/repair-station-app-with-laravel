@@ -14,7 +14,7 @@ $factory->define(Order::class, function (Faker $faker) {
             'device_serial' => Str::random(10),
             'receive_date' => now(),
             'delivery_date' => '',
-            'status_code' => 4,
+            'status_code' => 0,
             'problem' => 'روشن نمی شود',
             'problem_details' => '',
             'repair_info' => '',

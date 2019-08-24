@@ -25,6 +25,7 @@ Route::delete('/customers/{customer}', 'CustomersController@destroy');
 // Orders history
 Route::get('/orders', 'OrdersController@index');
 Route::get('/orders/create', 'OrdersController@create');
+Route::post('/orders', 'OrdersController@store');
 Route::get('/orders/show', 'OrdersController@show');
 Route::get('/orders/{order}/edit', 'OrdersController@edit');
 
@@ -32,10 +33,11 @@ Route::get('/orders/{order}/edit', 'OrdersController@edit');
 
 // Prepaired Orders
 Route::get('/prepaired', 'PrepairedOrdersController@index');
+//Route::get('/prepaired/{order}/checkout', 'PrepairedOrdersController@checkout');
 
 
 
-// Prepaired Orders
+// Repairing Orders
 Route::get('/repairing', 'RepairingOrdersController@index');
 
 

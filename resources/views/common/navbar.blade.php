@@ -9,7 +9,7 @@
         <p id="navbar-title">
             سامانه مدیریت تعمیرگاه
             <span id="lt"></span>
-            پیشخوان
+            @yield('page')
         </p>
     </a>
 

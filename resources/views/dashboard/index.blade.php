@@ -7,6 +7,8 @@
 
 @extends('layouts.app')
 
+@section('page','پیشخوان')
+
 @section('content')
 
 

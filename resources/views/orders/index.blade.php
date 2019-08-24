@@ -7,6 +7,8 @@
 
 @extends('layouts.app')
 
+@section('page','تاریخچه کلی')
+
 @section('content')
     <div id="orders">
 

@@ -363,28 +363,28 @@ input:focus, textarea:focus,select:focus,button:focus {
 /*-----------------------------------------| new order |-----------------------------------------*/
 
 
-#create-customer {
-    padding-top: 35px;
+.form-box {
+    /*padding-top: 35px;*/
     padding-left: 20px;
     /*background-color: rgba(178, 151, 255, 0.64);*/
 }
-#create-customer form > div {
+.form-box form > div {
     padding: 20px;
     padding-top: 40px;
     margin-bottom: 50px;
     box-shadow: 0px 10px 50px -12px #a0a0a0;
     border-right: 2px solid #9f61ff;
 }
-#create-customer .form-control {
+.form-box .form-control {
     background-color: white !important;
 }
-#create-customer .con {
+.form-box .con {
     position: relative;
     padding-top: 35px !important;
     padding-bottom: 15px !important;
     border-radius: 15px 0 15px 0;
 }
-#create-customer .con > div:first-child {
+.form-box .con > div:first-child {
     position: absolute;
     top: -15px;
     padding: 0 18px;
@@ -396,30 +396,30 @@ input:focus, textarea:focus,select:focus,button:focus {
     border-right: 3px solid #9f61ff;
 }
 
-#create-customer .label {
+.form-box .label {
     font-size: 12px !important;
     color: #9a9a9a;
 }
-#create-customer #n-o-plus-phone {
+.form-box #n-o-plus-phone {
     font-size: 14px !important;
     cursor: pointer;
     /*height: 38px;*/
     width: 38px;
 }
-#create-customer #n-o-plus-phone i {
+.form-box #n-o-plus-phone i {
     padding-top: 3px;
     font-size: 25px !important;
     margin-right: -32px !important;
 }
-#create-customer #n-o-plus-phone:hover i {
+.form-box #n-o-plus-phone:hover i {
     color: #41a141 !important;
     transition-duration: .3s;
 }
-#create-customer #n-o-problem, #n-o-objects, #n-o-participants {
+.form-box #n-o-problem, #n-o-objects, #n-o-participants {
     min-height: 100px !important;
     overflow: hidden;
 }
-#create-customer #n-o-objects span {
+.form-box #n-o-objects span {
     display: inline-block;
     border-bottom: 2px solid #1B88CA !important;
     font-size: 13px;
@@ -431,23 +431,23 @@ input:focus, textarea:focus,select:focus,button:focus {
     box-shadow: 0 6px 15px -10px #232323;
     transition-duration:.1s;
 }
-#create-customer #n-o-objects span:hover {
+.form-box #n-o-objects span:hover {
     box-shadow: 0 0 0 0;
 }
-#create-customer #n-o-objects span:after {
+.form-box #n-o-objects span:after {
     font-family: FontAwesome;
     content: "\f00d";
     padding: 4px;
     margin-right: 8px;
 }
-#create-customer #n-o-objects span:hover:after {
+.form-box #n-o-objects span:hover:after {
     color:red !important;
 }
 
-#create-customer .form-control, #new-order .form-control~* {
+.form-box .form-control, #new-order .form-control~* {
     height:35px !important;
 }
-#create-customer #n-o-objects~.input-group-append {
+.form-box #n-o-objects~.input-group-append {
     height:auto !important;
 }
 
