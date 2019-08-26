@@ -56,7 +56,6 @@ a:hover {
     font-size: 10px !important;
 }
 
-
 .hover-e-1 {
     position: relative !important;
 }
@@ -251,7 +250,6 @@ table.tbl-1 i:hover {
     color: #0085b8 !important;
 }
 
-
 .top-search {
     display: flex;
     justify-content: center;
@@ -293,7 +291,6 @@ table.tbl-1 i:hover {
     color: rgba(196, 4, 15, 0.82) !important;
 }
 
-
 .page-item a {
     color:rgb(179, 174, 174) !important;
 }
@@ -305,13 +302,11 @@ table.tbl-1 i:hover {
     text-decoration: underline !important;
 }
 
-
 input:focus, textarea:focus,select:focus,button:focus {
     outline: none !important;
     box-shadow: inset 0 0 1px 3px rgba(116, 222, 222, 0.38) !important;
     border:2px solid rgba(102, 128, 141, 0.65) !important ;
 }
-
 
 .hover-bottom-e {
     position: relative !important;
@@ -338,56 +333,25 @@ input:focus, textarea:focus,select:focus,button:focus {
     bottom: 0;
 }
 
-
-/*-----------------------------------------| Customers |-----------------------------------------*/
-
-
-#repairing .nav, #new-order .nav {
-    padding: 0 !important;
-    text-align: center;
-    overflow: hidden;
-    border-radius: 10px 10px 10px 10px / 40px 40px 40px 40px;
-    box-shadow: 0 0 5px 0 lightblue;
-}
-#repairing .nav li a, #new-order .nav li a {
-    border: 0px !important;
-}
-#repairing .nav li a.active, #new-order .nav li a.active {
-    color: rgb(79, 151, 151) !important;
-    background-color: rgba(100, 191, 191, 0.09) !important;
-}
-#repairing table a {
-    color: black !important;
-}
-
-/*-----------------------------------------| new order |-----------------------------------------*/
-
-
 .form-box {
     /*padding-top: 35px;*/
     padding-left: 20px;
     /*background-color: rgba(178, 151, 255, 0.64);*/
 }
-.form-box form > div {
+.form-box .con {
+    position: relative;
     padding: 20px;
     padding-top: 40px;
+    padding-bottom: 15px !important;
     margin-bottom: 50px;
     box-shadow: 0px 10px 50px -12px #a0a0a0;
     border-right: 2px solid #9f61ff;
-}
-.form-box .form-control {
-    background-color: white !important;
-}
-.form-box .con {
-    position: relative;
-    padding-top: 35px !important;
-    padding-bottom: 15px !important;
     border-radius: 15px 0 15px 0;
 }
 .form-box .con > div:first-child {
     position: absolute;
     top: -15px;
-    padding: 0 18px;
+    padding: 5px 18px;
     margin-right: -27px !important;
     border-radius: 40% 15% 15% 15%;
     background-color: #ffffff;
@@ -396,6 +360,9 @@ input:focus, textarea:focus,select:focus,button:focus {
     border-right: 3px solid #9f61ff;
 }
 
+.form-box .form-control {
+    background-color: white !important;
+}
 .form-box .label {
     font-size: 12px !important;
     color: #9a9a9a;
@@ -451,6 +418,23 @@ input:focus, textarea:focus,select:focus,button:focus {
     height:auto !important;
 }
 
+.form-box .nav {
+    padding: 0 !important;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 10px 10px 10px 10px / 40px 40px 40px 40px;
+    box-shadow: 0 0 5px 0 lightblue;
+}
+.form-box .nav li a {
+    border: 0px !important;
+}
+.form-box .nav li a.active {
+    color: rgb(79, 151, 151) !important;
+    background-color: rgba(100, 191, 191, 0.09) !important;
+}
+.form-box table a {
+    color: black !important;
+}
 
 /*-----------------------------------------|  |-----------------------------------------*/
 
@@ -458,6 +442,11 @@ input:focus, textarea:focus,select:focus,button:focus {
 
 /*-----------------------------------------|  |-----------------------------------------*/
 
+/*-----------------------------------------|  |-----------------------------------------*/
+
+/*-----------------------------------------|  |-----------------------------------------*/
+
+/*-----------------------------------------|  |-----------------------------------------*/
 
 
 
