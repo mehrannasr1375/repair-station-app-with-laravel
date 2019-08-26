@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Order;
 use App\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Validation\Validator; // for override error messages, which stores on session; for form validation error appearance
 
 class OrdersController extends Controller
 {
-    
+
     public function index()
     {
         $orders = Order::where('status_code','>=',0)->orderBy('id', 'desc')->paginate(10);
@@ -17,13 +18,13 @@ class OrdersController extends Controller
     }
 
 
-    
+
     public function create()
     {
-        return view('orders.create');        
+        return view('orders.create');
     }
 
-   
+
 
     public function store(Request $request)
     {
@@ -49,9 +50,16 @@ class OrdersController extends Controller
                 'participants_csv' => '',
             ]);
 
+            DB::beginTransaction();
+            //DB::table('customers')->insert(['insert into' => 1]);
             $customer_id = Customer::create($data['customer'])->id;
             $data['order']['customer_id'] = (int)$customer_id;
             $order_id = Order::create($data['order'])->id;
+            //DB::table('orders')->delete();
+            DB::commit();
+            dump($customer_id);
+            dump($order_id);
+
             session()->flash('success_res', ' ثبت گردید.');
         }
 
@@ -78,9 +86,9 @@ class OrdersController extends Controller
     }
 
 
-    
+
     public function show(Order $order)
-    {       
+    {
         return view('orders.edit', compact('order'));
     }
     public function edit(Order $order)
@@ -89,17 +97,17 @@ class OrdersController extends Controller
     }
 
 
-    
+
     public function update(Request $request, Order $order)
     {
-        
+
     }
 
-    
+
 
     public function destroy(Order $order)
     {
-        
+
     }
 
 }

@@ -5,8 +5,9 @@
 -->
 
 
-
 @extends('layouts.app')
+
+@section('page','ویرایش تعمیری')
 
 @section('content')
 
@@ -16,13 +17,9 @@
     @include('common.searchbar')
 
 
-
-    <div id="create-order">
-        
-
-
-        <!-- Form for show && edit order -->
-        <form action="/orders/{{ $order->id }}" method="POST" id="newOrder">
+    <!-- Form for show && edit order -->
+    <div class="form-box">
+        <form action="/orders/{{ $order->id }}" method="POST">
                 @csrf
                 @method('PATCH')
                 
@@ -42,7 +39,6 @@
                         @endif
                     </span>
                 </span>
-
                 <!-- Success Message -->
                 <span class="row mb-4">
                     <span class="col">
@@ -58,105 +54,107 @@
 
                 <!-- Customer details -->
                 <div class="con">
-                    <div><p class="mb-0"><i class="fa fa-user"></i> ویرایش مشخصات مشتری :</p></div>
-                        <div class="tab-content tbl-main-con">
+                    <div>
+                        <p class="mb-0"><i class="fa fa-user"></i> ویرایش مشخصات مشتری :</p>
+                    </div>
+                    <div class="tab-content tbl-main-con">
             
 
-                            <!-- tiny btns (new or existing customer) -->
-                            <div>
-                                <ul class="nav nav-tabs nav-justified">
-                                    <li class="nav-item active hover-bottom-e">
-                                        <a href="#new-customer" id="new_customer" class="nav-link active" data-toggle="tab">مشتری جدید</a>
-                                    </li>
-                                    <li class="nav-item hover-bottom-e">
-                                        <a href="#existing-customer" id="old_customer" class="nav-link" data-toggle="tab">مشتری ثبت شده</a>
-                                    </li>
-                                </ul>
-                                <div style="visibility:hidden;">
-                                    <input type="radio" name="rd_customer_status" value="new" id="customer_status_new" checked="checked">new customer
-                                    <input type="radio" name="rd_customer_status" value="old" id="customer_status_old">old customer
-                                </div>
-                            </div>
-                            
-
-                            <div class="tab-content p-3">
-
-
-                                <!-- NEW CUSTOMER FIELDS -->
-                                <div id="new-customer" class="tab-pane active">
-                                    <div class="row">
-                                        <!-- new customer name -->
-                                        <div class="col-12 col-lg-8 form-group input-group">
-                                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">نام و نام خانوادگی :</span></div></div>
-                                            <input type="text" class="form-control border-fix" name="name"  value="{{ old('name') }}" />
-                                        </div>
-                                        <!-- new customer is_partner -->
-                                        <div class="col-6 col-lg-2 form-group input-group">
-                                            <div class="input-group-prepend"><div class="input-group-text">
-                                                <input type="checkbox" name="is_partner" value="true" {{ old('is_partner') ?'checked':'' }}/></div>
-                                            </div>
-                                            <div class="input-group-append"><div class="input-group-text label bg-white">همکار</div></div>
-                                        </div>
-                                        <!-- new customer id -->
-                                        <div class="col-6 col-lg-2 form-group input-group">
-                                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه:</span></div></div>
-                                            <input type="text" class="form-control" name="new_customer_serial"/>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <!-- new customer tell -->
-                                        <div class="col-12 col-lg-6 form-group input-group">
-                                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن ثابت 1 :</span></div></div>
-                                            <input type="text" class="form-control" name="tell_1" value="{{ old('tell_1') }}" />
-                                        </div>
-                                        <div class="col-12 col-lg-6 form-group input-group">
-                                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن ثابت 2 :</span></div></div>
-                                            <input type="text" class="form-control" name="tell_2" value="{{ old('tell_2') }}" />
-                                        </div>
-                                        <!-- new customer mobile -->
-                                        <div class="col-12 col-lg-6 form-group input-group">
-                                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن همراه 1 :</span></div></div>
-                                            <input type="text" class="form-control" name="mobile_1" value="{{ old('mobile_1') }}" />
-                                        </div>
-                                        <div class="col-12 col-lg-6 form-group input-group">
-                                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن همراه 2 :</span></div></div>
-                                            <input type="text" class="form-control" name="mobile_2" value="{{ old('mobile_2') }}" />
-                                        </div>
-                                        <!-- new customer address -->
-                                        <div class="col-12 form-group input-group">
-                                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">آدرس :</span></div></div>
-                                            <input type="text" class="form-control" name="address" value="{{ old('address') }}"/>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <!-- EXISTING CUSTOMER FIELDS -->
-                                <div id="existing-customer" class="tab-pane ">
-                                    <div class="row">
-                                        <!-- existing customer name -->
-                                        <div class="col-12 col-lg-4 form-group input-group">
-                                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">نام :</span></div></div>
-                                            <input type="text" class="form-control border-fix" name="old_name" value="{{ old('old_name') }}" />
-                                        </div>
-                                        <!-- existing customer id -->
-                                        <div class="col-12 col-lg-3 form-group input-group">
-                                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه:</span></div></div>
-                                            <input type="text" class="form-control" name="old_customer_id" value="{{ old('old_customer_id') }}"/>
-                                        </div>
-                                    </div>
-                                </div>
-
-
+                        <!-- tiny btns (new or existing customer) -->
+                        <div>
+                            <ul class="nav nav-tabs nav-justified">
+                                <li class="nav-item active hover-bottom-e">
+                                    <a href="#new-customer" id="new_customer" class="nav-link active" data-toggle="tab">مشتری جدید</a>
+                                </li>
+                                <li class="nav-item hover-bottom-e">
+                                    <a href="#existing-customer" id="old_customer" class="nav-link" data-toggle="tab">مشتری ثبت شده</a>
+                                </li>
+                            </ul>
+                            <div style="visibility:hidden;">
+                                <input type="radio" name="rd_customer_status" value="new" id="customer_status_new" checked="checked">new customer
+                                <input type="radio" name="rd_customer_status" value="old" id="customer_status_old">old customer
                             </div>
                         </div>
+                        
+
+                        <div class="tab-content p-3">
+
+                            <!-- NEW CUSTOMER FIELDS -->
+                            <div id="new-customer" class="tab-pane active">
+                                <div class="row">
+                                    <!-- new customer name -->
+                                    <div class="col-12 col-lg-8 form-group input-group">
+                                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">نام و نام خانوادگی :</span></div></div>
+                                        <input type="text" class="form-control border-fix" name="name"  value="{{ old('name') }}" />
+                                    </div>
+                                    <!-- new customer is_partner -->
+                                    <div class="col-6 col-lg-2 form-group input-group">
+                                        <div class="input-group-prepend"><div class="input-group-text"><input type="checkbox" name="is_partner" value="true" {{ old('is_partner') ?'checked':'' }}/></div>
+                                        </div>
+                                        <div class="input-group-append"><div class="input-group-text label bg-white">همکار</div></div>
+                                    </div>
+                                    <!-- new customer id -->
+                                    <div class="col-6 col-lg-2 form-group input-group">
+                                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه:</span></div></div>
+                                        <input type="text" class="form-control" name="new_customer_serial"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- new customer tell -->
+                                    <div class="col-12 col-lg-6 form-group input-group">
+                                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن ثابت 1 :</span></div></div>
+                                        <input type="text" class="form-control" name="tell_1" value="{{ old('tell_1') }}" />
+                                    </div>
+                                    <div class="col-12 col-lg-6 form-group input-group">
+                                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن ثابت 2 :</span></div></div>
+                                        <input type="text" class="form-control" name="tell_2" value="{{ old('tell_2') }}" />
+                                    </div>
+                                    <!-- new customer mobile -->
+                                    <div class="col-12 col-lg-6 form-group input-group">
+                                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن همراه 1 :</span></div></div>
+                                        <input type="text" class="form-control" name="mobile_1" value="{{ old('mobile_1') }}" />
+                                    </div>
+                                    <div class="col-12 col-lg-6 form-group input-group">
+                                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن همراه 2 :</span></div></div>
+                                        <input type="text" class="form-control" name="mobile_2" value="{{ old('mobile_2') }}" />
+                                    </div>
+                                    <!-- new customer address -->
+                                    <div class="col-12 form-group input-group">
+                                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">آدرس :</span></div></div>
+                                        <input type="text" class="form-control" name="address" value="{{ old('address') }}"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- EXISTING CUSTOMER FIELDS -->
+                            <div id="existing-customer" class="tab-pane ">
+                                <div class="row">
+                                    <!-- existing customer name -->
+                                    <div class="col-12 col-lg-4 form-group input-group">
+                                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">نام :</span></div></div>
+                                        <input type="text" class="form-control border-fix" name="old_name" value="{{ old('old_name') }}" />
+                                    </div>
+                                    <!-- existing customer id -->
+                                    <div class="col-12 col-lg-3 form-group input-group">
+                                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه:</span></div></div>
+                                        <input type="text" class="form-control" name="old_customer_id" value="{{ old('old_customer_id') }}"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
                     </div>
+                </div>
     
 
 
                 <!-- order details -->
                 <div class="con">
-                    <div><p class="mb-0"><i class="fa fa-microchip"></i> ویرایش مشخصات قطعه :</p></div>
+                    <div>
+                        <p class="mb-0"><i class="fa fa-microchip"></i> ویرایش مشخصات قطعه :</p>
+                    </div>
                     <div class="row">
                         <!-- device_type -->
                         <div class="col-12 col-lg-6 form-group input-group">
@@ -219,8 +217,5 @@
 
                 
         </form>
-
-
-        
     </div>
 @endsection

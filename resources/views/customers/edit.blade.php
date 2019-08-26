@@ -1,6 +1,6 @@
 
 <!--
-     - This view used for Show details of a customer, with an update btn for that customer 
+     - This view used for Show details of a customer, with an update btn for that customer
             for show && edit
      - This view used for 'show' && 'edit' methods on CustomersController
 -->
@@ -18,8 +18,8 @@
 
 
 
-    <div id="create-customer">
-        
+    <div class="form-box">
+
 
 
         <!-- Form for show && edit customer -->
@@ -28,10 +28,10 @@
             @method('PATCH')
 
             <div class="con">
-                
+
                 <div>
                     <p class="mb-0 p-1"><i class="fa fa-user"></i> مشخصات مشتری : </p>
-                </div>     
+                </div>
                 <div class="row">
 
                     <!-- full name -->
@@ -56,7 +56,7 @@
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه:</span></div></div>
                         <input type="text" class="form-control" name="id" value="{{ $customer->id }}" disabled/>
                     </div>
-                    
+
                 </div>
                 <div class="row">
 
@@ -69,7 +69,7 @@
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن ثابت 2 :</span></div></div>
                         <input type="text" class="form-control" name="tell_2" value="{{ $customer->tell_2 }}" />
                     </div>
-                    
+
                     <!-- mobile -->
                     <div class="col-12 col-lg-6 form-group input-group">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن همراه 1 :</span></div></div>
@@ -85,7 +85,7 @@
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">آدرس :</span></div></div>
                         <input type="text" class="form-control" name="address" value="{{ $customer->address }}" />
                     </div>
-                    
+
                 </div>
 
                 <!-- btn submit -->
@@ -95,5 +95,8 @@
 
             @csrf
         </form>
+
+
+
     </div>
 @endsection
