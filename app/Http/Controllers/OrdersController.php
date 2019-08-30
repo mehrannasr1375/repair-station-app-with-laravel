@@ -11,6 +11,8 @@ use Illuminate\Contracts\Validation\Validator; // for override error messages, w
 class OrdersController extends Controller
 {
 
+
+
     public function index()
     {
         $orders = Order::where('status_code','>=',0)->orderBy('id', 'desc')->paginate(10);
@@ -28,7 +30,8 @@ class OrdersController extends Controller
 
     public function store(Request $request)
     {
-        if ( $request->rd_customer_status == 'new' ) {
+        if ( $request->rd_customer_status == 'new' )
+        {
             $data['customer'] = $request->validate([
                 'name' => 'required|min:3',
                 'is_partner' => '',
@@ -49,22 +52,17 @@ class OrdersController extends Controller
                 'opened_earlier' => '',
                 'participants_csv' => '',
             ]);
-
             DB::beginTransaction();
-            //DB::table('customers')->insert(['insert into' => 1]);
-            $customer_id = Customer::create($data['customer'])->id;
-            $data['order']['customer_id'] = (int)$customer_id;
-            $order_id = Order::create($data['order'])->id;
-            //DB::table('orders')->delete();
+                $customer_id = Customer::create($data['customer'])->id;
+                $data['order']['customer_id'] = (int)$customer_id;
+                $order_id = Order::create($data['order'])->id;
             DB::commit();
-            dump($customer_id);
-            dump($order_id);
-
             session()->flash('success_res', ' ثبت گردید.');
         }
 
 
-        else if ( $request->rd_customer_status == 'old' ) {
+        else if ( $request->rd_customer_status == 'old' )
+        {
             $data['order'] = $request->validate([
                 'customer_id' => 'required',
                 'device_type' => '',
@@ -82,7 +80,7 @@ class OrdersController extends Controller
             session()->flash('success_res', ' ثبت گردید.');
         }
 
-        return redirect('/orders/'. $order_id .'/edit');
+        return redirect('/orders/' . $order_id . '/edit');
     }
 
 
@@ -91,6 +89,9 @@ class OrdersController extends Controller
     {
         return view('orders.edit', compact('order'));
     }
+
+
+
     public function edit(Order $order)
     {
         return view('orders.edit', compact('order'));
@@ -100,7 +101,66 @@ class OrdersController extends Controller
 
     public function update(Request $request, Order $order)
     {
+        if ( $request->rd_customer_status == 'new' ) // update order => with new customer
+        {
 
+            $data['customer'] = $request->validate([
+                'name' => 'required|min:3',
+                'is_partner' => '',
+                'tell_1' => '',
+                'tell_2' => '',
+                'mobile_1' => '',
+                'mobile_2' => '',
+                'address' => '',
+            ]);
+            $data['order'] = $request->validate([
+                'device_type' => '',
+                'device_brand' => '',
+                'device_model' => '',
+                'device_serial' => '',
+                'receive_date' => '',
+                'problem' => 'required',
+                'problem_details' => '',
+                'opened_earlier' => '',
+                'participants_csv' => '',
+            ]);
+            $data['order']['opened_earlier'] = $request->has('opened_earlier') ? true:false;
+
+            $customer_id = Customer::create($data['customer'])->id;
+            $data['order']['customer_id'] = $customer_id;
+            $order->update($data['order']);
+
+        }
+        else if ( $request->rd_customer_status == 'old' ) // update order => with old customer
+        {
+
+            $data['customer'] = $request->validate([
+                'name' => 'required|min:3',
+                'is_partner' => '',
+                'tell_1' => '',
+                'tell_2' => '',
+                'mobile_1' => '',
+                'mobile_2' => '',
+                'address' => '',
+            ]);
+            $data['order'] = $request->validate([
+                'device_type' => '',
+                'device_brand' => '',
+                'device_model' => '',
+                'device_serial' => '',
+                'receive_date' => '',
+                'problem' => 'required',
+                'problem_details' => '',
+                'opened_earlier' => '',
+                'participants_csv' => '',
+            ]);
+            $data['order']['opened_earlier'] = $request->has('opened_earlier') ? true:false;
+
+            $order->customer->update($data['customer']);
+            $order->update($data['order']);
+
+        }
+        return redirect('orders/' . $order->id . '/edit');
     }
 
 
@@ -109,5 +169,7 @@ class OrdersController extends Controller
     {
 
     }
+
+
 
 }

@@ -20,7 +20,7 @@
     <div class="form-box">
         <form action="/orders" method="POST">
             @csrf
-                
+
 
 
             <!-- Error Messages -->
@@ -56,15 +56,15 @@
                     <p class="mb-0"><i class="fa fa-user"></i> مشخصات مشتری :</p>
                 </div>
                 <div class="tab-content tbl-main-con">
-                       
+
 
                     <!-- tiny btns (new or existing customer) -->
                     <div>
                         <ul class="nav nav-tabs nav-justified">
-                            <li class="nav-item active hover-bottom-e">
+                            <li class="nav-item active">
                                 <a href="#new-customer" id="new_customer" class="nav-link active" data-toggle="tab">مشتری جدید</a>
                             </li>
-                            <li class="nav-item hover-bottom-e">
+                            <li class="nav-item">
                                 <a href="#existing-customer" id="old_customer" class="nav-link" data-toggle="tab">مشتری ثبت شده</a>
                             </li>
                         </ul>
@@ -73,7 +73,7 @@
                             <input type="radio" name="rd_customer_status" value="old" id="customer_status_old">old customer
                         </div>
                     </div>
-                            
+
 
                     <div class="tab-content p-3">
 
@@ -88,7 +88,10 @@
                                 </div>
                                 <!-- new customer is_partner -->
                                 <div class="col-6 col-lg-2 form-group input-group">
-                                    <div class="input-group-prepend"><div class="input-group-text"><input type="checkbox" name="is_partner" value="true" {{ old('is_partner') ?'checked':'' }}/></div>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="checkbox" name="is_partner" {{ old('is_partner') ? 'checked':'' }}/>
+                                        </div>
                                     </div>
                                     <div class="input-group-append"><div class="input-group-text label bg-white">همکار</div></div>
                                 </div>
@@ -141,14 +144,14 @@
                                 </div>
                             </div>
                         </div>
-                        
+
 
                     </div>
 
 
                 </div>
             </div>
-    
+
 
 
             <!-- order details -->
@@ -187,9 +190,13 @@
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">تاریخ:</span></div></div>
                         <input type="text" class="form-control" name="date" value="{{ old('date') }}"/>
                     </div>
-                    <!-- already_repaired -->
+                    <!-- opened_earlier -->
                     <div class="col-12 col-lg-3 form-group input-group">
-                        <div class="input-group-prepend"><div class="input-group-text"><input type="checkbox" name="already_repaired" /></div></div>
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" name="opened_earlier" {{ old('opened_earlier') ? 'checked':'' }}/>
+                            </div>
+                        </div>
                         <div class="input-group-append"><div class="input-group-text label bg-white">قبلا تعمیر شده</div></div>
                     </div>
                     <!-- problem -->
@@ -205,7 +212,7 @@
                     <!-- participants -->
                     <div class="col-12 form-group input-group">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">قطعات همراه:</span></div></div>
-                        <textarea class="form-control" name="participants_csv">{{ old('participants') }}</textarea>
+                        <textarea class="form-control" name="participants_csv">{{ old('participants_csv') }}</textarea>
                     </div>
                     <!-- btns -->
                     <div class="container my-3">
@@ -216,7 +223,7 @@
             </div>
 
 
-                
+
         </form>
     </div>
 @endsection

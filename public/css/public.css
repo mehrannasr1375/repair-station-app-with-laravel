@@ -294,7 +294,7 @@ table.tbl-1 i:hover {
 .page-item a {
     color:rgb(179, 174, 174) !important;
 }
-.page-item.active .page-link { 
+.page-item.active .page-link {
     background-color: white !important;
     font-weight: 900;
     color: black;
@@ -423,29 +423,25 @@ input:focus, textarea:focus,select:focus,button:focus {
     text-align: center;
     overflow: hidden;
     border-radius: 10px 10px 10px 10px / 40px 40px 40px 40px;
-    box-shadow: 0 0 5px 0 lightblue;
+    border: 1px solid rgba(195, 185, 214, .5);
 }
 .form-box .nav li a {
     border: 0px !important;
 }
 .form-box .nav li a.active {
     color: rgb(79, 151, 151) !important;
-    background-color: rgba(100, 191, 191, 0.09) !important;
+    background-color: rgba(159, 97, 255, 0.2) !important;
 }
 .form-box table a {
     color: black !important;
 }
 
-/*-----------------------------------------|  |-----------------------------------------*/
 
 /*-----------------------------------------|  |-----------------------------------------*/
-
 /*-----------------------------------------|  |-----------------------------------------*/
-
 /*-----------------------------------------|  |-----------------------------------------*/
-
 /*-----------------------------------------|  |-----------------------------------------*/
-
+/*-----------------------------------------|  |-----------------------------------------*/
 /*-----------------------------------------|  |-----------------------------------------*/
 
 

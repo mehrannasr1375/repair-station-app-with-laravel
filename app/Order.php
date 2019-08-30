@@ -32,12 +32,6 @@ class Order extends Model
 
 
 
-    public function getOpenedEarlierAttribute($attribute) {
-        return [false=>'No', true=>'Yes'][$attribute];
-    }
-    public function getCheckoutAttribute($attribute) {
-        return [false=>'No', true=>'Yes'][$attribute];
-    }
     public function getStatusCodeAttribute($attribute) {
         return $this->getStatusesArray()[$attribute];
     }

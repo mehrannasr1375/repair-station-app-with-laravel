@@ -22,10 +22,10 @@
         <!-- Tiny btns -->
         <div class="form-box">
             <ul class="nav nav-tabs nav-justified m-4 ml-5">
-                <li class="nav-item active hover-bottom-e">
+                <li class="nav-item active">
                     <a class="nav-link active" href="#partner" data-toggle="tab">همکار</a>
                 </li>
-                <li class="nav-item hover-bottom-e">
+                <li class="nav-item">
                     <a class="nav-link" href="#normal" data-toggle="tab">مشتری</a>
                 </li>
             </ul>

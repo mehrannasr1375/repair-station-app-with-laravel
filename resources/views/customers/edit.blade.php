@@ -45,8 +45,10 @@
 
                     <!-- is_partner -->
                     <div class="col-12  col-lg-4 form-group input-group">
-                        <div class="input-group-prepend"><div class="input-group-text">
-                            <input type="checkbox" name="is_partner" {{ $customer->is_partner ? 'checked':'' }} /></div>
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" name="is_partner" {{ $customer->is_partner ? 'checked':'' }} />
+                            </div>
                         </div>
                         <div class="input-group-append"><div class="input-group-text label bg-white">همکار</div></div>
                     </div>

@@ -28,6 +28,7 @@ Route::get('/orders/create', 'OrdersController@create');
 Route::post('/orders', 'OrdersController@store');
 Route::get('/orders/show', 'OrdersController@show');
 Route::get('/orders/{order}/edit', 'OrdersController@edit');
+Route::patch('/orders/{order}', 'OrdersController@update');
 
 
 
