@@ -28,7 +28,6 @@
             <div id="normal">
                 <table class="tbl-1">
                     <tr>
-                        <th style="width:40px">#</th>
                         <th style="width:40px">شناسه</th>
                         <th>نام و نام خانوادگی</th>
                         <th>جزئیات</th>
@@ -36,12 +35,10 @@
                         <th>عیب</th>
                         <th>تاریخ دریافت</th>
                         <th style="width:80px">وضعیت تعمیر</th>
-                        <th style="width:60px">وضعیت تحویل</th>      
+                        <th style="width:60px">وضعیت تحویل</th>
                     </tr>
-                    <?php $i=1; ?>
                     @foreach ($orders as $order)
                         <tr>
-                            <td>{{ $i }}</td>
                             <td>{{ $order->id }}</td>
                             <td>{{ $order->customer->name }}</td>
                             <td><a href="/orders/{{ $order->id }}/edit"><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
@@ -51,7 +48,6 @@
                             <td>{{ $order->status_code }}</td>
                             <td>{{ $order->checkout }}</td>
                         </tr>
-                        <?php $i++; ?>
                     @endforeach
                 </table>
                 <div class="row">

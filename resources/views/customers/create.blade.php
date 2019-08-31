@@ -6,6 +6,8 @@
 
 @extends('layouts.app')
 
+@section('page','ثبت مشتری جدید')
+
 @section('content')
 
 
@@ -94,4 +96,7 @@
 
 
     </div>
+
+
+
 @endsection

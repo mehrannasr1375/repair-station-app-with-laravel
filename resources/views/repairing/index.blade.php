@@ -23,7 +23,6 @@
         <div class="tbl-main-con">
             <table class="tbl-1">
                 <tr>
-                    <th style="width:40px">#</th>
                     <th style="width:40px">شناسه</th>
                     <th>نام و نام خانوادگی</th>
                     <th>نوع دستگاه</th>
@@ -31,27 +30,24 @@
                     <th style="width:60px">جزئیات</th>
                     <th style="width:60px">یادداشت</th>
                     <th style="width:60px">تغییر وضعیت</th>
-                    <th>تاریخ دریافت</th>                           
+                    <th>تاریخ دریافت</th>
                 </tr>
-                <?php $i=1; ?>
                 @foreach ($orders as $order)
                     <tr>
-                        <td>{{ $i }}</td>
                         <td>{{ $order->id }}</td>
                         <td>{{ $order->customer->name }}</td>
                         <td>{{ $order->device_type }}</td>
                         <td>{{ $order->problem }}</td>
-                        <td style="width:40px;"><a href=""><i class="fa fa-2x fa-info-circle text-secondary"></i></a></td>
+                        <td style="width:40px;"><a href="/orders/{{ $order->id }}"><i class="fa fa-2x fa-info text-secondary"></i></a></td>
                         <td style="width:40px;"><a href=""><i class="fa fa-2x text-secondary fa-pencil-square-o"></i></a></td>
                         <td style="width:200px;">
                             <a href=""><i class="fa fa-2x text-success fa-check pl-2"></i></a>
                             <a href=""><i class="fa fa-2x text-danger fa-close pl-2"></i></a>
-                            <a href=""><i class="fa fa-2x text-success fa-heartbeat pl-2"></i></a>
+                            <a href="/repairing/{{ $order->id }}/healthy"><i class="fa fa-2x text-success fa-heartbeat pl-2"></i></a>
                             <a href=""><i class="fa fa-2x text-warning fa-eye-slash"></i></a>
                         </td>
                         <td style="width:100px;">{{ $order->receive_date }}</td>
                     </tr>
-                    <?php $i++; ?>
                 @endforeach
             </table>
             <div class="row">
