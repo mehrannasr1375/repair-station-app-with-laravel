@@ -93,6 +93,36 @@ a:hover {
     content: '>';
 }
 
+.modal {
+    opacity:1;
+    margin-top: 16px !important;
+}
+.modal-content {
+    border-radius: 3px !important;
+}
+.modal-title {
+    font-size: 13px !important;
+}
+.modal-header {
+    padding: 8px 18px !important;
+    font-family: "A Mosalas";
+    font-weight: 600;
+}
+.modal-footer {
+    padding: 4px  !important;
+}
+.modal-footer button {
+    margin: 0px !important;
+    margin-left: 1px !important;
+    border-radius: 2px !important;
+}
+.modal-body {
+    font-size: 13px !important;
+}
+button.close {
+    padding: 6px !important;
+    padding-top: 12px !important;
+}
 
 /*---------------------------------------| Main Navbar |----------------------------------*/
 

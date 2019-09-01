@@ -1,14 +1,5 @@
-
-<!--
-     - This view used for Show details of a customer, with an update btn for that customer
-            for show && edit
-     - This view used for 'show' && 'edit' methods on CustomersController
--->
-
-
-
 @extends('layouts.app')
-
+@section('page', 'ویرایش اطلاعات مشتری')
 @section('content')
 
 
@@ -101,4 +92,7 @@
 
 
     </div>
+
+
+
 @endsection

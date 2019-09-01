@@ -1,13 +1,5 @@
-
-<!--
-     This view will be used for show create customers form
--->
-
-
 @extends('layouts.app')
-
 @section('page','ثبت مشتری جدید')
-
 @section('content')
 
 

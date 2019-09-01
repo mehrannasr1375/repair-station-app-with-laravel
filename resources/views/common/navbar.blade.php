@@ -2,7 +2,6 @@
 
 
 
-
     <!-- Right -->
     <a href="{{ url('/') }}">
         <i id="navbar-logo" class="fa fa-gg-circle"></i>
@@ -23,7 +22,6 @@
         <a href="#"><span class="btn btn-sm hover-e-1"><i class="fa fa-close"></i></span></a>
         <a href="#"><span class="btn btn-sm hover-e-1"><i class="fa fa-arrow-left"></i></span></a>
     </ul>
-
 
 
 

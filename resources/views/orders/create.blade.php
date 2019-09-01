@@ -1,13 +1,5 @@
-
-<!--
-     - This view will be used for show create orders form
--->
-
-
 @extends('layouts.app')
-
 @section('page','ثبت تعمیری جدید')
-
 @section('content')
 
 

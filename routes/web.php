@@ -1,6 +1,8 @@
 <?php
 
 // Auth
+use App\Http\Controllers\repairingOrdersController;
+
 Auth::routes();
 
 // Dashboard
@@ -29,8 +31,7 @@ Route::get('/prepaired', 'PrepairedOrdersController@index');
 
 // Repairing Orders
 Route::get('/repairing', 'RepairingOrdersController@index');
-Route::resource('/repairing/{order}/healthy','repairingOrdersController@healthy'); //---------//
-
+Route::post('/repairing/healthy','repairingOrdersController@healthy');//device is well
 
 
 

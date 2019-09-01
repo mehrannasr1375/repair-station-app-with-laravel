@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 class repairingOrdersController extends Controller
 {
 
+
+    //show a list of repairing orders
     public function index()
     {
         $orders = Order::where('status_code', 0)->orderBy('id', 'desc')->paginate(10);
@@ -15,65 +17,17 @@ class repairingOrdersController extends Controller
     }
 
 
-    public function create()
+
+    //ajax: device is well
+    public function healthy(Request $request)
     {
-        //
-    }
-
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-    public function show(Order $order)
-    {
-        //
-    }
-
-
-    public function edit(Order $order)
-    {
-        //
-    }
-
-
-    public function update(Request $request, Order $order)
-    {
-        //
-    }
-
-
-    public function destroy(Order $order)
-    {
-        //
-    }
-
-
-    public function healthy(Request $request, Order $order)
-    {
-
-        if ($request->ajax()) {
-            /*$data = Product::latest()->get();
-            return Datatables::of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function($row){
-
-                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
-
-                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct">Delete</a>';
-
-                    return $btn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);*/
+        if ( $request->ajax() )
+        {
+            $data = $request->validate(['hidden_order_id' => 'required|numeric']);
+            Order::where('id', $data)->update(['status_code' => 3]);
+            return 'true';
         }
-
-        return view('productAjax',compact('products'));
-
-        dd($order);
-
     }
+
 
 }

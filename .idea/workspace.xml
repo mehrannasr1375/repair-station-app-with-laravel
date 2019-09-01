@@ -6,9 +6,12 @@
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/repairingOrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/repairingOrdersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/public.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/public.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/common/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/common/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/customers/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customers/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/customers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/orders/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/orders/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/orders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/prepaired/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/prepaired/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/repairing/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/repairing/index.blade.php" afterDir="false" />
@@ -186,6 +189,8 @@
       <workItem from="1567190549240" duration="8816000" />
       <workItem from="1567222902205" duration="594000" />
       <workItem from="1567243378473" duration="3947000" />
+      <workItem from="1567269018922" duration="9148000" />
+      <workItem from="1567324774462" duration="9856000" />
     </task>
     <task id="LOCAL-00001" summary="Revert &quot;add readme.md&quot;&#10;&#10;This reverts commit 5104213d">
       <created>1565987124628</created>

@@ -1,20 +1,12 @@
-
-<!--
-     - This view used for Show details of a order for edit it
-            for show && edit
--->
-
-
 @extends('layouts.app')
-
 @section('page','ویرایش تعمیری')
-
 @section('content')
 
 
 
     <!-- search bar -->
     @include('common.searchbar')
+
 
 
     <!-- Form for show && edit order -->

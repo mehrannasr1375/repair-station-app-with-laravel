@@ -1,16 +1,6 @@
-
-<!--
-     This view will be used for Show history of orders
--->
-
-
-
 @extends('layouts.app')
-
 @section('page','تاریخچه کلی')
-
 @section('content')
-    <div id="orders">
 
 
 
@@ -71,5 +61,5 @@
         </div>
 
 
-    </div>
+
 @endsection
