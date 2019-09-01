@@ -4,7 +4,7 @@
 
 
 
-    <!-- search bar -->
+    <!-- Search Bar -->
     @include('common.searchbar')
 
 
@@ -51,61 +51,88 @@
 
     <!-- Modal -->
     <section>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_confirm_repairing">Launch modal</button>
-        <div class="modal fade" id="modal_confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h6 class="modal-title" id="exampleModalLabel">اخطار</h6>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        آیا وضعیت دستگاه شماره<p class="px-2 mb-0 text-primary" style="display: inline-block"></p>به سالم تغییر یابد؟
 
-                        <form id="frm_well_order" action="/repairing/healthy" method="POST">
-                            @csrf
-                            <input type="hidden" id="hidden_order_id" name="hidden_order_id" value="">
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">انصراف</button>
-                        <button type="button" id="btn_confirm_delivery" class="btn btn-sm btn-primary">بله</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
+        <!-- Customize Modal -->
+        @extends('modals.modal')
+        @section('modal_title', 'اخطار')
+        @section('modal_form_action_url', '/repairing/healthy')
+        @section('modal_content_data', '')
+        @section('btn_confirm_type', 'well_order')
+
+
+        <!-- Modal Scripts -->
         <script type="text/javascript">
-            $(window).on('load',function(){
-                $(".btn_well_order").click(function (event) {
+
+            $(window).on('load',function()
+            {
+                $(".btn_well_order").click(function (event)
+                {
                     modal = $("#modal_confirm");
                     order_id = $(this).parent().siblings('td:first-child').text();
-                    modal.modal('show').find("#hidden_order_id").val(order_id);
+                    modal.modal('show');
                     modal.find('p').text(order_id);
                 });
 
-                $("#btn_confirm_delivery").click(function (event) {
-                    $.ajax({
-                        url:"/repairing/healthy",
-                        method:"POST",
-                        data:{
-                            '_token' : '<?php echo csrf_token() ?>',
-                            'hidden_order_id' : order_id
-                        },
-                        success:function (data) {
-                            if (data == 'true') {
-                                modal.modal('hide');
-                                console.log('saved!');
-                            }
-                        }
-                    });
+
+                $("#btn_confirm").click(function (event)
+                {
+                    switch ( $(this).data('type') ) {
+                        case 'well_order':
+                                $.ajax({
+                                    url:"/repairing/healthy",
+                                    method:"POST",
+                                    data:{
+                                        '_token' : '<?php echo csrf_token() ?>',
+                                        'order_id' : order_id
+                                    },
+                                    success:function (data) {
+                                        if ($.isNumeric(data['order_id'])) {
+                                            location.reload();
+                                        }
+                                    }
+                                });
+                                break;
+                        default:
+                                console.log('btn_confirm type not allowed!');
+                                break;
+                    }
                 });
             });
+
         </script>
 
+
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

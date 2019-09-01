@@ -1,13 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Order;
 use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Validation\Validator; // for override error messages, which stores on session; for form validation error appearance
-
 class OrdersController extends Controller
 {
 
@@ -15,7 +12,7 @@ class OrdersController extends Controller
 
     public function index()
     {
-        $orders = Order::where('status_code','>=',0)->orderBy('id', 'desc')->paginate(10);
+        $orders = Order::where('status_code','>=',0)->orderBy('id', 'desc')->paginate(8);
         return view('orders.index', compact('orders'));
     }
 
@@ -165,10 +162,24 @@ class OrdersController extends Controller
 
 
 
-    public function destroy(Order $order)
-    {
 
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

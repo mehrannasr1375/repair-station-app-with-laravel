@@ -1,5 +1,4 @@
 <?php
-
 // Auth
 use App\Http\Controllers\repairingOrdersController;
 
@@ -27,7 +26,6 @@ Route::patch('/orders/{order}', 'OrdersController@update');
 
 // Prepaired Orders
 Route::get('/prepaired', 'PrepairedOrdersController@index');
-
 
 // Repairing Orders
 Route::get('/repairing', 'RepairingOrdersController@index');

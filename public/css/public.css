@@ -104,10 +104,16 @@ a:hover {
     font-size: 13px !important;
 }
 .modal-header {
-    padding: 8px 18px !important;
+    padding: 10px 18px !important;
+    padding-bottom: 6px !important;
     font-family: "A Mosalas";
     font-weight: 600;
 }
+.modal-header i {
+    font-size: 20px !important;
+    padding-bottom: -6px !important;
+}
+
 .modal-footer {
     padding: 4px  !important;
 }
