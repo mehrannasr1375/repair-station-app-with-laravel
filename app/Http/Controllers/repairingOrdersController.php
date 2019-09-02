@@ -19,16 +19,11 @@ class repairingOrdersController extends Controller
     //ajax: device is well
     public function healthy(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'order_id' => 'required|numeric'
+        $validated_data = $request->validate([
+            'order_id'=>'required|numeric',
         ]);
-
-        if ( $validator->fails() ) {
-            return response()->json(['error'=> $validator->errors()], 200);
-        } else if ( $validator->passes() ) {
-            Order::where('id', $request->order_id)->update(['status_code' => 3]);
-            return response()->json(['order_id'=> $request->order_id], 200);
-        }
+        Order::where('id',$validated_data)->update(['status_code'=>3]);
+        return response()->json(['order_id'=> $request->order_id],200);
     }
 
 

@@ -81,6 +81,7 @@
                         case 'well_order':
                                 $.ajax({
                                     url:"/repairing/healthy",
+                                    dataType: "json",
                                     method:"POST",
                                     data:{
                                         '_token' : '<?php echo csrf_token() ?>',
@@ -88,7 +89,13 @@
                                     },
                                     success:function (data) {
                                         if ($.isNumeric(data['order_id'])) {
-                                            location.reload();
+                                            //location.reload();
+                                            reseived = JSON.parse(data);
+                                            id = data[0].order_id;
+                                            console.log('success result. updated order = '+id);
+                                        }
+                                        else {
+                                            console.log('error : '+data);
                                         }
                                     }
                                 });
