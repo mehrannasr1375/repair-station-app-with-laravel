@@ -4,8 +4,10 @@
 
 
 
+
     <!-- Search Bar -->
     @include('common.searchbar')
+
 
 
 
@@ -34,7 +36,7 @@
                         <a href="#" class=""><i class="fa fa-2x text-success fa-check pl-2"></i></a>
                         <a href="#" class="btn_unrepairable_order"><i class="fa fa-2x text-danger fa-close pl-2"></i></a>
                         <a href="#" class="btn_well_order"><i class="fa fa-2x text-success fa-heartbeat pl-2"></i></a>
-                        <a href="#" class="btn-putoff_order"><i class="fa fa-2x text-warning fa-eye-slash"></i></a>
+                        <a href="#" class="btn_putoff_order"><i class="fa fa-2x text-warning fa-eye-slash"></i></a>
                     </td>
                     <td style="width:100px;">{{ $order->receive_date }}</td>
                 </tr>
@@ -49,8 +51,10 @@
 
 
 
+
     <!-- Modals -->
-    <section id="repairing-modal-con">
+    <section id="repairing-modals-con">
+
         <div id="modal_confirm_well_order" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -71,11 +75,12 @@
                     <!-- Modal Footer -->
                     <div class="modal-footer">
                         <button type="button" id="btn_cancel" class="btn btn-sm btn-secondary" data-dismiss="modal">انصراف</button>
-                        <button type="button" id="btn_confirm" data-type="well_order" class="btn btn-sm btn-primary">بله</button>
+                        <button type="button" data-type="well_order" class="btn_confirm btn btn-sm btn-primary">بله</button>
                     </div>
                 </div>
             </div>
         </div>
+
         <div id="modal_confirm_unrepairable_order" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -96,11 +101,12 @@
                     <!-- Modal Footer -->
                     <div class="modal-footer">
                         <button type="button" id="btn_cancel" class="btn btn-sm btn-secondary" data-dismiss="modal">انصراف</button>
-                        <button type="button" id="btn_confirm" data-type="unrepairable" class="btn btn-sm btn-primary">بله</button>
+                        <button type="button" data-type="unrepairable" class="btn_confirm btn btn-sm btn-primary">بله</button>
                     </div>
                 </div>
             </div>
         </div>
+
         <div id="modal_confirm_putoff_order" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -121,74 +127,101 @@
                     <!-- Modal Footer -->
                     <div class="modal-footer">
                         <button type="button" id="btn_cancel" class="btn btn-sm btn-secondary" data-dismiss="modal">انصراف</button>
-                        <button type="button" id="btn_confirm" data-type="putoff" class="btn btn-sm btn-primary">بله</button>
+                        <button type="button" data-type="putoff" class="btn_confirm btn btn-sm btn-primary">بله</button>
                     </div>
                 </div>
             </div>
         </div>
 
+        <div id="modal_show_result" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="exampleModalLabel">
+                            <i class="fa fa-1x fa-info-circle text-info ml-2"></i>
+                            اطلاعات
+                        </h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <p class="px-2 mb-0 text-dark" style="display: inline-block"></p>
+                    </div>
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="button" id="btn_cancel" class="btn btn-sm btn-secondary" data-dismiss="modal">باشه</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
 
-        <!-- Modal Scripts -->
-        <script type="text/javascript">
-            $(window).on('load',function()
-            {
+
+
+
+    <!-- Modals Scripts -->
+    <script type="text/javascript">
+
+        $(window).on('load', function() {
+
 
                 $(".btn_well_order").click(function (event) {
                     order_id = $(this).parent().siblings('td:first-child').text();
                     $("#modal_confirm_well_order").modal('show');
                 });
-
                 $(".btn_unrepairable_order").click(function (event) {
                     order_id = $(this).parent().siblings('td:first-child').text();
                     $("#modal_confirm_unrepairable_order").modal('show');
                 });
-
-                $(".btn_unrepairable_order").click(function (event) {
+                $(".btn_putoff_order").click(function (event) {
                     order_id = $(this).parent().siblings('td:first-child').text();
                     $("#modal_confirm_putoff_order").modal('show');
                 });
 
-                $("#btn_confirm").click(function (event)
+
+                $(".btn_confirm").click(function (event)
                 {
-                    switch ( $(this).data('type') ) {
+                    switch ( $(this).data('type') )
+                    {
                         case 'well_order':
-                                $.ajax({
-                                    url:"/repairing/healthy",
-                                    //dataType: "json",
-                                    method:"POST",
-                                    data:{
-                                        '_token' : '<?php echo csrf_token() ?>',
-                                        'order_id' : order_id
-                                    },
-                                    success:function (data) {
-                                        if ($.isNumeric(data['order_id'])) { // send deleted order_id
-                                            //location.reload();
-                                            /*reseived = JSON.parse(data);
-                                            id = data[0].order_id;
-                                            console.log('success result. updated order = '+id);*/
-                                            console.log('success result');
-                                            //location.reload();
-                                        }
-                                        else {
-                                            console.log('error : '+data);
-                                        }
-                                    }
-                                });
-                                break;
+                            target_url = '/repairing/healthy';
+                            message = 'وضعیت دستگاه به سالم تغییر یافت!';
+                            break;
                         case 'unrepairable':
-                                $.ajax({});
-                                break;
+                            target_url = '/repairing/unrepairable';
+                            message = 'وضعیت دستگاه به غیر قابل تعمیر تغییر یافت!';
+                            break;
                         case 'putoff':
-                            $.ajax({});
+                            target_url = '/repairing/putoff';
+                            message = 'وضعیت دستگاه به انصراف مشتری تغییر یافت!';
                             break;
                         default:
-                                console.log('btn_confirm type not allowed!');
-                                break;
+                            message = '';
+                            break;
                     }
+
+                    $.ajax({
+                        url:target_url,
+                        method:"POST",
+                        data:{ '_token' : '<?php echo csrf_token() ?>', 'order_id' : order_id },
+                        success:function (data) {
+                            if ($.isNumeric(data['order_id'])) {
+                                $(event.target).closest('.modal').modal('hide'); //
+                                $(".tbl-1 td").filter(function() { //hide deleted table row from view
+                                    return $(this).text() == order_id;
+                                }).closest("tr").hide(1000);
+                            }
+                            else 
+                                console.log('error : ' + data);
+                        }
+                    });
+
                 });
-            });
-        </script>
-    </section>
+        });
+    </script>
+    
 
 
 
