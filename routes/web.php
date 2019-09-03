@@ -30,7 +30,7 @@ Route::get('/prepaired', 'PrepairedOrdersController@index');
 // Repairing Orders
 Route::get('/repairing', 'RepairingOrdersController@index');
 Route::post('/repairing/healthy','repairingOrdersController@healthy');//device is well
-
+Route::post('/repairing/unrepairable', 'repairingOrdersController@unrepairable');//device is unrepairable
 
 
 

@@ -21,16 +21,16 @@ class repairingOrdersController extends Controller
     public function healthy(Request $request)
     {
         /*
-            لاراول در صورتی که خطا در داده های مورد ارزیابی وجود داشته باشد 
+            لاراول در صورتی که خطا در داده های مورد ارزیابی وجود داشته باشد
             هیچ ریدایرکتی ایجاد نمیکند
             اما در عوض خطاهای ایجاد شده را در قالب جیسون به همراه کد وضعیت 442 = خطای داخلی سرور به مرورگر برمیگرداند
-            بنابراین در درخواست های ایجکس باید چه در صورت موفقیت امیز بودن و چه نبودن اعتبارسنجی 
+            بنابراین در درخواست های ایجکس باید چه در صورت موفقیت امیز بودن و چه نبودن اعتبارسنجی
             نتیجه را به مرورگر بازگشت دهیم
-            :مثلا 
+            :مثلا
             true یا false
             را برگردانیم
         */
-        
+
 
         //make custom validator with custom error messages
         $messages = [
@@ -44,7 +44,7 @@ class repairingOrdersController extends Controller
 
         //on failure validation: send error in json to client
         if ( $validator->fails() ) {
-            return  $validator->errors()->first('order_id'); 
+            return  $validator->errors()->first('order_id');
         }
 
 
@@ -53,9 +53,22 @@ class repairingOrdersController extends Controller
         return response()->json(['order_id'=> $request->order_id],200);
 
 
-        
+
     }
-    
+
+
+
+
+    //ajax: device is unrepairable
+    public function unrepairable(Request $request)
+    {
+        return 'received!';
+    }
+
+
+
+
+
 
 
 
