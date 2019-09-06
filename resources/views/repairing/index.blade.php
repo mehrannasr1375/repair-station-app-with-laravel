@@ -24,6 +24,21 @@
                 <th style="width:60px">تغییر وضعیت</th>
                 <th>تاریخ دریافت</th>
             </tr>
+            <tr>
+                <td>aaaaaaaa</td>
+                <td>aaaaaaaa</td>
+                <td>aaaaaaaa</td>
+                <td>aaaaaaaaa</td>
+                <td style="width:40px;"><a href="/orders/degrfsdafgd"><i class="fa fa-2x fa-info text-secondary"></i></a></td>
+                <td style="width:40px;"><a class="btn_add_repairing_note" href="#"><i class="fa fa-2x text-secondary fa-pencil-square-o"></i></a></td>
+                <td style="width:200px;">
+                    <a href="#" class=""><i class="fa fa-2x text-success fa-check pl-2"></i></a>
+                    <a href="#" class="btn_unrepairable_order"><i class="fa fa-2x text-danger fa-close pl-2"></i></a>
+                    <a href="#" class="btn_well_order"><i class="fa fa-2x text-success fa-heartbeat pl-2"></i></a>
+                    <a href="#" class="btn_putoff_order"><i class="fa fa-2x text-warning fa-eye-slash"></i></a>
+                </td>
+                <td style="width:100px;">sadfgdsfgf</td>
+            </tr>
             @foreach ($orders as $order)
                 <tr>
                     <td>{{ $order->id }}</td>
@@ -62,16 +77,13 @@
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h6 class="modal-title">
-                            <i class="fa fa-1x fa-info-circle text-info ml-2"></i>
-                            اخطار
-                        </h6>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <span>اخطار</span>
+                        <i class="fa fa-question-circle-o"></i>
                     </div>
                     <!-- Modal Body -->
                     <div class="modal-body">
                         <p class="px-2 mb-0 text-dark" style="display: inline-block">
-                            آیا وضعیت دستگاه به سالم تغییر یابد؟
+                            آیا وضعیت دستگاه به <span class="font-weight-bold">سالم</span> تغییر یابد؟
                         </p>
                     </div>
                     <!-- Modal Footer -->
@@ -90,16 +102,13 @@
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h6 class="modal-title">
-                            <i class="fa fa-1x fa-info-circle text-info ml-2"></i>
-                            اخطار
-                        </h6>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <span>اخطار</span>
+                        <i class="fa fa-question-circle-o"></i>
                     </div>
                     <!-- Modal Body -->
                     <div class="modal-body">
                         <p class="px-2 mb-0 text-dark" style="display: inline-block">
-                            آیا مایل به تغییر وضعیت تعمیری به غیرقابل تعمیر می باشید؟
+                            آیا مایل به تغییر وضعیت تعمیری به <span class="font-weight-bold">غیرقابل تعمیر</span> می باشید؟
                         </p>
                     </div>
                     <!-- Modal Footer -->
@@ -118,16 +127,13 @@
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h6 class="modal-title">
-                            <i class="fa fa-1x fa-info-circle text-info ml-2"></i>
-                            اخطار
-                        </h6>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <span>اخطار</span>
+                        <i class="fa fa-question-circle-o"></i>
                     </div>
                     <!-- Modal Body -->
                     <div class="modal-body">
                         <p class="px-2 mb-0 text-dark" style="display: inline-block">
-                            آیا مایل به تغییر وضعیت تعمیری به انصراف مشتری می باشید؟
+                            آیا مایل به تغییر وضعیت تعمیری به <span class="font-weight-bold">انصراف مشتری</span> می باشید؟
                         </p>
                     </div>
                     <!-- Modal Footer -->
@@ -146,17 +152,14 @@
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h6 class="modal-title">
-                            <i class="fa fa-1x fa-pencil text-info ml-2"></i>
-                            افزودن یادداشت برای تعمیری
-                        </h6>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <span>افزودن یادداشت برای تعمیری</span>
+                        <i class="fa fa-pencil"></i>
                     </div>
                     <!-- Modal Body -->
                     <div class="modal-body">
                         <p class="px-2 mb-4 text-dark" style="display: inline-block">
                             لطفا توضیحات خود درمورد تعمیری شماره
-                            <span class="text-info" id="add_note_id_txt"></span>
+                            <span class="font-weight-bold" id="add_note_id_txt"></span>
                             را در کادر زیر تایپ نمایید:
                         </p>
                         <div class="form-group input-group">
@@ -174,6 +177,28 @@
         </div>
 
 
+        <!-- modal show result -->
+        <div id="modal_show_result" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <span>اطلاعات</span>
+                        <i class="fa fa-info-circle text-danger"></i>
+                    </div>
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <p class="px-2 mb-0 text-dark" style="display: inline-block"></p>
+                    </div>
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="button" id="btn_cancel" class="btn btn-sm btn-secondary" data-dismiss="modal">باشه</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </section>
 
 
@@ -181,6 +206,7 @@
 
     <!-- Modals Scripts -->
     <script type="text/javascript">
+
         $(window).on('load', function() {
 
 
@@ -207,55 +233,63 @@
 
                 $(".btn_confirm").click(function (event) {
 
-
                     if ( $(this).data('type')=='add_repairing_note' ) {
                         note = $('#txt_note').val();
                         $.ajax({
                             url:'/repairing/addnote',
                             method:"POST",
-                            data:{ '_token' : '<?php echo csrf_token() ?>', 'order_id' : order_id, 'note' : note },
+                            data:{
+                                '_token' : '<?php echo csrf_token() ?>',
+                                'order_id' : order_id,
+                                'note' : note
+                            },
                             success:function (data) {
+                                errors_array = $.parseJSON(JSON.stringify(data));
                                 if ( data=='true' )
                                     $(event.target).closest('.modal').modal('hide'); //hide modal
                                 else
-                                    console.log('error : ' + data);
+                                    console.log('error : ' + errors_array['errors']);
                             }
                         });
                     }
 
-
                     switch ( $(this).data('type') ) {
                         case 'well_order':
                             target_url = '/repairing/healthy';
-                            message = 'وضعیت دستگاه به سالم تغییر یافت!';
                             break;
                         case 'unrepairable':
                             target_url = '/repairing/unrepairable';
-                            message = 'وضعیت دستگاه به غیر قابل تعمیر تغییر یافت!';
                             break;
                         case 'putoff':
                             target_url = '/repairing/putoff';
-                            message = 'وضعیت دستگاه به انصراف مشتری تغییر یافت!';
                             break;
                         default:
-                            message = '';
+                            target_url = '';
                             break;
                     }
-
 
                     $.ajax({
                         url:target_url,
                         method:"POST",
-                        data:{ '_token' : '<?php echo csrf_token() ?>', 'order_id' : order_id },
+                        data:{
+                            '_token' : '<?php echo csrf_token() ?>',
+                            'order_id' : order_id
+                        },
                         success:function (data) {
-                            if ($.isNumeric(data['order_id'])) {
-                                $(event.target).closest('.modal').modal('hide'); //hide modal
+                            errors_array = $.parseJSON(JSON.stringify(data));
+                            modal_confirm = $(event.target).closest('.modal');
+                            if ($.isNumeric(data)) {
+                                modal_confirm.modal('hide'); //hide confirm modal
                                 $(".tbl-1 td").filter(function() { //hide deleted table row from view
                                     return $(this).text() == order_id;
-                                }).closest("tr").hide(1000);
+                                }).closest("tr").css('background-color','#0ea1a4').hide(1000);
                             }
-                            else
-                                console.log('error : ' + data);
+                            else {
+                                modal_confirm.modal('hide'); //hide confirm modal
+                                modal_result = $('#modal_show_result');
+                                modal_result.find('p').text(errors_array['errors']);
+                                modal_result.modal('show'); //show result modal
+                            }
                         }
                     });
 

@@ -2,24 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a5cc108-f79e-481d-b54c-fd72944980e9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/modals/basicModal.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/prepaired/modals/checkout.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/repairing/modals/putoff.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/repairing/modals/unrepairable.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/repairing/modals/wellOrder.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/prepairedOrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/prepairedOrdersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/repairingOrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/repairingOrdersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/OrderDetail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/OrderDetail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_21_094400_create_order_details_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_21_094400_create_order_details_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/public.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/public.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/modals/modal.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/prepaired/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/prepaired/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/repairing/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/repairing/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -151,6 +138,7 @@
   <component name="ProjectId" id="1Q8Onzapai1XQCNSAy7hNYt0Qmw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -213,7 +201,8 @@
       <workItem from="1567709694848" duration="1786000" />
       <workItem from="1567757611535" duration="400000" />
       <workItem from="1567759841824" duration="1677000" />
-      <workItem from="1567767237837" duration="1140000" />
+      <workItem from="1567767237837" duration="1459000" />
+      <workItem from="1567777517060" duration="19394000" />
     </task>
     <task id="LOCAL-00001" summary="Revert &quot;add readme.md&quot;&#10;&#10;This reverts commit 5104213d">
       <created>1565987124628</created>

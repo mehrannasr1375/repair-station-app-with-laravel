@@ -1,0 +1,73 @@
+<?php
+namespace App\Http\Requests;
+use Illuminate\Foundation\Http\FormRequest;
+
+class addOrderNoteRequest extends FormRequest
+{
+
+
+
+    public function rules()
+    {
+        return [
+            'order_id'=>'required|numeric',
+            'note'=>'required',
+        ];
+    }
+
+
+
+    public function messages()
+    {
+        return [
+            'order_id.required' => 'سریال تعمیری ارسال شده معتبر نیست!',
+            'order_id.numeric' => 'دیتای ارسال شده نامعتبر است!',
+            'note.required' => 'متن یادداشت نمی تواند خالی باشد!',
+        ];
+    }
+
+
+
+    public function formatErrors(Validator $validator)
+    {
+        return $validator->errors()->all();
+    }
+
+
+
+    //change '402 status code' for response (for ajax requests)
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json(['errors'=>$validator->errors()->all()], 200));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

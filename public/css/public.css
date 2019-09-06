@@ -110,8 +110,18 @@ a:hover {
     font-weight: 600;
 }
 .modal-header i {
-    font-size: 20px !important;
+    font-size: 30px !important;
     padding-bottom: -6px !important;
+    color: #0ea1a4;
+    line-height: .85;
+
+}
+.modal-header i.text-danger {
+    color: #a40007;
+}
+.modal-header span {
+    line-height: 2;
+    color: #a7a7a7;
 }
 
 .modal-footer {
@@ -273,7 +283,7 @@ table.tbl-1 tr:first-child {
 }
 table.tbl-1 tr:hover {
     transition: .3s ease background-color;
-    background-color: rgba(111, 177, 255, 0.3);
+    background-color: rgba(111, 177, 255, 0.2);
     border-right: inset 2px deepskyblue;
     border-left: inset 2px deepskyblue;
 }
