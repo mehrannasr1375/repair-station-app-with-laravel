@@ -1,0 +1,5 @@
+@extends('modals.basicModal')
+@section('modal_id','modal_confirm_unrepairable_order')
+@section('modal_title','اخطار')
+@section('modal_body','آیا مایل به تغییر وضعیت تعمیری به غیرقابل تعمیر می باشید؟')
+@section('modal_btn_confirm_data_type','unrepairable')

@@ -5,19 +5,16 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateOrderDetailsTable extends Migration
 {
-    
 
-
-    ]
     public function up()
     {
         Schema::create('order_details', function (Blueprint $table) {
 
             $table->engine = 'InnoDB';
-            
+
             $table->bigIncrements('id')->autoIncrement();
-            $table->bigInteger('order_id'); 
-            
+            $table->bigInteger('order_id');
+
             $table->string('key');
             $table->bigInteger('amount')->nullable();
             $table->string('info')->nullable();
@@ -29,7 +26,7 @@ class CreateOrderDetailsTable extends Migration
 
 
 
-    
+
     public function down()
     {
         Schema::dropIfExists('order_details');

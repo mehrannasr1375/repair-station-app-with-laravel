@@ -1,0 +1,5 @@
+@extends('modals.basicModal')
+@section('modal_id','modal_confirm_checkout_order')
+@section('modal_title','اخطار')
+@section('modal_body','آیا مایل به تحویل تعمیری می باشید؟')
+@section('modal_btn_confirm_data_type','checkout')

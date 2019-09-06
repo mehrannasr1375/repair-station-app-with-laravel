@@ -12,7 +12,7 @@ class OrdersController extends Controller
 
     public function index()
     {
-        $orders = Order::where('status_code','>=',0)->orderBy('id', 'desc')->paginate(8);
+        $orders = Order::allOrders()->OrderByDesc()->paginate(8);
         return view('orders.index', compact('orders'));
     }
 

@@ -1,4 +1,11 @@
 <?php
+/*
+*  0 : repairing
+*  1 : repaired
+*  2 : not repairable
+*  3 : no problem
+*  4 : rejected by customer
+*/
 namespace App\Http\Controllers;
 use App\Order;
 use Illuminate\Http\Request;
@@ -11,7 +18,7 @@ class repairingOrdersController extends Controller
     //show a list of repairing orders
     public function index()
     {
-        $orders = Order::where('status_code', 0)->orderBy('id', 'desc')->paginate(8);
+        $orders = Order::RepairingOrders()->orderByDesc()->paginate(8);
         return view('repairing.index', compact('orders'));
     }
 
@@ -54,7 +61,6 @@ class repairingOrdersController extends Controller
 
 
 
-
     //ajax: device is unrepairable
     public function unrepairable(Request $request)
     {
@@ -78,11 +84,10 @@ class repairingOrdersController extends Controller
 
 
 
-
     //ajax: device is putted off
     public function putoff(Request $request)
     {
-        
+
         $messages = [
             'order_id.required' => 'خطا: انتخاب تعمیری با سریال الزامی است',
             'order_id.numeric' => 'خطا: دیتای ارسال شده نامعتبر است',
@@ -99,6 +104,33 @@ class repairingOrdersController extends Controller
         return response()->json(['order_id'=>$request->order_id],200);
 
     }
+
+
+
+    //ajax: add repairing_note
+    public function addNote(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'order_id' => 'required|numeric',
+            'note' => 'required',
+        ]);
+
+        if ( $validator->fails() )
+            return 'false';
+
+        Order::where('id',$request->order_id)->update(['delivery_note'=>$request->note]);
+        return 'true';
+
+    }
+
+
+
+
+
+
+
+
 
 
 
