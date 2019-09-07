@@ -210,22 +210,47 @@
                     </div>
                     <!-- Modal Body -->
                     <div class="modal-body">
-                        
-                        <div class="d-flex justify-content-between">
-                            <div class="d-flex">
-                                <label style="line-height:2.2;padding-left:6px;" class="text-vsm" for="title">عنوان:</label>
-                                <input type="text" style="min-width:240px;margin-left:20px;" id="title" class="form-control form-control-sm text-vsm" placeholder="">
+
+                        <div id="add_repair_rows_con">
+                            <div class="modal-body-row shadow-sm d-flex justify-content-between">
+                                <div class="d-flex">
+                                    <label style="line-height:2.2;padding-left:6px;" class="text-vsm" for="title">عنوان:</label>
+                                    <input type="text" style="min-width:240px;margin-left:20px;" id="title" class="form-control form-control-sm text-vsm" placeholder="">
+                                </div>
+                                <div class="d-flex">
+                                    <label style="line-height:2.2;padding-left:6px" class="text-vsm" for="price">هزینه:</label>
+                                    <input type="text" id="price" class="form-control form-control-sm text-center text-vsm" placeholder="به تومان">
+                                </div>
+                                <span class="add_row d-flex justify-content-center mr-3 mt-1"><i id="add_row" class="fa fa-2x fa-plus-circle text-secondary"></i></span>
                             </div>
-                            <div class="d-flex">
-                                <label style="line-height:2.2;padding-left:6px" class="text-vsm" for="price">هزینه:</label>
-                                <input type="text" id="price" class="form-control form-control-sm text-center text-vsm" placeholder="به تومان">
+                            <div class="modal-body-row shadow-sm d-flex justify-content-between">
+                                <div class="d-flex">
+                                    <label style="line-height:2.2;padding-left:6px;" class="text-vsm" for="title">عنوان:</label>
+                                    <input type="text" style="min-width:240px;margin-left:20px;" id="title" class="form-control form-control-sm text-vsm" placeholder="">
+                                </div>
+                                <div class="d-flex">
+                                    <label style="line-height:2.2;padding-left:6px" class="text-vsm" for="price">هزینه:</label>
+                                    <input type="text" id="price" class="form-control form-control-sm text-center text-vsm" placeholder="به تومان">
+                                </div>
+                                <span class="add_row d-flex justify-content-center mr-3 mt-1"><i id="add_row" class="fa fa-2x fa-plus-circle text-secondary"></i></span>
                             </div>
-                            <span class="d-flex justify-content-center mr-3 mt-1"><i id="add_row" class="fa fa-2x fa-plus-circle text-secondary"></i></span>
+                            <div class="modal-body-row shadow-sm d-flex justify-content-between">
+                                <div class="d-flex">
+                                    <label style="line-height:2.2;padding-left:6px;" class="text-vsm" for="title">عنوان:</label>
+                                    <input type="text" style="min-width:240px;margin-left:20px;" id="title" class="form-control form-control-sm text-vsm" placeholder="">
+                                </div>
+                                <div class="d-flex">
+                                    <label style="line-height:2.2;padding-left:6px" class="text-vsm" for="price">هزینه:</label>
+                                    <input type="text" id="price" class="form-control form-control-sm text-center text-vsm" placeholder="به تومان">
+                                </div>
+                                <span class="add_row d-flex justify-content-center mr-3 mt-1"><i class="fa fa-2x fa-plus-circle text-secondary"></i></span>
+                            </div>
                         </div>
-                        <hr class="">
+
+                        <hr>
                         <div class="d-flex justify-content-end mb-0">
                             <label style="line-height:2.2;padding-left:6px" class="text-vsm" for="price">جمع کل :</label>
-                            <input type="text" id="price" class="form-control form-control-sm text-center"  style="width:140px;" >
+                            <input style="width:140px;border:none !important; " type="text" id="price" class="form-control form-control-sm text-center" disabled >
                         </div>
 
                     </div>
@@ -246,11 +271,7 @@
 
     <!-- Modals Scripts -->
     <script type="text/javascript">
-
         $(window).on('load', function() {
-
-
-
                 $(".btn_well_order").click(function (event) {
                     order_id = $(this).parent().siblings('td:first-child').text();
                     $("#modal_confirm_well_order").modal('show');
@@ -273,9 +294,7 @@
                     $("#modal_repaired_order").modal('show');
                 });
 
-
                 $(".btn_confirm").click(function (event) {
-
                     if ( $(this).data('type')=='add_repairing_note' ) {
                         note = $('#txt_note').val();
                         $.ajax({
@@ -295,7 +314,6 @@
                             }
                         });
                     }
-
                     switch ( $(this).data('type') ) {
                         case 'well_order':
                             target_url = '/repairing/healthy';
@@ -310,7 +328,6 @@
                             target_url = '';
                             break;
                     }
-
                     $.ajax({
                         url:target_url,
                         method:"POST",
@@ -335,14 +352,12 @@
                             }
                         }
                     });
-
-
-
-
                 });
 
-
-
+                $(".add_row").click(function () {
+                    elem = '<div class="modal-body-row shadow-sm d-flex justify-content-between"> <div class="d-flex"> <label style="line-height:2.2;padding-left:6px;" class="text-vsm" for="title">عنوان:</label> <input type="text" style="min-width:240px;margin-left:20px;" id="title" class="form-control form-control-sm text-vsm" placeholder=""> </div><div class="d-flex"> <label style="line-height:2.2;padding-left:6px" class="text-vsm" for="price">هزینه:</label> <input type="text" id="price" class="form-control form-control-sm text-center text-vsm" placeholder="به تومان"> </div> <span class="d-flex justify-content-center mr-3 mt-1"><i id="add_row" class="fa fa-2x fa-plus-circle text-secondary"></i></span></div>';
+                    $("#add_repair_rows_con").append(elem);
+                });
         });
     </script>
 

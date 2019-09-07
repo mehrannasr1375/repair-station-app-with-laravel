@@ -93,62 +93,6 @@ a:hover {
     content: '>';
 }
 
-.modal {
-    opacity:1;
-    margin-top: 16px !important;
-}
-.modal-content {
-    border-radius: 3px !important;
-}
-.modal-title {
-    font-size: 13px !important;
-}
-.modal-header {
-    padding: 10px 18px !important;
-    padding-bottom: 6px !important;
-    font-family: "A Mosalas";
-    font-weight: 600;
-}
-.modal-header i {
-    font-size: 30px !important;
-    padding-bottom: -6px !important;
-    color: #0ea1a4;
-    line-height: .85;
-
-}
-.modal-header i.text-danger {
-    color: #a40007;
-}
-.modal-header span {
-    line-height: 2;
-    color: #a7a7a7;
-}
-
-.modal-footer {
-    padding: 4px  !important;
-}
-.modal-footer button {
-    margin: 0px !important;
-    margin-left: 1px !important;
-    border-radius: 2px !important;
-}
-.modal-body {
-    font-size: 13px !important;
-}
-button.close {
-    padding: 6px !important;
-    padding-top: 12px !important;
-}
-
-#add_row {
-    transition-duration: .3s;
-
-}
-#add_row:hover {
-    cursor: pointer;
-    color:#41a141 !important;
-}
-
 
 /*---------------------------------------| Main Navbar |----------------------------------*/
 
@@ -493,12 +437,75 @@ input:focus, textarea:focus,select:focus,button:focus {
     color: black !important;
 }
 
+
+/*-----------------------------------------| modals |-----------------------------------------*/
+
+.modal {
+    opacity:1;
+    margin-top: 16px !important;
+}
 .modal-dialog {
     transition-duration: .2s !important;
 }
+.modal-content {
+    border-radius: 3px !important;
+}
 
+.modal-header {
+    padding: 10px 18px !important;
+    padding-bottom: 6px !important;
+    font-family: "A Mosalas";
+    font-weight: 600;
+}
+.modal-title {
+    font-size: 13px !important;
+}
+.modal-header i {
+    font-size: 30px !important;
+    padding-bottom: -6px !important;
+    color: #0ea1a4;
+    line-height: .85;
 
-/*-----------------------------------------|  |-----------------------------------------*/
+}
+.modal-header i.text-danger {
+    color: #a40007;
+}
+.modal-header span {
+    line-height: 2;
+    color: #a7a7a7;
+}
+
+.modal-body {
+    font-size: 13px !important;
+}
+
+.modal-footer {
+    padding: 4px  !important;
+}
+.modal-footer button {
+    margin: 0px !important;
+    margin-left: 1px !important;
+    border-radius: 2px !important;
+}
+
+.modal .add_row i{
+    transition-duration: .3s;
+    line-height: 0.9 !important;
+}
+.modal .add_row:hover i{
+    cursor: pointer;
+    color:#41a141 !important;
+}
+
+.modal-body-row {
+    /*border: 1px solid lightgray;*/
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 8px;
+    padding-top: 12px;
+
+}
+
 /*-----------------------------------------|  |-----------------------------------------*/
 /*-----------------------------------------|  |-----------------------------------------*/
 /*-----------------------------------------|  |-----------------------------------------*/
