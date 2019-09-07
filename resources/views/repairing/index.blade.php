@@ -48,7 +48,7 @@
                     <td style="width:40px;"><a href="/orders/{{ $order->id }}"><i class="fa fa-2x fa-info text-secondary"></i></a></td>
                     <td style="width:40px;"><a class="btn_add_repairing_note" href="#"><i class="fa fa-2x text-secondary fa-pencil-square-o"></i></a></td>
                     <td style="width:200px;">
-                        <a href="#" class=""><i class="fa fa-2x text-success fa-check pl-2"></i></a>
+                        <a href="#" class="btn_repaired_order"><i class="fa fa-2x text-success fa-check pl-2"></i></a>
                         <a href="#" class="btn_unrepairable_order"><i class="fa fa-2x text-danger fa-close pl-2"></i></a>
                         <a href="#" class="btn_well_order"><i class="fa fa-2x text-success fa-heartbeat pl-2"></i></a>
                         <a href="#" class="btn_putoff_order"><i class="fa fa-2x text-warning fa-eye-slash"></i></a>
@@ -199,6 +199,46 @@
         </div>
 
 
+        <!-- modal modal_repaired_order -->
+        <div id="modal_repaired_order" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <span>ثبت هزینه ی تعمیر</span>
+                        <i class="fa fa-gears"></i>
+                    </div>
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex">
+                                <label style="line-height:2.2;padding-left:6px;" class="text-vsm" for="title">عنوان:</label>
+                                <input type="text" style="min-width:240px;margin-left:20px;" id="title" class="form-control form-control-sm text-vsm" placeholder="">
+                            </div>
+                            <div class="d-flex">
+                                <label style="line-height:2.2;padding-left:6px" class="text-vsm" for="price">هزینه:</label>
+                                <input type="text" id="price" class="form-control form-control-sm text-center text-vsm" placeholder="به تومان">
+                            </div>
+                            <span class="d-flex justify-content-center mr-3 mt-1"><i id="add_row" class="fa fa-2x fa-plus-circle text-secondary"></i></span>
+                        </div>
+                        <hr class="">
+                        <div class="d-flex justify-content-end mb-0">
+                            <label style="line-height:2.2;padding-left:6px" class="text-vsm" for="price">جمع کل :</label>
+                            <input type="text" id="price" class="form-control form-control-sm text-center"  style="width:140px;" >
+                        </div>
+
+                    </div>
+                    <!-- Modal Footer -->
+                    <div class="modal-footer border-0 mt-3">
+                        <button type="button" id="btn_cancel" class="btn btn-sm btn-secondary" data-dismiss="modal">انصراف</button>
+                        <button type="button" data-type="unrepairable" class="btn_confirm btn btn-sm btn-primary">ثبت</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </section>
 
 
@@ -228,7 +268,10 @@
                     $('#add_note_id_txt').text(order_id);
                     $("#modal_add_repairing_note").modal('show');
                 });
-
+                $(".btn_repaired_order").click(function (event) {
+                    order_id = $(this).parent().siblings('td:first-child').text();
+                    $("#modal_repaired_order").modal('show');
+                });
 
 
                 $(".btn_confirm").click(function (event) {

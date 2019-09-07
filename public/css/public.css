@@ -140,6 +140,15 @@ button.close {
     padding-top: 12px !important;
 }
 
+#add_row {
+    transition-duration: .3s;
+
+}
+#add_row:hover {
+    cursor: pointer;
+    color:#41a141 !important;
+}
+
 
 /*---------------------------------------| Main Navbar |----------------------------------*/
 
