@@ -29,11 +29,10 @@
                     <td>{{ $order->id }}</td>
                     <td>{{ $order->customer->name }}</td>
                     <td>{{ $order->device_type }}</td>
-                    <td>{{ $order->problem }}</td>
+                    <td style="max-width:180px; padding-top:14px; padding-bottom:14px;">{{ $order->problem }}</td>
                     <td><a href="/orders/{{ $order->id }}"><i class="fa fa-2x fa-info text-secondary"></i></a></td>
-                    <td><a href=""><i class="fa fa-2x text-secondary fa-pencil-square-o"></i></a></td>
-                    <td><a href="#" class="btn_checkout"><i class="fa fa-2x text-secondary fa-plane pl-2"></i></a></td>
-                    <!--<td><a href=""><i class="fa fa-2x text-success fa-heartbeat pl-2"></i></a></td>-->
+                    <td><a href=""><i class="fa fa-2x text-success fa-pencil-square-o"></i></a></td>
+                    <td><a href="#" class="btn_checkout"><i class="fa fa-2x text-danger fa-plane pl-2"></i></a></td>
                     <td style="width:90px;">{{ $order->status_code }}</td>
                     <td>{{ $order->receive_date }}</td>
                     <td>sum</td>
@@ -57,11 +56,8 @@
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h6 class="modal-title">
-                            <i class="fa fa-1x fa-info-circle text-info ml-2"></i>
-                            اخطار
-                        </h6>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <span>اخطار</span>
+                        <i class="fa fa-1x fa-info-circle text-info ml-2"></i>
                     </div>
                     <!-- Modal Body -->
                     <div class="modal-body">

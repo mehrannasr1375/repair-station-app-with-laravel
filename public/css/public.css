@@ -222,10 +222,13 @@ table.tbl-1 a {
 }
 table.tbl-1 tr {
     height: 40px;
-    transition: .4s ease background-color;
+    border-right: inset 2px transparent;
+    border-left: inset 2px transparent;
 }
 table.tbl-1 tr:nth-of-type(2n+1) {
-    background-color: rgba(129, 158, 174, 0.08);
+    background-color: rgba(129, 158, 174, 0.06);
+    border-right: inset 2px transparent;
+    border-left: inset 2px transparent;
 }
 table.tbl-1 tr td:first-child {
     padding-right: 20px;
@@ -233,9 +236,10 @@ table.tbl-1 tr td:first-child {
 }
 table.tbl-1 tr:first-child {
     border-bottom: 4px solid rgba(132, 162, 178, 0.6);
+    border-right: inset 2px transparent;
+    border-left: inset 2px transparent;
 }
 table.tbl-1 tr:hover {
-    transition: .3s ease background-color;
     background-color: rgba(111, 177, 255, 0.2);
     border-right: inset 2px deepskyblue;
     border-left: inset 2px deepskyblue;
@@ -243,8 +247,8 @@ table.tbl-1 tr:hover {
 table.tbl-1 tr:first-child:hover {
     background-color: rgb(242, 245, 247);
     transition: .2s ease background-color;
-    border-right: inset 1px transparent;
-    border-left: inset 1px transparent;
+    border-right: inset 2px transparent;
+    border-left: inset 2px transparent;
 }
 table.tbl-1 i:hover {
     color: #0085b8 !important;
@@ -440,6 +444,7 @@ input:focus, textarea:focus,select:focus,button:focus {
 
 /*-----------------------------------------| modals |-----------------------------------------*/
 
+
 .modal {
     opacity:1;
     margin-top: 16px !important;
@@ -481,6 +486,7 @@ input:focus, textarea:focus,select:focus,button:focus {
 
 .modal-footer {
     padding: 4px  !important;
+    border-top: none !important;
 }
 .modal-footer button {
     margin: 0px !important;
@@ -505,6 +511,7 @@ input:focus, textarea:focus,select:focus,button:focus {
     padding-top: 12px;
 
 }
+
 
 /*-----------------------------------------|  |-----------------------------------------*/
 /*-----------------------------------------|  |-----------------------------------------*/

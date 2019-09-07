@@ -18,7 +18,7 @@
             <div id="normal">
                 <table class="tbl-1">
                     <tr>
-                        <th style="width:40px">شناسه</th>
+                        <th style="width:40px;">شناسه</th>
                         <th>نام و نام خانوادگی</th>
                         <th>جزئیات</th>
                         <th>نوع دستگاه</th>
@@ -29,11 +29,11 @@
                     </tr>
                     @foreach ($orders as $order)
                         <tr>
-                            <td>{{ $order->id }}</td>
+                            <td style="width:30px !important;" class="text-right">{{ $order->id }}</td>
                             <td>{{ $order->customer->name }}</td>
-                            <td><a href="/orders/{{ $order->id }}/edit"><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
+                            <td><a href="/orders/{{ $order->id }}/edit"><i class="fa fa-2x text-secondary fa-info pl-2"></i></a></td>
                             <td>{{ $order->device_type }}</td>
-                            <td>{{ $order->problem }}</td>
+                            <td style="max-width:150px; padding:14px;">{{ $order->problem }}</td>
                             <td>{{ $order->receive_date }}</td>
                             <td>{{ $order->status_code }}</td>
                             <td>{{ $order->checkout }}</td>

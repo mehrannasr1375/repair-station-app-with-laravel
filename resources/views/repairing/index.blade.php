@@ -34,8 +34,8 @@
                 <td style="width:200px;">
                     <a href="#" class=""><i class="fa fa-2x text-success fa-check pl-2"></i></a>
                     <a href="#" class="btn_unrepairable_order"><i class="fa fa-2x text-danger fa-close pl-2"></i></a>
-                    <a href="#" class="btn_well_order"><i class="fa fa-2x text-success fa-heartbeat pl-2"></i></a>
-                    <a href="#" class="btn_putoff_order"><i class="fa fa-2x text-warning fa-eye-slash"></i></a>
+                    <a href="#" class="btn_well_order"><i class="fa fa-2x text-info fa-heartbeat pl-2"></i></a>
+                    <a href="#" class="btn_putoff_order"><i class="fa fa-2x text-secondary fa-eye-slash"></i></a>
                 </td>
                 <td style="width:100px;">sadfgdsfgf</td>
             </tr>
@@ -44,14 +44,14 @@
                     <td>{{ $order->id }}</td>
                     <td>{{ $order->customer->name }}</td>
                     <td>{{ $order->device_type }}</td>
-                    <td>{{ $order->problem }}</td>
+                    <td style="max-width:150px; padding:14px;">{{ $order->problem }}</td>
                     <td style="width:40px;"><a href="/orders/{{ $order->id }}"><i class="fa fa-2x fa-info text-secondary"></i></a></td>
                     <td style="width:40px;"><a class="btn_add_repairing_note" href="#"><i class="fa fa-2x text-secondary fa-pencil-square-o"></i></a></td>
                     <td style="width:200px;">
                         <a href="#" class="btn_repaired_order"><i class="fa fa-2x text-success fa-check pl-2"></i></a>
                         <a href="#" class="btn_unrepairable_order"><i class="fa fa-2x text-danger fa-close pl-2"></i></a>
-                        <a href="#" class="btn_well_order"><i class="fa fa-2x text-success fa-heartbeat pl-2"></i></a>
-                        <a href="#" class="btn_putoff_order"><i class="fa fa-2x text-warning fa-eye-slash"></i></a>
+                        <a href="#" class="btn_well_order"><i class="fa fa-2x text-info fa-heartbeat pl-2"></i></a>
+                        <a href="#" class="btn_putoff_order"><i class="fa fa-2x text-secondary fa-eye-slash"></i></a>
                     </td>
                     <td style="width:100px;">{{ $order->receive_date }}</td>
                 </tr>
@@ -215,35 +215,13 @@
                             <div class="modal-body-row shadow-sm d-flex justify-content-between">
                                 <div class="d-flex">
                                     <label style="line-height:2.2;padding-left:6px;" class="text-vsm" for="title">عنوان:</label>
-                                    <input type="text" style="min-width:240px;margin-left:20px;" id="title" class="form-control form-control-sm text-vsm" placeholder="">
+                                    <input type="text" style="min-width:240px;margin-left:20px;" class="cost_title form-control form-control-sm text-vsm" placeholder="">
                                 </div>
                                 <div class="d-flex">
                                     <label style="line-height:2.2;padding-left:6px" class="text-vsm" for="price">هزینه:</label>
-                                    <input type="text" id="price" class="form-control form-control-sm text-center text-vsm" placeholder="به تومان">
+                                    <input type="text" class="cost_price form-control form-control-sm text-center text-vsm" placeholder="به تومان">
                                 </div>
                                 <span class="add_row d-flex justify-content-center mr-3 mt-1"><i id="add_row" class="fa fa-2x fa-plus-circle text-secondary"></i></span>
-                            </div>
-                            <div class="modal-body-row shadow-sm d-flex justify-content-between">
-                                <div class="d-flex">
-                                    <label style="line-height:2.2;padding-left:6px;" class="text-vsm" for="title">عنوان:</label>
-                                    <input type="text" style="min-width:240px;margin-left:20px;" id="title" class="form-control form-control-sm text-vsm" placeholder="">
-                                </div>
-                                <div class="d-flex">
-                                    <label style="line-height:2.2;padding-left:6px" class="text-vsm" for="price">هزینه:</label>
-                                    <input type="text" id="price" class="form-control form-control-sm text-center text-vsm" placeholder="به تومان">
-                                </div>
-                                <span class="add_row d-flex justify-content-center mr-3 mt-1"><i id="add_row" class="fa fa-2x fa-plus-circle text-secondary"></i></span>
-                            </div>
-                            <div class="modal-body-row shadow-sm d-flex justify-content-between">
-                                <div class="d-flex">
-                                    <label style="line-height:2.2;padding-left:6px;" class="text-vsm" for="title">عنوان:</label>
-                                    <input type="text" style="min-width:240px;margin-left:20px;" id="title" class="form-control form-control-sm text-vsm" placeholder="">
-                                </div>
-                                <div class="d-flex">
-                                    <label style="line-height:2.2;padding-left:6px" class="text-vsm" for="price">هزینه:</label>
-                                    <input type="text" id="price" class="form-control form-control-sm text-center text-vsm" placeholder="به تومان">
-                                </div>
-                                <span class="add_row d-flex justify-content-center mr-3 mt-1"><i class="fa fa-2x fa-plus-circle text-secondary"></i></span>
                             </div>
                         </div>
 
@@ -257,7 +235,7 @@
                     <!-- Modal Footer -->
                     <div class="modal-footer border-0 mt-3">
                         <button type="button" id="btn_cancel" class="btn btn-sm btn-secondary" data-dismiss="modal">انصراف</button>
-                        <button type="button" data-type="unrepairable" class="btn_confirm btn btn-sm btn-primary">ثبت</button>
+                        <button type="button" data-type="repaired" class="btn_confirm btn btn-sm btn-primary">ثبت</button>
                     </div>
                 </div>
             </div>
@@ -271,7 +249,8 @@
 
     <!-- Modals Scripts -->
     <script type="text/javascript">
-        $(window).on('load', function() {
+        $(window).on('load', function() 
+        {
                 $(".btn_well_order").click(function (event) {
                     order_id = $(this).parent().siblings('td:first-child').text();
                     $("#modal_confirm_well_order").modal('show');
@@ -294,6 +273,8 @@
                     $("#modal_repaired_order").modal('show');
                 });
 
+
+                // on confirm modal    
                 $(".btn_confirm").click(function (event) {
                     if ( $(this).data('type')=='add_repairing_note' ) {
                         note = $('#txt_note').val();
@@ -313,8 +294,11 @@
                                     console.log('error : ' + errors_array['errors']);
                             }
                         });
-                    }
-                    switch ( $(this).data('type') ) {
+                    } else if ( $( this ).data('type')=='repaired' ) {
+                        // do code here
+
+                    } else {
+                        switch ( $(this).data('type') ) {
                         case 'well_order':
                             target_url = '/repairing/healthy';
                             break;
@@ -327,35 +311,38 @@
                         default:
                             target_url = '';
                             break;
-                    }
-                    $.ajax({
-                        url:target_url,
-                        method:"POST",
-                        data:{
-                            '_token' : '<?php echo csrf_token() ?>',
-                            'order_id' : order_id
-                        },
-                        success:function (data) {
-                            errors_array = $.parseJSON(JSON.stringify(data));
-                            modal_confirm = $(event.target).closest('.modal');
-                            if ($.isNumeric(data)) {
-                                modal_confirm.modal('hide'); //hide confirm modal
-                                $(".tbl-1 td").filter(function() { //hide deleted table row from view
-                                    return $(this).text() == order_id;
-                                }).closest("tr").css('background-color','#0ea1a4').hide(1000);
-                            }
-                            else {
-                                modal_confirm.modal('hide'); //hide confirm modal
-                                modal_result = $('#modal_show_result');
-                                modal_result.find('p').text(errors_array['errors']);
-                                modal_result.modal('show'); //show result modal
-                            }
+                        }      
+                        $.ajax({
+                            url:target_url,
+                            method:"POST",
+                            data:{
+                                '_token' : '<?php echo csrf_token() ?>',
+                                'order_id' : order_id
+                            },
+                            success:function (data) {
+                                errors_array = $.parseJSON(JSON.stringify(data));
+                                modal_confirm = $(event.target).closest('.modal');
+                                if ($.isNumeric(data)) {
+                                    modal_confirm.modal('hide'); //hide confirm modal
+                                    $(".tbl-1 td").filter(function() { //hide deleted table row from view
+                                        return $(this).text() == order_id;
+                                    }).closest("tr").css('background-color','#0ea1a4').hide(1000);
+                                }
+                                else {
+                                    modal_confirm.modal('hide'); //hide confirm modal
+                                    modal_result = $('#modal_show_result');
+                                    modal_result.find('p').text(errors_array['errors']);
+                                    modal_result.modal('show'); //show result modal
+                                }
                         }
                     });
+                    }
                 });
 
+
+                // plus btn
                 $(".add_row").click(function () {
-                    elem = '<div class="modal-body-row shadow-sm d-flex justify-content-between"> <div class="d-flex"> <label style="line-height:2.2;padding-left:6px;" class="text-vsm" for="title">عنوان:</label> <input type="text" style="min-width:240px;margin-left:20px;" id="title" class="form-control form-control-sm text-vsm" placeholder=""> </div><div class="d-flex"> <label style="line-height:2.2;padding-left:6px" class="text-vsm" for="price">هزینه:</label> <input type="text" id="price" class="form-control form-control-sm text-center text-vsm" placeholder="به تومان"> </div> <span class="d-flex justify-content-center mr-3 mt-1"><i id="add_row" class="fa fa-2x fa-plus-circle text-secondary"></i></span></div>';
+                    elem = '<div class="modal-body-row shadow-sm d-flex justify-content-between"> <div class="d-flex"> <label style="line-height:2.2;padding-left:6px;" class="text-vsm" for="title">عنوان:</label> <input type="text" style="min-width:240px;margin-left:20px;" class="cost_title form-control form-control-sm text-vsm" placeholder=""> </div><div class="d-flex"> <label style="line-height:2.2;padding-left:6px" class="text-vsm" for="price">هزینه:</label> <input type="text" class="cost_price form-control form-control-sm text-center text-vsm" placeholder="به تومان"> </div> </div>';
                     $("#add_repair_rows_con").append(elem);
                 });
         });

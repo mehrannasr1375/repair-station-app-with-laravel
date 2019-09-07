@@ -24,7 +24,7 @@
                     <!-- full name -->
                     <div class="col-12 col-lg-6 form-group input-group">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">نام و نام خانوادگی :</span></div></div>
-                        <input type="text" class="form-control border-fix" name="name" value="{{ old('name') }}"/>
+                        <input type="text" class="form-control border-fix" name="name" value="{{ old('name') }}" autocomplete="off"/>
                     </div>
                     <div class="text-danger" role='alert' style="line-height:2.5;">
                         {{ $errors->first('name') }}
@@ -52,28 +52,28 @@
                     <!-- tell -->
                     <div class="col-12 col-lg-6 form-group input-group">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن ثابت 1 :</span></div></div>
-                        <input type="text" class="form-control" name="tell_1" value="{{ old('tell_1') }}" />
+                        <input type="text" class="form-control" name="tell_1" value="{{ old('tell_1') }}" autocomplete="off" />
                     </div>
                     <div class="col-12 col-lg-6 form-group input-group">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن ثابت 2 :</span></div></div>
-                        <input type="text" class="form-control" name="tell_2" value="{{ old('tell_2') }}" />
+                        <input type="text" class="form-control" name="tell_2" value="{{ old('tell_2') }}" autocomplete="off" />
                     </div>
 
                     <!-- mobile -->
                     <div class="col-12 col-lg-6 form-group input-group">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن همراه 1 :</span></div></div>
-                        <input type="text" class="form-control" name="mobile_1"  value="{{ old('mobile_1') }}" />
+                        <input type="text" class="form-control" name="mobile_1"  value="{{ old('mobile_1') }}" autocomplete="off" />
                     </div>
                     <div class="col-12 col-lg-6 form-group input-group">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن همراه 2 :</span></div></div>
-                        <input type="text" class="form-control" name="mobile_2"  value="{{ old('mobile_2') }}" />
+                        <input type="text" class="form-control" name="mobile_2"  value="{{ old('mobile_2') }}" autocomplete="off" />
                     </div>
 
                     <!-- address -->
                     <div class="col-12 form-group input-group">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">آدرس :</span></div></div>
-                        <input type="text" class="form-control" name="address"  value="{{ old('address') }}"/>
-                    </div>
+                        <input type="text" class="form-control" name="address"  value="{{ old('address') }}" autocomplete="off" />
+                    </div>  
 
                 </div>
 
