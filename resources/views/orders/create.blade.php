@@ -218,7 +218,7 @@
                     </div>
                     <!-- problem -->
                     <div class="col-12 form-group input-group">
-                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">مشکل:</span></div></div>
+                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">ایراد:</span></div></div>
                         <textarea style="min-height:60px;" class="form-control text-vsm" name="problem">{{ old('problem') }}</textarea>
                     </div>
                     <!-- problem_details -->

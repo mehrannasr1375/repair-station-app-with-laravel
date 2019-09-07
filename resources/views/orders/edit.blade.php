@@ -154,8 +154,8 @@
                         <!-- device_type -->
                         <div class="col-12 col-lg-6 form-group input-group">
                             <div class="input-group-prepend"><div class="input-group-text"><span class="label">نوع قطعه:</span></div></div>
-                            
-                        
+
+
                             <select style="direction:ltr;" class="form-control custom-select text-vsm" name="device_type" >
                                 <option {{ $order->device_type=='لپ تاپ'   ? 'selected':'' }} value="لپ تاپ">لپ تاپ</option>
                                 <option {{ $order->device_type=='کیس'     ? 'selected':'' }} value="کیس">کیس</option>
@@ -177,8 +177,8 @@
                                 <option {{ $order->device_type=='هدست'   ? 'selected':'' }} value="هدست">هدست</option>
                                 <option {{ $order->device_type=='دیگر'    ? 'selected':'' }} value="دیگر">دیگر</option>
                             </select>
-                        
-                        
+
+
                         </div>
                         <!-- device_brand -->
                         <div class="col-12 col-lg-3 form-group input-group">
@@ -216,7 +216,7 @@
                         </div>
                         <!-- problem -->
                         <div class="col-12 form-group input-group">
-                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">مشکل:</span></div></div>
+                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">ایراد:</span></div></div>
                             <textarea style="min-height:60px;" class="form-control text-vsm" name="problem">{{ old('problem') ?? $order->problem }}</textarea>
                         </div>
                         <!-- problem_details -->

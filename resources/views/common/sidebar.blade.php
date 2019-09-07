@@ -13,7 +13,7 @@
     <!-- add order btn -->
     <a href="/orders/create" class="sidebar-btn">
         <i class="fa fa-2x fa-plus-circle text-light"></i>
-        <p>افزودن قطعه</p>
+        <p>افزودن تعمیری</p>
     </a>
 
 
@@ -52,7 +52,7 @@
 
     <!-- Copyright -->
     <a>
-        <i class="fa fa-3x fa-angle-double-down text-light"></i>
+        <i class="fa fa-3x fa-angle-double-right text-light"></i>
     </a>
     <div class="text-gold text-center text-vvsm">
         <hr class="bg-gold my-0"/>
