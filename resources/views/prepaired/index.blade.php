@@ -4,12 +4,13 @@
 
 
 
-    <!-- search bar -->
+    <!-- search bar ----------------------------------------------------------------------------------------------------------------------------------------------->
     @include('common.searchbar')
 
 
 
-    <!-- Prepaired Orders -->
+
+    <!-- Prepaired Orders ----------------------------------------------------------------------------------------------------------------------------------------->
     <div class="tbl-main-con">
         <table class="tbl-1">
             <tr>
@@ -48,8 +49,10 @@
 
 
 
-    <!-- Modals -->
+
+    <!-- Modals --------------------------------------------------------------------------------------------------------------------------------------------------->
     <section id="prepaired-modals-con">
+
 
         <!-- modal checkout_order -->
         <div id="modal_confirm_checkout_order" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -99,6 +102,7 @@
             </div>
         </div>
 
+
         <!-- modal add_note -->
         <div id="modal_add_repairing_note" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -129,11 +133,14 @@
 
 
 
-    <!-- Modals Scripts -->
-    <script type="text/javascript">
 
+    <!-- Modals Scripts ------------------------------------------------------------------------------------------------------------------------------------------->
+    <script type="text/javascript">
         $(window).on('load', function() {
 
+
+
+            //add click event listeners for show modals && get 'order_id'
             $(".btn_add_note").click(function (event) {
                 order_id = $(this).parent().siblings('td:first-child').text();
                 $("#modal_add_repairing_note").modal('show');
@@ -143,7 +150,9 @@
                 $("#modal_confirm_checkout_order").modal('show');
             });
 
-            // btn confirm
+
+
+            //on confirm modal => send ajax request, and retreive response & take convenient action)
             $(".btn_confirm").click(function (event)
             {
                 $.ajax({
@@ -164,7 +173,9 @@
 
             });
 
-            // btn plus
+
+
+            //btn plus 'order_detail' row
             $(".add_row").click(function () {
                 elem =  '<div id="add_repair_rows_con">\n' +
                         '    <div class="modal-body-row d-flex justify-content-between shadow-sm">\n' +
@@ -184,8 +195,11 @@
                         '</div>';
                 $("#add_repair_rows_con").append(elem);
             });
+
+
         });
     </script>
+    <!------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
 

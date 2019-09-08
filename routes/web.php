@@ -34,6 +34,7 @@ Route::post('/repairing/healthy','repairingOrdersController@healthy');//device i
 Route::post('/repairing/unrepairable', 'repairingOrdersController@unrepairable');//device is unrepairable
 Route::post('/repairing/putoff', 'repairingOrdersController@putoff');//device is putted off by customer
 Route::post('/repairing/addnote', 'repairingOrdersController@addNote');//add repairing note for device
+Route::post('/repairing/addrepaired', 'repairingOrdersController@addRepaired');//repaired order
 
 
 

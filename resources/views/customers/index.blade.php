@@ -4,12 +4,12 @@
 
 
 
-    <!-- search bar -->
+    <!-- search bar --------------------------------------------------------------------------------------------------------------------------->
     @include('common.searchbar')
 
 
 
-    <!-- Tiny btns -->
+    <!-- Tiny btns ----------------------------------------------------------------------------------------------------------------------------->
     <div class="form-box">
         <ul class="nav nav-tabs nav-justified m-4 ml-5">
             <li class="nav-item active">
@@ -23,7 +23,7 @@
 
 
 
-    <!-- Customers && Partners container -->
+    <!-- Customers && Partners container ------------------------------------------------------------------------------------------------------->
     <div class="tab-content tbl-main-con">
 
 

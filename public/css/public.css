@@ -527,10 +527,10 @@ input:focus, textarea:focus,select:focus,button:focus {
     min-width:240px;
     margin-left:20px;
 }
-.modal-body-row input[type=text].cost_user_price {
+.modal-body-row input[type=text].cost_user {
     width:100px;
 }
-.modal-body-row input[type=text].cost_shop_price {
+.modal-body-row input[type=text].cost_shop {
     width:100px;
 }
 

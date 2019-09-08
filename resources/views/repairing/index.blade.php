@@ -5,13 +5,13 @@
 
 
 
-    <!-- Search Bar -->
+    <!-- Search Bar --------------------------------------------------------------------------------------------------------------->
     @include('common.searchbar')
 
 
 
 
-    <!-- Repairing Orders -->
+    <!-- Repairing Orders --------------------------------------------------------------------------------------------------------->
     <div class="tbl-main-con">
         <table class="tbl-1">
             <tr>
@@ -67,12 +67,12 @@
 
 
 
-    <!-- Modals -->
+    <!-- Modals ------------------------------------------------------------------------------------------------------------------->
     <section id="repairing-modals-con">
 
 
         <!-- modal well_order -->
-        <div id="modal_confirm_well_order" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div id="modal_confirm_well_order" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <!-- Modal Header -->
@@ -97,7 +97,7 @@
 
 
         <!-- modal unrepairable_order -->
-        <div id="modal_confirm_unrepairable_order" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div id="modal_confirm_unrepairable_order" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <!-- Modal Header -->
@@ -122,7 +122,7 @@
 
 
         <!-- modal putoff_order -->
-        <div id="modal_confirm_putoff_order" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div id="modal_confirm_putoff_order" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <!-- Modal Header -->
@@ -147,7 +147,7 @@
 
 
         <!-- modal add_repairing_note_for_order -->
-        <div id="modal_add_repairing_note" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div id="modal_add_repairing_note" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <!-- Modal Header -->
@@ -173,7 +173,7 @@
 
 
         <!-- modal show result -->
-        <div id="modal_show_result" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div id="modal_show_result" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <!-- Modal Header -->
@@ -195,7 +195,7 @@
 
 
         <!-- modal modal_repaired_order -->
-        <div id="modal_repaired_order" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div id="modal_repaired_order" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <!-- Modal Header -->
@@ -210,15 +210,15 @@
                             <div class="modal-body-row d-flex justify-content-between shadow-sm">
                                 <div class="d-flex">
                                     <label for="title">عنوان:</label>
-                                    <input type="text" class="cost_title form-control form-control-sm text-vsm">
+                                    <input type="text" name="cost_title" class="cost_title form-control form-control-sm text-vsm">
                                 </div>
                                 <div class="d-flex">
                                     <label for="user_price">هزینه مشتری:</label>
-                                    <input type="text" id="user_price" class="cost_user_price form-control form-control-sm text-center text-vsm" placeholder="به تومان">
+                                    <input type="text" name="cost_user" id="user_price" class="cost_user form-control form-control-sm text-center text-vsm" placeholder="به تومان">
                                 </div>
                                 <div class="d-flex">
                                     <label for="shop_price">هزینه تعمیرگاه:</label>
-                                    <input type="text" id="shop_price" class="cost_shop_price form-control form-control-sm text-center text-vsm" placeholder="به تومان">
+                                    <input type="text" name="cost_shop" id="shop_price" class="cost_shop form-control form-control-sm text-center text-vsm" placeholder="به تومان">
                                 </div>
                             </div>
                         </div>
@@ -248,38 +248,44 @@
 
 
 
-    <!-- Modals Scripts -->
+    <!-- Modals Scripts ------------------------------------------------------------------------------------------------------------>
     <script type="text/javascript">
-        $(window).on('load', function()
-        {
-                $(".btn_well_order").click(function (event) {
+        $(window).on('load', function() {
+
+
+
+            //add click event listeners for show modals && get 'order_id'
+            $(".btn_well_order").click(function (event) {
                     order_id = $(this).parent().siblings('td:first-child').text();
                     $("#modal_confirm_well_order").modal('show');
                 });
-                $(".btn_unrepairable_order").click(function (event) {
+            $(".btn_unrepairable_order").click(function (event) {
                     order_id = $(this).parent().siblings('td:first-child').text();
                     $("#modal_confirm_unrepairable_order").modal('show');
                 });
-                $(".btn_putoff_order").click(function (event) {
+            $(".btn_putoff_order").click(function (event) {
                     order_id = $(this).parent().siblings('td:first-child').text();
                     $("#modal_confirm_putoff_order").modal('show');
                 });
-                $(".btn_add_repairing_note").click(function (event) {
+            $(".btn_add_repairing_note").click(function (event) {
                     order_id = $(this).parent().siblings('td:first-child').text();
                     $('#add_note_id_txt').text(order_id);
                     $("#modal_add_repairing_note").modal('show');
                 });
-                $(".btn_repaired_order").click(function (event) {
+            $(".btn_repaired_order").click(function (event) {
                     order_id = $(this).parent().siblings('td:first-child').text();
                     $("#modal-repaired-order-id").text(order_id);
                     $("#modal_repaired_order").modal('show');
-                });
+            });
 
 
-                // on confirm modal
-                $(".btn_confirm").click(function (event) {
-                    if ( $(this).data('type')=='add_repairing_note' ) {
-                        note = $('#txt_note').val();
+
+            //on confirm modal => send ajax request, and retreive response & take convenient action)
+            $(".btn_confirm").click(function (event) {
+
+                    if ( $(this).data('type')=='add_repairing_note' )
+                    {
+                        note = $('#txt_note').val();//get note
                         $.ajax({
                             url:'/repairing/addnote',
                             method:"POST",
@@ -296,10 +302,54 @@
                                     console.log('error : ' + errors_array['errors']);
                             }
                         });
-                    } else if ( $( this ).data('type')=='repaired' ) {
-                        // do code here
+                    }
 
-                    } else {
+
+                    else if ( $(this).data('type')=='repaired' )
+                    {
+                            //put input data to arrays
+                            var i = 0 ;
+                            var order_datails_array = [];
+                            $('.cost_title').each(function(event) {
+                                if ( $(this).val() != '' ) {
+                                    order_datails_array[i] = [];
+                                    order_datails_array[i][0] = $(this).val();
+                                    order_datails_array[i][1] = $(this).parent().siblings('.d-flex').find('.cost_user').val();
+                                    order_datails_array[i][2] = $(this).parent().siblings('.d-flex').find('.cost_shop').val();
+                                    i++;
+                                } else {
+                                    console.log('empty fields');
+                                }
+                            });
+                            console.log(order_datails_array);//echo out
+
+                            $.ajax({//send them to server with ajax
+                                url:'/repairing/addrepaired',
+                                method:'POST',
+                                data:{
+                                    '_token' : '<?php echo csrf_token() ?>',
+                                    'order_id' : order_id,
+                                    'array' : order_datails_array
+                                },
+                                success:function (data) {
+                                    if ( data == 'true' ) {
+                                        $(event.target).closest('.modal').modal('hide'); //hide modal
+                                        modal_result = $('#modal_show_result');
+                                        modal_result.find('p').text('تحویل ثبت گردید!');
+                                        modal_result.modal('show'); //show result modal
+                                        alert('received!');
+                                    } else {
+                                        console.log('error : ' + errors_array['errors']);
+                                        alert('failed!');
+                                    }
+                                }
+                            })
+                        console.log();
+                    }
+
+
+                    else
+                    {
                         switch ( $(this).data('type') ) {
                         case 'well_order':
                             target_url = '/repairing/healthy';
@@ -314,6 +364,8 @@
                             target_url = '';
                             break;
                         }
+
+                        //ajax for: 'well_order' && 'unrepairable' && 'putoff'
                         $.ajax({
                             url:target_url,
                             method:"POST",
@@ -339,29 +391,35 @@
                         }
                     });
                     }
-                });
+
+            });
 
 
-                // plus btn
-                $(".add_row").click(function () {
-                    elem =  '<div class="modal-body-row shadow-sm d-flex justify-content-between">' +
+
+            //btn plus 'order_detail' row
+            $(".add_row").click(function () {
+                    elem ='<div class="modal-body-row shadow-sm d-flex justify-content-between">' +
                                 '<div class="d-flex">\n' +
                                 '    <label for="title">عنوان:</label>\n' +
                                 '    <input type="text" class="cost_title form-control form-control-sm text-vsm">\n' +
                                 '</div>\n' +
                                 '<div class="d-flex">\n' +
                                 '    <label for="user_price">هزینه مشتری:</label>\n' +
-                                '    <input type="text" id="user_price" class="cost_user_price form-control form-control-sm text-center text-vsm" placeholder="به تومان">\n' +
+                                '    <input type="text" id="user_price" class="cost_user form-control form-control-sm text-center text-vsm" placeholder="به تومان">\n' +
                                 '</div>\n' +
                                 '<div class="d-flex">\n' +
                                 '    <label for="shop_price">هزینه تعمیرگاه:</label>\n' +
-                                '    <input type="text" id="shop_price" class="cost_shop_price form-control form-control-sm text-center text-vsm" placeholder="به تومان">\n' +
+                                '    <input type="text" id="shop_price" class="cost_shop form-control form-control-sm text-center text-vsm" placeholder="به تومان">\n' +
                                 '</div>\n' +
                             '</div>';
+
                     $("#add_repair_rows_con").append(elem);
                 });
+
+
         });
     </script>
+    <!-------------------------------------------------------------------------------------------------------------------------------->
 
 
 

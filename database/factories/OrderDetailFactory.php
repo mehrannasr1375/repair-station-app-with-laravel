@@ -9,7 +9,7 @@ $factory->define(OrderDetail::class, function (Faker $faker) {
     return [
             'order_id' => factory(App\Order::class)->create(),
             'key' => 'هزینه تست',
-            'amount' => 15000,
-            'info' => 'اطلاعات  اضافی'
+            'user_amount' => 15000,
+            'shop_amount' => 5000,
     ];
 });
