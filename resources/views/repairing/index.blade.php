@@ -214,11 +214,11 @@
                                 </div>
                                 <div class="d-flex">
                                     <label for="user_price">هزینه مشتری:</label>
-                                    <input type="text" name="cost_user" id="user_price" class="cost_user form-control form-control-sm text-center text-vsm" placeholder="به تومان">
+                                    <input type="text" name="cost_user" id="user_price" class="cost_user numericOnly form-control form-control-sm text-center text-vsm" placeholder="به تومان" >
                                 </div>
                                 <div class="d-flex">
                                     <label for="shop_price">هزینه تعمیرگاه:</label>
-                                    <input type="text" name="cost_shop" id="shop_price" class="cost_shop form-control form-control-sm text-center text-vsm" placeholder="به تومان">
+                                    <input type="text" name="cost_shop" id="shop_price" class="cost_shop numericOnly form-control form-control-sm text-center text-vsm" placeholder="به تومان" >
                                 </div>
                             </div>
                         </div>
@@ -229,7 +229,8 @@
 
                         <div class="d-flex justify-content-end mb-0">
                             <label style="line-height:2.2;padding-left:6px" class="text-vsm" for="price">جمع کل :</label>
-                            <input style="width:140px;border:none !important; " type="text" id="price" class="form-control form-control-sm text-center" disabled >
+                            <input style="width:140px;border:none !important; " type="text" id="price" class="form-control form-control-sm text-center" value="0" disabled >
+                            <span style="line-height:3;padding-right:6px" class="text-vvsm">تومان</span>
                         </div>
 
                     </div>
@@ -254,7 +255,7 @@
 
 
 
-            //add click event listeners for show modals && get 'order_id'
+            // add click event listeners for show modals && get 'order_id'
             $(".btn_well_order").click(function (event) {
                     order_id = $(this).parent().siblings('td:first-child').text();
                     $("#modal_confirm_well_order").modal('show');
@@ -280,77 +281,69 @@
 
 
 
-            //on confirm modal => send ajax request, and retreive response & take convenient action)
+            // on confirm modal => send ajax request, and retreive response & take convenient action)
             $(".btn_confirm").click(function (event) {
 
-                    if ( $(this).data('type')=='add_repairing_note' )
-                    {
-                        note = $('#txt_note').val();//get note
-                        $.ajax({
-                            url:'/repairing/addnote',
-                            method:"POST",
-                            data:{
-                                '_token' : '<?php echo csrf_token() ?>',
-                                'order_id' : order_id,
-                                'note' : note
-                            },
-                            success:function (data) {
-                                errors_array = $.parseJSON(JSON.stringify(data));
-                                if ( data=='true' )
-                                    $(event.target).closest('.modal').modal('hide'); //hide modal
-                                else
-                                    console.log('error : ' + errors_array['errors']);
-                            }
-                        });
-                    }
+
+                if ( $(this).data('type')=='add_repairing_note' )
+                {
+                    note = $('#txt_note').val();
+                    $.ajax({
+                        url:'/repairing/addnote',
+                        method:"POST",
+                        data:{
+                            '_token' : '<?php echo csrf_token() ?>',
+                            'order_id' : order_id,
+                            'note' : note
+                        },
+                        success:function (data) {
+                            errors_array = $.parseJSON(JSON.stringify(data));
+                            if ( data=='true' )
+                                $(event.target).closest('.modal').modal('hide');
+                            else
+                                console.log('error : ' + errors_array['errors']);
+                        }
+                    });
+                }
 
 
-                    else if ( $(this).data('type')=='repaired' )
-                    {
-                            //put input data to arrays
-                            var i = 0 ;
-                            var order_datails_array = [];
-                            $('.cost_title').each(function(event) {
-                                if ( $(this).val() != '' ) {
-                                    order_datails_array[i] = [];
-                                    order_datails_array[i][0] = $(this).val();
-                                    order_datails_array[i][1] = $(this).parent().siblings('.d-flex').find('.cost_user').val();
-                                    order_datails_array[i][2] = $(this).parent().siblings('.d-flex').find('.cost_shop').val();
-                                    i++;
-                                } else {
-                                    console.log('empty fields');
-                                }
-                            });
-                            console.log(order_datails_array);//echo out
-
-                            $.ajax({//send them to server with ajax
-                                url:'/repairing/addrepaired',
-                                method:'POST',
-                                data:{
-                                    '_token' : '<?php echo csrf_token() ?>',
-                                    'order_id' : order_id,
-                                    'array' : order_datails_array
-                                },
-                                success:function (data) {
-                                    if ( data == 'true' ) {
-                                        $(event.target).closest('.modal').modal('hide'); //hide modal
-                                        modal_result = $('#modal_show_result');
-                                        modal_result.find('p').text('تحویل ثبت گردید!');
-                                        modal_result.modal('show'); //show result modal
-                                        alert('received!');
-                                    } else {
-                                        console.log('error : ' + errors_array['errors']);
-                                        alert('failed!');
-                                    }
-                                }
-                            })
-                        console.log();
-                    }
+                else if ( $(this).data('type')=='repaired' )
+                {
+                    var i = 0;
+                    var order_datails_array = [];
+                    $('.cost_title').each(function(event) {
+                        if ( $(this).val() != '' ) {
+                            order_datails_array[i] = [];
+                            order_datails_array[i][0] = $(this).val();
+                            order_datails_array[i][1] = $(this).parent().siblings('.d-flex').find('.cost_user').val();
+                            order_datails_array[i][2] = $(this).parent().siblings('.d-flex').find('.cost_shop').val();
+                            i++;
+                        } else
+                            console.log('empty fields');
+                    });
+                    console.log(order_datails_array);
+                    $.ajax({
+                        url :'/repairing/addrepaired',
+                        method :'POST',
+                        dataType : 'json',
+                        data:{
+                            '_token' : '<?php echo csrf_token() ?>',
+                            'order_id' : order_id,
+                            'array' : JSON.stringify(order_datails_array)
+                        },
+                        success:function (data) {
+                            if ( data === true )
+                                $(event.target).closest('.modal').modal('hide');
+                            else
+                                console.log('error : ' + errors_array['errors']);
+                        }
+                    })
+                }
 
 
-                    else
-                    {
-                        switch ( $(this).data('type') ) {
+                else
+                {
+                    switch ( $(this).data('type') ) {
                         case 'well_order':
                             target_url = '/repairing/healthy';
                             break;
@@ -363,58 +356,80 @@
                         default:
                             target_url = '';
                             break;
-                        }
+                    }
 
-                        //ajax for: 'well_order' && 'unrepairable' && 'putoff'
-                        $.ajax({
-                            url:target_url,
-                            method:"POST",
-                            data:{
-                                '_token' : '<?php echo csrf_token() ?>',
-                                'order_id' : order_id
-                            },
-                            success:function (data) {
-                                errors_array = $.parseJSON(JSON.stringify(data));
-                                modal_confirm = $(event.target).closest('.modal');
-                                if ($.isNumeric(data)) {
-                                    modal_confirm.modal('hide'); //hide confirm modal
-                                    $(".tbl-1 td").filter(function() { //hide deleted table row from view
-                                        return $(this).text() == order_id;
-                                    }).closest("tr").css('background-color','#0ea1a4').hide(1000);
-                                }
-                                else {
-                                    modal_confirm.modal('hide'); //hide confirm modal
-                                    modal_result = $('#modal_show_result');
-                                    modal_result.find('p').text(errors_array['errors']);
-                                    modal_result.modal('show'); //show result modal
-                                }
+                    //ajax for: 'well_order' && 'unrepairable' && 'putoff'
+                    $.ajax({
+                        url:target_url,
+                        method:"POST",
+                        data:{
+                            '_token' : '<?php echo csrf_token() ?>',
+                            'order_id' : order_id
+                        },
+                        success:function (data) {
+                            errors_array = $.parseJSON(JSON.stringify(data));
+                            modal_confirm = $(event.target).closest('.modal');
+                            if ($.isNumeric(data)) {
+                                modal_confirm.modal('hide'); //hide confirm modal
+                                $(".tbl-1 td").filter(function() { //hide deleted table row from view
+                                    return $(this).text() == order_id;
+                                }).closest("tr").css('background-color','#0ea1a4').hide(1000);
+                            }
+                            else {
+                                modal_confirm.modal('hide'); //hide confirm modal
+                                modal_result = $('#modal_show_result');
+                                modal_result.find('p').text(errors_array['errors']);
+                                modal_result.modal('show'); //show result modal
+                            }
                         }
                     });
-                    }
+                }
+
 
             });
 
 
 
-            //btn plus 'order_detail' row
-            $(".add_row").click(function () {
-                    elem ='<div class="modal-body-row shadow-sm d-flex justify-content-between">' +
-                                '<div class="d-flex">\n' +
-                                '    <label for="title">عنوان:</label>\n' +
-                                '    <input type="text" class="cost_title form-control form-control-sm text-vsm">\n' +
-                                '</div>\n' +
-                                '<div class="d-flex">\n' +
-                                '    <label for="user_price">هزینه مشتری:</label>\n' +
-                                '    <input type="text" id="user_price" class="cost_user form-control form-control-sm text-center text-vsm" placeholder="به تومان">\n' +
-                                '</div>\n' +
-                                '<div class="d-flex">\n' +
-                                '    <label for="shop_price">هزینه تعمیرگاه:</label>\n' +
-                                '    <input type="text" id="shop_price" class="cost_shop form-control form-control-sm text-center text-vsm" placeholder="به تومان">\n' +
-                                '</div>\n' +
-                            '</div>';
+            // btn plus 'order_detail' row
+            $(".add_row").on('click', function(e) {
+                elem = '<div class="modal-body-row shadow-sm d-flex justify-content-between">' +
+                           '<div class="d-flex">\n' +
+                           '    <label for="title">عنوان:</label>\n' +
+                           '    <input type="text" class="cost_title form-control form-control-sm text-vsm">\n' +
+                           '</div>\n' +
+                           '<div class="d-flex">\n' +
+                           '    <label for="user_price">هزینه مشتری:</label>\n' +
+                           '    <input type="text" id="user_price" class="cost_user numericOnly form-control form-control-sm text-center text-vsm" placeholder="به تومان" >\n' +
+                           '</div>\n' +
+                           '<div class="d-flex">\n' +
+                           '    <label for="shop_price">هزینه تعمیرگاه:</label>\n' +
+                           '    <input type="text" id="shop_price" class="cost_shop numericOnly form-control form-control-sm text-center text-vsm" placeholder="به تومان" >\n' +
+                           '</div>\n' +
+                        '</div>';
+                $("#add_repair_rows_con").append(elem);
+            });
 
-                    $("#add_repair_rows_con").append(elem);
+
+
+            // 'keyup' event listener
+            $("#add_repair_rows_con").on('keyup','.cost_user', function() { // Event Delegation
+                //$(this).val( $(this).val().replace(/\D/g,'') );
+                let sum = 0;
+                $('.cost_user').each(function() {
+                    sum += parseInt( $(this).val() );
                 });
+                $('#price').val(sum);
+                console.log('sum = ' + sum);
+            });
+
+
+
+            // numeric text boxes
+            $(document).on('keypress', '.numericOnly',function (e) {
+                if ( String.fromCharCode(e.keyCode).match(/[^0-9]/g) )
+                    return false;
+            });
+
 
 
         });

@@ -7,13 +7,13 @@
 *  4 : rejected by customer
 */
 namespace App\Http\Controllers;
-use App\Http\Requests\addOrderNoteRequest;
-use App\Http\Requests\orderHasRepairedRequest;
-use App\Http\Requests\updateOrderStatusRequest;
 use App\Order;
 use App\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\addOrderNoteRequest;
+use App\Http\Requests\orderHasRepairedRequest;
+use App\Http\Requests\updateOrderStatusRequest;
 
 class repairingOrdersController extends Controller
 {
@@ -59,26 +59,25 @@ class repairingOrdersController extends Controller
     public function addRepaired(orderHasRepairedRequest $request)
     {
         $order_id = $request->order_id;
-        $order_details_array = $request->array;
+        $order_details_array = json_decode($request->array); //turn the json string to array
 
-        //insert into order_details table in a foreach loop
+        //insert into order_details table in a for loop
         for ($i=0; $i<count($order_details_array); $i++) {
             $cost_title = $order_details_array[$i][0];
             $cost_user  = $order_details_array[$i][1];
             $cost_shop  = $order_details_array[$i][2];
             OrderDetail::create([
-                'order_id' => $order_id,
-                'key' => $cost_title,
-                'user_amount' => $cost_user,
-                'shop_amount' => $cost_shop,
+                'order_id'     =>  $order_id,
+                'key'          =>  $cost_title,
+                'user_amount'  =>  $cost_user,
+                'shop_amount'  =>  $cost_shop,
             ]);
         }
 
         //update status_code
-        Order::where('order_id', $order_id)->update(['status_code' => 1]);
+        Order::where('id', $order_id)->update(['status_code' => 1]);
 
         return response('true', 200);
-
     }
 
 

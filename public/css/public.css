@@ -528,9 +528,11 @@ input:focus, textarea:focus,select:focus,button:focus {
     margin-left:20px;
 }
 .modal-body-row input[type=text].cost_user {
+    direction: ltr !important;
     width:100px;
 }
 .modal-body-row input[type=text].cost_shop {
+    direction: ltr !important;
     width:100px;
 }
 
