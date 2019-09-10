@@ -4,10 +4,7 @@
     <list default="true" id="9a5cc108-f79e-481d-b54c-fd72944980e9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/repairingOrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/repairingOrdersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/addOrderNoteRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/addOrderNoteRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/orderHasRepairedRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/orderHasRepairedRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/public.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/public.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/repairing/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/repairing/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -212,7 +209,9 @@
       <workItem from="1568033086381" duration="16354000" />
       <workItem from="1568060802823" duration="1449000" />
       <workItem from="1568092092304" duration="4187000" />
-      <workItem from="1568110111362" duration="8273000" />
+      <workItem from="1568110111362" duration="8986000" />
+      <workItem from="1568121838759" duration="1826000" />
+      <workItem from="1568133784408" duration="645000" />
     </task>
     <task id="LOCAL-00001" summary="Revert &quot;add readme.md&quot;&#10;&#10;This reverts commit 5104213d">
       <created>1565987124628</created>

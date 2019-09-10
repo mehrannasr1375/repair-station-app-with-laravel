@@ -329,7 +329,7 @@
                         data:{
                             '_token' : '<?php echo csrf_token() ?>',
                             'order_id' : order_id,
-                            'array' : JSON.stringify(order_datails_array)
+                            'array' : order_datails_array
                         },
                         success:function (data) {
                             if ( data === true )
@@ -413,13 +413,13 @@
 
             // 'keyup' event listener
             $("#add_repair_rows_con").on('keyup','.cost_user', function() { // Event Delegation
-                //$(this).val( $(this).val().replace(/\D/g,'') );
                 let sum = 0;
                 $('.cost_user').each(function() {
-                    sum += parseInt( $(this).val() );
+                    console.log('parameter = ' + $(this).val());
+                    sum += Number($(this).val());
                 });
                 $('#price').val(sum);
-                console.log('sum = ' + sum);
+                console.log('>>>>>>> sum = ' + sum);
             });
 
 
