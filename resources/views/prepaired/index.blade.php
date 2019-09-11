@@ -155,16 +155,23 @@
             //on confirm modal => send ajax request, and retreive response & take convenient action)
             $(".btn_confirm").click(function (event)
             {
+
+
                 $.ajax({
                     url:'/prepaired/checkout',
                     method:"POST",
-                    data:{ '_token' : '<?php echo csrf_token() ?>', 'order_id' : order_id },
-                    success:function (data) {
-                        if ($.isNumeric(data['order_id'])) {
+                    data:{ 
+                        '_token' : '<?php echo csrf_token() ?>',
+                         'order_id' : order_id,
+                         'array' : []
+                    },
+                    succ    ess:function (data) {
+                        if ($.isNumeric(data)) {
                             $(event.target).closest('.modal').modal('hide'); //hide modal
                             $(".tbl-1 td").filter(function() { //hide deleted table row from view
                                 return $(this).text() == order_id;
                             }).closest("tr").hide(1000);
+                            console.log('saved!')
                         }
                         else
                             console.log('error : ' + data);

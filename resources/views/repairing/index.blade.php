@@ -392,27 +392,27 @@
 
             // btn plus 'order_detail' row
             $(".add_row").on('click', function(e) {
-                elem = '<div class="modal-body-row shadow-sm d-flex justify-content-between">' +
-                           '<div class="d-flex">\n' +
-                           '    <label for="title">عنوان:</label>\n' +
-                           '    <input type="text" class="cost_title form-control form-control-sm text-vsm">\n' +
-                           '</div>\n' +
-                           '<div class="d-flex">\n' +
-                           '    <label for="user_price">هزینه مشتری:</label>\n' +
-                           '    <input type="text" id="user_price" class="cost_user numericOnly form-control form-control-sm text-center text-vsm" placeholder="به تومان" >\n' +
-                           '</div>\n' +
-                           '<div class="d-flex">\n' +
-                           '    <label for="shop_price">هزینه تعمیرگاه:</label>\n' +
-                           '    <input type="text" id="shop_price" class="cost_shop numericOnly form-control form-control-sm text-center text-vsm" placeholder="به تومان" >\n' +
-                           '</div>\n' +
-                        '</div>';
+                elem = `<div class="modal-body-row shadow-sm d-flex justify-content-between">\n
+                           <div class="d-flex">\n
+                               <label for="title">عنوان:</label>\n
+                               <input type="text" class="cost_title form-control form-control-sm text-vsm">\n
+                           </div>\n
+                           <div class="d-flex">\n
+                               <label for="user_price">هزینه مشتری:</label>\n
+                               <input type="text" id="user_price" class="cost_user numericOnly form-control form-control-sm text-center text-vsm" placeholder="به تومان" >\n
+                           </div>\n
+                           <div class="d-flex">\n
+                               <label for="shop_price">هزینه تعمیرگاه:</label>\n
+                               <input type="text" id="shop_price" class="cost_shop numericOnly form-control form-control-sm text-center text-vsm" placeholder="به تومان" >\n
+                           </div>\n
+                        </div>\n`;
                 $("#add_repair_rows_con").append(elem);
             });
 
 
 
             // 'keyup' event listener
-            $("#add_repair_rows_con").on('keyup','.cost_user', function() { // Event Delegation
+            $("#add_repair_rows_con").on('keyup', '.cost_user', function() { // Event Delegation
                 let sum = 0;
                 $('.cost_user').each(function() {
                     console.log('parameter = ' + $(this).val());
@@ -425,7 +425,7 @@
 
 
             // numeric text boxes
-            $(document).on('keypress', '.numericOnly',function (e) {
+            $(document).on('keypress', '.numericOnly', function (e) {
                 if ( String.fromCharCode(e.keyCode).match(/[^0-9]/g) )
                     return false;
             });

@@ -46,7 +46,7 @@ class repairingOrdersController extends Controller
 
 
 
-    //ajax: device has putted off
+    //ajax: device has putted off by customer rejection
     public function putoff(updateOrderStatusRequest $request)
     {
         Order::where('id',$request->order_id)->update(['status_code'=>4]);
@@ -91,8 +91,7 @@ class repairingOrdersController extends Controller
 
 
 
-
-
+   
 
 
 

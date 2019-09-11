@@ -10,9 +10,11 @@ namespace App\Http\Controllers;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\updateOrderStatusRequest;
 
 class prepairedOrdersController extends Controller
 {
+
 
     public function index()
     {
@@ -22,24 +24,12 @@ class prepairedOrdersController extends Controller
 
 
 
-    public function checkout(Request $request)
+    public function checkOut(updateOrderStatusRequest $request)
     {
-        $messages = [
-            'order_id.required' => 'خطا: انتخاب تعمیری با سریال الزامی است',
-            'order_id.numeric' => 'خطا: دیتای ارسال شده نامعتبر است',
-        ];
-        $validator = Validator::make($request->all(), [
-            'order_id' => 'required|numeric'
-        ], $messages);
+        // update payments table
 
-        if ( $validator->fails() ) {
-            return $validator->errors()->first('order_id');
-        }
-
-        // do enother things (like payments) here
-
-        Order::where('id',$request->order_id)->update(['checkout'=>true]);
-        return response()->json(['order_id'=>$request->order_id],200);
+        Order::where('id',$request->order_id)->update(['checkout' => true]);
+        return response($request->order_id, 200);
     }
 
 

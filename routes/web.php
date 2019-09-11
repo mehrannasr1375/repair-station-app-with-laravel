@@ -26,7 +26,7 @@ Route::patch('/orders/{order}', 'OrdersController@update');
 
 // Prepaired Orders
 Route::get('/prepaired', 'PrepairedOrdersController@index');
-Route::post('/prepaired/checkout','prepairedOrdersController@checkout');//checkout device
+Route::post('/prepaired/checkout','prepairedOrdersController@checkOut');//checkout device
 
 // Repairing Orders
 Route::get('/repairing', 'RepairingOrdersController@index');

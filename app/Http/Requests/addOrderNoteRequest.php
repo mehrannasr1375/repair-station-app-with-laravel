@@ -23,8 +23,8 @@ class addOrderNoteRequest extends FormRequest
     public function messages()
     {
         return [
-            'order_id.required' => 'سریال تعمیری ارسال شده معتبر نیست!',
-            'order_id.numeric' => 'دیتای ارسال شده نامعتبر است!',
+            'order_id.required' => 'سریال تعمیری الزامی است!',
+            'order_id.numeric' => 'سریال تعمیری ارسال شده معتبر نیست!',
             'note.required' => 'متن یادداشت نمی تواند خالی باشد!',
         ];
     }
