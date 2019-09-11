@@ -30,7 +30,7 @@
                 <td>aaaaaaaa</td>
                 <td>aaaaaaaaa</td>
                 <td style="width:40px;"><a href="/orders/degrfsdafgd"><i class="fa fa-2x fa-info text-secondary"></i></a></td>
-                <td style="width:40px;"><a class="btn_add_repairing_note" href="#"><i class="fa fa-2x text-secondary fa-pencil-square-o"></i></a></td>
+                <td style="width:40px;"><a class="btn_add_delivery_note" href="#"><i class="fa fa-2x text-secondary fa-pencil-square-o"></i></a></td>
                 <td style="width:200px;">
                     <a href="#" class=""><i class="fa fa-2x text-success fa-check pl-2"></i></a>
                     <a href="#" class="btn_unrepairable_order"><i class="fa fa-2x text-danger fa-close pl-2"></i></a>
@@ -46,7 +46,7 @@
                     <td>{{ $order->device_type }}</td>
                     <td style="max-width:150px; padding:14px;">{{ $order->problem }}</td>
                     <td style="width:40px;"><a href="/orders/{{ $order->id }}"><i class="fa fa-2x fa-info text-secondary"></i></a></td>
-                    <td style="width:40px;"><a class="btn_add_repairing_note" href="#"><i class="fa fa-2x text-secondary fa-pencil-square-o"></i></a></td>
+                    <td style="width:40px;"><a class="btn_add_delivery_note" href="#"><i class="fa fa-2x text-secondary fa-pencil-square-o"></i></a></td>
                     <td style="width:200px;">
                         <a href="#" class="btn_repaired_order"><i class="fa fa-2x text-success fa-check pl-2"></i></a>
                         <a href="#" class="btn_unrepairable_order"><i class="fa fa-2x text-danger fa-close pl-2"></i></a>
@@ -146,8 +146,8 @@
         </div>
 
 
-        <!-- modal add_repairing_note_for_order -->
-        <div id="modal_add_repairing_note" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <!-- modal add delivery_note -->
+        <div id="modal_add_delivery_note" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <!-- Modal Header -->
@@ -165,7 +165,7 @@
                     <!-- Modal Footer -->
                     <div class="modal-footer">
                         <button type="button" id="btn_cancel" class="btn btn-sm btn-secondary" data-dismiss="modal">انصراف</button>
-                        <button type="button" data-type="add_repairing_note" class="btn_confirm btn btn-sm btn-primary">ثبت</button>
+                        <button type="button" data-type="add_delivery_note" class="btn_confirm btn btn-sm btn-primary">ثبت</button>
                     </div>
                 </div>
             </div>
@@ -194,7 +194,7 @@
         </div>
 
 
-        <!-- modal modal_repaired_order -->
+        <!-- modal repaired_order -->
         <div id="modal_repaired_order" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -268,10 +268,10 @@
                     order_id = $(this).parent().siblings('td:first-child').text();
                     $("#modal_confirm_putoff_order").modal('show');
                 });
-            $(".btn_add_repairing_note").click(function (event) {
+            $(".btn_add_delivery_note").click(function (event) {
                     order_id = $(this).parent().siblings('td:first-child').text();
                     $('#add_note_id_txt').text(order_id);
-                    $("#modal_add_repairing_note").modal('show');
+                    $("#modal_add_delivery_note").modal('show');
                 });
             $(".btn_repaired_order").click(function (event) {
                     order_id = $(this).parent().siblings('td:first-child').text();
@@ -281,11 +281,12 @@
 
 
 
-            // on confirm modal => send ajax request, and retreive response & take convenient action)
+            // on confirm modal => send ajax request, and retreive response & take convenient action
             $(".btn_confirm").click(function (event) {
 
 
-                if ( $(this).data('type')=='add_repairing_note' )
+                //add delivery_note
+                if ( $(this).data('type')=='add_delivery_note' )
                 {
                     note = $('#txt_note').val();
                     $.ajax({
@@ -307,6 +308,7 @@
                 }
 
 
+                //add repaired costs
                 else if ( $(this).data('type')=='repaired' )
                 {
                     var i = 0;
@@ -341,26 +343,71 @@
                 }
 
 
-                else
+                //well order
+                else if ( $(this).data('type')=='well_order' )
                 {
-                    switch ( $(this).data('type') ) {
-                        case 'well_order':
-                            target_url = '/repairing/healthy';
-                            break;
-                        case 'unrepairable':
-                            target_url = '/repairing/unrepairable';
-                            break;
-                        case 'putoff':
-                            target_url = '/repairing/putoff';
-                            break;
-                        default:
-                            target_url = '';
-                            break;
-                    }
-
-                    //ajax for: 'well_order' && 'unrepairable' && 'putoff'
                     $.ajax({
-                        url:target_url,
+                        url:'/repairing/healthy',
+                        method:"POST",
+                        data:{
+                            '_token' : '<?php echo csrf_token() ?>',
+                            'order_id' : order_id
+                        },
+                        success:function (data) {
+                            errors_array = $.parseJSON(JSON.stringify(data));
+                            modal_confirm = $(event.target).closest('.modal');
+                            if ($.isNumeric(data)) {
+                                modal_confirm.modal('hide'); //hide confirm modal
+                                $(".tbl-1 td").filter(function() { //hide deleted table row from view
+                                    return $(this).text() == order_id;
+                                }).closest("tr").css('background-color','#0ea1a4').hide(1000);
+                            }
+                            else {
+                                modal_confirm.modal('hide'); //hide confirm modal
+                                modal_result = $('#modal_show_result');
+                                modal_result.find('p').text(errors_array['errors']);
+                                modal_result.modal('show'); //show result modal
+                            }
+                        }
+                    });
+                }
+
+
+                //unrepairable
+                else if ( $(this).data('type')=='unrepairable' )
+                {
+                    $.ajax({
+                        url:'/repairing/unrepairable',
+                        method:"POST",
+                        data:{
+                            '_token' : '<?php echo csrf_token() ?>',
+                            'order_id' : order_id
+                        },
+                        success:function (data) {
+                            errors_array = $.parseJSON(JSON.stringify(data));
+                            modal_confirm = $(event.target).closest('.modal');
+                            if ($.isNumeric(data)) {
+                                modal_confirm.modal('hide'); //hide confirm modal
+                                $(".tbl-1 td").filter(function() { //hide deleted table row from view
+                                    return $(this).text() == order_id;
+                                }).closest("tr").css('background-color','#0ea1a4').hide(1000);
+                            }
+                            else {
+                                modal_confirm.modal('hide'); //hide confirm modal
+                                modal_result = $('#modal_show_result');
+                                modal_result.find('p').text(errors_array['errors']);
+                                modal_result.modal('show'); //show result modal
+                            }
+                        }
+                    });
+                }
+
+
+                //putoff
+                else if ( $(this).data('type')=='putoff' )
+                {
+                    $.ajax({
+                        url:'/repairing/putoff',
                         method:"POST",
                         data:{
                             '_token' : '<?php echo csrf_token() ?>',

@@ -31,8 +31,8 @@
                     <td>{{ $order->customer->name }}</td>
                     <td>{{ $order->device_type }}</td>
                     <td style="max-width:180px; padding-top:14px; padding-bottom:14px;">{{ $order->problem }}</td>
-                    <td><a href="/orders/{{ $order->id }}"><i class="fa fa-2x fa-info text-secondary"></i></a></td>
-                    <td><a href="#" class="btn_add_note"><i class="fa fa-2x text-success fa-pencil-square-o"></i></a></td>
+                    <td><a href="/orders/{{ $order->id }}"><i class="fa fa-2x fa-info text-info"></i></a></td>
+                    <td><a href="#" class="btn_add_note"><i class="fa fa-2x text-secondary fa-pencil-square-o"></i></a></td>
                     <td><a href="#" class="btn_checkout"><i class="fa fa-2x text-danger fa-plane pl-2"></i></a></td>
                     <td style="width:90px;">{{ $order->status_code }}</td>
                     <td>{{ $order->receive_date }}</td>
@@ -56,7 +56,7 @@
 
         <!-- modal checkout_order -->
         <div id="modal_confirm_checkout_order" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header">
@@ -69,15 +69,15 @@
                         <div id="add_repair_rows_con">
                             <div class="modal-body-row d-flex justify-content-between shadow-sm">
                                 <div class="d-flex">
-                                    <label for="payment_amount" style="width:100px;">مبلغ پرداختی:</label>
-                                    <input type="text" id="payment_amount" name="payment_amount" class="cost_title form-control form-control-sm text-vsm">
+                                    <label for="payment_amount" style="width:110px;">مبلغ پرداختی:</label>
+                                    <input type="text" id="payment_amount" name="payment_amount" class="payment_amount numericOnly form-control form-control-sm text-vsm">
                                 </div>
                                 <div class="d-flex">
-                                    <label for="payment_type" style="width:120px;">نوع پرداخت:</label>
-                                    <select id="payment_type" name="payment_type" class="custom-control form-control form-control-sm text-vvsm">
-                                        <option value="">با کارتخوان</option>
-                                        <option value="">نقد</option>
-                                        <option value="">چک</option>
+                                    <label for="payment_type" style="width:70px;margin-right:20px;">نوع پرداخت:</label>
+                                    <select id="payment_type"style="width:100px;" name="payment_type" class="payment_type custom-control form-control form-control-sm text-vvsm">
+                                        <option value="با کارتخوان">با کارتخوان</option>
+                                        <option value="نقد">نقد</option>
+                                        <option value="چک">چک</option>
                                     </select>
                                 </div>
                             </div>
@@ -90,6 +90,7 @@
                         <div class="d-flex justify-content-end mb-0">
                             <label style="line-height:2.2;padding-left:6px" class="text-vsm" for="price">جمع کل :</label>
                             <input style="width:140px;border:none !important; " type="text" id="price" class="form-control form-control-sm text-center" disabled >
+                            <span style="line-height:3;padding-right:6px" class="text-vvsm">تومان</span>
                         </div>
 
                     </div>
@@ -104,7 +105,7 @@
 
 
         <!-- modal add_note -->
-        <div id="modal_add_repairing_note" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div id="modal_add_note" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <!-- Modal Header -->
@@ -122,7 +123,7 @@
                     <!-- Modal Footer -->
                     <div class="modal-footer">
                         <button type="button" id="btn_cancel" class="btn btn-sm btn-secondary" data-dismiss="modal">انصراف</button>
-                        <button type="button" data-type="add_repairing_note" class="btn_confirm btn btn-sm btn-primary">ثبت</button>
+                        <button type="button" data-type="add_note" class="btn_confirm btn btn-sm btn-primary">ثبت</button>
                     </div>
                 </div>
             </div>
@@ -143,7 +144,7 @@
             //add click event listeners for show modals && get 'order_id'
             $(".btn_add_note").click(function (event) {
                 order_id = $(this).parent().siblings('td:first-child').text();
-                $("#modal_add_repairing_note").modal('show');
+                $("#modal_add_note").modal('show');
             });
             $(".btn_checkout").click(function (event) {
                 order_id = $(this).parent().siblings('td:first-child').text();
@@ -152,31 +153,69 @@
 
 
 
-            //on confirm modal => send ajax request, and retreive response & take convenient action)
-            $(".btn_confirm").click(function (event)
-            {
+            //on confirm modal => send ajax request, and retreive response & take convenient action
+            $(".btn_confirm").click(function (event) {
 
 
-                $.ajax({
-                    url:'/prepaired/checkout',
-                    method:"POST",
-                    data:{ 
-                        '_token' : '<?php echo csrf_token() ?>',
-                         'order_id' : order_id,
-                         'array' : []
-                    },
-                    succ    ess:function (data) {
-                        if ($.isNumeric(data)) {
-                            $(event.target).closest('.modal').modal('hide'); //hide modal
-                            $(".tbl-1 td").filter(function() { //hide deleted table row from view
-                                return $(this).text() == order_id;
-                            }).closest("tr").hide(1000);
-                            console.log('saved!')
+                //checkout order
+                if ( $(this).data('type') == 'checkout' )
+                {
+                    var i = 0;
+                    var payments_array = [];
+                    $('.payment_amount').each(function(event) {
+                        if ( $(this).val() != '' ) {
+                            payments_array[i] = [];
+                            payments_array[i][0] = $(this).val();
+                            payments_array[i][1] = $(this).parent().siblings('.d-flex').find('.payment_type').val();
+                            i++;
+                        } else
+                            console.log('empty fields');
+                    });
+                    console.log(payments_array);
+                    $.ajax({
+                        url:'/prepaired/checkout',
+                        method:"POST",
+                        data:{
+                            '_token' : '<?php echo csrf_token() ?>',
+                            'order_id' : order_id,
+                            'array' : payments_array
+                        },
+                        success:function (data) {
+                            if ($.isNumeric(data)) {
+                                $(event.target).closest('.modal').modal('hide'); //hide modal
+                                $(".tbl-1 td").filter(function() { //hide deleted table row from view
+                                    return $(this).text() == order_id;
+                                }).closest("tr").hide(1000);
+                                console.log('saved!')
+                            } else
+                                console.log('error : ' + data);
                         }
-                        else
-                            console.log('error : ' + data);
-                    }
-                });
+                    });
+                }
+
+
+                //add delivery_note
+                else if ( $(this).data('type') == 'add_note' )
+                {
+                    note = $('#txt_note').val();
+                    $.ajax({
+                        url:'/prepaired/addnote',
+                        method:"POST",
+                        data:{
+                            '_token' : '<?php echo csrf_token() ?>',
+                            'order_id' : order_id,
+                            'note' : note
+                        },
+                        success:function (data) {
+                            errors_array = $.parseJSON(JSON.stringify(data));
+                            if ( data=='true' )
+                                $(event.target).closest('.modal').modal('hide');
+                            else
+                                console.log('error : ' + errors_array['errors']);
+                        }
+                    });
+                }
+
 
             });
 
@@ -184,24 +223,46 @@
 
             //btn plus 'order_detail' row
             $(".add_row").click(function () {
-                elem =  '<div id="add_repair_rows_con">\n' +
-                        '    <div class="modal-body-row d-flex justify-content-between shadow-sm">\n' +
-                        '        <div class="d-flex">\n' +
-                        '            <label for="payment_amount" style="width:100px;">مبلغ پرداختی:</label>\n' +
-                        '            <input type="text" id="payment_amount" name="payment_amount" class="cost_title form-control form-control-sm text-vsm">\n' +
-                        '        </div>\n' +
-                        '        <div class="d-flex">\n' +
-                        '            <label for="payment_type" style="width:120px;">نوع پرداخت:</label>\n' +
-                        '            <select id="payment_type" name="payment_type" class="custom-control form-control form-control-sm text-vvsm">\n' +
-                        '                <option value="">با کارتخوان</option>\n' +
-                        '                <option value="">نقد</option>\n' +
-                        '                <option value="">چک</option>\n' +
-                        '            </select>\n' +
-                        '        </div>\n' +
-                        '    </div>\n' +
-                        '</div>';
+                elem =  `<div>\n
+                            <div class="modal-body-row d-flex justify-content-between shadow-sm">\n
+                                <div class="d-flex">\n
+                                    <label for="payment_amount" style="width:110px;">مبلغ پرداختی:</label>\n
+                                    <input type="text" id="payment_amount" name="payment_amount" class="payment_amount numericOnly form-control form-control-sm text-vsm">\n
+                                </div>\n
+                                <div class="d-flex">\n
+                                    <label for="payment_type" style="width:70px;margin-right:20px;">نوع پرداخت:</label>\n
+                                    <select id="payment_type"style="width:100px;" name="payment_type" class="payment_type custom-control form-control form-control-sm text-vvsm">\n
+                                        <option value="با کارتخوان">با کارتخوان</option>\n
+                                        <option value="نقد">نقد</option>\n
+                                        <option value="چک">چک</option>\n
+                                    </select>\n
+                                </div>\n
+                            </div>\n
+                        </div>\n`;
                 $("#add_repair_rows_con").append(elem);
             });
+
+
+
+            // 'keyup' event listener
+            $("#add_repair_rows_con").on('keyup', '.payment_amount', function() { // Event Delegation
+                let sum = 0;
+                $('.payment_amount').each(function() {
+                    console.log('parameter = ' + $(this).val());
+                    sum += Number($(this).val());
+                });
+                $('#price').val(sum);
+                console.log('>>>>>>> sum = ' + sum);
+            });
+
+
+
+            // numeric text boxes
+            $(document).on('keypress', '.numericOnly', function (e) {
+                if ( String.fromCharCode(e.keyCode).match(/[^0-9]/g) )
+                    return false;
+            });
+
 
 
         });

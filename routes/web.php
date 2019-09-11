@@ -27,13 +27,14 @@ Route::patch('/orders/{order}', 'OrdersController@update');
 // Prepaired Orders
 Route::get('/prepaired', 'PrepairedOrdersController@index');
 Route::post('/prepaired/checkout','prepairedOrdersController@checkOut');//checkout device
+Route::post('/prepaired/addnote', 'prepairedOrdersController@addNote');//add note
 
 // Repairing Orders
 Route::get('/repairing', 'RepairingOrdersController@index');
 Route::post('/repairing/healthy','repairingOrdersController@healthy');//device is well
 Route::post('/repairing/unrepairable', 'repairingOrdersController@unrepairable');//device is unrepairable
 Route::post('/repairing/putoff', 'repairingOrdersController@putoff');//device is putted off by customer
-Route::post('/repairing/addnote', 'repairingOrdersController@addNote');//add repairing note for device
+Route::post('/repairing/addnote', 'repairingOrdersController@addNote');//add note
 Route::post('/repairing/addrepaired', 'repairingOrdersController@addRepaired');//repaired order
 
 
