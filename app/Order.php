@@ -27,10 +27,10 @@ class Order extends Model
         return $this->belongsTo(\App\Customer::class);
     }
     public function orderDetails() {
-        return $this->hasMany(\App\OrderDetails::class);
+        return $this->hasMany(\App\OrderDetail::class);
     }
     public function payments() {
-        return $this->hasMany(\App\Payments::class);
+        return $this->hasMany(\App\Payment::class);
     }
     public function messages() {
         return $this->hasMany(\App\Message::class);

@@ -16,6 +16,8 @@ Route::get('/customers/{customer}/edit', 'CustomersController@edit');
 Route::patch('/customers/{customer}', 'CustomersController@update');
 Route::delete('/customers/{customer}', 'CustomersController@destroy');
 
+Route::get('/customers/{customer}/orders', 'CustomersController@getOrdersOfCustomer');
+
 // Orders history
 Route::get('/orders', 'OrdersController@index');
 Route::get('/orders/create', 'OrdersController@create');

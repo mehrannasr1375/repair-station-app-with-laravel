@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a5cc108-f79e-481d-b54c-fd72944980e9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/customers/orders/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrdersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/prepairedOrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/prepairedOrdersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Order.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/orders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/prepaired/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/prepaired/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/repairing/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/repairing/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,6 +39,9 @@
     </option>
     <expand />
     <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="RepairStation" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -150,6 +158,11 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mehran\Desktop\RepairStation\resources\views\customers\orders" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -215,7 +228,13 @@
       <workItem from="1568121838759" duration="1826000" />
       <workItem from="1568133784408" duration="645000" />
       <workItem from="1568214359011" duration="592000" />
-      <workItem from="1568224106391" duration="4711000" />
+      <workItem from="1568224106391" duration="5226000" />
+      <workItem from="1568283184075" duration="698000" />
+      <workItem from="1568308084624" duration="475000" />
+      <workItem from="1568311340368" duration="5000" />
+      <workItem from="1568316336549" duration="1575000" />
+      <workItem from="1568355971939" duration="9379000" />
+      <workItem from="1568379386880" duration="26346000" />
     </task>
     <task id="LOCAL-00001" summary="Revert &quot;add readme.md&quot;&#10;&#10;This reverts commit 5104213d">
       <created>1565987124628</created>

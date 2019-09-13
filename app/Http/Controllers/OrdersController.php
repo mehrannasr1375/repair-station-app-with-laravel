@@ -5,6 +5,7 @@ use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Validation\Validator; // for override error messages, which stores on session; for form validation error appearance
+
 class OrdersController extends Controller
 {
 
@@ -12,8 +13,27 @@ class OrdersController extends Controller
 
     public function index()
     {
-        $orders = Order::allOrders()->OrderByDesc()->paginate(8);
+
+        $orders = Order::allOrders()->OrderByDesc()->with('Payments','OrderDetails','customer')->paginate(8);
+
+        // calculate 'paid' && 'should_pay' &&  sum amount for order
+        foreach ($orders as $order) {
+            $paid_sum = 0;
+            foreach ($order->Payments as $payment) {
+                $paid_sum += (int)($payment->amount);
+            }
+            $order->paid = $paid_sum;
+            $should_pay_sum = 0;
+            foreach ($order->OrderDetails as $orderDetail) {
+                $should_pay_sum += (int)($orderDetail->user_amount);
+            }
+            $order->should_pay = $should_pay_sum;
+            $order->debt_status = 0;
+            $order->debt_status = $order->should_pay - $order->paid;
+        }
+
         return view('orders.index', compact('orders'));
+
     }
 
 

@@ -32,15 +32,12 @@
         <div class="tab-pane active show" id="partner">
             <table class="tbl-1">
                 <tr>
-                    <th>شناسه</th>
+                    <th style="width:60px;">شناسه مشتری</th>
                     <th>نام و نام خانوادگی</th>
-                    <th>جزئیات</th>
-                    <th>لیست قطعات</th>
+                    <th>اطلاعات همکار</th>
+                    <th>لیست تمامی قطعات</th>
                     <th>قطعات موجود</th>
                     <th>قطعات آماده</th>
-                    <th>کل قطعات</th>
-                    <th>بدهکار</th>
-                    <th>بستانکار</th>
                     <th>صورت حساب</th>
                 </tr>
                 @foreach ($partners as $partner)
@@ -48,12 +45,9 @@
                         <td>{{ $partner->id }}</td>
                         <td><a href="/customers/{{ $partner->id }}/edit">{{ $partner->name }}</a></td>
                         <td><a href="/customers/{{ $partner->id }}"><i class="fa fa-2x text-secondary fa-info pl-2"></i></a></td>
-                        <td><a href=""><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a href="/customers/{{ $partner->id }}/orders"><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
+                        <td>{{ $partner->available_orders_count }}</td>
+                        <td>{{ $partner->prepaired_orders_count }}</td>
                         <td><a href=""><i class="fa fa-2x text-success fa-money pl-2"></i></a></td>
                     </tr>
                 @endforeach
@@ -71,15 +65,12 @@
         <div class="tab-pane" id="normal">
             <table class="tab-pane tbl-1">
                 <tr>
-                    <th>شناسه</th>
+                    <th style="width:60px;">شناسه مشتری</th>
                     <th>نام و نام خانوادگی</th>
-                    <th>جزئیات</th>
-                    <th>لیست قطعات</th>
+                    <th>اطلاعات مشتری</th>
+                    <th>لیست تمامی قطعات</th>
                     <th>قطعات موجود</th>
                     <th>قطعات آماده</th>
-                    <th>کل قطعات</th>
-                    <th>بدهکار</th>
-                    <th>بستانکار</th>
                     <th>صورت حساب</th>
                 </tr>
                 @foreach ($customers as $customer)
@@ -87,12 +78,9 @@
                         <td>{{ $customer->id }}</td>
                         <td><a href="/customers/{{ $customer->id }}/edit">{{ $customer->name }}</a></td>
                         <td><a href="/customers/{{ $customer->id }}"><i class="fa fa-2x text-secondary fa-info pl-2"></i></a></td>
-                        <td><a href=""><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><a href="/customers/{{ $customer->id }}/orders"><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
+                        <td>{{ $customer->available_orders_count }}</td>
+                        <td>{{ $customer->prepaired_orders_count }}</td>
                         <td><a href=""><i class="fa fa-2x text-success fa-money pl-2"></i></a></td>
                     </tr>
                 @endforeach
@@ -112,6 +100,7 @@
                 <a href="/customers/create" class="btn btn-sm btn-outline-secondary">مشتری جدید</a>
             </div>
         </div>
+
 
 
 

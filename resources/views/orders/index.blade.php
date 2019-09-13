@@ -26,6 +26,7 @@
                         <th>تاریخ دریافت</th>
                         <th style="width:80px">وضعیت تعمیر</th>
                         <th style="width:60px">وضعیت تحویل</th>
+                        <th style="width:80px">وضعیت بدهی</th>
                     </tr>
                     @foreach ($orders as $order)
                         <tr>
@@ -34,9 +35,21 @@
                             <td><a href="/orders/{{ $order->id }}/edit"><i class="fa fa-2x text-secondary fa-info pl-2"></i></a></td>
                             <td>{{ $order->device_type }}</td>
                             <td style="max-width:150px; padding:14px;">{{ $order->problem }}</td>
-                            <td>{{ $order->receive_date }}</td>
-                            <td>{{ $order->status_code }}</td>
-                            <td>{{ $order->checkout }}</td>
+                            <td style="width:80px;">{{ $order->receive_date }}</td>
+                            <td style="width:110px;">{{ $order->status_code }}</td>
+                            <td>
+                                <?php
+                                if ( $order->checkout )         echo "<i class='fa fa-check text-success'></i>";
+                                else                            echo "<i class='fa fa-close text-danger'></i>";
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                if ( $order->debt_status > 0 )          echo $order->debt_status . ' بد ';
+                                elseif ( $order->debt_status < 0 )      echo $order->debt_status . ' بس ';
+                                else                                    echo '-';
+                                ?>
+                            </td>
                         </tr>
                     @endforeach
                 </table>

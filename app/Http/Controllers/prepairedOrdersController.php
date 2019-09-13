@@ -20,7 +20,17 @@ class prepairedOrdersController extends Controller
 
     public function index()
     {
-        $orders = Order::prepairedOrders()->undeliveredOrders()->orderByDesc()->paginate(8);
+        $orders = Order::prepairedOrders()->undeliveredOrders()->orderByDesc()->with('OrderDetails','customer')->paginate(8);
+
+        // calculate 'total_cost' for each order (equals with: join and aggregate in database level)
+        foreach ($orders as $order) {
+            $sum = 0;
+            foreach ($order->OrderDetails as $order_detail) {
+                $sum += (int)($order_detail->user_amount);
+            }
+            $order->total_cost = $sum;
+        }
+
         return view('prepaired.index', compact('orders'));
     }
 

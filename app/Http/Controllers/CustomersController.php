@@ -1,15 +1,62 @@
 <?php
+/*
+*  0 : repairing
+*  1 : repaired
+*  2 : not repairable
+*  3 : no problem
+*  4 : rejected by customer
+*/
 namespace App\Http\Controllers;
 use App\Customer;
+use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\getCustomerOrdersRequest;
+
 class CustomersController extends Controller
 {
 
 
     public function index()
     {
-        $partners  = Customer::where('is_partner', 1)->orderBy('id', 'desc')->paginate(8);
-        $customers = Customer::where('is_partner', 0)->orderBy('id', 'desc')->paginate(8);
+
+        $available_orders = DB::table('orders')
+            ->select('customer_id')
+            ->addSelect(DB::raw('COUNT(orders.id) AS available_orders_count'))
+            ->where('checkout','=',false)
+            ->groupBy('customer_id');
+        $prepaired_orders = DB::table('orders')
+            ->select('customer_id')
+            ->addSelect(DB::raw('COUNT(orders.id) AS prepaired_orders_count'))
+            ->Where('status_code','!=','0')
+            ->groupBy('customer_id');
+
+
+        $partners = DB::table('customers')
+            ->select('id', 'name','prepaired_orders_count','available_orders_count')
+            ->leftjoinSub($available_orders,'available_orders',function($join){
+                $join->on('customers.id', '=', 'available_orders.customer_id');
+            })
+            ->leftjoinSub($prepaired_orders,'prepaired_orders',function($join){
+                $join->on('customers.id', '=', 'prepaired_orders.customer_id');
+            })
+            ->where('is_partner', '=', true)
+            ->paginate(8);
+
+
+        $customers = DB::table('customers')
+            ->select('id', 'name','available_orders_count','prepaired_orders_count')
+            ->leftjoinSub($available_orders,'available_orders',function($join){
+                $join->on('customers.id', '=', 'available_orders.customer_id');
+            })
+            ->leftjoinSub($prepaired_orders,'prepaired_orders',function($join){
+                $join->on('customers.id', '=', 'prepaired_orders.customer_id');
+            })
+            ->where('is_partner', '=', false)
+            ->paginate(8);
+
+//        dd($customers->toArray());
+
         return view('customers.index', compact('customers','partners'));
     }
 
@@ -44,6 +91,9 @@ class CustomersController extends Controller
     {
         return view('customers.edit', compact('customer'));
     }
+
+
+
     public function edit(Customer $customer)
     {
         return view('customers.edit', compact('customer'));
@@ -77,7 +127,11 @@ class CustomersController extends Controller
 
 
 
-
+    public function getOrdersOfCustomer(Customer $customer)
+    {
+        $orders = Order::allOrders()->OrderByDesc()->where('customer_id', $customer->id)->paginate(8);
+        return view('customers.orders.index', compact('orders'));
+    }
 
 
 
