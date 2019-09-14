@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\addOrderNoteRequest;
 use App\Http\Requests\orderHasRepairedRequest;
 use App\Http\Requests\updateOrderStatusRequest;
+use Verta;
 
 class repairingOrdersController extends Controller
 {
@@ -22,6 +23,7 @@ class repairingOrdersController extends Controller
     //show a list of repairing orders
     public function index()
     {
+        Verta::setStringformat('j / n / y H:i:s');
         $orders = Order::RepairingOrders()->orderByDesc()->paginate(8);
         return view('repairing.index', compact('orders'));
     }

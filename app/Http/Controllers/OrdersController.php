@@ -5,6 +5,7 @@ use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Validation\Validator; // for override error messages, which stores on session; for form validation error appearance
+use Verta;
 
 class OrdersController extends Controller
 {
@@ -13,7 +14,7 @@ class OrdersController extends Controller
 
     public function index()
     {
-
+        Verta::setStringformat('j / n / y H:i:s');        
         $orders = Order::allOrders()->OrderByDesc()->with('Payments','OrderDetails','customer')->paginate(8);
 
         // calculate 'paid' && 'should_pay' &&  sum amount for order
@@ -40,6 +41,8 @@ class OrdersController extends Controller
 
     public function create()
     {
+        Verta::setStringformat('j / n / y ');        
+
         return view('orders.create');
     }
 
@@ -63,7 +66,7 @@ class OrdersController extends Controller
                 'device_brand' => '',
                 'device_model' => '',
                 'device_serial' => '',
-                'receive_date' => '',
+                'receive_date' => ' ',
                 'problem' => 'required',
                 'problem_details' => '',
                 'opened_earlier' => '',

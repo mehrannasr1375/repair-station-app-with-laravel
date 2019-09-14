@@ -53,7 +53,7 @@
                         <a href="#" class="btn_well_order"><i class="fa fa-2x text-info fa-heartbeat pl-2"></i></a>
                         <a href="#" class="btn_putoff_order"><i class="fa fa-2x text-secondary fa-eye-slash"></i></a>
                     </td>
-                    <td style="width:100px;">{{ $order->receive_date }}</td>
+                    <td style="width:100px;">{{ new Verta($order->receive_date) }}</td>
                 </tr>
             @endforeach
         </table>

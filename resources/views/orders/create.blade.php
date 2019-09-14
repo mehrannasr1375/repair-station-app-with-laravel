@@ -205,7 +205,7 @@
                     <!-- date -->
                     <div class="col-12 col-lg-3 form-group input-group">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">تاریخ:</span></div></div>
-                        <input type="text" class="form-control" name="date" value="{{ old('date') }}" autocomplete="off" />
+                        <input type="text" class="form-control text-center" name="date" value="{{ Verta::now() }}" autocomplete="off" />
                     </div>
                     <!-- opened_earlier -->
                     <div class="col-12 col-lg-3 form-group input-group">

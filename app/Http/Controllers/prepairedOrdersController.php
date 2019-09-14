@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\updateOrderStatusRequest;
 use App\Http\Requests\addOrderNoteRequest;
+use Verta;
 
 class prepairedOrdersController extends Controller
 {
@@ -20,6 +21,8 @@ class prepairedOrdersController extends Controller
 
     public function index()
     {
+        Verta::setStringformat('j / n / y H:i:s');
+
         $orders = Order::prepairedOrders()->undeliveredOrders()->orderByDesc()->with('OrderDetails','customer')->paginate(8);
 
         // calculate 'total_cost' for each order (equals with: join and aggregate in database level)

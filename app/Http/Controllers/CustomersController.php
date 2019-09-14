@@ -12,6 +12,8 @@ use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\getCustomerOrdersRequest;
+use Verta;
+
 
 class CustomersController extends Controller
 {
@@ -71,6 +73,7 @@ class CustomersController extends Controller
 
     public function store(Request $request)
     {
+
         $data = $request->validate([
             'name' => 'required|min:3',
             'is_partner' => '',
@@ -78,7 +81,7 @@ class CustomersController extends Controller
             'tell_2' => '',
             'mobile_1' => '',
             'mobile_2' => '',
-            'address' => ''
+            'address' => '',
         ]);
         $data['is_partner'] = $request->has('is_partner') ? true:false;
         Customer::create($data);

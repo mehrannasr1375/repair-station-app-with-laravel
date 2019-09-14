@@ -35,7 +35,7 @@
                     <td><a href="#" class="btn_add_note"><i class="fa fa-2x text-secondary fa-pencil-square-o"></i></a></td>
                     <td><a href="#" class="btn_checkout"><i class="fa fa-2x text-danger fa-plane pl-2"></i></a></td>
                     <td style="width:90px;">{{ $order->status_code }}</td>
-                    <td>{{ $order->receive_date }}</td>
+                    <td>{{ new Verta($order->receive_date) }}</td>
                     <td>{{ $order->total_cost }}</td>
                 </tr>
             @endforeach
