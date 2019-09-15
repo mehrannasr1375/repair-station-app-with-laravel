@@ -78,7 +78,7 @@
                             <div id="new-customer" class="tab-pane">
                                 <div class="row">
                                     <!-- new customer name -->
-                                    <div class="col-12 col-lg-8 form-group input-group">
+                                    <div class="col-12 col-lg-6 form-group input-group">
                                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">نام و نام خانوادگی :</span></div></div>
                                         <input type="text" class="form-control border-fix" name="name"  value="{{ old('name') }}" autocomplete="off" />
                                     </div>
@@ -89,8 +89,8 @@
                                         <div class="input-group-append"><div class="input-group-text label bg-white">همکار</div></div>
                                     </div>
                                     <!-- new customer id -->
-                                    <div class="col-6 col-lg-2 form-group input-group">
-                                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه:</span></div></div>
+                                    <div class="col-6 col-lg-4 form-group input-group">
+                                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه مشتری:</span></div></div>
                                         <input type="text" class="form-control" name="new_customer_serial" disabled />
                                     </div>
                                 </div>
@@ -125,14 +125,14 @@
                             <div id="existing-customer" class="tab-pane active">
                                 <div class="row">
                                     <!-- existing customer name -->
-                                    <div class="col-12 col-lg-9 form-group input-group">
+                                    <div class="col-12 col-lg-8 form-group input-group">
                                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">نام و نام خانوادگی :</span></div></div>
                                         <input type="text" class="form-control border-fix" name="name" value="{{ old('old_name') ?? $order->customer->name }}" autocomplete="off" />
                                     </div>
                                     <!-- existing customer id -->
-                                    <div class="col-12 col-lg-3 form-group input-group">
-                                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه:</span></div></div>
-                                        <input type="text" class="form-control" name="old_customer_id" value="{{ old('old_customer_id') ?? $order->customer_id }}" autocomplete="off" disabled />
+                                    <div class="col-12 col-lg-4 form-group input-group">
+                                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه مشتری:</span></div></div>
+                                        <input type="text" class="form-control text-center font-weight-bold" name="old_customer_id" value="{{ old('old_customer_id') ?? $order->customer_id }}" autocomplete="off" disabled />
                                     </div>
                                 </div>
                             </div>
@@ -180,30 +180,20 @@
 
 
                         </div>
+                        <!-- date -->
+                        <div class="col-12 col-lg-4 form-group input-group mr-auto">
+                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">تاریخ:</span></div></div>
+                            <input type="text" class="form-control text-center" name="date" value="{{ old('date') ?? new Verta($order->date) }}" autocomplete="off" disabled />
+                        </div>
                         <!-- device_brand -->
                         <div class="col-12 col-lg-3 form-group input-group">
                             <div class="input-group-prepend"><div class="input-group-text"><span class="label">برند:</span></div></div>
                             <input type="text" class="form-control" name="device_brand" value="{{ old('device_brand') ?? $order->device_brand }}" autocomplete="off" />
                         </div>
-                        <!-- order_id -->
-                        <div class="col-12 col-lg-3 form-group input-group">
-                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه فاکتور:</span></div></div>
-                            <input type="text" class="form-control" name="order_id" value="{{ $order->id }}" disabled />
-                        </div>
                         <!-- device_model -->
                         <div class="col-12 col-lg-3 form-group input-group">
                             <div class="input-group-prepend"><div class="input-group-text"><span class="label">مدل:</span></div></div>
                             <input type="text" class="form-control" name="device_model" value="{{ old('device_model') ?? $order->device_model }}" autocomplete="off" />
-                        </div>
-                        <!-- device_serial -->
-                        <div class="col-12 col-lg-3 form-group input-group">
-                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">شماره سریال:</span></div></div>
-                            <input type="text" class="form-control text-vsm" name="device_serial" value="{{ old('device_serial') ?? $order->device_serial }}" autocomplete="off" />
-                        </div>
-                        <!-- date -->
-                        <div class="col-12 col-lg-3 form-group input-group">
-                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">تاریخ:</span></div></div>
-                            <input type="text" class="form-control" name="date" value="{{ old('date') ?? $order->date }}" autocomplete="off" />
                         </div>
                         <!-- opened_earlier -->
                         <div class="col-12 col-lg-3 form-group input-group">
@@ -213,6 +203,11 @@
                                 </div>
                             </div>
                             <div class="input-group-append"><div class="input-group-text label bg-white">قبلا تعمیر شده</div></div>
+                        </div>
+                        <!-- order_id -->
+                        <div class="col-12 col-lg-3 form-group input-group">
+                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه فاکتور:</span></div></div>
+                            <input type="text" class="form-control text-center font-weight-bold" name="order_id" value="{{ $order->id }}" disabled />
                         </div>
                         <!-- problem -->
                         <div class="col-12 form-group input-group">

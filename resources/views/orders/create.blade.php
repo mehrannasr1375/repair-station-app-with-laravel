@@ -68,14 +68,14 @@
                     </div>
 
 
-                    <div class="tab-content p-3">
+                    <div class="tab-content">
 
 
                         <!-- NEW CUSTOMER FIELDS -->
                         <div id="new-customer" class="tab-pane active">
                             <div class="row">
                                 <!-- new customer name -->
-                                <div class="col-12 col-lg-8 form-group input-group">
+                                <div class="col-12 col-lg-6 form-group input-group">
                                     <div class="input-group-prepend"><div class="input-group-text"><span class="label">نام و نام خانوادگی :</span></div></div>
                                     <input type="text" class="form-control border-fix" name="name"  value="{{ old('name') }}" autocomplete="off" />
                                 </div>
@@ -89,9 +89,9 @@
                                     <div class="input-group-append"><div class="input-group-text label bg-white">همکار</div></div>
                                 </div>
                                 <!-- new customer id -->
-                                <div class="col-6 col-lg-2 form-group input-group">
+                                <div class="col-6 col-lg-3 form-group input-group mr-auto">
                                     <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه:</span></div></div>
-                                    <input type="text" class="form-control" name="new_customer_serial"/>
+                                    <input type="text" class="form-control" name="new_customer_serial"  disabled />
                                 </div>
                             </div>
                             <div class="row">
@@ -126,14 +126,14 @@
                         <div id="existing-customer" class="tab-pane">
                             <div class="row">
                                 <!-- existing customer name -->
-                                <div class="col-12 col-lg-4 form-group input-group">
-                                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">نام :</span></div></div>
+                                <div class="col-12 col-lg-6 form-group input-group">
+                                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">نام و نام خانوادگی :</span></div></div>
                                     <input type="text" class="form-control border-fix" name="old_name" value="{{ old('old_name') }}" autocomplete="off" />
                                 </div>
                                 <!-- existing customer id -->
-                                <div class="col-12 col-lg-3 form-group input-group">
+                                <div class="col-12 col-lg-3 form-group input-group mr-auto">
                                     <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه:</span></div></div>
-                                    <input type="text" class="form-control" name="old_customer_id" value="{{ old('old_customer_id') }}" autocomplete="off" />
+                                    <input type="text" class="form-control text-center font-weight-bold" name="old_customer_id" value="{{ old('old_customer_id') }}" autocomplete="off" />
                                 </div>
                             </div>
                         </div>
@@ -181,31 +181,20 @@
                             <option value="دیگر">دیگر</option>
                         </select>
                     </div>
-
+                    <!-- date -->
+                    <div class="col-12 col-lg-4 form-group input-group mr-auto">
+                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">تاریخ:</span></div></div>
+                        <input type="text" class="form-control text-center" name="date" value="{{ Verta::now() }}" autocomplete="off" disabled />
+                    </div>
                     <!-- device_brand -->
                     <div class="col-12 col-lg-3 form-group input-group">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">برند:</span></div></div>
                         <input type="text" class="form-control text-vsm" name="device_brand" value="{{ old('device_brand') }}" autocomplete="off" />
                     </div>
-                    <!-- order_id -->
-                    <div class="col-12 col-lg-3 form-group input-group">
-                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه فاکتور:</span></div></div>
-                        <input type="text" class="form-control" name="order_id" disabled/>
-                    </div>
                     <!-- device_model -->
                     <div class="col-12 col-lg-3 form-group input-group">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">مدل:</span></div></div>
                         <input type="text" class="form-control" name="device_model" value="{{ old('device_model') }}" autocomplete="off" />
-                    </div>
-                    <!-- device_serial -->
-                    <div class="col-12 col-lg-3 form-group input-group">
-                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">شماره سریال:</span></div></div>
-                        <input type="text" class="form-control" name="device_serial" value="{{ old('device_serial') }}" autocomplete="off" />
-                    </div>
-                    <!-- date -->
-                    <div class="col-12 col-lg-3 form-group input-group">
-                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">تاریخ:</span></div></div>
-                        <input type="text" class="form-control text-center" name="date" value="{{ Verta::now() }}" autocomplete="off" />
                     </div>
                     <!-- opened_earlier -->
                     <div class="col-12 col-lg-3 form-group input-group">
@@ -216,15 +205,20 @@
                         </div>
                         <div class="input-group-append"><div class="input-group-text label bg-white">قبلا تعمیر شده</div></div>
                     </div>
+                    <!-- order_id -->
+                    <div class="col-12 col-lg-3 form-group input-group">
+                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه فاکتور:</span></div></div>
+                        <input type="text" class="form-control text-center font-weight-bold" name="order_id" disabled />
+                    </div>
                     <!-- problem -->
                     <div class="col-12 form-group input-group">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">ایراد:</span></div></div>
                         <textarea style="min-height:60px;" class="form-control text-vsm" name="problem">{{ old('problem') }}</textarea>
                     </div>
-                    <!-- problem_details -->
-                    <div class="col-12 form-group input-group">
+                     <!-- problem_details -->
+                     <div class="col-12 form-group input-group">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">توضیحات:</span></div></div>
-                        <textarea class="form-control" name="problem_details">{{ old('problem_details') }}</textarea>
+                        <textarea style="min-height:60px;" class="form-control text-vsm" name="problem_details">{{ old('problem_details') }}</textarea>
                     </div>
                     <!-- participants -->
                     <div class="col-12 form-group input-group">

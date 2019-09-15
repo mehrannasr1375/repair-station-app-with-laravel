@@ -44,7 +44,7 @@
                         <td><a href="/orders/{{ $order->id }}/edit"><i class="fa fa-2x text-secondary fa-info pl-2"></i></a></td>
                         <td>{{ $order->device_type }}</td>
                         <td style="max-width:150px; padding:14px;">{{ $order->problem }}</td>
-                        <td>{{ $order->receive_date }}</td>
+                        <td>{{ new Verta($order->receive_date) }}</td>
                         <td>{{ $order->status_code }}</td>
                         <td>{{ $order->checkout }}</td>
                     </tr>

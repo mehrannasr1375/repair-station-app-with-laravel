@@ -57,8 +57,6 @@ class CustomersController extends Controller
             ->where('is_partner', '=', false)
             ->paginate(8);
 
-//        dd($customers->toArray());
-
         return view('customers.index', compact('customers','partners'));
     }
 
@@ -132,6 +130,7 @@ class CustomersController extends Controller
 
     public function getOrdersOfCustomer(Customer $customer)
     {
+        Verta::setStringformat('j / n / y H:i:s');        
         $orders = Order::allOrders()->OrderByDesc()->where('customer_id', $customer->id)->paginate(8);
         return view('customers.orders.index', compact('orders'));
     }

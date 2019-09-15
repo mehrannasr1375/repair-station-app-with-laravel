@@ -14,7 +14,7 @@ class OrdersController extends Controller
 
     public function index()
     {
-        Verta::setStringformat('j / n / y H:i:s');        
+        Verta::setStringformat('j / n / y  H:i');        
         $orders = Order::allOrders()->OrderByDesc()->with('Payments','OrderDetails','customer')->paginate(8);
 
         // calculate 'paid' && 'should_pay' &&  sum amount for order
@@ -38,7 +38,7 @@ class OrdersController extends Controller
     }
 
 
-
+ 
     public function create()
     {
         Verta::setStringformat('j / n / y ');        
@@ -65,8 +65,6 @@ class OrdersController extends Controller
                 'device_type' => '',
                 'device_brand' => '',
                 'device_model' => '',
-                'device_serial' => '',
-                'receive_date' => ' ',
                 'problem' => 'required',
                 'problem_details' => '',
                 'opened_earlier' => '',
@@ -88,8 +86,6 @@ class OrdersController extends Controller
                 'device_type' => '',
                 'device_brand' => '',
                 'device_model' => '',
-                'device_serial' => '',
-                'device_date' => '',
                 'already_repaired' => '',
                 'problem' => 'required',
                 'problem_details' => '',
@@ -114,6 +110,7 @@ class OrdersController extends Controller
 
     public function edit(Order $order)
     {
+        Verta::setStringformat("j / n / y \t  H:i");        
         return view('orders.edit', compact('order'));
     }
 
@@ -137,7 +134,6 @@ class OrdersController extends Controller
                 'device_type' => '',
                 'device_brand' => '',
                 'device_model' => '',
-                'device_serial' => '',
                 'receive_date' => '',
                 'problem' => 'required',
                 'problem_details' => '',
@@ -167,7 +163,6 @@ class OrdersController extends Controller
                 'device_type' => '',
                 'device_brand' => '',
                 'device_model' => '',
-                'device_serial' => '',
                 'receive_date' => '',
                 'problem' => 'required',
                 'problem_details' => '',
