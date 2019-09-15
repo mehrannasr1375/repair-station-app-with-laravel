@@ -35,7 +35,7 @@
                     </div>
 
                     <!-- is_partner -->
-                    <div class="col-12  col-lg-4 form-group input-group">
+                    <div id="chk_is_partner" class="col-12 col-lg-4 form-group input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <input type="checkbox" name="is_partner" {{ $customer->is_partner ? 'checked':'' }} />
@@ -53,24 +53,14 @@
                 </div>
                 <div class="row">
 
-                    <!-- tell -->
+                    <!-- phone -->
                     <div class="col-12 col-lg-6 form-group input-group">
-                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن ثابت 1 :</span></div></div>
+                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن ثابت :</span></div></div>
                         <input type="text" class="form-control" name="tell_1" value="{{ $customer->tell_1 }}" />
                     </div>
                     <div class="col-12 col-lg-6 form-group input-group">
-                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن ثابت 2 :</span></div></div>
-                        <input type="text" class="form-control" name="tell_2" value="{{ $customer->tell_2 }}" />
-                    </div>
-
-                    <!-- mobile -->
-                    <div class="col-12 col-lg-6 form-group input-group">
-                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن همراه 1 :</span></div></div>
+                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن همراه :</span></div></div>
                         <input type="text" class="form-control" name="mobile_1" value="{{ $customer->mobile_1 }}" />
-                    </div>
-                    <div class="col-12 col-lg-6 form-group input-group">
-                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن همراه 2 :</span></div></div>
-                        <input type="text" class="form-control" name="mobile_2" value="{{ $customer->mobile_2 }}" />
                     </div>
 
                     <!-- address -->
@@ -93,6 +83,14 @@
 
     </div>
 
+
+    <script type="text/javascript">
+        $(window).on('load', function() {
+            $("#chk_is_partner").click(function (event) {
+                $('input[type=checkbox][name=is_partner]').click();
+            });
+        });
+    </script>
 
 
 @endsection

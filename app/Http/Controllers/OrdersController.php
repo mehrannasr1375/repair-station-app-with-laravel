@@ -14,7 +14,7 @@ class OrdersController extends Controller
 
     public function index()
     {
-        Verta::setStringformat('j / n / y  H:i');        
+        Verta::setStringformat('j / n / y  H:i');
         $orders = Order::allOrders()->OrderByDesc()->with('Payments','OrderDetails','customer')->paginate(8);
 
         // calculate 'paid' && 'should_pay' &&  sum amount for order
@@ -38,11 +38,10 @@ class OrdersController extends Controller
     }
 
 
- 
+
     public function create()
     {
-        Verta::setStringformat('j / n / y ');        
-
+        Verta::setStringformat('j / n / y ');
         return view('orders.create');
     }
 
@@ -103,6 +102,7 @@ class OrdersController extends Controller
 
     public function show(Order $order)
     {
+        Verta::setStringformat("j / n / y \t  H:i");
         return view('orders.edit', compact('order'));
     }
 
@@ -110,7 +110,7 @@ class OrdersController extends Controller
 
     public function edit(Order $order)
     {
-        Verta::setStringformat("j / n / y \t  H:i");        
+        Verta::setStringformat("j / n / y \t  H:i");
         return view('orders.edit', compact('order'));
     }
 

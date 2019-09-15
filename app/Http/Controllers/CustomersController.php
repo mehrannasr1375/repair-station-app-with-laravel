@@ -76,9 +76,7 @@ class CustomersController extends Controller
             'name' => 'required|min:3',
             'is_partner' => '',
             'tell_1' => '',
-            'tell_2' => '',
             'mobile_1' => '',
-            'mobile_2' => '',
             'address' => '',
         ]);
         $data['is_partner'] = $request->has('is_partner') ? true:false;
@@ -108,9 +106,7 @@ class CustomersController extends Controller
             'name' => 'required|min:3',
             'is_partner' => '',
             'tell_1' => '',
-            'tell_2' => '',
             'mobile_1' => '',
-            'mobile_2' => '',
             'address' => ''
         ]);
         $data['is_partner'] = $request->has('is_partner') ? true:false;
@@ -130,7 +126,7 @@ class CustomersController extends Controller
 
     public function getOrdersOfCustomer(Customer $customer)
     {
-        Verta::setStringformat('j / n / y H:i:s');        
+        Verta::setStringformat('j / n / y H:i:s');
         $orders = Order::allOrders()->OrderByDesc()->where('customer_id', $customer->id)->paginate(8);
         return view('customers.orders.index', compact('orders'));
     }
