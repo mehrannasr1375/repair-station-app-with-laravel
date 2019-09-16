@@ -42,6 +42,7 @@
 body {
     direction: rtl !important;
     font-family: IRANSans;
+    background-color: white;
 }
 a:hover {
     text-decoration: none !important;
@@ -151,6 +152,7 @@ a:hover {
 
 
 .top-search {
+    position: relative;
     display: flex;
     justify-content: center;
     margin-top: -1px;
@@ -158,7 +160,21 @@ a:hover {
     padding-bottom: 5px !important;
     margin-left: -16px;
     margin-right: -16px;
-    background: linear-gradient(rgba(242, 241, 252, 0.95), rgba(100, 191, 191, 0.0));
+    background-color:lavender ;
+}
+.top-search:after {
+    cursor: pointer;
+    position: absolute;
+    font-family: FontAwesome;
+    font-weight: 300;
+    font-size: 20px;
+    content: "\f102";
+    /*content: "\f103";*/
+    bottom: -32px;
+    right: 45%;
+    background-color: lavender;
+    padding:0 20px;
+    border-radius: 0 0 8px 8px;
 }
 .top-search p {
     font-weight: 900;
@@ -200,11 +216,9 @@ a:hover {
 
 
 #content {
-    /*background-color: rgb(73, 72, 72);*/
     z-index:10;
     margin-top: 40px;
     margin-right: 180px !important;
-    /*min-height: 100vh;*/
 }
 
 
@@ -241,7 +255,7 @@ a:hover {
     text-align: center;
     background-color: rgba(111, 111, 111, 0.5);
     box-shadow: 0 0 5px 0px black;
-    height:80px;
+    height:75px;
     width:150px;
     padding: 12px;
     margin-bottom: 5px;
@@ -461,8 +475,9 @@ input:focus, textarea:focus,select:focus,button:focus {
     padding-top: 40px;
     padding-bottom: 10px !important;
     margin-bottom: 50px;
-    box-shadow: 0px 2px 15px -7px rgba(12, 144, 148, 0.78);
+    box-shadow: 0px 0px 3px 0px rgba(12, 144, 148, 0.38);
     border-top: 2px solid #0ea1a4;
+    background-color: #fafafa;
 }
 .form-box .con > div:first-child {
     position: absolute;
@@ -470,15 +485,15 @@ input:focus, textarea:focus,select:focus,button:focus {
     right: 18px;
     padding: 5px 18px;
     margin-right: -27px !important;
-    border-radius: 40% 15% 15% 15%;
-    background-color: #ffffff;
+    border-radius: 50% 5% 25% 15%;
+    background-color: white;
     font-size: 13px;
     border: 1px solid #e9e9e9;
-    border-bottom: 3px solid #0ea1a4;
-    border-left: 3px solid #0ea1a4;
+    border-bottom: 2px solid #0ea1a4;
+    border-left: 2px solid #0ea1a4;
 }
 .form-box .form-control {
-    background-color: white !important;
+    background-color: #fffffa !important;
 }
 .form-box .label {
     font-size: 12px !important;
@@ -543,19 +558,25 @@ input:focus, textarea:focus,select:focus,button:focus {
     text-align: center;
     overflow: hidden;
     border-radius: 10px 10px 10px 10px / 40px 40px 40px 40px;
-    border: 1px solid rgba(195, 185, 214, .5);
+    /*border: 1px solid rgba(195, 185, 214, .5);*/
+    margin-bottom: 15px;
 }
 .form-box .nav li a {
-    color: grey !important;
+    color: #aeaeae !important;
     border: 0px !important;
+    transition: .3s ease color;
 }
 .form-box .nav li a.active {
-    background-color: rgba(14, 161, 164, 0.2) !important;
+    color: #0ea1a4 !important;
+    border-bottom: 2px solid #0ea1a4 !important;
 }
 .form-box table a {
     color: black !important;
 }
+#repair-details-con input , #payment-details-con input{
+    height:29px !important;
 
+}
 
 
 /*-----------------------------------------|  |-----------------------------------------------*/

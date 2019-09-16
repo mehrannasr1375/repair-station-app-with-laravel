@@ -62,7 +62,7 @@
                                 <input type="radio" name="rd_customer_status" value="old" id="customer_status_old" checked="checked">old customer
                             </div>
                         </div>
-                        <div class="tab-content p-3">
+                        <div class="tab-content">
 
                             <!-- NEW CUSTOMER FIELDS -->
                             <div id="new-customer" class="tab-pane">
@@ -207,19 +207,112 @@
 
 
                 <!-- repair-details -->
-                <div class="con">
+                <div id="repair-details-con" class="con">
                     <div><p class="mb-0"><i class="fa fa-info"></i> جزئیات تعمیری : </p></div>
+
+                    <div class="row">
+                        <div class="col-12 col-lg-4 mb-2">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-vsm"> عنوان : </span>
+                                </div>
+                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 mb-2">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-vsm"> هزینه مشتری : </span>
+                                </div>
+                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 mb-2">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-vsm"> هزینه تعمیرگاه : </span>
+                                </div>
+                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="mt-0 mb-2">
+
+                    <div class="row">
+                        <div class="col-12 col-lg-4 mb-2">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-vsm"> عنوان : </span>
+                                </div>
+                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 mb-2">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-vsm"> هزینه مشتری : </span>
+                                </div>
+                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 mb-2">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-vsm"> هزینه تعمیرگاه : </span>
+                                </div>
+                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 
 
 
                 <!-- payments -->
-                <div class="con">
+                <div id="payment-details-con" class="con">
                     <div><p class="mb-0"><i class="fa fa-paypal"></i> پرداختی ها : </p></div>
                     <div class="row">
-
+                        <div class="col-12 col-lg-6 mb-2">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-vsm"> مبلغ : </span>
+                                </div>
+                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 mb-2">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-vsm"> نوع پرداخت : </span>
+                                </div>
+                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
                     </div>
+
+                    <hr class="mt-0 mb-2">
+
+                    <div class="row">
+                        <div class="col-12 col-lg-6 mb-2">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-vsm"> مبلغ : </span>
+                                </div>
+                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 mb-2">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-vsm"> نوع پرداخت : </span>
+                                </div>
+                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
 
@@ -230,8 +323,11 @@
                     </div>
                 </div>
 
+
+
         </form>
     </div>
+
 
 
     <script type="text/javascript">
@@ -244,5 +340,7 @@
             });
         });
     </script>
+
+
 
 @endsection
