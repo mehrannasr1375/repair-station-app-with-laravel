@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/database/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/public.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/public.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/common/searchbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/common/searchbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customers/orders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/orders/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/orders/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/orders/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/edit.blade.php" afterDir="false" />
     </list>
@@ -236,7 +237,8 @@
       <workItem from="1568484316755" duration="689000" />
       <workItem from="1568570361560" duration="6216000" />
       <workItem from="1568579472756" duration="129000" />
-      <workItem from="1568621253456" duration="5389000" />
+      <workItem from="1568621253456" duration="5591000" />
+      <workItem from="1568657604981" duration="6103000" />
     </task>
     <task id="LOCAL-00001" summary="Revert &quot;add readme.md&quot;&#10;&#10;This reverts commit 5104213d">
       <created>1565987124628</created>

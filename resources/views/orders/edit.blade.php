@@ -18,7 +18,7 @@
 
 
                 <!-- Messages -->
-                <span class="row mb-4">
+                <span class="row mt-4">
                     <span class="col-12">
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -31,7 +31,7 @@
                         @endif
                     </span>
                 </span>
-                <span class="row mb-4">
+                <span class="row mt-4">
                     <span class="col">
                         @if ( session()->has('success_res') )
                             <div class="alert alert-success">
@@ -314,6 +314,7 @@
                     </div>
 
                 </div>
+
 
 
                 <!-- btn save -->

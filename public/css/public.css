@@ -107,6 +107,72 @@ a:hover {
     user-select: none;
 }
 
+.btn-bordered {
+    font-family: IranSans;
+    transition: all 0.6s;
+    display: inline-block;
+    padding: 6px 20px;
+    font-size: 15px;
+    border-radius: 3px;
+    opacity: .999;
+    background-color: transparent;
+    border: 1px solid #d0d0d0;
+    color: #B8B8B8;
+    position: relative;
+}
+.btn-bordered:hover {
+    color: #0ea1a4;
+    cursor: pointer;
+    /*box-shadow: 0 0 5px 0 lightgreen;*/
+    /*background-color: rgba(184, 255, 184, 0.1);*/
+}
+.btn-bordered:before {
+    transition: all 0.4s;
+    border-style: solid;
+    border-radius: 3px;
+    box-sizing: content-box;
+    border-color: #0ea1a4;
+    transition-delay: 0.05s;
+    content: '';
+    position: absolute;
+    z-index: 5;
+    width: 0;
+    height: 100%;
+    border-width: 1px 0 1px 0;
+    top: -1px;
+    right: 0;
+}
+.btn-bordered:hover:before {
+    width: 100%;
+}
+.btn-bordered:after {
+    transition: all 0.4s;
+    border-style: solid;
+    border-radius: 3px;
+    box-sizing: content-box;
+    border-color: #0ea1a4;
+    position: absolute;
+    content: '';
+    z-index: 5;
+    width: 100%;
+    height: 0;
+    border-width: 0 1px 0 1px;
+    bottom: 0;
+    left: -1px;
+}
+.btn-bordered:hover:after {
+    height: 100%;
+}
+
+.alert {
+    border-radius: 0 !important;
+}
+.alert-danger {
+    border-right:4px solid darkred;
+    background-color: rgba(۲۵۵, ۲۲۰, ۲۱۹, 0.88);
+}
+
+
 
 /*---------------------------------------| Main Navbar |----------------------------------------*/
 
@@ -119,6 +185,8 @@ a:hover {
     z-index: 100000;
     background-color: #394146;
     padding: 2px 10px;
+    border-bottom: 1px solid #0ea1a4;
+
 }
 #navbar-title {
     font-size: 13px;
@@ -147,57 +215,48 @@ a:hover {
 }
 
 
-
 /*-----------------------------------------| top-search |-----------------------------------------*/
 
-
-.top-search {
+.top-search-con {
     position: relative;
-    display: flex;
+    margin-right: -24px;
+}
+.top-search {
+    display: none;
     justify-content: center;
     margin-top: -1px;
-    padding: 20px;
-    padding-bottom: 5px !important;
+    padding: 14px;
+    padding-bottom: 0px !important;
     margin-left: -16px;
-    margin-right: -16px;
-    background-color:lavender ;
+    margin-right: -10px;
+    line-height: 2.2 !important;
+    color:white !important;
+    border-bottom: 2px solid #0ea1a4;
+    background: url("../images/m2.jpg");
+    background-size: cover;
 }
-.top-search:after {
-    cursor: pointer;
-    position: absolute;
-    font-family: FontAwesome;
-    font-weight: 300;
-    font-size: 20px;
-    content: "\f102";
-    /*content: "\f103";*/
-    bottom: -32px;
-    right: 45%;
-    background-color: lavender;
-    padding:0 20px;
-    border-radius: 0 0 8px 8px;
-}
-.top-search p {
+.top-search-con p {
     font-weight: 900;
     color:grey;
 }
-.top-search > p:first-child {
+.top-search-con > p:first-child {
     line-height: 2.5;
     text-align: center;
     font-size: 13px;
 }
-.top-search > * {
+.top-search-con > * {
     margin-right: 5px;
 }
-.top-search select {
+.top-search-con select {
     width: 100px;
     height: 34px;
     font-size: 12px !important;
 }
-.top-search input {
+.top-search-con input {
     width: 200px;
     height: 34px;
 }
-.top-search i {
+.top-search-con i {
     line-height: 2;
 }
 .r-s-cancel {
@@ -211,6 +270,22 @@ a:hover {
     color: rgba(196, 4, 15, 0.82) !important;
 }
 
+#btn-toggle-top-search {
+    cursor: pointer;
+    font-family: FontAwesome;
+    font-weight: 300;
+    font-size: 20px;
+    margin-right: 45%;
+    background-color: #0ea1a4;
+    padding:5px 20px;
+    border-radius: 80px;
+    color:white !important;
+    margin-bottom: 20px;
+    transition-duration: .3s;
+}
+#btn-toggle-top-search:hover {
+    background-color: #096c6e;
+}
 
 /*-----------------------------------------| Content |--------------------------------------------*/
 
@@ -467,6 +542,8 @@ input:focus, textarea:focus,select:focus,button:focus {
 .form-box {
     padding-left: 20px;
     padding-right: 20px;
+    margin-right: -10px;
+    /*margin-top: -48px;*/
 }
 .form-box .con {
     position: relative;

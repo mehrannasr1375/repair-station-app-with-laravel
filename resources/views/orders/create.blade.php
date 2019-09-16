@@ -17,7 +17,7 @@
 
 
             <!-- Messages -->
-            <span class="row mb-4">
+            <span class="row mt-4">
                 <span class="col-12">
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -30,7 +30,7 @@
                     @endif
                 </span>
             </span>
-            <span class="row mb-4">
+            <span class="row mt-4">
                 <span class="col">
                     @if ( session()->has('success_res') )
                         <div class="alert alert-success">
@@ -131,87 +131,89 @@
 
             <!-- order details -->
             <div class="con">
-                    <div><p class="mb-0"><i class="fa fa-microchip"></i> مشخصات قطعه :</p></div>
-                    <div class="row">
-
-                        <!-- device_type -->
-                        <div class="col-12 col-lg-6 input-group form-group ">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><span class="label">نوع قطعه : </span></div>
+                <div><p class="mb-0"><i class="fa fa-microchip"></i> مشخصات قطعه :</p></div>
+                <div class="row">
+                    <!-- device_type -->
+                    <div class="col-12 col-lg-6 input-group form-group ">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><span class="label">نوع قطعه : </span></div>
+                        </div>
+                        <select style="direction:ltr;" class="form-control custom-select text-vsm" name="device_type" >
+                            <option value="لپ تاپ">لپ تاپ</option>
+                            <option value="کیس">کیس</option>
+                            <option value="مادربرد">مادربرد</option>
+                            <option value="پاور">پاور</option>
+                            <option value="کیبورد">کیبورد</option>
+                            <option value="مانیتور">مانیتور</option>
+                            <option value="اسپیکر">اسپیکر</option>
+                            <option value="DVD Rom">DVD Rom</option>
+                            <option value="HDD">HDD</option>
+                            <option value="کارت گرافیک">کارت گرافیک</option>
+                            <option value="مودم">مودم</option>
+                            <option value="پرینتر">پرینتر</option>
+                            <option value="اسکنر">اسکنر</option>
+                            <option value="کارتریج">کارتریج</option>
+                            <option value="تبلت">تبلت</option>
+                            <option value="ماوس">ماوس</option>
+                            <option value="تلویزیون">تلویزیون</option>
+                            <option value="هدست">هدست</option>
+                            <option value="دیگر">دیگر</option>
+                        </select>
+                    </div>
+                    <!-- date -->
+                    <div class="col-12 col-lg-4 form-group input-group mr-auto">
+                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">تاریخ:</span></div></div>
+                        <input type="text" class="form-control text-center" name="date" value="{{ Verta::now() }}" autocomplete="off" disabled />
+                    </div>
+                    <!-- device_brand -->
+                    <div class="col-12 col-lg-3 form-group input-group">
+                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">برند:</span></div></div>
+                        <input type="text" class="form-control text-vsm" name="device_brand" value="{{ old('device_brand') }}" autocomplete="off" />
+                    </div>
+                    <!-- device_model -->
+                    <div class="col-12 col-lg-3 form-group input-group">
+                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">مدل:</span></div></div>
+                        <input type="text" class="form-control" name="device_model" value="{{ old('device_model') }}" autocomplete="off" />
+                    </div>
+                    <!-- opened_earlier -->
+                    <div id="chk_is_repaired" class="col-12 col-lg-3 form-group input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox" name="opened_earlier" {{ old('opened_earlier') ? 'checked':'' }}/>
                             </div>
-                            <select style="direction:ltr;" class="form-control custom-select text-vsm" name="device_type" >
-                                <option value="لپ تاپ">لپ تاپ</option>
-                                <option value="کیس">کیس</option>
-                                <option value="مادربرد">مادربرد</option>
-                                <option value="پاور">پاور</option>
-                                <option value="کیبورد">کیبورد</option>
-                                <option value="مانیتور">مانیتور</option>
-                                <option value="اسپیکر">اسپیکر</option>
-                                <option value="DVD Rom">DVD Rom</option>
-                                <option value="HDD">HDD</option>
-                                <option value="کارت گرافیک">کارت گرافیک</option>
-                                <option value="مودم">مودم</option>
-                                <option value="پرینتر">پرینتر</option>
-                                <option value="اسکنر">اسکنر</option>
-                                <option value="کارتریج">کارتریج</option>
-                                <option value="تبلت">تبلت</option>
-                                <option value="ماوس">ماوس</option>
-                                <option value="تلویزیون">تلویزیون</option>
-                                <option value="هدست">هدست</option>
-                                <option value="دیگر">دیگر</option>
-                            </select>
                         </div>
-                        <!-- date -->
-                        <div class="col-12 col-lg-4 form-group input-group mr-auto">
-                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">تاریخ:</span></div></div>
-                            <input type="text" class="form-control text-center" name="date" value="{{ Verta::now() }}" autocomplete="off" disabled />
-                        </div>
-                        <!-- device_brand -->
-                        <div class="col-12 col-lg-3 form-group input-group">
-                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">برند:</span></div></div>
-                            <input type="text" class="form-control text-vsm" name="device_brand" value="{{ old('device_brand') }}" autocomplete="off" />
-                        </div>
-                        <!-- device_model -->
-                        <div class="col-12 col-lg-3 form-group input-group">
-                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">مدل:</span></div></div>
-                            <input type="text" class="form-control" name="device_model" value="{{ old('device_model') }}" autocomplete="off" />
-                        </div>
-                        <!-- opened_earlier -->
-                        <div id="chk_is_repaired" class="col-12 col-lg-3 form-group input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <input type="checkbox" name="opened_earlier" {{ old('opened_earlier') ? 'checked':'' }}/>
-                                </div>
-                            </div>
-                            <div class="input-group-append"><div class="input-group-text label bg-white">قبلا تعمیر شده</div></div>
-                        </div>
-                        <!-- order_id -->
-                        <div class="col-12 col-lg-3 form-group input-group">
-                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه فاکتور:</span></div></div>
-                            <input type="text" class="form-control text-center font-weight-bold text-danger" name="order_id" disabled />
-                        </div>
-                        <!-- problem -->
-                        <div class="col-12 form-group input-group">
-                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">ایراد:</span></div></div>
-                            <textarea style="min-height:60px;" class="form-control text-vsm" name="problem">{{ old('problem') }}</textarea>
-                        </div>
-                        <!-- problem_details -->
-                        <div class="col-12 form-group input-group">
-                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">توضیحات:</span></div></div>
-                            <textarea style="min-height:60px;" class="form-control text-vsm" name="problem_details">{{ old('problem_details') }}</textarea>
-                        </div>
-                        <!-- participants -->
-                        <div class="col-12 form-group input-group">
-                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">قطعات همراه:</span></div></div>
-                            <textarea class="form-control" name="participants_csv">{{ old('participants_csv') }}</textarea>
-                        </div>
-                        <!-- btns -->
-                        <div class="container my-3">
-                            <button class="btn btn-outline-secondary btn-sm" type="submit" name="btn-submit-order" > ثبت <i class="fa fa-check"></i></button>
-                            <button class="btn btn-outline-secondary btn-sm" type="button" name="btn-print-order" > چاپ <i class="fa fa-navicon"></i></button>
-                        </div>
+                        <div class="input-group-append"><div class="input-group-text label bg-white">قبلا تعمیر شده</div></div>
+                    </div>
+                    <!-- order_id -->
+                    <div class="col-12 col-lg-3 form-group input-group">
+                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه فاکتور:</span></div></div>
+                        <input type="text" class="form-control text-center font-weight-bold text-danger" name="order_id" disabled />
+                    </div>
+                    <!-- problem -->
+                    <div class="col-12 form-group input-group">
+                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">ایراد:</span></div></div>
+                        <textarea style="min-height:60px;" class="form-control text-vsm" name="problem">{{ old('problem') }}</textarea>
+                    </div>
+                    <!-- problem_details -->
+                    <div class="col-12 form-group input-group">
+                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">توضیحات:</span></div></div>
+                        <textarea style="min-height:60px;" class="form-control text-vsm" name="problem_details">{{ old('problem_details') }}</textarea>
+                    </div>
+                    <!-- participants -->
+                    <div class="col-12 form-group input-group">
+                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">قطعات همراه:</span></div></div>
+                        <textarea class="form-control" name="participants_csv">{{ old('participants_csv') }}</textarea>
                     </div>
                 </div>
+            </div>
+
+
+
+            <!-- btns -->
+            <div class="d-flex justify-content-center my-3 mb-5 mr-auto">
+                <button class="btn btn-bordered m-1" type="button" name="btn-print-order" > چاپ <i class="fa fa-navicon pr-4"></i></button>
+                <button class="btn btn-bordered m-1" type="submit" name="btn-submit-order" > ثبت <i class="fa fa-check pr-4"></i></button>
+            </div>
 
 
 

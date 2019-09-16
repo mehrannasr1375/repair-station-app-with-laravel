@@ -27,28 +27,36 @@
         <!-- Orders --->
         <div id="normal">
             <table class="tbl-1">
-                <tr>
-                    <th style="width:40px;">شناسه</th>
-                    <th>نام و نام خانوادگی</th>
-                    <th>جزئیات</th>
-                    <th>نوع دستگاه</th>
-                    <th>عیب</th>
-                    <th>تاریخ دریافت</th>
-                    <th style="width:80px">وضعیت تعمیر</th>
-                    <th style="width:60px">وضعیت تحویل</th>
-                </tr>
-                @foreach ($orders as $order)
+
+                @if ( count($orders) == 0 )
+                    <p class="text-center text-sm-center text-secondary p-5">
+                        چیزی یافت نشد!
+                    </p>
+                @else
                     <tr>
-                        <td style="width:30px !important;" class="text-right">{{ $order->id }}</td>
-                        <td>{{ $order->customer->name }}</td>
-                        <td><a href="/orders/{{ $order->id }}/edit"><i class="fa fa-2x text-secondary fa-info pl-2"></i></a></td>
-                        <td>{{ $order->device_type }}</td>
-                        <td style="max-width:150px; padding:14px;">{{ $order->problem }}</td>
-                        <td>{{ new Verta($order->receive_date) }}</td>
-                        <td>{{ $order->status_code }}</td>
-                        <td>{{ $order->checkout }}</td>
+                        <th style="width:40px;">شناسه</th>
+                        <th>نام و نام خانوادگی</th>
+                        <th>جزئیات</th>
+                        <th>نوع دستگاه</th>
+                        <th>عیب</th>
+                        <th>تاریخ دریافت</th>
+                        <th style="width:80px">وضعیت تعمیر</th>
+                        <th style="width:60px">وضعیت تحویل</th>
                     </tr>
-                @endforeach
+                    @foreach ($orders as $order)
+
+                        <tr>
+                            <td style="width:30px !important;" class="text-right">{{ $order->id }}</td>
+                            <td>{{ $order->customer->name }}</td>
+                            <td><a href="/orders/{{ $order->id }}/edit"><i class="fa fa-2x text-secondary fa-info pl-2"></i></a></td>
+                            <td>{{ $order->device_type }}</td>
+                            <td style="max-width:150px; padding:14px;">{{ $order->problem }}</td>
+                            <td>{{ new Verta($order->receive_date) }}</td>
+                            <td>{{ $order->status_code }}</td>
+                            <td>{{ $order->checkout }}</td>
+                        </tr>
+                    @endforeach
+                @endif
             </table>
             <div class="row">
                 <div class="col-12 d-flex justify-content-center">
