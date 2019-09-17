@@ -16,8 +16,8 @@
 
 
 
-            <!-- Messages -->
-            <span class="row mt-4">
+        <!-- Messages -->
+            <span class="row mt-3">
                 <span class="col-12">
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -30,7 +30,7 @@
                     @endif
                 </span>
             </span>
-            <span class="row mt-4">
+            <span class="row mt-3">
                 <span class="col">
                     @if ( session()->has('success_res') )
                         <div class="alert alert-success">
@@ -43,7 +43,7 @@
 
 
             <!-- Customer details -->
-            <div class="con mt-minus-50">
+            <div class="con">
                 <div><p class="mb-0"><i class="fa fa-user"></i> مشخصات مشتری :</p></div>
                 <div class="tab-content tbl-main-con">
                     <!-- tiny btns (new or existing customer) -->

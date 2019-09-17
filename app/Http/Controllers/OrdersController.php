@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Validation\Validator; // for o0verride error messages, which stores on session; for form validation error appearance
 use App\Http\Requests\NewOrderFormRequest;
-use App\OrderDetail;
 use Verta;
 
 class OrdersController extends Controller
@@ -20,9 +19,9 @@ class OrdersController extends Controller
         Verta::setStringformat('j / n / y  H:i');
 
         $orders = Order::allOrders()
-                        ->OrderByDesc()
-                        ->with('Payments','OrderDetails','customer')
-                        ->paginate(8);
+            ->OrderByDesc()
+            ->with('Payments','OrderDetails','customer')
+            ->paginate(8);
 
         $this->aggregatePricesSum($orders);
 
@@ -65,11 +64,11 @@ class OrdersController extends Controller
 
             //dd($request);
             DB::beginTransaction();
-                $customer_id = Customer::create($data['customer'])->id;
-                $data['order']['customer_id'] = (int)$customer_id;
-                $order_id = Order::create($data['order'])->id;
+            $customer_id = Customer::create($data['customer'])->id;
+            $data['order']['customer_id'] = (int)$customer_id;
+            $order_id = Order::create($data['order'])->id;
             DB::commit();
-            session()->flash('success_res', ' ثبت گردید.');
+            session()->flash('success_res', ' تعمیری با موفقیت ثبت گردید.');
         }
 
 
@@ -98,15 +97,7 @@ class OrdersController extends Controller
     public function show(Order $order)
     {
         Verta::setStringformat("j / n / y \t  H:i");
-
-        $order_details = $order->orderDetails;
-
-        $payments = $order->payments;
-
-        $this->aggregatePricesSum( array($order) );
-
-        return view('orders.edit', compact('order','order_details','payments'));
-
+        return view('orders.edit', compact('order'));
     }
 
 
@@ -120,7 +111,7 @@ class OrdersController extends Controller
 
         $payments = $order->payments;
 
-        $this->aggregatePricesSum( array($order) );
+        $this->aggregatePricesSum(array($order));
 
         return view('orders.edit', compact('order','order_details','payments'));
 
@@ -177,19 +168,15 @@ class OrdersController extends Controller
             $order->customer->update($data['customer']);
             $order->update($data['order']);
         }
-        return redirect('orders/' . $order->id . '/edit');
+        return redirect('orders/' . $order->id . '/edit')
+            ->with('success_res', ' اطلاعات تعمیری با موفقیت بروزرسانی شد.');
     }
 
 
 
-    public function destroy(Order $order)
+    public function delete(Order $order)
     {
-
-        Order::destroy($order->id);
-        
-
-        return redirect('/orders');
-
+        //Order::delete($order);
     }
 
 
@@ -197,10 +184,6 @@ class OrdersController extends Controller
     // calculate 'paid' && 'should_pay' &&  sum amount for order
     public function aggregatePricesSum($orders)
     {
-
-        /*$order->debt_status = 0;
-        $order->should_pay = 0;
-        $order->paid = 0;*/
 
         foreach ($orders as $order) {
             $paid_sum = 0;

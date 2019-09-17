@@ -165,19 +165,18 @@ a:hover {
 }
 
 .alert {
+    padding: 6px 20px;
     border-radius: 0 !important;
-    line-height: 1;
+    line-height: 2;
     font-size: 13px !important;
+    margin-bottom: 40px !important;
 }
 .alert-danger {
     border-right:4px solid darkred;
-    background-color: rgba(۲۵۵, ۲۲۰, ۲۱۹, 0.88);
+    background-color: rgba(255, 220, 220, 0.88);
 }
 .alert-success {
     border-right:4px solid rgb(23, 149, 97);
-}
-.mt-minus-50 {
-    margin-top: -50px !important;
 }
 
 
@@ -223,6 +222,7 @@ a:hover {
 
 
 /*-----------------------------------------| top-search |-----------------------------------------*/
+
 
 .top-search-con {
     position: relative;
@@ -293,6 +293,7 @@ a:hover {
 #btn-toggle-top-search:hover {
     background-color: #096c6e;
 }
+
 
 /*-----------------------------------------| Content |--------------------------------------------*/
 
