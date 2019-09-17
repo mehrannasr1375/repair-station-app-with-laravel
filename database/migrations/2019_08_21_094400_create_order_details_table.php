@@ -19,7 +19,7 @@ class CreateOrderDetailsTable extends Migration
             $table->bigInteger('user_amount')->nullable();
                 $table->bigInteger('shop_amount')->nullable();
 
-            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
 
         });
     }

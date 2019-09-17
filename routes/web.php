@@ -25,7 +25,7 @@ Route::post('/orders', 'OrdersController@store');
 Route::get('/orders/{order}', 'OrdersController@show');
 Route::get('/orders/{order}/edit', 'OrdersController@edit');
 Route::patch('/orders/{order}', 'OrdersController@update');
-Route::delete('/orders/{order}', 'OrdersController@delete');
+Route::delete('/orders/{order}', 'OrdersController@destroy');
 
 // Prepaired Orders
 Route::get('/prepaired', 'PrepairedOrdersController@index');

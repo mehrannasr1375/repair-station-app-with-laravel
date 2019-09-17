@@ -21,7 +21,7 @@ class CreatePaymentsTable extends Migration
             $table->string('payment_type')->nullable();
             $table->dateTime('date')->default(DB::raw('CURRENT_TIMESTAMP'));
 
-            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
 
         });
     }

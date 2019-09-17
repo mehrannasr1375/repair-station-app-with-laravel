@@ -207,6 +207,14 @@
                     <div><p class="mb-0"><i class="fa fa-info"></i> جزئیات تعمیری : </p></div>
                     @foreach ($order_details as $order_detail)
                         <div class="row">
+                            <div class="col-12 col-lg-2 mb-2">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text text-vsm"> شناسه : </span>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm text-center" value="{{ $order_detail->id }}" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled >
+                                </div>
+                            </div>
                             <div class="col-12 col-lg-4 mb-2">
                                 <div class="input-group input-group-sm">
                                     <div class="input-group-prepend">
@@ -215,7 +223,7 @@
                                     <input type="text" class="form-control form-control-sm" value="{{ $order_detail->key }}" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-4 mb-2">
+                            <div class="col-12 col-lg-3 mb-2">
                                 <div class="input-group input-group-sm">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text text-vsm"> هزینه مشتری : </span>
@@ -223,7 +231,7 @@
                                     <input type="text" class="form-control form-control-sm" value="{{ $order_detail->user_amount }}" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-4 mb-2">
+                            <div class="col-12 col-lg-3 mb-2">
                                 <div class="input-group input-group-sm">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text text-vsm"> هزینه تعمیرگاه : </span>
@@ -255,7 +263,15 @@
                     <div><p class="mb-0"><i class="fa fa-paypal"></i> پرداختی ها : </p></div>
                     @foreach ($payments as $payment)
                         <div class="row">
-                            <div class="col-12 col-lg-4 mb-2">
+                            <div class="col-12 col-lg-2 mb-2">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text text-vsm"> شناسه : </span>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm text-center" value="{{ $payment->id }}" aria-label="Small" aria-describedby="inputGroup-sizing-sm" disabled >
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-3 mb-2">
                                 <div class="input-group input-group-sm">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text text-vsm"> مبلغ : </span>
@@ -263,7 +279,7 @@
                                     <input type="text" class="form-control form-control-sm" value="{{ $payment->amount }}" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-4 mb-2">
+                            <div class="col-12 col-lg-3 mb-2">
                                 <div class="input-group input-group-sm">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text text-vsm"> نوع پرداخت : </span>

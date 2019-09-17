@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Validation\Validator; // for o0verride error messages, which stores on session; for form validation error appearance
 use App\Http\Requests\NewOrderFormRequest;
+use App\OrderDetail;
 use Verta;
 
 class OrdersController extends Controller
@@ -97,7 +98,15 @@ class OrdersController extends Controller
     public function show(Order $order)
     {
         Verta::setStringformat("j / n / y \t  H:i");
-        return view('orders.edit', compact('order'));
+
+        $order_details = $order->orderDetails;
+
+        $payments = $order->payments;
+
+        $this->aggregatePricesSum( array($order) );
+
+        return view('orders.edit', compact('order','order_details','payments'));
+
     }
 
 
@@ -111,7 +120,7 @@ class OrdersController extends Controller
 
         $payments = $order->payments;
 
-        $this->aggregatePricesSum($order);
+        $this->aggregatePricesSum( array($order) );
 
         return view('orders.edit', compact('order','order_details','payments'));
 
@@ -173,9 +182,14 @@ class OrdersController extends Controller
 
 
 
-    public function delete(Order $order)
+    public function destroy(Order $order)
     {
-        //Order::delete($order);
+
+        Order::destroy($order->id);
+        
+
+        return redirect('/orders');
+
     }
 
 
@@ -184,7 +198,11 @@ class OrdersController extends Controller
     public function aggregatePricesSum($orders)
     {
 
-        foreach (array($orders) as $order) {
+        /*$order->debt_status = 0;
+        $order->should_pay = 0;
+        $order->paid = 0;*/
+
+        foreach ($orders as $order) {
             $paid_sum = 0;
             foreach ($order->Payments as $payment) {
                 $paid_sum += (int)($payment->amount);

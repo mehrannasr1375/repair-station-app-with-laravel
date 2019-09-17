@@ -52,7 +52,11 @@
                                 ?>
                             </td>
                             <td>
-                                <a href="#"><i class="fa fa-remove text-danger font-weight-bold"></i></a>
+                                <form action="/orders/{{ $order->id }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" value=""/><i class="fa fa-remove text-danger font-weight-bold"></i>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
