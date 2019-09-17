@@ -27,6 +27,7 @@
                         <th style="width:80px">وضعیت تعمیر</th>
                         <th style="width:60px">وضعیت تحویل</th>
                         <th style="width:80px">وضعیت بدهی</th>
+                        <th style="width:50px">حذف</th>
                     </tr>
                     @foreach ($orders as $order)
                         <tr>
@@ -40,7 +41,7 @@
                             <td>
                                 <?php
                                 if ( $order->checkout )         echo "<i class='fa fa-check text-success'></i>";
-                                else                            echo "<i class='fa fa-close text-danger'></i>";
+                                else                            echo " - ";
                                 ?>
                             </td>
                             <td>
@@ -49,6 +50,9 @@
                                 elseif ( $order->debt_status < 0 )      echo $order->debt_status . ' بس ';
                                 else                                    echo '-';
                                 ?>
+                            </td>
+                            <td>
+                                <a href="#"><i class="fa fa-remove text-danger font-weight-bold"></i></a>
                             </td>
                         </tr>
                     @endforeach

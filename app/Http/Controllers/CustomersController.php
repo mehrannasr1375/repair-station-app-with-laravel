@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 use App\Customer;
 use App\Order;
+use App\Http\Requests\NewCustomerFromRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\getCustomerOrdersRequest;
@@ -43,6 +44,7 @@ class CustomersController extends Controller
                 $join->on('customers.id', '=', 'prepaired_orders.customer_id');
             })
             ->where('is_partner', '=', true)
+            ->orderBy('id','DESC')
             ->paginate(8);
 
 
@@ -55,6 +57,7 @@ class CustomersController extends Controller
                 $join->on('customers.id', '=', 'prepaired_orders.customer_id');
             })
             ->where('is_partner', '=', false)
+            ->orderBy('id','DESC')
             ->paginate(8);
 
         return view('customers.index', compact('customers','partners'));
@@ -69,19 +72,13 @@ class CustomersController extends Controller
 
 
 
-    public function store(Request $request)
+    public function store(NewCustomerFromRequest $request)
     {
-
-        $data = $request->validate([
-            'name' => 'required|min:3',
-            'is_partner' => '',
-            'tell_1' => '',
-            'mobile_1' => '',
-            'address' => '',
-        ]);
+        $data = $request->validated();
         $data['is_partner'] = $request->has('is_partner') ? true:false;
-        Customer::create($data);
-        return redirect('/customers');
+        $res = Customer::create($data);
+        return redirect('/customers/'.$res->id.'/edit')
+                    ->with('success', 'مشتری جدید با موفقیت ثبت گردید !');
     }
 
 
@@ -100,18 +97,13 @@ class CustomersController extends Controller
 
 
 
-    public function update(Request $request, Customer $customer)
+    public function update(NewCustomerFromRequest $request, Customer $customer)
     {
-        $data = $request->validate([
-            'name' => 'required|min:3',
-            'is_partner' => '',
-            'tell_1' => '',
-            'mobile_1' => '',
-            'address' => ''
-        ]);
+        $data = $request->validated();
         $data['is_partner'] = $request->has('is_partner') ? true:false;
         $customer->update($data);
-        return redirect('/customers/' . $customer->id . '/edit');
+        return redirect('/customers/' . $customer->id . '/edit')
+                ->with('success', 'تغییرات با موفقیت ذخیره گردید !');
     }
 
 

@@ -12,12 +12,34 @@
     <div class="form-box">
 
 
+        <!-- Messages -->
+        <span class="row my-2">
+            <span class="col-12">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <div>{{ $error }}</div>
+                        @endforeach
+                    </div>
+                @endif
+            </span>
+        </span>
+        <span class="row my-2">
+            <span class="col-12">
+                @if ( session()->has('success') )
+                    <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
+            </span>
+        </span>
+
 
         <!-- Form - create customer -->
         <form action="/customers" method="POST">
             <div class="con">
                 <div>
-                    <p class="mb-0 p-1"><i class="fa fa-user"></i> مشتری جدید : </p>
+                    <p class="mb-0"><i class="fa fa-user"></i> مشتری جدید : </p>
                 </div>
                 <div class="row">
 
@@ -26,12 +48,9 @@
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">نام و نام خانوادگی :</span></div></div>
                         <input type="text" class="form-control border-fix" name="name" value="{{ old('name') }}" autocomplete="off"/>
                     </div>
-                    <div class="text-danger" role='alert' style="line-height:2.5;">
-                        {{ $errors->first('name') }}
-                    </div>
 
                     <!-- is_partner -->
-                    <div id="chk_is_partner" class="col-12  col-lg-4 form-group input-group">
+                    <div id="chk_is_partner" class="col-12 col-lg-3 form-group input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <input type="checkbox" name="is_partner" {{ old('is_partner') ? 'checked':'' }} />
@@ -41,9 +60,9 @@
                     </div>
 
                     <!-- id -->
-                    <div class="col-6  col-lg-2 form-group input-group">
+                    <div class="col-12 col-lg-3 form-group input-group mr-auto">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه:</span></div></div>
-                        <input type="text" class="form-control" name="id" />
+                        <input type="text" class="form-control font-weight-bold text-danger text-center" name="id" disabled />
                     </div>
 
                 </div>
@@ -69,7 +88,9 @@
                 </div>
 
                 <!-- btn submit -->
-                <button class="btn btn-outline-secondary btn-sm my-2" type="submit" >  ثبت  <i class="fa fa-check"></i></button>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-bordered my-2" type="submit" >  ثبت  <i class="fa fa-check"></i></button>
+                </div>
 
             </div>
 

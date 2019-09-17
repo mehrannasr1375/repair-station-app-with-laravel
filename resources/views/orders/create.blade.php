@@ -43,7 +43,7 @@
 
 
             <!-- Customer details -->
-            <div class="con">
+            <div class="con mt-minus-50">
                 <div><p class="mb-0"><i class="fa fa-user"></i> مشخصات مشتری :</p></div>
                 <div class="tab-content tbl-main-con">
                     <!-- tiny btns (new or existing customer) -->
@@ -83,7 +83,7 @@
                                 </div>
                                 <!-- new customer id -->
                                 <div class="col-6 col-lg-3 form-group input-group mr-auto">
-                                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه:</span></div></div>
+                                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه مشتری :</span></div></div>
                                     <input type="text" class="form-control font-weight-bold text-danger" name="new_customer_serial"  disabled />
                                 </div>
                             </div>
@@ -116,7 +116,7 @@
                                 </div>
                                 <!-- existing customer id -->
                                 <div class="col-12 col-lg-3 form-group input-group mr-auto">
-                                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه:</span></div></div>
+                                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه مشتری :</span></div></div>
                                     <input type="text" class="form-control text-center font-weight-bold text-danger" name="old_customer_id" value="{{ old('old_customer_id') }}" autocomplete="off" />
                                 </div>
                             </div>

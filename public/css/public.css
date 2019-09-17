@@ -166,12 +166,19 @@ a:hover {
 
 .alert {
     border-radius: 0 !important;
+    line-height: 1;
+    font-size: 13px !important;
 }
 .alert-danger {
     border-right:4px solid darkred;
     background-color: rgba(۲۵۵, ۲۲۰, ۲۱۹, 0.88);
 }
-
+.alert-success {
+    border-right:4px solid rgb(23, 149, 97);
+}
+.mt-minus-50 {
+    margin-top: -50px !important;
+}
 
 
 /*---------------------------------------| Main Navbar |----------------------------------------*/

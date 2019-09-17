@@ -44,7 +44,7 @@
 
 
                 <!-- Customer details -->
-                <div class="con">
+                <div class="con mt-minus-50">
                     <div><p class="mb-0"><i class="fa fa-user"></i> مشخصات مشتری :</p></div>
                     <div class="tab-content tbl-main-con">
                         <!-- tiny btns (new or existing customer) -->
@@ -130,10 +130,8 @@
                     <div class="row">
                         <!-- device_type -->
                         <div class="col-12 col-lg-6 form-group input-group">
-                            <div class="input-group-prepend"><div class="input-group-text"><span class="label">نوع قطعه:</span></div></div>
-
-
-                            <select style="direction:ltr;" class="form-control custom-select text-vsm" name="device_type" >
+                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">نوع قطعه:</span></div></div>
+                        <select style="direction:ltr;" class="form-control custom-select text-vsm" name="device_type" >
                                 <option {{ $order->device_type=='لپ تاپ'   ? 'selected':'' }} value="لپ تاپ">لپ تاپ</option>
                                 <option {{ $order->device_type=='کیس'     ? 'selected':'' }} value="کیس">کیس</option>
                                 <option {{ $order->device_type=='مادربرد'   ? 'selected':'' }} value="مادربرد">مادربرد</option>
@@ -153,9 +151,7 @@
                                 <option {{ $order->device_type=='تلویزیون'  ? 'selected':'' }} value="تلویزیون">تلویزیون</option>
                                 <option {{ $order->device_type=='هدست'   ? 'selected':'' }} value="هدست">هدست</option>
                                 <option {{ $order->device_type=='دیگر'    ? 'selected':'' }} value="دیگر">دیگر</option>
-                            </select>
-
-
+                        </select>
                         </div>
                         <!-- date -->
                         <div class="col-12 col-lg-4 form-group input-group mr-auto">
@@ -209,61 +205,45 @@
                 <!-- repair-details -->
                 <div id="repair-details-con" class="con">
                     <div><p class="mb-0"><i class="fa fa-info"></i> جزئیات تعمیری : </p></div>
+                    @foreach ($order_details as $order_detail)
+                        <div class="row">
+                            <div class="col-12 col-lg-4 mb-2">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text text-vsm"> عنوان : </span>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm" value="{{ $order_detail->key }}" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-4 mb-2">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text text-vsm"> هزینه مشتری : </span>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm" value="{{ $order_detail->user_amount }}" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-4 mb-2">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text text-vsm"> هزینه تعمیرگاه : </span>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm" value="{{ $order_detail->shop_amount }}" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-0 mb-2">
+                        
+                    @endforeach
 
-                    <div class="row">
-                        <div class="col-12 col-lg-4 mb-2">
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text text-vsm"> عنوان : </span>
-                                </div>
-                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 mb-2">
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text text-vsm"> هزینه مشتری : </span>
-                                </div>
-                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 mb-2">
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text text-vsm"> هزینه تعمیرگاه : </span>
-                                </div>
-                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr class="mt-0 mb-2">
-
-                    <div class="row">
-                        <div class="col-12 col-lg-4 mb-2">
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text text-vsm"> عنوان : </span>
-                                </div>
-                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 mb-2">
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text text-vsm"> هزینه مشتری : </span>
-                                </div>
-                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 mb-2">
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text text-vsm"> هزینه تعمیرگاه : </span>
-                                </div>
-                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
+                    <div class="d-flex justify-content-end">
+                        <p class="mb-0 p-2 text-vsm">
+                            جمع کل : 
+                            <span class="font-weight-bold">
+                                {{ $order->should_pay }}
+                            </span>
+                            تومان
+                        </p>
                     </div>
 
                 </div>
@@ -273,54 +253,55 @@
                 <!-- payments -->
                 <div id="payment-details-con" class="con">
                     <div><p class="mb-0"><i class="fa fa-paypal"></i> پرداختی ها : </p></div>
-                    <div class="row">
-                        <div class="col-12 col-lg-6 mb-2">
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text text-vsm"> مبلغ : </span>
+                    @foreach ($payments as $payment)
+                        <div class="row">
+                            <div class="col-12 col-lg-4 mb-2">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text text-vsm"> مبلغ : </span>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm" value="{{ $payment->amount }}" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                                 </div>
-                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                             </div>
-                        </div>
-                        <div class="col-12 col-lg-6 mb-2">
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text text-vsm"> نوع پرداخت : </span>
+                            <div class="col-12 col-lg-4 mb-2">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text text-vsm"> نوع پرداخت : </span>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm" value="{{ $payment->payment_type }}" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                                 </div>
-                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                             </div>
+                            <div class="col-12 col-lg-4 mb-2">
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text text-vsm"> تاریخ پرداخت : </span>
+                                        </div>
+                                        <input type="text" class="form-control form-control-sm text-center text-vsm" value="{{ new Verta($payment->date) }}" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+                                </div>
                         </div>
+                        <hr class="mt-0 mb-2">
+                    @endforeach
+
+                    <div class="d-flex justify-content-end">
+                        <p class="mb-0 p-2 text-vsm">
+                            جمع کل : 
+                            <span class="font-weight-bold">
+                                {{ $order->paid }}
+                            </span>
+                            تومان
+                        </p>
                     </div>
 
-                    <hr class="mt-0 mb-2">
-
-                    <div class="row">
-                        <div class="col-12 col-lg-6 mb-2">
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text text-vsm"> مبلغ : </span>
-                                </div>
-                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6 mb-2">
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text text-vsm"> نوع پرداخت : </span>
-                                </div>
-                                <input type="text" class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
 
 
 
                 <!-- btn save -->
-                <div class="row my-3 mb-5">
-                    <div class="col">
-                        <button class="btn btn-outline-secondary" type="submit" name="btn-submit-order" > ذخیره <i class="fa fa-check"></i></button>
+                <div class="d-flex justify-content-center mb-5">
+                    <div class="">
+                        <button class="btn btn-bordered" type="submit" name="btn-submit-order" > ذخیره <i class="fa fa-check"></i></button>
                     </div>
                 </div>
 
