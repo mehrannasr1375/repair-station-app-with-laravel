@@ -4,7 +4,7 @@
 
 
 
-    <!-- search bar ----------------------------------------------------------------------------------------------------->
+    <!-- Search bar ------------------------------------------------------------------------------------------------------------------------------>
     @include('common.searchbar')
 
 
@@ -35,7 +35,7 @@
 
 
 
-    <!-- Form --------------------------------------------------------------------------------------------------------------->
+    <!-- Form ------------------------------------------------------------------------------------------------------------------------------------>
     <div class="form-box">
         <form action="/orders/{{ $order->id }}" method="POST">
         @csrf
@@ -49,7 +49,7 @@
             <div class="tab-content tbl-main-con">
 
 
-                <!-- tiny btns (new or existing customer) -->
+                <!-- Tiny btns (new or existing customer) -->
                 <div>
                     <ul class="nav nav-tabs nav-justified">
                         <li class="nav-item active">
@@ -66,8 +66,8 @@
                 </div>
 
 
+                <!-- Customer Details -->
                 <div class="tab-content">
-
 
 
                     <!-- NEW CUSTOMER FIELDS -->
@@ -109,7 +109,6 @@
                     </div>
 
 
-                    
                     <!-- EXISTING CUSTOMER FIELDS -->
                     <div id="existing-customer" class="tab-pane active">
                         <div class="row">
@@ -127,9 +126,7 @@
                     </div>
 
 
-
                 </div>
-
 
 
             </div>
@@ -137,7 +134,7 @@
 
 
 
-        <!-- order details -->
+        <!-- Order details -->
         <div class="con">
                 <div><p class="mb-0"><i class="fa fa-microchip"></i> مشخصات قطعه :</p></div>
                 <div class="row">
@@ -215,7 +212,7 @@
 
 
 
-        <!-- repair-details -->
+        <!-- Repair-details -->
         <div id="repair-details-con" class="con">
                 <div><p class="mb-0"><i class="fa fa-info"></i> جزئیات تعمیری : </p></div>
                 @foreach ($order_details as $order_detail)
@@ -263,7 +260,7 @@
 
 
 
-        <!-- payments -->
+        <!-- Payments -->
         <div id="payment-details-con" class="con">
                 <div><p class="mb-0"><i class="fa fa-paypal"></i> پرداختی ها : </p></div>
                 @foreach ($payments as $payment)
@@ -311,7 +308,7 @@
 
 
 
-        <!-- btn save -->
+        <!-- Btn save -->
         <div class="d-flex justify-content-center mb-5">
                 <div class="">
                     <button class="btn btn-bordered" type="submit" name="btn-submit-order" > ذخیره <i class="fa fa-check"></i></button>
@@ -325,7 +322,7 @@
 
 
 
-    <!-- Scripts ------------------------------------------------------------------------------------------------------>
+    <!-- Scripts --------------------------------------------------------------------------------------------------------------------------------->
     <script type="text/javascript">
         $(window).on('load', function() {
             $("#chk_is_partner").click(function (event) {

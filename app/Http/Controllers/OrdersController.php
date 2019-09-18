@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Validation\Validator; // for o0verride error messages, which stores on session; for form validation error appearance
 use App\Http\Requests\NewOrderFormRequest;
+use Hamcrest\Type\IsInteger;
 use Verta;
 
 class OrdersController extends Controller
@@ -13,14 +14,14 @@ class OrdersController extends Controller
 
 
 
-    public function index()
+    public function index() //ok
     {
 
         Verta::setStringformat('j / n / y  H:i');
 
         $orders = Order::allOrders()
             ->OrderByDesc()
-            ->with('Payments','OrderDetails','customer')
+            ->with('Payments', 'OrderDetails', 'customer')
             ->paginate(8);
 
         $this->aggregatePricesSum($orders);
@@ -31,16 +32,20 @@ class OrdersController extends Controller
 
 
 
-    public function create()
+    public function create() //ok
     {
+
         Verta::setStringformat('j / n / y ');
+
         return view('orders.create');
+
     }
 
 
 
     public function store(NewOrderFormRequest $request)
     {
+
         if ( $request->rd_customer_status == 'new' )
         {
             $data['customer'] = [
@@ -59,10 +64,9 @@ class OrdersController extends Controller
                 'opened_earlier'   => $request->opened_earlier,
                 'participants_csv' => $request->participants_csv,
             ];
-            $data['customer']['is_partner'] = $request->has('is_partner') ? true:false;
+            $data['customer']['is_partner']  = $request->has('is_partner') ? true:false;
             $data['order']['opened_earlier'] = $request->has('opened_earlier') ? true:false;
 
-            //dd($request);
             DB::beginTransaction();
             $customer_id = Customer::create($data['customer'])->id;
             $data['order']['customer_id'] = (int)$customer_id;
@@ -70,7 +74,6 @@ class OrdersController extends Controller
             DB::commit();
             session()->flash('success_res', ' تعمیری با موفقیت ثبت گردید.');
         }
-
 
         else if ( $request->rd_customer_status == 'old' )
         {
@@ -84,19 +87,26 @@ class OrdersController extends Controller
                 'problem_details' => '',
                 'participants_csv' => '',
             ]);
+            
             // check and get customer.id
+            Customer::firstOrFailed($request->customer_id);    
+
             //save to orders
+            Order::create($data['order']);
+
             session()->flash('success_res', ' ثبت گردید.');
         }
 
+
         return redirect('/orders/' . $order_id . '/edit');
+
     }
 
 
 
-    public function show(Order $order)
+    public function show(Order $order) //ok
     {
-        
+
         Verta::setStringformat("j / n / y \t  H:i");
 
         return view('orders.edit', compact('order'));
@@ -105,7 +115,7 @@ class OrdersController extends Controller
 
 
 
-    public function edit(Order $order)
+    public function edit(Order $order) //ok
     {
 
         Verta::setStringformat("j / n / y \t H:i");
@@ -124,6 +134,7 @@ class OrdersController extends Controller
 
     public function update(Request $request, Order $order)
     {
+
         if ( $request->rd_customer_status == 'new' ) // update order => with new customer
         {
             $data['customer'] = $request->validate([
@@ -173,11 +184,12 @@ class OrdersController extends Controller
         }
         return redirect('orders/' . $order->id . '/edit')
             ->with('success_res', ' اطلاعات تعمیری با موفقیت بروزرسانی شد.');
+
     }
 
 
 
-    public function destroy(Order $order) //ajax
+    public function destroy(Order $order) //ajax //ok
     {
 
         $order->delete();
@@ -189,7 +201,7 @@ class OrdersController extends Controller
 
 
     // calculate 'paid' && 'should_pay' && 'sum' amount for order
-    public function aggregatePricesSum($orders)
+    public function aggregatePricesSum($orders) //ok
     {
 
         foreach ($orders as $order) {
@@ -208,6 +220,65 @@ class OrdersController extends Controller
         }
 
     }
+
+
+
+    public function getCustomers(Request $request) //ajax 
+    {
+
+        if ( $request->type == 'id' ) 
+        {
+            $id = (int)($request->id);
+            $customer = Customer::where('id', '=', $id)->first();
+            if ( is_object($customer) ) {
+                return response(json_encode($customer), 200);
+            } else {
+                return response('false', 200);
+            }
+        }
+        else if ( $request->type == 'name' ) 
+        {
+            $name = $request->name;
+            $customers = Customer::where('name', 'like', "%{$name}%")->get();
+
+            /*
+
+                If you dd($customers); you'll notice an instance of 'Illuminate\Support\Collection'
+                is always returned, even when there are no results.
+
+                If you return an Eloquent object with ajax, it will be represented as JSON (perfect for APIs)
+
+                So you should do any of the following:
+                        if ($result->first()) { } 
+                        if (!$result->isEmpty()) { }
+                        if ($result->count()) { }
+
+                the  '->first()'  or  '->get()'  expressions will
+                returns an 'array' and if there is no results, returns  'null'        
+
+            */
+            if ( $customers->first() ) {
+                return response(json_encode($customers), 200);
+            } else {
+                return response('false', 200);
+            }
+        } 
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

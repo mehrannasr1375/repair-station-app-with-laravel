@@ -4,41 +4,41 @@
 
 
 
-    <!-- search bar -->
+    <!-- Search bar ------------------------------------------------------------------------------------------------------------------------------------------------------------------->
     @include('common.searchbar')
 
 
 
-    <!-- Form - create order (& customer) -->
+    <!-- Messages ---------------------------------------------------------------------------------------------------------------------------------------------------->
+    <span class="row mt-3">
+        <span class="col-12">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        </span>
+    </span>
+    <span class="row mt-3">
+        <span class="col">
+            @if ( session()->has('success_res') )
+                <div class="alert alert-success">
+                    {{ session()->get('success_res') }}
+                </div>
+            @endif
+        </span>
+    </span>
+
+
+
+    <!-- Form ----------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <div class="form-box">
         <form action="/orders" method="POST">
-        @csrf
-
-
-
-        <!-- Messages -->
-            <span class="row mt-3">
-                <span class="col-12">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul class="mb-0">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                </span>
-            </span>
-            <span class="row mt-3">
-                <span class="col">
-                    @if ( session()->has('success_res') )
-                        <div class="alert alert-success">
-                            {{ session()->get('success_res') }}
-                        </div>
-                    @endif
-                </span>
-            </span>
+            @csrf
 
 
 
@@ -46,7 +46,9 @@
             <div class="con">
                 <div><p class="mb-0"><i class="fa fa-user"></i> مشخصات مشتری :</p></div>
                 <div class="tab-content tbl-main-con">
-                    <!-- tiny btns (new or existing customer) -->
+                    
+                    
+                    <!-- Tiny btns -->
                     <div>
                         <ul class="nav nav-tabs nav-justified">
                             <li class="nav-item active">
@@ -61,10 +63,13 @@
                             <input type="radio" name="rd_customer_status" value="old" id="customer_status_old">old customer
                         </div>
                     </div>
+
+
+                    <!-- Customer details -->
                     <div class="tab-content">
 
 
-                        <!-- NEW CUSTOMER FIELDS -->
+                        <!-- New Customer fields -->
                         <div id="new-customer" class="tab-pane active">
                             <div class="row">
                                 <!-- new customer name -->
@@ -106,18 +111,25 @@
                         </div>
 
 
-                        <!-- EXISTING CUSTOMER FIELDS -->
+                        <!-- Existing Customer fields -->
                         <div id="existing-customer" class="tab-pane">
                             <div class="row">
                                 <!-- existing customer name -->
-                                <div class="col-12 col-lg-6 form-group input-group">
+                                <div class="col-12 col-lg-6 form-group input-group" id="txt_old_name_con">
                                     <div class="input-group-prepend"><div class="input-group-text"><span class="label">نام و نام خانوادگی :</span></div></div>
-                                    <input type="text" class="form-control border-fix" name="old_name" value="{{ old('old_name') }}" autocomplete="off" />
+                                    <input type="text" id="txt_old_name" class="form-control border-fix" name="old_name" value="{{ old('old_name') }}" autocomplete="off" />
                                 </div>
                                 <!-- existing customer id -->
                                 <div class="col-12 col-lg-3 form-group input-group mr-auto">
                                     <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه مشتری :</span></div></div>
-                                    <input type="text" class="form-control text-center font-weight-bold text-danger" name="old_customer_id" value="{{ old('old_customer_id') }}" autocomplete="off" />
+                                    <input type="text" id="txt_old_id" class="form-control text-center font-weight-bold" name="old_customer_id" value="{{ old('old_customer_id') }}" autocomplete="off" />
+                                </div>
+
+                                <!-- available customers via ajax -->
+                                <div class="col-12" id="link-customer-con">
+                                    <div id="" class="" >
+                                        <!--<a class="link-customer" href="#">حسن حسنی</a>-->
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +141,7 @@
 
 
 
-            <!-- order details -->
+            <!-- Order details -->
             <div class="con">
                 <div><p class="mb-0"><i class="fa fa-microchip"></i> مشخصات قطعه :</p></div>
                 <div class="row">
@@ -209,27 +221,88 @@
 
 
 
-            <!-- btns -->
+            <!-- Btns -->
             <div class="d-flex justify-content-center my-3 mb-5 mr-auto">
                 <button class="btn btn-bordered m-1" type="button" name="btn-print-order" > چاپ <i class="fa fa-navicon pr-4"></i></button>
                 <button class="btn btn-bordered m-1" type="submit" name="btn-submit-order" > ثبت <i class="fa fa-check pr-4"></i></button>
             </div>
-
+    
 
 
         </form>
     </div>
+    
 
 
-
+    <!-- Scripts --------------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <script type="text/javascript">
         $(window).on('load', function() {
+
+
+            // UI
             $("#chk_is_partner").click(function (event) {
                 $('input[type=checkbox][name=is_partner]').click();
             });
             $("#chk_is_repaired").click(function (event) {
                 $('input[type=checkbox][name=opened_earlier]').click();
             });
+
+
+            // get customer by id
+            $("#txt_old_id").on('keyup', function(event){
+                $.ajax({
+                    url:"/orders/get",
+                    method:"POST",
+                    data:{
+                        '_token' : "<?php echo csrf_token() ?>",
+                        'type':'id',
+                        'id' : $(this).val(),
+                    },
+                    success:function (data) {
+                        if ( data !== 'false' ) {
+                            $('#link-customer-con').hide();
+                            $("#txt_old_id").css('color', 'green');
+                            console.log('saved!');
+                        } else {
+                            $("#txt_old_id").css('color', 'red');
+                            console.log('error : ' + data);
+                        }
+                    }
+                });         
+            });
+
+
+            // get customers by name
+            $("#txt_old_name").on('keyup', function(event){
+                $.ajax({
+                    url:"/orders/get",
+                    method:"POST",
+                    data:{
+                        '_token' : "<?php echo csrf_token() ?>",
+                        'type':'name',
+                        'id' : $(this).val(),
+                    },
+                    success:function (data) {
+                        if ( data !== 'false' ) {
+                            let html_res = $('#link-customer-con');
+                            let res = JSON.parse(data);
+                            //console.log(res);
+                            for ( let i=0; i<res.count; i++ ) {
+                                console.log(res[i].name);
+                                html_res.append('<a class="link-customer" href="#" data-id="">' + row.name + '</a>\n');
+                            }
+                            html_res.show(); 
+                            $("#txt_old_name").css('color', 'green');
+                            console.log('records are available!');
+                        } else {
+                            $("#txt_old_name").css('color', 'red');
+                            console.log('error : ' + data);
+                        }
+                    }
+                });   
+            });
+
+
         });
     </script>
 

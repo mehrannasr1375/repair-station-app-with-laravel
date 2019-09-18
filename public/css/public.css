@@ -571,6 +571,26 @@ input:focus, textarea:focus,select:focus,button:focus {
     width:100px;
 }
 
+#link-customer-con {
+    padding: 20px;
+}
+.link-customer {
+    display: inline-block;
+    margin-bottom: 2px;
+    margin-left: 4px;
+    color:grey;
+    background-color: rgb(238, 236, 236);
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    border-right: 2px solid #00b8ff
+    
+}
+#txt_old_id, #txt_old_name {
+    color:red;
+}
+
 
 /*-----------------------------------------| create & update Order Box |-----------------------------------------------*/
 
