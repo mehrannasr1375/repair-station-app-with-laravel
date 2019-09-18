@@ -96,8 +96,11 @@ class OrdersController extends Controller
 
     public function show(Order $order)
     {
+        
         Verta::setStringformat("j / n / y \t  H:i");
+
         return view('orders.edit', compact('order'));
+
     }
 
 
@@ -174,14 +177,18 @@ class OrdersController extends Controller
 
 
 
-    public function delete(Order $order)
+    public function destroy(Order $order) //ajax
     {
-        //Order::delete($order);
+
+        $order->delete();
+
+        return response('true', 200);
+
     }
 
 
 
-    // calculate 'paid' && 'should_pay' &&  sum amount for order
+    // calculate 'paid' && 'should_pay' && 'sum' amount for order
     public function aggregatePricesSum($orders)
     {
 

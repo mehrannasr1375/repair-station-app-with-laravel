@@ -20,7 +20,8 @@
         <a href="#"><span class="btn btn-sm hover-e-1"><i class="fa fa-comment"></i></span></a>
         <a href="#"><span class="btn btn-sm hover-e-1"><i class="fa fa-user"></i></span></a>
         <a href="#"><span class="btn btn-sm hover-e-1"><i class="fa fa-close"></i></span></a>
-        <a href="#"><span class="btn btn-sm hover-e-1"><i class="fa fa-arrow-left"></i></span></a>
+        <a href="#" onclick="window.location.reload();"><span class="btn btn-sm hover-e-1"><i class="fa fa-refresh"></i></span></a>
+        <a href="#" onclick="window.history.go(-1); return false;"><span class="btn btn-sm hover-e-1"><i class="fa fa-arrow-left"></i></span></a>
     </ul>
 
 

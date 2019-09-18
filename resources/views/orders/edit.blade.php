@@ -4,12 +4,38 @@
 
 
 
-    <!-- search bar -->
+    <!-- search bar ----------------------------------------------------------------------------------------------------->
     @include('common.searchbar')
 
 
 
-    <!-- Form for show && edit order -->
+    <!-- Messages -------------------------------------------------------------------------------------------------------------------------------->
+    <span class="row mt-3">
+            <span class="col-12">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </span>
+        </span>
+    <span class="row mt-3">
+        <span class="col">
+                @if ( session()->has('success_res') )
+                    <div class="alert alert-success">
+                        {{ session()->get('success_res') }}
+                    </div>
+                @endif
+        </span>
+    </span>
+
+
+
+    <!-- Form --------------------------------------------------------------------------------------------------------------->
     <div class="form-box">
         <form action="/orders/{{ $order->id }}" method="POST">
         @csrf
@@ -17,115 +43,102 @@
 
 
 
-        <!-- Messages -->
-            <span class="row mt-3">
-                    <span class="col-12">
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul class="mb-0">
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                    </span>
-                </span>
-            <span class="row mt-3">
-                    <span class="col">
-                        @if ( session()->has('success_res') )
-                            <div class="alert alert-success">
-                                {{ session()->get('success_res') }}
-                            </div>
-                        @endif
-                    </span>
-                </span>
+        <!-- Customer details -->
+        <div class="con">
+            <div><p class="mb-0"><i class="fa fa-user"></i> مشخصات مشتری :</p></div>
+            <div class="tab-content tbl-main-con">
 
 
-
-            <!-- Customer details -->
-            <div class="con">
-                <div><p class="mb-0"><i class="fa fa-user"></i> مشخصات مشتری :</p></div>
-                <div class="tab-content tbl-main-con">
-                    <!-- tiny btns (new or existing customer) -->
-                    <div>
-                        <ul class="nav nav-tabs nav-justified">
-                            <li class="nav-item active">
-                                <a href="#new-customer" id="new_customer" class="nav-link" data-toggle="tab">مشتری جدید</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#existing-customer" id="old_customer" class="nav-link active" data-toggle="tab">مشتری ثبت شده</a>
-                            </li>
-                        </ul>
-                        <div style="visibility:hidden;">
-                            <input type="radio" name="rd_customer_status" value="new" id="customer_status_new">new customer
-                            <input type="radio" name="rd_customer_status" value="old" id="customer_status_old" checked="checked">old customer
-                        </div>
-                    </div>
-                    <div class="tab-content">
-
-                        <!-- NEW CUSTOMER FIELDS -->
-                        <div id="new-customer" class="tab-pane">
-                            <div class="row">
-                                <!-- new customer name -->
-                                <div class="col-12 col-lg-6 form-group input-group">
-                                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">نام و نام خانوادگی :</span></div></div>
-                                    <input type="text" class="form-control border-fix" name="name"  value="{{ old('name') }}" autocomplete="off" />
-                                </div>
-                                <!-- new customer is_partner -->
-                                <div id="chk_is_partner" class="col-6 col-lg-2 form-group input-group">
-                                    <div class="input-group-prepend"><div class="input-group-text"><input type="checkbox" name="is_partner" value="1" {{ old('is_partner') ?'checked':'' }}/></div>
-                                    </div>
-                                    <div class="input-group-append"><div class="input-group-text label bg-white">همکار</div></div>
-                                </div>
-                                <!-- new customer id -->
-                                <div class="col-6 col-lg-4 form-group input-group">
-                                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه مشتری:</span></div></div>
-                                    <input type="text" class="form-control font-weight-bold text-danger" name="new_customer_serial" disabled />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <!-- new customer phones -->
-                                <div class="col-12 col-lg-6 form-group input-group">
-                                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن همراه :</span></div></div>
-                                    <input type="text" class="form-control text-center" name="mobile_1" value="{{ old('mobile_1') }}"  autocomplete="off"/>
-                                </div>
-                                <div class="col-12 col-lg-6 form-group input-group">
-                                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن ثابت :</span></div></div>
-                                    <input type="text" class="form-control text-center" name="tell_1" value="{{ old('tell_1') }}"  autocomplete="off"/>
-                                </div>
-                                <!-- new customer address -->
-                                <div class="col-12 form-group input-group">
-                                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">آدرس :</span></div></div>
-                                    <input type="text" class="form-control" name="address" value="{{ old('address') }}" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- EXISTING CUSTOMER FIELDS -->
-                        <div id="existing-customer" class="tab-pane active">
-                            <div class="row">
-                                <!-- existing customer name -->
-                                <div class="col-12 col-lg-8 form-group input-group">
-                                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">نام و نام خانوادگی :</span></div></div>
-                                    <input type="text" class="form-control border-fix" name="name" value="{{ old('old_name') ?? $order->customer->name }}" autocomplete="off" />
-                                </div>
-                                <!-- existing customer id -->
-                                <div class="col-12 col-lg-4 form-group input-group">
-                                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه مشتری:</span></div></div>
-                                    <input type="text" class="form-control text-center font-weight-bold text-danger" name="old_customer_id" value="{{ old('old_customer_id') ?? $order->customer_id }}" autocomplete="off" disabled />
-                                </div>
-                            </div>
-                        </div>
-
+                <!-- tiny btns (new or existing customer) -->
+                <div>
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="nav-item active">
+                            <a href="#new-customer" id="new_customer" class="nav-link" data-toggle="tab">مشتری جدید</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#existing-customer" id="old_customer" class="nav-link active" data-toggle="tab">مشتری ثبت شده</a>
+                        </li>
+                    </ul>
+                    <div style="visibility:hidden;">
+                        <input type="radio" name="rd_customer_status" value="new" id="customer_status_new">new customer
+                        <input type="radio" name="rd_customer_status" value="old" id="customer_status_old" checked="checked">old customer
                     </div>
                 </div>
+
+
+                <div class="tab-content">
+
+
+
+                    <!-- NEW CUSTOMER FIELDS -->
+                    <div id="new-customer" class="tab-pane">
+                        <div class="row">
+                            <!-- new customer name -->
+                            <div class="col-12 col-lg-6 form-group input-group">
+                                <div class="input-group-prepend"><div class="input-group-text"><span class="label">نام و نام خانوادگی :</span></div></div>
+                                <input type="text" class="form-control border-fix" name="name"  value="{{ old('name') }}" autocomplete="off" />
+                            </div>
+                            <!-- new customer is_partner -->
+                            <div id="chk_is_partner" class="col-6 col-lg-2 form-group input-group">
+                                <div class="input-group-prepend"><div class="input-group-text"><input type="checkbox" name="is_partner" value="1" {{ old('is_partner') ?'checked':'' }}/></div>
+                                </div>
+                                <div class="input-group-append"><div class="input-group-text label bg-white">همکار</div></div>
+                            </div>
+                            <!-- new customer id -->
+                            <div class="col-6 col-lg-4 form-group input-group">
+                                <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه مشتری:</span></div></div>
+                                <input type="text" class="form-control font-weight-bold text-danger" name="new_customer_serial" disabled />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- new customer phones -->
+                            <div class="col-12 col-lg-6 form-group input-group">
+                                <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن همراه :</span></div></div>
+                                <input type="text" class="form-control text-center" name="mobile_1" value="{{ old('mobile_1') }}"  autocomplete="off"/>
+                            </div>
+                            <div class="col-12 col-lg-6 form-group input-group">
+                                <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن ثابت :</span></div></div>
+                                <input type="text" class="form-control text-center" name="tell_1" value="{{ old('tell_1') }}"  autocomplete="off"/>
+                            </div>
+                            <!-- new customer address -->
+                            <div class="col-12 form-group input-group">
+                                <div class="input-group-prepend"><div class="input-group-text"><span class="label">آدرس :</span></div></div>
+                                <input type="text" class="form-control" name="address" value="{{ old('address') }}" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
+                    <!-- EXISTING CUSTOMER FIELDS -->
+                    <div id="existing-customer" class="tab-pane active">
+                        <div class="row">
+                            <!-- existing customer name -->
+                            <div class="col-12 col-lg-8 form-group input-group">
+                                <div class="input-group-prepend"><div class="input-group-text"><span class="label">نام و نام خانوادگی :</span></div></div>
+                                <input type="text" class="form-control border-fix" name="name" value="{{ old('old_name') ?? $order->customer->name }}" autocomplete="off" />
+                            </div>
+                            <!-- existing customer id -->
+                            <div class="col-12 col-lg-4 form-group input-group">
+                                <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه مشتری:</span></div></div>
+                                <input type="text" class="form-control text-center font-weight-bold text-danger" name="old_customer_id" value="{{ old('old_customer_id') ?? $order->customer_id }}" autocomplete="off" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
             </div>
+        </div>
 
 
 
-            <!-- order details -->
-            <div class="con">
+        <!-- order details -->
+        <div class="con">
                 <div><p class="mb-0"><i class="fa fa-microchip"></i> مشخصات قطعه :</p></div>
                 <div class="row">
                     <!-- device_type -->
@@ -198,12 +211,12 @@
                         <textarea class="form-control text-vsm" name="participants_csv">{{ old('participants_csv') ?? $order->participants_csv }}</textarea>
                     </div>
                 </div>
-            </div>
+        </div>
 
 
 
-            <!-- repair-details -->
-            <div id="repair-details-con" class="con">
+        <!-- repair-details -->
+        <div id="repair-details-con" class="con">
                 <div><p class="mb-0"><i class="fa fa-info"></i> جزئیات تعمیری : </p></div>
                 @foreach ($order_details as $order_detail)
                     <div class="row">
@@ -246,12 +259,12 @@
                     </p>
                 </div>
 
-            </div>
+        </div>
 
 
 
-            <!-- payments -->
-            <div id="payment-details-con" class="con">
+        <!-- payments -->
+        <div id="payment-details-con" class="con">
                 <div><p class="mb-0"><i class="fa fa-paypal"></i> پرداختی ها : </p></div>
                 @foreach ($payments as $payment)
                     <div class="row">
@@ -294,16 +307,16 @@
                 </div>
 
 
-            </div>
+        </div>
 
 
 
-            <!-- btn save -->
-            <div class="d-flex justify-content-center mb-5">
+        <!-- btn save -->
+        <div class="d-flex justify-content-center mb-5">
                 <div class="">
                     <button class="btn btn-bordered" type="submit" name="btn-submit-order" > ذخیره <i class="fa fa-check"></i></button>
                 </div>
-            </div>
+        </div>
 
 
 
@@ -312,6 +325,7 @@
 
 
 
+    <!-- Scripts ------------------------------------------------------------------------------------------------------>
     <script type="text/javascript">
         $(window).on('load', function() {
             $("#chk_is_partner").click(function (event) {
