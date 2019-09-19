@@ -48,8 +48,10 @@ Route::post('/repairing/addrepaired', 'repairingOrdersController@addRepaired');/
 
 
 Route::get('/testroute', function(){
-    $customers = \App\Customer::where('name', 'like', "%a%")->get()->toArray();
-        
+//    $customers = \App\Customer::where('name', 'like', "%a%")->get()->toArray();
+    $a = 'ab';
+    $customers = \App\Customer::where('name', 'like', "%{$a}%")->get()->toArray();
+
     dump( "is object:"  );
     dump( is_object($customers) );
     dump( "is array: " );

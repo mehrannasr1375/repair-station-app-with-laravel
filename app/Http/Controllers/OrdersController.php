@@ -87,16 +87,15 @@ class OrdersController extends Controller
                 'problem_details' => '',
                 'participants_csv' => '',
             ]);
-            
+
             // check and get customer.id
-            Customer::firstOrFailed($request->customer_id);    
+            Customer::firstOrFailed($request->customer_id);
 
             //save to orders
             Order::create($data['order']);
 
             session()->flash('success_res', ' ثبت گردید.');
         }
-
 
         return redirect('/orders/' . $order_id . '/edit');
 
@@ -223,22 +222,25 @@ class OrdersController extends Controller
 
 
 
-    public function getCustomers(Request $request) //ajax 
+    public function getCustomers(Request $request) //ajax
     {
 
-        if ( $request->type == 'id' ) 
+        if ( $request->type == 'id' )
         {
             $id = (int)($request->id);
             $customer = Customer::where('id', '=', $id)->first();
-            if ( is_object($customer) ) {
+            if ( $customer->first() ) {
                 return response(json_encode($customer), 200);
             } else {
                 return response('false', 200);
             }
         }
-        else if ( $request->type == 'name' ) 
+        else if ( $request->type == 'name' )
         {
             $name = $request->name;
+            if ( $name == "" ) {
+                return response('false', 200);
+            }
             $customers = Customer::where('name', 'like', "%{$name}%")->get();
 
             /*
@@ -249,12 +251,12 @@ class OrdersController extends Controller
                 If you return an Eloquent object with ajax, it will be represented as JSON (perfect for APIs)
 
                 So you should do any of the following:
-                        if ($result->first()) { } 
+                        if ($result->first()) { }
                         if (!$result->isEmpty()) { }
                         if ($result->count()) { }
 
                 the  '->first()'  or  '->get()'  expressions will
-                returns an 'array' and if there is no results, returns  'null'        
+                returns an 'array' and if there is no results, returns  'null'
 
             */
             if ( $customers->first() ) {
@@ -262,7 +264,7 @@ class OrdersController extends Controller
             } else {
                 return response('false', 200);
             }
-        } 
+        }
 
     }
 

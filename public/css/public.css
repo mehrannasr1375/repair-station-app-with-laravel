@@ -573,19 +573,27 @@ input:focus, textarea:focus,select:focus,button:focus {
 
 #link-customer-con {
     padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 .link-customer {
+    cursor:pointer;
     display: inline-block;
-    margin-bottom: 2px;
-    margin-left: 4px;
+    margin-bottom: 10px;
+    margin-left: 6px;
     color:grey;
-    background-color: rgb(238, 236, 236);
-    padding: 5px 10px;
-    border-radius: 3px;
+    background-color: white;
+    padding: 8px 16px;
+    box-shadow: 0px 4px 12px -6px grey;
     font-size: 12px;
     font-weight: 600;
-    border-right: 2px solid #00b8ff
-    
+    border-right: 2px solid #00b8ff;
+    transition-duration: .2s;
+}
+.link-customer:hover {
+    color:black;
+    box-shadow: 0px 5px 18px -8px black;
 }
 #txt_old_id, #txt_old_name {
     color:red;

@@ -46,8 +46,8 @@
             <div class="con">
                 <div><p class="mb-0"><i class="fa fa-user"></i> مشخصات مشتری :</p></div>
                 <div class="tab-content tbl-main-con">
-                    
-                    
+
+
                     <!-- Tiny btns -->
                     <div>
                         <ul class="nav nav-tabs nav-justified">
@@ -124,12 +124,9 @@
                                     <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه مشتری :</span></div></div>
                                     <input type="text" id="txt_old_id" class="form-control text-center font-weight-bold" name="old_customer_id" value="{{ old('old_customer_id') }}" autocomplete="off" />
                                 </div>
-
                                 <!-- available customers via ajax -->
                                 <div class="col-12" id="link-customer-con">
-                                    <div id="" class="" >
-                                        <!--<a class="link-customer" href="#">حسن حسنی</a>-->
-                                    </div>
+                                    <!-- contents will create here with ajax -->
                                 </div>
                             </div>
                         </div>
@@ -226,12 +223,12 @@
                 <button class="btn btn-bordered m-1" type="button" name="btn-print-order" > چاپ <i class="fa fa-navicon pr-4"></i></button>
                 <button class="btn btn-bordered m-1" type="submit" name="btn-submit-order" > ثبت <i class="fa fa-check pr-4"></i></button>
             </div>
-    
+
 
 
         </form>
     </div>
-    
+
 
 
     <!-- Scripts --------------------------------------------------------------------------------------------------------------------------------------------------------------------->
@@ -248,8 +245,15 @@
             });
 
 
+            // uses in two bottom blocks :
+            let res_container   =   $('#link-customer-con');
+            let txt_name        =   $("#txt_old_name");
+            let txt_id          =   $("#txt_old_id");
+
+
             // get customer by id
-            $("#txt_old_id").on('keyup', function(event){
+            txt_id.on('keyup', function(event){
+                txt_name.css('color', 'red').val('');
                 $.ajax({
                     url:"/orders/get",
                     method:"POST",
@@ -260,50 +264,57 @@
                     },
                     success:function (data) {
                         if ( data !== 'false' ) {
-                            $('#link-customer-con').hide();
-                            $("#txt_old_id").css('color', 'green');
-                            console.log('saved!');
+                            txt_id.css('color', 'green');
+                            let customer_name = JSON.parse(data).name;
+                            txt_name.css('color', 'green').val(customer_name);
                         } else {
-                            $("#txt_old_id").css('color', 'red');
-                            console.log('error : ' + data);
+                            txt_id.css('color', 'red');
+                            txt_name.css('color', 'red').val();
                         }
+                    },
+                    error: function(){
+                        txt_id.css('color', 'red');
+                        txt_name.css('color', 'red').val('');
                     }
-                });         
+                });
             });
 
 
             // get customers by name
-            $("#txt_old_name").on('keyup', function(event){
+            txt_name.on('keyup', function(event){
+                txt_id.css('color', 'red').val('');
                 $.ajax({
                     url:"/orders/get",
                     method:"POST",
                     data:{
                         '_token' : "<?php echo csrf_token() ?>",
                         'type':'name',
-                        'id' : $(this).val(),
+                        'name' : $(this).val(),
                     },
                     success:function (data) {
                         if ( data !== 'false' ) {
-                            let html_res = $('#link-customer-con');
                             let res = JSON.parse(data);
-                            
-                            console.log(res);
-                            console.log(res.length);
-
-                            for ( let i=0; i<res.length; i++ ) {
-                                console.log(res[i].name);
-                                html_res.append('<a class="link-customer" href="#" data-id="">' + res[i].name + '</a>\n');
+                            res_container.html('')
+                            for ( let i=0 ; i<res.length ; i++ ) {
+                                res_container.append('<span class="link-customer" data-name="' + res[i].name + '" data-id="' + res[i].id + '">' + res[i].name + '</span>\n');
                             }
-                            html_res.show(); 
-                            $("#txt_old_name").css('color', 'green');
-                            console.log('records are available!');
+                            res_container.show();
+                            txt_name.css('color', 'green');
                         } else {
-                            $("#txt_old_name").css('color', 'red');
-                            console.log('error : ' + data);
+                            res_container.html('');
+                            txt_name.css('color', 'red');
                         }
                     }
                 });
             });
+
+
+            // set customer_id for clicking result links
+            res_container.on('click', '.link-customer', function(event) {
+                txt_id.css('color', 'green').val($(event.target).data('id'));
+                txt_name.css('color', 'green').val($(event.target).data('name'));
+                res_container.hide();
+            })
 
 
         });
