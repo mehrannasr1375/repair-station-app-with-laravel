@@ -286,10 +286,13 @@
                         if ( data !== 'false' ) {
                             let html_res = $('#link-customer-con');
                             let res = JSON.parse(data);
-                            //console.log(res);
-                            for ( let i=0; i<res.count; i++ ) {
+                            
+                            console.log(res);
+                            console.log(res.length);
+
+                            for ( let i=0; i<res.length; i++ ) {
                                 console.log(res[i].name);
-                                html_res.append('<a class="link-customer" href="#" data-id="">' + row.name + '</a>\n');
+                                html_res.append('<a class="link-customer" href="#" data-id="">' + res[i].name + '</a>\n');
                             }
                             html_res.show(); 
                             $("#txt_old_name").css('color', 'green');
@@ -299,7 +302,7 @@
                             console.log('error : ' + data);
                         }
                     }
-                });   
+                });
             });
 
 

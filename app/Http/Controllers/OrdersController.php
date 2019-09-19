@@ -258,7 +258,7 @@ class OrdersController extends Controller
 
             */
             if ( $customers->first() ) {
-                return response(json_encode($customers), 200);
+                return response(json_encode($customers->toArray()), 200);
             } else {
                 return response('false', 200);
             }
