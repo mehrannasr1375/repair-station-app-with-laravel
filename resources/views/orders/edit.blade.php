@@ -290,7 +290,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text text-vsm"> تاریخ پرداخت : </span>
                                 </div>
-                                <input type="text" class="form-control form-control-sm text-center text-vsm" value="{{ new Verta($payment->date) }}" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                <input type="text" class="form-control form-control-sm text-center text-vsm" value="{{ $payment->date }}" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                             </div>
                         </div>
                     </div>

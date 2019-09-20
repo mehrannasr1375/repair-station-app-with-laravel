@@ -60,8 +60,6 @@ class OrdersController extends Controller
     public function show(Order $order) //ok
     {
 
-        Verta::setStringformat("j / n / y \t  H:i");
-
         return view('orders.edit', compact('order'));
 
     }
@@ -71,11 +69,8 @@ class OrdersController extends Controller
     public function edit(Order $order) //ok
     {
 
-        Verta::setStringformat("j / n / y");
-
         $order_details = $order->orderDetails;
-
-        $payments = $order->payments;
+        $payments      = $order->payments;
 
         $this->aggregatePricesSum(array($order));
 
