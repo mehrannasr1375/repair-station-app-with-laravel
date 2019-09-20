@@ -19,9 +19,11 @@ class prepairedOrdersController extends Controller
 {
 
 
-    public function index()
+
+    public function index() //ok
     {
-        Verta::setStringformat("j / n / y \n H:i");
+
+        Verta::setStringformat("j / n / y H:i");
 
         $orders = Order::prepairedOrders()->undeliveredOrders()->orderByDesc()->with('OrderDetails','customer')->paginate(8);
 
@@ -35,19 +37,22 @@ class prepairedOrdersController extends Controller
         }
 
         return view('prepaired.index', compact('orders'));
+
     }
 
 
 
+    // ajax for checkout order
     public function checkOut(updateOrderStatusRequest $request)
     {
-        $order_id = $request->order_id;
-        $payments_array = $request->array; //turn the json string to array
 
-        //insert into payments table in a for loop
+        $order_id        =  $request->order_id;
+        $payments_array  =  $request->array;
+
+        // insert into payments table in a for loop
         for ($i=0; $i<count($payments_array); $i++) {
-            $amount = $payments_array[$i][0];
-            $payment_type  = $payments_array[$i][1];
+            $amount        =  $payments_array[$i][0];
+            $payment_type  =  $payments_array[$i][1];
             Payment::create([
                 'order_id'      =>  $order_id,
                 'amount'        =>  $amount,
@@ -56,29 +61,24 @@ class prepairedOrdersController extends Controller
         }
 
         Order::where('id',$order_id)->update(['checkout' => true]);
+
         return response($request->order_id, 200);
+
     }
 
 
 
-    public function addNote(addOrderNoteRequest $request)
+    // ajax for add order note
+    public function addNote(addOrderNoteRequest $request) //ok
     {
-        Order::where('id',$request->order_id)->update(['delivery_note'=>$request->note]);
+
+        Order::where('id',$request->order_id)->update([
+            'delivery_note' => $request->note
+        ]);
+
         return response('true', 200);
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

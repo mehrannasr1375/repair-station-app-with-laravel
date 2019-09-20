@@ -9,7 +9,6 @@
 
 
 
-
     <!-- Prepaired Orders ----------------------------------------------------------------------------------------------------------------------------------------->
     <div class="tbl-main-con">
 
@@ -32,7 +31,7 @@
                     <td>{{ $order->customer->name }}</td>
                     <td>{{ $order->device_type }}</td>
                     <td style="max-width:180px; padding-top:14px; padding-bottom:14px;">{{ $order->problem }}</td>
-                    <td><a href="/orders/{{ $order->id }}"><i class="fa fa-2x fa-info text-info"></i></a></td>
+                    <td><a href="/orders/{{ $order->id }}/edit"><i class="fa fa-2x fa-info text-info"></i></a></td>
                     <td><a href="#" class="btn_add_note"><i class="fa fa-2x text-secondary fa-pencil-square-o"></i></a></td>
                     <td><a href="#" class="btn_checkout"><i class="fa fa-2x text-danger fa-plane pl-2"></i></a></td>
                     <td style="width:90px;">{{ $order->status_code }}</td>
@@ -143,7 +142,7 @@
 
 
 
-            //add click event listeners for show modals && get 'order_id'
+            // add click event listeners for show modals && get 'order_id'
             $(".btn_add_note").click(function (event) {
                 order_id = $(this).parent().siblings('td:first-child').text();
                 $("#modal_add_note").modal('show');
@@ -155,7 +154,7 @@
 
 
 
-            //on confirm modal => send ajax request, and retreive response & take convenient action
+            // on confirm modal => send ajax request, and retreive response & take convenient action
             $(".btn_confirm").click(function (event) {
 
 
@@ -187,7 +186,7 @@
                                 $(event.target).closest('.modal').modal('hide'); //hide modal
                                 $(".tbl-1 td").filter(function() { //hide deleted table row from view
                                     return $(this).text() == order_id;
-                                }).closest("tr").hide(1000);
+                                }).closest("tr").css('background-color', 'red').hide(1000);
                                 console.log('saved!')
                             } else
                                 console.log('error : ' + data);
@@ -223,7 +222,7 @@
 
 
 
-            //btn plus 'order_detail' row
+            // btn plus 'order_detail' row
             $(".add_row").click(function () {
                 elem =  `<div>\n
                             <div class="modal-body-row d-flex justify-content-between shadow-sm">\n
