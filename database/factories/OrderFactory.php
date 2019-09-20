@@ -5,14 +5,14 @@
 use App\Order;
 use Faker\Generator as Faker;
 
+
 $factory->define(Order::class, function (Faker $faker) {
     return [
             'customer_id' => factory(App\Customer::class)->create(),
             'device_type' => 'لپتاپ',
             'device_brand' => 'hp',
             'device_model' => 'youga-310',
-            'device_serial' => Str::random(10),
-            'receive_date' => now(),
+            'receive_date' => '',
             'delivery_date' => '',
             'status_code' => 0,
             'problem' => 'روشن نمی شود',

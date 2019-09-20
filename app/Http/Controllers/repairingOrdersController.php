@@ -23,7 +23,7 @@ class repairingOrdersController extends Controller
     //show a list of repairing orders
     public function index()
     {
-        Verta::setStringformat('j / n / y H:i:s');
+        Verta::setStringformat("j / n / y \n H:i");
         $orders = Order::RepairingOrders()->orderByDesc()->paginate(8);
         return view('repairing.index', compact('orders'));
     }
@@ -93,7 +93,7 @@ class repairingOrdersController extends Controller
 
 
 
-   
+
 
 
 

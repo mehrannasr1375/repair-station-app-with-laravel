@@ -4,15 +4,14 @@
 
 
 
-
     <!-- Search Bar --------------------------------------------------------------------------------------------------------------->
     @include('common.searchbar')
 
 
 
-
     <!-- Repairing Orders --------------------------------------------------------------------------------------------------------->
     <div class="tbl-main-con">
+
         <table class="tbl-1">
             <tr>
                 <th style="width:40px">شناسه</th>
@@ -22,7 +21,7 @@
                 <th style="width:60px">جزئیات</th>
                 <th style="width:60px">یادداشت</th>
                 <th style="width:60px">تغییر وضعیت</th>
-                <th>تاریخ دریافت</th>
+                <th style="width:80px;">تاریخ دریافت</th>
             </tr>
             <tr>
                 <td>aaaaaaaa</td>
@@ -37,7 +36,7 @@
                     <a href="#" class="btn_well_order"><i class="fa fa-2x text-info fa-heartbeat pl-2"></i></a>
                     <a href="#" class="btn_putoff_order"><i class="fa fa-2x text-secondary fa-eye-slash"></i></a>
                 </td>
-                <td style="width:100px;">sadfgdsfgf</td>
+                <td>sadfgdsfgf</td>
             </tr>
             @foreach ($orders as $order)
                 <tr>
@@ -53,17 +52,19 @@
                         <a href="#" class="btn_well_order"><i class="fa fa-2x text-info fa-heartbeat pl-2"></i></a>
                         <a href="#" class="btn_putoff_order"><i class="fa fa-2x text-secondary fa-eye-slash"></i></a>
                     </td>
-                    <td style="width:100px;">{{ new Verta($order->receive_date) }}</td>
+                    <td>{{ new Verta($order->receive_date) }}</td>
                 </tr>
             @endforeach
         </table>
+
+        <!-- Pagination -->
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
                 {{ $orders->links() }}
             </div>
         </div>
-    </div>
 
+    </div>
 
 
 
@@ -245,7 +246,6 @@
 
 
     </section>
-
 
 
 

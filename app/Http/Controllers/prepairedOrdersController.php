@@ -21,7 +21,7 @@ class prepairedOrdersController extends Controller
 
     public function index()
     {
-        Verta::setStringformat('j / n / y H:i:s');
+        Verta::setStringformat("j / n / y \n H:i");
 
         $orders = Order::prepairedOrders()->undeliveredOrders()->orderByDesc()->with('OrderDetails','customer')->paginate(8);
 

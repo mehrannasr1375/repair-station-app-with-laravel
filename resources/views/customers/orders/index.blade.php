@@ -4,33 +4,45 @@
 
 
 
-    <!-- search bar -->
+    <!-- search bar --------------------------------------------------------------------------------------------------------------------->
     @include('common.searchbar')
 
 
-    <div class="alert alert-info">
-        <p class="text-center mb-0 text-black-50 font-weight-bold">
-            لیست تعمیری های مشتری
-            <span class="p-2 text-info">{{ $orders->first()->customer->name ?? ' ' }}</span>
-            ( کد
-            <span class="p-1">{{ $orders->first()->customer_id ?? ' ' }}</span>
-             ) :
-        </p>
+
+    <!-- Customer details ----------------------------------------------------------------------------------------------------------------->
+    <div class="alert alert-info mt-4">
+        <p class="text-right mb-3 text-black font-weight-bold">لیست تعمیری های مشتری :</p>
+        <div class="d-flex flex-wrap justify-content-between">
+            <div>
+                <span>نام : </span>
+                <span class="font-weight-bold"> {{ $customer->name }} </span>
+            </div>
+            <div>
+                <span>کد : </span>
+                <span class="font-weight-bold"> {{ $customer->id }} </span>
+            </div>
+            <div>
+                <span>کل تعمیری ها : </span>
+                <span class="font-weight-bold"> {{ count($orders) }} </span>
+            </div>
+            <div>
+                <span>شماره های تماس : </span>
+                <span class="font-weight-bold"> {{ $customer->mobile_1 }} و {{ $customer->tell_1 }} </span>
+            </div>
+        </div>
     </div>
 
 
-    <!-- Customers && Partners container -->
+
+    <!-- Orders ------------------------------------------------------------------------------------------------------------------------------------------------------>
     <div class="tbl-main-con">
-
-
-
-        <!-- Orders --->
         <div id="normal">
             <table class="tbl-1">
-
                 @if ( count($orders) == 0 )
-                    <p class="text-center text-sm-center text-secondary p-5">
-                        چیزی یافت نشد!
+                    <p class="text-center text-sm-center text-secondary pt-5">
+                        <i class="fa fa-2x fa-close mb-4"></i>
+                        <br>
+                        اینجا خبری نیست!
                     </p>
                 @else
                     <tr>
@@ -40,11 +52,10 @@
                         <th>نوع دستگاه</th>
                         <th>عیب</th>
                         <th>تاریخ دریافت</th>
-                        <th style="width:80px">وضعیت تعمیر</th>
-                        <th style="width:60px">وضعیت تحویل</th>
+                        <th style="width:80px">وضعیت</th>
+                        <th style="width:60px">تحویل</th>
                     </tr>
                     @foreach ($orders as $order)
-
                         <tr>
                             <td style="width:30px !important;" class="text-right">{{ $order->id }}</td>
                             <td>{{ $order->customer->name }}</td>
@@ -52,22 +63,32 @@
                             <td>{{ $order->device_type }}</td>
                             <td style="max-width:150px; padding:14px;">{{ $order->problem }}</td>
                             <td>{{ new Verta($order->receive_date) }}</td>
-                            <td>{{ $order->status_code }}</td>
-                            <td>{{ $order->checkout }}</td>
+                            <td>
+                                <?php
+                                    if      ( $order->status_code == 'تعمیر شده' )         echo "<i class='fa fa-check text-success'></i>";
+                                    else if ( $order->status_code == 'در حال تعمیر' )      echo "<i class='fa fa-refresh text-info'></i>";
+                                    else if ( $order->status_code == 'تعمیر نمی شود' )     echo "<i class='fa fa-close text-danger'></i>";
+                                    else if ( $order->status_code == 'انصراف مشتری' )     echo "<i class='fa fa-eye-slash text-black-50'></i>";
+                                    else if ( $order->status_code == 'ایراد ندارد' )         echo "<i class='fa fa-heartbeat text-success'></i>";
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    if ( $order->checkout )   echo "<i class='fa fa-plane text-success'></i>";
+                                    else                      echo " - ";
+                                ?>
+                            </td>
                         </tr>
                     @endforeach
                 @endif
             </table>
+            <!-- Pagination -->
             <div class="row">
                 <div class="col-12 d-flex justify-content-center">
                     {{ $orders->links() }}
                 </div>
             </div>
         </div>
-
-
-
-
     </div>
 
 

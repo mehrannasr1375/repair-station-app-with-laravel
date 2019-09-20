@@ -67,61 +67,80 @@ class CustomersController extends Controller
 
     public function create()
     {
+
         return view('customers.create');
-    }
+
+    }//ok
 
 
 
     public function store(NewCustomerFromRequest $request)
     {
-        $data = $request->validated();
-        $data['is_partner'] = $request->has('is_partner') ? true:false;
+
+        $data                =  $request->validated();
+        $data['is_partner']  =  $request->has('is_partner') ? true:false;
+        $data['created_at']  =  new Verta(new \DateTime());
+
         $res = Customer::create($data);
-        return redirect('/customers/'.$res->id.'/edit')
-                    ->with('success', 'مشتری جدید با موفقیت ثبت گردید !');
-    }
+
+        return redirect("/customers/$res->id/edit")->with('success', 'مشتری جدید با موفقیت ثبت گردید !');
+
+    }//ok
 
 
 
     public function show(Customer $customer)
     {
+
         return view('customers.edit', compact('customer'));
-    }
+
+    }//ok
 
 
 
     public function edit(Customer $customer)
     {
+
         return view('customers.edit', compact('customer'));
-    }
+
+    }//ok
 
 
 
     public function update(NewCustomerFromRequest $request, Customer $customer)
     {
-        $data = $request->validated();
-        $data['is_partner'] = $request->has('is_partner') ? true:false;
+
+        $data                =  $request->validated();
+        $data['is_partner']  =  $request->has('is_partner') ? true:false;
+
         $customer->update($data);
-        return redirect('/customers/' . $customer->id . '/edit')
-                ->with('success', 'تغییرات با موفقیت ذخیره گردید !');
-    }
+
+        return redirect("/customers/$customer->id/edit")->with('success', 'تغییرات با موفقیت ذخیره گردید !');
+
+    }//ok
 
 
 
     public function destroy(Customer $customer)
     {
+
         //$customer->delete();
         return redirect('/customers');
+
     }
 
 
 
     public function getOrdersOfCustomer(Customer $customer)
     {
-        Verta::setStringformat('j / n / y H:i:s');
+
+        Verta::setStringformat('H:i --- y/n/j');
+
         $orders = Order::allOrders()->OrderByDesc()->where('customer_id', $customer->id)->paginate(8);
-        return view('customers.orders.index', compact('orders'));
-    }
+
+        return view('customers.orders.index', compact('orders','customer'));
+
+    }//ok
 
 
 

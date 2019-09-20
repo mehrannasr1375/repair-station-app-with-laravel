@@ -21,6 +21,7 @@
 
 
 
+<!-- Scripts ------------------------------------------------------------------------------------------------------------------------------------------------>
 <script type="text/javascript">
     $(window).on('load', function() {
         $("#btn-toggle-top-search").click(function (event) {

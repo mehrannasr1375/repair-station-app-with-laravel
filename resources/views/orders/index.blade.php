@@ -36,7 +36,7 @@
             <td>0</td>
             <td>نام تست</td>
             <td>دستگاه تست</td>
-            <td>عیب تست</td>      
+            <td>عیب تست</td>
             <td><a href="/orders/1111/edit"><i class="fa fa-2x text-secondary fa-info pl-2"></i></a></td>
             <td>تاریخ تست</td>
             <td style="font-size:20px !important;"><i class='fa fa-refresh text-info'></i></td>
@@ -52,7 +52,7 @@
                 <td style="max-width:150px; padding:14px;">{{ $order->problem }}</td>
                 <td><a href="/orders/{{ $order->id }}/edit"><i class="fa fa-2x text-secondary fa-info pl-2"></i></a></td>
                 <td style="width:80px;">{{ new Verta($order->receive_date) }}</td>
-                <td style="font-size:20px !important;">
+                <td>
                     <?php
                         if      ( $order->status_code == 'تعمیر شده' )         echo "<i class='fa fa-check text-success'></i>";
                         else if ( $order->status_code == 'در حال تعمیر' )      echo "<i class='fa fa-refresh text-info'></i>";
@@ -61,7 +61,7 @@
                         else if ( $order->status_code == 'ایراد ندارد' )         echo "<i class='fa fa-heartbeat text-success'></i>";
                     ?>
                 </td>
-                <td style="font-size:20px !important;">
+                <td>
                     <?php
                         if ( $order->checkout )   echo "<i class='fa fa-plane text-success'></i>";
                         else                      echo " - ";
@@ -79,7 +79,7 @@
                 </td>
             </tr>
         @endforeach
-    </table> 
+    </table>
 
 
 
@@ -143,11 +143,11 @@
                 order_id = $(this).parent().siblings('td:first-child').text();
                 $("#modal_confirm_delete").modal('show');
             });
-            
+
 
             //on confirm modal
             $(".btn_confirm").click(function (event) {
-                if ( $(this).data('type') == 'delete-order' ) 
+                if ( $(this).data('type') == 'delete-order' )
                 {
                     $.ajax({
                         url:'/orders/delete/' + order_id,

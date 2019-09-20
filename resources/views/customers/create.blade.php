@@ -4,16 +4,13 @@
 
 
 
-    <!-- search bar -->
+    <!-- search bar ---------------------------------------------------------------------------------------------------------------->
     @include('common.searchbar')
 
 
 
-    <div class="form-box">
-
-
-        <!-- Messages -->
-        <span class="row my-2">
+    <!-- Messages ------------------------------------------------------------------------------------------------------------------>
+    <span class="row my-2">
             <span class="col-12">
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -24,7 +21,7 @@
                 @endif
             </span>
         </span>
-        <span class="row my-2">
+    <span class="row my-2">
             <span class="col-12">
                 @if ( session()->has('success') )
                     <div class="alert alert-success">
@@ -35,20 +32,22 @@
         </span>
 
 
-        <!-- Form - create customer -->
-        <form action="/customers" method="POST">
-            <div class="con">
-                <div>
-                    <p class="mb-0"><i class="fa fa-user"></i> مشتری جدید : </p>
-                </div>
-                <div class="row">
 
+    <!-- Form ------------------------------------------------------------------------------------------------------------>
+    <div class="form-box">
+        <form action="/customers" method="POST">
+            @csrf
+
+
+            <!-- customer details -->
+            <div class="con">
+                <div><p class="mb-0"><i class="fa fa-user"></i> مشتری جدید : </p></div>
+                <div class="row">
                     <!-- full name -->
                     <div class="col-12 col-lg-6 form-group input-group">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">نام و نام خانوادگی :</span></div></div>
                         <input type="text" class="form-control border-fix" name="name" value="{{ old('name') }}" autocomplete="off"/>
                     </div>
-
                     <!-- is_partner -->
                     <div id="chk_is_partner" class="col-12 col-lg-3 form-group input-group">
                         <div class="input-group-prepend">
@@ -58,16 +57,13 @@
                         </div>
                         <div class="input-group-append"><div class="input-group-text label bg-white">همکار</div></div>
                     </div>
-
                     <!-- id -->
                     <div class="col-12 col-lg-3 form-group input-group mr-auto">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه:</span></div></div>
                         <input type="text" class="form-control font-weight-bold text-danger text-center" name="id" disabled />
                     </div>
-
                 </div>
                 <div class="row">
-
                     <!-- phones -->
                     <div class="col-12 col-lg-6 form-group input-group">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن ثابت :</span></div></div>
@@ -77,30 +73,29 @@
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">تلفن همراه :</span></div></div>
                         <input type="text" class="form-control" name="mobile_1"  value="{{ old('mobile_1') }}" autocomplete="off" />
                     </div>
-
-
                     <!-- address -->
                     <div class="col-12 form-group input-group">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">آدرس :</span></div></div>
                         <input type="text" class="form-control" name="address"  value="{{ old('address') }}" autocomplete="off" />
                     </div>
-
                 </div>
+
 
                 <!-- btn submit -->
                 <div class="d-flex justify-content-center">
                     <button class="btn btn-bordered my-2" type="submit" >  ثبت  <i class="fa fa-check"></i></button>
                 </div>
 
+
             </div>
 
-            @csrf
+            
         </form>
-
-
-
     </div>
 
+
+
+    <!-- Scripts -------------------------------------------------------------------------------------------------------------------->
     <script type="text/javascript">
         $(window).on('load', function() {
             $("#chk_is_partner").click(function (event) {
@@ -108,5 +103,7 @@
             });
         });
     </script>
+
+
 
 @endsection

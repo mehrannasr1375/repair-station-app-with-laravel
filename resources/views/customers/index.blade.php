@@ -46,12 +46,14 @@
                         <td><a href="/customers/{{ $partner->id }}/edit">{{ $partner->name }}</a></td>
                         <td><a href="/customers/{{ $partner->id }}"><i class="fa fa-2x text-secondary fa-info pl-2"></i></a></td>
                         <td><a href="/customers/{{ $partner->id }}/orders"><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
-                        <td>{{ $partner->available_orders_count }}</td>
-                        <td>{{ $partner->prepaired_orders_count }}</td>
+                        <td>{{ $partner->available_orders_count == 0 ? "-":$partner->available_orders_count }}</td>
+                        <td>{{ $partner->prepaired_orders_count == 0 ? "-":$partner->prepaired_orders_count }}</td>
                         <td><a href=""><i class="fa fa-2x text-success fa-money pl-2"></i></a></td>
                     </tr>
                 @endforeach
             </table>
+
+            <!-- Orders Pagination -->
             <div class="row">
                 <div class="col-12 d-flex justify-content-center">
                     {{ $partners->links() }}
@@ -79,12 +81,13 @@
                         <td><a href="/customers/{{ $customer->id }}/edit">{{ $customer->name }}</a></td>
                         <td><a href="/customers/{{ $customer->id }}"><i class="fa fa-2x text-secondary fa-info pl-2"></i></a></td>
                         <td><a href="/customers/{{ $customer->id }}/orders"><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
-                        <td>{{ $customer->available_orders_count }}</td>
-                        <td>{{ $customer->prepaired_orders_count }}</td>
+                        <td>{{ $customer->available_orders_count == 0 ? "-":$customer->available_orders_count }}</td>
+                        <td>{{ $customer->prepaired_orders_count == 0 ? "-":$customer->prepaired_orders_count }}</td>
                         <td><a href=""><i class="fa fa-2x text-success fa-money pl-2"></i></a></td>
                     </tr>
                 @endforeach
             </table>
+            <!-- Customers Pagination -->
             <div class="row">
                 <div class="col-12 d-flex justify-content-center">
                     {{ $customers->links() }}

@@ -27,4 +27,7 @@ class NewCustomerFromRequest extends FormRequest
             'name.min' => 'نام مشتری باید شامل حداقل 3 کاراکتر باشد !',
         ];
     }
+
+
+
 }

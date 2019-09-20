@@ -405,6 +405,9 @@ table.tbl-1 {
     margin-bottom: 30px;
     border: 1px solid #e6e6e6;
 }
+table.tbl-1 i {
+    font-size:20px !important;
+}
 table.tbl-1 a {
     color: grey !important;
 }
