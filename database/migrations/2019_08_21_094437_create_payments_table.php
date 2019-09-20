@@ -5,7 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreatePaymentsTable extends Migration
 {
-    
+
 
 
     public function up()
@@ -19,15 +19,15 @@ class CreatePaymentsTable extends Migration
 
             $table->bigInteger('amount')->nullable();
             $table->string('payment_type')->nullable();
-            $table->dateTime('date')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->string('date')->nullable();
 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
 
         });
     }
 
-   
-    
+
+
 
     public function down()
     {

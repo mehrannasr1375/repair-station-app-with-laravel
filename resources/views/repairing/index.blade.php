@@ -44,7 +44,7 @@
                     <td>{{ $order->customer->name }}</td>
                     <td>{{ $order->device_type }}</td>
                     <td style="max-width:150px; padding:14px;">{{ $order->problem }}</td>
-                    <td style="width:40px;"><a href="/orders/{{ $order->id }}"><i class="fa fa-2x fa-info text-secondary"></i></a></td>
+                    <td style="width:40px;"><a href="/orders/{{ $order->id }}/edit"><i class="fa fa-2x fa-info text-secondary"></i></a></td>
                     <td style="width:40px;"><a class="btn_add_delivery_note" href="#"><i class="fa fa-2x text-secondary fa-pencil-square-o"></i></a></td>
                     <td style="width:200px;">
                         <a href="#" class="btn_repaired_order"><i class="fa fa-2x text-success fa-check pl-2"></i></a>
@@ -334,8 +334,13 @@
                             'array' : order_datails_array
                         },
                         success:function (data) {
-                            if ( data === true )
-                                $(event.target).closest('.modal').modal('hide');
+                            if ( data === true ) {
+                                $(event.target).closest('.modal').modal('hide'); //hide modal
+                                $(".tbl-1 td").filter(function() { //hide deleted table row from view
+                                    return $(this).text() == order_id;
+                                }).closest("tr").css('background-color', 'red').hide(1000);
+                                console.log('saved!')
+                            }
                             else
                                 console.log('error : ' + errors_array['errors']);
                         }

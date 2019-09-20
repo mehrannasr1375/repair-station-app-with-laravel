@@ -42,6 +42,11 @@ class prepairedOrdersController extends Controller
 
 
 
+
+    /* AJAX Requests------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
     // ajax for checkout order
     public function checkOut(updateOrderStatusRequest $request)
     {
@@ -49,7 +54,6 @@ class prepairedOrdersController extends Controller
         $order_id        =  $request->order_id;
         $payments_array  =  $request->array;
 
-        // insert into payments table in a for loop
         for ($i=0; $i<count($payments_array); $i++) {
             $amount        =  $payments_array[$i][0];
             $payment_type  =  $payments_array[$i][1];
@@ -57,10 +61,13 @@ class prepairedOrdersController extends Controller
                 'order_id'      =>  $order_id,
                 'amount'        =>  $amount,
                 'payment_type'  =>  $payment_type,
+                'date'         =>  new Verta(new \DateTime()),
             ]);
         }
 
-        Order::where('id',$order_id)->update(['checkout' => true]);
+        Order::where('id',$order_id)->update([
+            'checkout' => true
+        ]);
 
         return response($request->order_id, 200);
 

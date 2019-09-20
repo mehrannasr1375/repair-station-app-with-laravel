@@ -17,7 +17,7 @@ class CreateOrderDetailsTable extends Migration
 
             $table->string('key');
             $table->bigInteger('user_amount')->nullable();
-                $table->bigInteger('shop_amount')->nullable();
+            $table->bigInteger('shop_amount')->nullable();
 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
 

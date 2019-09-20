@@ -20,7 +20,7 @@ class repairingOrdersController extends Controller
 {
 
 
-    //show a list of repairing orders
+
     public function index()
     {
         Verta::setStringformat("j / n / y \n H:i");
@@ -30,29 +30,48 @@ class repairingOrdersController extends Controller
 
 
 
+
+    /* AJAX Requests ------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
     //ajax: device is well
-    public function healthy(updateOrderStatusRequest $request)
+    public function healthy(updateOrderStatusRequest $request) //ok
     {
-        Order::where('id',$request->order_id)->update(['status_code'=>3]);
+
+        Order::where('id',$request->order_id)->update([
+            'status_code'=>3
+        ]);
         return response($request->order_id, 200);
+
     }
 
 
 
     //ajax: device is unrepairable
-    public function unrepairable(updateOrderStatusRequest $request)
+    public function unrepairable(updateOrderStatusRequest $request) //ok
     {
-        Order::where('id',$request->order_id)->update(['status_code'=>2]);
+
+        Order::where('id',$request->order_id)->update([
+            'status_code'=>2
+        ]);
+
         return response($request->order_id, 200);
+
     }
 
 
 
     //ajax: device has putted off by customer rejection
-    public function putoff(updateOrderStatusRequest $request)
+    public function putoff(updateOrderStatusRequest $request) //ok
     {
-        Order::where('id',$request->order_id)->update(['status_code'=>4]);
+
+        Order::where('id',$request->order_id)->update([
+            'status_code'=>4
+        ]);
+
         return response($request->order_id, 200);
+
     }
 
 
@@ -60,8 +79,12 @@ class repairingOrdersController extends Controller
     //ajax: add repairing_note
     public function addNote(addOrderNoteRequest $request)
     {
-        Order::where('id',$request->order_id)->update(['delivery_note'=>$request->note]);
+
+        Order::where('id',$request->order_id)->update([
+            'delivery_note' => $request->note
+        ]);
         return response('true', 200);
+
     }
 
 
@@ -69,10 +92,10 @@ class repairingOrdersController extends Controller
     //ajax: device has repaired
     public function addRepaired(orderHasRepairedRequest $request)
     {
-        $order_id = $request->order_id;
-        $order_details_array = $request->array; //turn the json string to array
 
-        //insert into order_details table in a for loop
+        $order_id = $request->order_id;
+        $order_details_array = $request->array;
+
         for ($i=0; $i<count($order_details_array); $i++) {
             $cost_title = $order_details_array[$i][0];
             $cost_user  = $order_details_array[$i][1];
@@ -86,9 +109,12 @@ class repairingOrdersController extends Controller
         }
 
         //update status_code
-        Order::where('id', $order_id)->update(['status_code' => 1]);
+        Order::where('id', $order_id)->update([
+            'status_code' => 1
+        ]);
 
         return response('true', 200);
+
     }
 
 
