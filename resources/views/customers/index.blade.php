@@ -10,8 +10,8 @@
 
 
     <!-- Tiny btns ----------------------------------------------------------------------------------------------------------------------------->
-    <div class="form-box">
-        <ul class="nav nav-tabs nav-justified m-4 ml-5">
+    <div class="form-box pl-0 pr-2 mb-4">
+        <ul class="nav nav-tabs nav-justified mt-4">
             <li class="nav-item active">
                 <a class="nav-link active" href="#partner" data-toggle="tab">همکار</a>
             </li>
@@ -97,16 +97,15 @@
 
 
 
-        <!-- New Customer Btn --->
-        <div class="row">
-            <div class="col-12 d-flex justify-content-end">
-                <a href="/customers/create" class="btn btn-sm btn-outline-secondary">مشتری جدید</a>
-            </div>
+    </div>
+
+
+
+    <!-- New Customer Btn ---------------------------------------------------------------------------------------------------------------------->
+    <div class="row my-5">
+        <div class="col-12 d-flex justify-content-end">
+            <a href="/customers/create" class="btn btn-bordered">مشتری جدید</a>
         </div>
-
-
-
-
     </div>
 
 

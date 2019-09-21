@@ -4,7 +4,7 @@
 
 
 
-   
+
 
 
     <!-- Customer details ----------------------------------------------------------------------------------------------------------------->
@@ -48,9 +48,9 @@
                         <th style="width:60px;" class="text-right pr-4">#</th>
                         <th style="width:60px;">شناسه تعمیری</th>
                         <th>عنوان</th>
-                        <th>نوع پرداخت  (فقط پرداختی ها)</th> 
+                        <th>نوع پرداخت  (فقط پرداختی ها)</th>
                         <th>مبلغ</th>
-                        <th>نوع</th>
+                        <th>بدهکار / بستانکار</th>
                         <th style="width:110px;">تاریخ</th>
                     </tr>
                     <?php $i=1; ?>
@@ -62,7 +62,7 @@
                                 <td>{{ $orderDetail->key }}</td>
                                 <td>-</td>
                                 <td>{{ $orderDetail->user_amount }}</td>
-                                <td>بدهکار</td> 
+                                <td>بدهکار</td>
                                 <td>-</td>
                             </tr>
                         @endforeach
@@ -77,16 +77,16 @@
                                 <td>{{ $payment->date }}</td>
                             </tr>
                         @endforeach
-                        
+
                     @endforeach
-                    
+
                 @endif
             </table>
 
             <!-- Pagination -->
             <div class="row">
                 <div class="col-12 d-flex justify-content-center">
-                    {{ $orders->links() }} 
+                    {{ $orders->links() }}
                 </div>
             </div>
 

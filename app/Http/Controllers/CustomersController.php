@@ -21,6 +21,7 @@ class CustomersController extends Controller
 {
 
 
+
     public function index()
     {
 
@@ -154,18 +155,6 @@ class CustomersController extends Controller
         return view('customers.bills.index', compact('orders','customer'));
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

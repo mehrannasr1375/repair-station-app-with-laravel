@@ -107,7 +107,6 @@ a:hover {
 }
 #chk_is_partner, #chk_is_repaired {
     cursor: pointer;
-    user-select: none;
 }
 
 .btn-bordered {
@@ -208,6 +207,11 @@ a:hover {
 }
 .btn-border-less:hover:before {
     color:rgb(149, 56, 56) !important;
+}
+
+.input-group-append, .input-group-prepend, .pagination, .form-box, #chk_is_partner, #chk_is_repaired, .sidebar-btn {
+    user-select: none;
+
 }
 
 
@@ -452,11 +456,10 @@ table.tbl-1 i:hover {
     color:rgb(179, 174, 174) !important;
 }
 .page-item.active .page-link {
-    background-color: white !important;
+    background-color: #e8edf1 !important;
     font-weight: 900;
     color: black;
     border-color: rgb(224, 224, 224) !important;
-    text-decoration: underline !important;
 }
 
 input:focus, textarea:focus,select:focus,button:focus {
@@ -704,8 +707,8 @@ input:focus, textarea:focus,select:focus,button:focus {
     padding: 0 !important;
     text-align: center;
     overflow: hidden;
-    border-radius: 10px 10px 10px 10px / 40px 40px 40px 40px;
-    /*border: 1px solid rgba(195, 185, 214, .5);*/
+    border-radius: 10px 10px 10px 10px / 20px 20px 20px 20px;
+    border: 1px solid rgba(195, 185, 214, .5);
     margin-bottom: 15px;
 }
 .form-box .nav li a {
@@ -715,8 +718,12 @@ input:focus, textarea:focus,select:focus,button:focus {
 }
 .form-box .nav li a.active {
     color: #0ea1a4 !important;
-    border-bottom: 2px solid #0ea1a4 !important;
+    background-color: rgba(14, 161, 164, 0.08) !important;
+    border-bottom: 3px solid #0ea1a4 !important;
 }
+.form-box .nav li:hover a {
+     color: #000000 !important;
+ }
 .form-box table a {
     color: black !important;
 }
