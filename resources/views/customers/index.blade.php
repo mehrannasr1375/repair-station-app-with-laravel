@@ -90,7 +90,7 @@
             <!-- Customers Pagination -->
             <div class="row">
                 <div class="col-12 d-flex justify-content-center">
-                    {{ $customers->links() }}
+                    {{ $customers->onEachSide(2)->links() }}
                 </div>
             </div>
         </div>

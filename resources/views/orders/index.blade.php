@@ -86,7 +86,7 @@
     <!-- Pagination -------------------------------------------------------------------------------------------------------------------------------------------------->
     <div class="row">
         <div class="col-12 d-flex justify-content-center">
-            {{ $orders->links() }}
+            {{ $orders->onEachSide(2)->links() }}
         </div>
     </div>
 
