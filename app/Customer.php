@@ -14,8 +14,19 @@ class Customer extends Model
     ];
 
 
+    /* Relations */
     public function orders() {
         return $this->hasMany(\App\Order::class);
     }
+
+
+
+     /* Scopes (محدوده ها) */
+     public function scopeAllCustomers($query)
+     {
+         return $query->where('id', '>', 0);
+     }
+
+
 
 }

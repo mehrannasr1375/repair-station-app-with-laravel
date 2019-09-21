@@ -13,6 +13,7 @@ use App\Http\Requests\NewCustomerFromRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\getCustomerOrdersRequest;
+use App\Payment;
 use Verta;
 
 
@@ -61,6 +62,7 @@ class CustomersController extends Controller
             ->paginate(8);
 
         return view('customers.index', compact('customers','partners'));
+
     }
 
 
@@ -141,6 +143,17 @@ class CustomersController extends Controller
         return view('customers.orders.index', compact('orders','customer'));
 
     }//ok
+
+
+
+    public function getBillsOfCustomer(Customer $customer)
+    {
+
+        $orders = Order::where('customer_id', '=', $customer->id)->with('OrderDetails','Payments')->paginate(2);
+
+        return view('customers.bills.index', compact('orders','customer'));
+
+    }
 
 
 

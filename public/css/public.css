@@ -59,6 +59,9 @@ a:hover {
 .font-weight-bolder {
     font-weight: 900 !important;
 }
+.mt-6 {
+    margin-top: 5rem !important;
+}
 
 .hover-e-1 {
     position: relative !important;
