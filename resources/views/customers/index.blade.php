@@ -56,7 +56,7 @@
             <!-- Orders Pagination -->
             <div class="row">
                 <div class="col-12 d-flex justify-content-center">
-                    {{ $partners->links() }}
+                    {{ $partners->onEachSide(2)->links() }}
                 </div>
             </div>
         </div>
