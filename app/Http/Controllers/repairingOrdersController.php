@@ -21,14 +21,16 @@ class repairingOrdersController extends Controller
 
 
 
-    public function index()
+    public function index(Request $request)
     {
 
         Verta::setStringformat("j / n / y \n H:i");
 
-        $orders = Order::RepairingOrders()->orderByDesc()->paginate(8);
+        $count = ($request->count) ? (int)($request->count) : 8;
 
-        return view('repairing.index', compact('orders'));
+        $orders = Order::RepairingOrders()->orderByDesc()->paginate($count);
+
+        return view('repairing.index', compact('orders', 'count'));
 
     }
 
@@ -46,7 +48,7 @@ class repairingOrdersController extends Controller
         Order::where('id',$request->order_id)->update([
             'status_code'=>3
         ]);
-        
+
         return response($request->order_id, 200);
 
     }

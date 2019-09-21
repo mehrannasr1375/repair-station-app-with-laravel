@@ -37,6 +37,7 @@ Route::post('/orders/get', 'OrdersController@getCustomers');
 
 // Prepaired Orders
 Route::get('/prepaired', 'PrepairedOrdersController@index');
+Route::get('/prepaired/count/{count}', 'PrepairedOrdersController@index');
 Route::post('/prepaired/checkout','prepairedOrdersController@checkOut');
 Route::post('/prepaired/addnote', 'prepairedOrdersController@addNote');
 
@@ -44,6 +45,7 @@ Route::post('/prepaired/addnote', 'prepairedOrdersController@addNote');
 
 // Repairing Orders
 Route::get('/repairing', 'RepairingOrdersController@index');
+Route::get('/repairing/count/{count}', 'RepairingOrdersController@index');
 Route::post('/repairing/healthy','repairingOrdersController@healthy');
 Route::post('/repairing/unrepairable', 'repairingOrdersController@unrepairable');
 Route::post('/repairing/putoff', 'repairingOrdersController@putoff');

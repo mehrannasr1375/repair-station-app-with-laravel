@@ -9,6 +9,19 @@
 
 
 
+    <!-- Customize Paginator ----------------------------------------------------------------------------------------------------------------------------------------->
+    <div class="row">
+        <div class="col-12 col-md-3 offset-9 input-group input-group-sm mb-4 mt-2">
+            <div class="input-group-prepend"><div class="input-group-text text-black-50 text-vsm"><span class="label">تعداد در صفحه : </span></div></div>
+            <input type="text" id="txt_paginator" class="form-control form-control-sm text-vsm text-center" placeholder="تعداد در صفحه" value="{{ $count }}"/>
+            <div class="input-group-append">
+                <button id="customize-paginator" class="btn btn-bordered text-vsm text-black-50" type="button">اعمال</button>
+            </div>
+        </div>
+    </div>
+
+
+
     <!-- Repairing Orders --------------------------------------------------------------------------------------------------------->
     <div class="tbl-main-con">
 
@@ -22,21 +35,6 @@
                 <th style="width:60px">یادداشت</th>
                 <th style="width:60px">تغییر وضعیت</th>
                 <th style="width:80px;">تاریخ دریافت</th>
-            </tr>
-            <tr>
-                <td>aaaaaaaa</td>
-                <td>aaaaaaaa</td>
-                <td>aaaaaaaa</td>
-                <td>aaaaaaaaa</td>
-                <td style="width:40px;"><a href="/orders/degrfsdafgd"><i class="fa fa-2x fa-info text-secondary"></i></a></td>
-                <td style="width:40px;"><a class="btn_add_delivery_note" href="#"><i class="fa fa-2x text-secondary fa-pencil-square-o"></i></a></td>
-                <td style="width:200px;">
-                    <a href="#" class=""><i class="fa fa-2x text-success fa-check pl-2"></i></a>
-                    <a href="#" class="btn_unrepairable_order"><i class="fa fa-2x text-danger fa-close pl-2"></i></a>
-                    <a href="#" class="btn_well_order"><i class="fa fa-2x text-info fa-heartbeat pl-2"></i></a>
-                    <a href="#" class="btn_putoff_order"><i class="fa fa-2x text-secondary fa-eye-slash"></i></a>
-                </td>
-                <td>sadfgdsfgf</td>
             </tr>
             @foreach ($orders as $order)
                 <tr>
@@ -480,6 +478,13 @@
             $(document).on('keypress', '.numericOnly', function (e) {
                 if ( String.fromCharCode(e.keyCode).match(/[^0-9]/g) )
                     return false;
+            });
+
+
+
+            //customize paginator
+            $("#customize-paginator").click(function (event) {
+                document.location.href = "/repairing/count/" + $(this).parent().siblings().closest('input').val();
             });
 
 

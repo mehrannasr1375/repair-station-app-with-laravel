@@ -20,12 +20,14 @@ class prepairedOrdersController extends Controller
 
 
 
-    public function index() //ok
+    public function index(Request $request) //ok
     {
 
         Verta::setStringformat("j / n / y H:i");
 
-        $orders = Order::prepairedOrders()->undeliveredOrders()->orderByDesc()->with('OrderDetails','customer')->paginate(8);
+        $count = ($request->count) ? (int)($request->count) : 8;
+
+        $orders = Order::prepairedOrders()->undeliveredOrders()->orderByDesc()->with('OrderDetails','customer')->paginate($count);
 
         // calculate 'total_cost' for each order (equals with: join and aggregate in database level)
         foreach ($orders as $order) {
@@ -36,7 +38,7 @@ class prepairedOrdersController extends Controller
             $order->total_cost = $sum;
         }
 
-        return view('prepaired.index', compact('orders'));
+        return view('prepaired.index', compact('orders', 'count'));
 
     }
 

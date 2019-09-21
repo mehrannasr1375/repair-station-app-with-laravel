@@ -9,6 +9,19 @@
 
 
 
+    <!-- Customize Paginator ----------------------------------------------------------------------------------------------------------------------------------------->
+    <div class="row">
+        <div class="col-12 col-md-3 offset-9 input-group input-group-sm mb-4 mt-2">
+            <div class="input-group-prepend"><div class="input-group-text text-black-50 text-vsm"><span class="label">تعداد در صفحه : </span></div></div>
+            <input type="text" id="txt_paginator" class="form-control form-control-sm text-vsm text-center" placeholder="تعداد در صفحه" value="{{ $count }}"/>
+            <div class="input-group-append">
+                <button id="customize-paginator" class="btn btn-bordered text-vsm text-black-50" type="button">اعمال</button>
+            </div>
+        </div>
+    </div>
+
+
+
     <!-- Prepaired Orders ----------------------------------------------------------------------------------------------------------------------------------------->
     <div class="tbl-main-con">
 
@@ -262,6 +275,13 @@
             $(document).on('keypress', '.numericOnly', function (e) {
                 if ( String.fromCharCode(e.keyCode).match(/[^0-9]/g) )
                     return false;
+            });
+
+
+
+            //customize paginator
+            $("#customize-paginator").click(function (event) {
+                document.location.href = "/prepaired/count/" + $(this).parent().siblings().closest('input').val();
             });
 
 
