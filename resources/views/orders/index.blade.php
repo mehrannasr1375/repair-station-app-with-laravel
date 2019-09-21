@@ -9,6 +9,19 @@
 
 
 
+    <!-- Customize Paginator ----------------------------------------------------------------------------------------------------------------------------------------->
+    <div class="row">
+        <div class="col-12 col-md-3 offset-9 input-group input-group-sm mb-4 mt-2">
+            <div class="input-group-prepend"><div class="input-group-text text-black-50 text-vsm"><span class="label">تعداد در صفحه : </span></div></div>
+            <input type="text" id="txt_paginator" class="form-control form-control-sm text-vsm text-center" placeholder="تعداد در صفحه" value="{{ $count }}"/>
+            <div class="input-group-append">
+                <button id="customize-paginator" class="btn btn-bordered text-vsm text-black-50" type="button">اعمال</button>
+            </div>
+        </div>
+    </div>
+
+
+
     <!-- Messages ---------------------------------------------------------------------------------------------------------------------------------------------------->
     @if ( session()->has('msg') )
         <div class="alert alert-success mb-0 mt-4">
@@ -31,18 +44,6 @@
             <th style="width:50px">تحویل</th>
             <th style="width:80px">وضعیت بدهی</th>
             <th style="width:50px">حذف</th>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>نام تست</td>
-            <td>دستگاه تست</td>
-            <td>عیب تست</td>
-            <td><a href="/orders/1111/edit"><i class="fa fa-2x text-secondary fa-info pl-2"></i></a></td>
-            <td>تاریخ تست</td>
-            <td style="font-size:20px !important;"><i class='fa fa-refresh text-info'></i></td>
-            <td style="font-size:20px !important;"><i class='fa fa-check text-success'></i></td>
-            <td style="width:100px;">بد</td>
-            <td><button type="submit" class="btn-delete-order btn-border-less" ></button></td>
         </tr>
         @foreach ($orders as $order)
             <tr>
@@ -93,7 +94,7 @@
 
 
     <!-- Btn New Order ----------------------------------------------------------------------------------------------------------------------------------------------->
-    <div class="row">
+    <div class="row mb-5">
         <div class="col-12 d-flex justify-content-end">
             <a href="/orders/create" class="btn btn-bordered">سفارش جدید</a>
         </div>
@@ -133,7 +134,7 @@
 
 
 
-    <!-- Modals Scripts -------------------------------------------------------------------------------------------------------------------------------------------->
+    <!-- Modals Scripts --------------------------------------------------------------------------------------------------------------------------------------------->
     <script type="text/javascript">
         $(window).on('load', function() {
 
@@ -171,9 +172,16 @@
             });
 
 
+
+            //customize paginator
+            $("#customize-paginator").click(function (event) {
+                document.location.href = "/orders/count/" + $(this).parent().siblings().closest('input').val();
+            });
+
+
         });
     </script>
-    <!-------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <!--------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
 

@@ -24,6 +24,7 @@ Route::get('/customers/{customer}/bills', 'CustomersController@getBillsOfCustome
 
 // Orders history
 Route::get('/orders', 'OrdersController@index');
+Route::get('/orders/count/{count}', 'OrdersController@index');
 Route::get('/orders/create', 'OrdersController@create');
 Route::post('/orders', 'OrdersController@store');
 Route::get('/orders/{order}', 'OrdersController@show');

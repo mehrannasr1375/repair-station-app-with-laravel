@@ -15,16 +15,18 @@ class OrdersController extends Controller
 
 
 
-    public function index() //ok
+    public function index(Request $request) //ok
     {
 
         Verta::setStringformat('j / n / y H:i');
 
-        $orders = Order::allOrders()->OrderByDesc()->with('Payments', 'OrderDetails', 'customer')->paginate(8);
+        $count = ($request->count) ? (int)($request->count) : 8;
+
+        $orders = Order::allOrders()->OrderByDesc()->with('Payments', 'OrderDetails', 'customer')->paginate($count);
 
         $this->aggregatePricesSum($orders);
 
-        return view('orders.index', compact('orders'));
+        return view('orders.index', compact('orders','count'));
 
     }
 
