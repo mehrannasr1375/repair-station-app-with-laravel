@@ -3,105 +3,65 @@
 
 
 
-    <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
     <div id="login-wrapper">
         <div>
-            <form action="" method="post" class="row">
-
+            <form action="{{ route('login') }}" method="POST" class="row">
+                @csrf
                 <P class="text-vvsm">مشخصات ورود : </P>
 
+
+                <!-- Username or Email -->
                 <div class="col-12 mt-2 mb-4 f-e-2">
                     <i class="fa fa-2x fa-user"></i>
-                    <input type="text" name="" class="" placeholder="نام کاربری">
+                    <input type="text" id="email" class="text-center @error('email') is-invalid @enderror" placeholder="ایمیل" name="email" value="test@test.com" required autocomplete="off" >
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
+
+                <!-- Password -->
                 <div class="col-12 f-e-2 mb-4">
                     <i class="fa fa-2x fa-lock"></i>
-                    <input type="text" name="" class="" placeholder="رمز عبور">
+                    <input name="password" id="password" type="password" class="text-center @error('password') is-invalid @enderror" value="12345678" placeholder="رمز عبور" required >
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
-                <div class="col-12 mt-5">
-                    <a href="./index.php"><button type="button" name="" class="btn-login-custom">ورود</button></a>
-                </div>
-                <div class="col-12 mt-3 mb-4">
-                    <a href="../index.php"><button type="button" name="" class="btn-login-custom">انصراف</button></a>
+
+                <!-- Remember Me -->
+                <div class="form-group d-flex justify-content-center">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                        <label class="form-check-label" for="remember">
+                                مرا به خاطر بسپار
+                        </label>
+                    </div>
                 </div>
 
-                <p class="text-vvsm text-center">توجه : نام کاربری و رمز عبور جهت بررسی وضعیت تعمیر و یا سفارشات، همان کد رهگیری می باشد.</p>
+
+                <!-- Submit -->
+                <div class="col-12 my-3">
+                    <button type="submit" class="btn-login-custom">ورود</button>
+                </div>
+
+
+                {{--@if (Route::has('password.request'))--}}
+                   {{-- <a class="btn btn-link text-center" href="{{ route('password.request') }}">--}}
+                        {{--رمز عبورم را فراموش کرده ام--}}
+                   {{-- </a>--}}
+                {{--@endif--}}
+
 
             </form>
         </div>
     </div>
+
 
 
 @endsection
