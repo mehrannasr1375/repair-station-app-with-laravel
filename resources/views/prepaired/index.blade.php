@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.frame')
 @section('page','قطعات آماده تحویل')
 @section('content')
 

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.frame')
 @section('page','تاریخچه کلی مشتری ')
 @section('content')
 
@@ -33,7 +33,7 @@
     <!-- Orders ------------------------------------------------------------------------------------------------------------------------------------------------------>
     <div class="tbl-main-con">
         <div id="normal">
-            
+
             <table class="tbl-1">
                 @if ( count($orders) == 0 )
                     <p class="text-center text-sm-center text-secondary pt-5">

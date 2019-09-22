@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.frame')
 @section('page','ثبت مشتری جدید')
 @section('content')
 
@@ -89,7 +89,7 @@
 
             </div>
 
-            
+
         </form>
     </div>
 
