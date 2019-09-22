@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -70,4 +72,34 @@
         </div>
     </div>
 </div>
+
+<div id="login-wrapper">
+    <div>
+        <form action="" method="post" class="row">
+
+            <P class="text-vvsm">مشخصات ورود : </P>
+
+            <div class="col-12 mt-2 mb-4 f-e-2">
+                <i class="fa fa-2x fa-user"></i>
+                <input type="text" name="" class="" placeholder="نام کاربری">
+            </div>
+
+            <div class="col-12 f-e-2 mb-4">
+                <i class="fa fa-2x fa-lock"></i>
+                <input type="text" name="" class="" placeholder="رمز عبور">
+            </div>
+
+            <div class="col-12 mt-5">
+                <a href="./index.php"><button type="button" name="" class="btn-login-custom">ورود</button></a>
+            </div>
+            <div class="col-12 mt-3 mb-4">
+                <a href="../index.php"><button type="button" name="" class="btn-login-custom">انصراف</button></a>
+            </div>
+
+            <p class="text-vvsm text-center">توجه : نام کاربری و رمز عبور جهت بررسی وضعیت تعمیر و یا سفارشات، همان کد رهگیری می باشد.</p>
+
+        </form>
+    </div>
+</div>
+
 @endsection
