@@ -150,6 +150,8 @@ class CustomersController extends Controller
     public function getBillsOfCustomer(Customer $customer)
     {
 
+        Verta::setStringformat('H:i y/n/j');
+
         $orders = Order::where('customer_id', '=', $customer->id)->with('OrderDetails','Payments')->paginate(2);
 
         return view('customers.bills.index', compact('orders','customer'));

@@ -9,7 +9,13 @@
 
     <!-- Customer details ----------------------------------------------------------------------------------------------------------------->
     <div class="alert alert-info mt-6 mb-2">
-        <p class="text-right mb-3 text-black font-weight-bold">صورت حساب مشتری :</p>
+        <div class="d-flex flex-wrap justify-content-between">
+            <p class="text-right mb-3 text-black font-weight-bold">صورت حساب مشتری :</p>
+            <div>
+                <span>تاریخ : </span>
+                <span class="font-weight-bold"> {{ new Verta(new \DateTime()) }} </span>
+            </div>
+        </div>
         <div class="d-flex flex-wrap justify-content-between">
             <div>
                 <span>نام : </span>
