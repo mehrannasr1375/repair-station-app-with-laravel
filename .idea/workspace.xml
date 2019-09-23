@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9a5cc108-f79e-481d-b54c-fd72944980e9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11634,7 +11635,7 @@
       <workItem from="1569053709732" duration="9538000" />
       <workItem from="1569144542953" duration="2502000" />
       <workItem from="1569167197905" duration="13650000" />
-      <workItem from="1569210696084" duration="1669000" />
+      <workItem from="1569210696084" duration="5809000" />
     </task>
     <task id="LOCAL-00001" summary="Revert &quot;add readme.md&quot;&#10;&#10;This reverts commit 5104213d">
       <created>1565987124628</created>
