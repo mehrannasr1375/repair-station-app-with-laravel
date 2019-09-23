@@ -8,6 +8,7 @@ Route::get('/logout', 'DashboardController@logout');
 
 // Dashboard & Home
 Route::get('/', 'DashboardController@index');
+//Route::get('/dashboard', 'DashboardController@index');
 Route::get('/home', 'DashboardController@index');
 
 

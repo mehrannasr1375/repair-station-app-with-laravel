@@ -793,12 +793,16 @@ p.title-p-2 {
     left: 0;
     background: url("../images/3.jpg");
     background-attachment: fixed;
-    /*background-color: black;*/
-    /*background-size: cover;*/
     background-size: contain;
 }
-#login-wrapper * {
+#login-wrapper p, #login-wrapper .form-check-label, #login-wrapper input {
     color: rgba(4, 233, 255, 0.9) !important;
+}
+#login-wrapper .login-error {
+    color: rgba(190, 41, 41, 0.9) !important;
+    font-size: 12px;
+    padding:14px 0;
+    margin: auto;
 }
 #login-wrapper > div:first-child {
     position: relative;
@@ -813,15 +817,15 @@ p.title-p-2 {
     border:1px solid rgb(105, 25, 25);
     box-shadow: 0 0 20px 1px rgba(139, 49, 49, 0.4);
 }
-#login-wrapper   div.col {
+#login-wrapper  div.col {
     margin: 0 !important;
     padding: 0 !important;
 }
-#login-wrapper > div > form > div.f-e-2 {
+#login-wrapper > div > form > div.gradient-effect {
     position: relative;
     border-bottom: 3px solid rgba(4, 233, 255, 0.31);
 }
-#login-wrapper > div > form > div.f-e-2:after {
+#login-wrapper > div > form > div.gradient-effect:after {
     position: absolute;
     content: '';
     bottom: -3px;
@@ -829,14 +833,10 @@ p.title-p-2 {
     left: 50%;
     width: 0;
     height: 3px;
-    background-color: #6d7eff;
-    border-right: 25px solid #1c5c64;
-    border-left: 25px solid #1c5c64;
-    transition: .3s ease-in all;
+    background: linear-gradient(90deg,rgb(250, 25, 201),#6d7eff,rgb(250, 25, 201) ) ;
+    transition: .2s ease-in all;
 }
-#login-wrapper > div > form > div.f-e-2:hover:after {
-    border-right: 25px solid #f65aff;
-    border-left: 25px solid #f65aff;
+#login-wrapper > div > form > div.gradient-effect:hover:after {
     right: 0;
     left: 0;
     width: 100%;
@@ -872,6 +872,11 @@ p.title-p-2 {
     cursor: pointer;
     overflow: hidden;
 }
+.btn-login-custom:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border:none !important;
+}
 .btn-login-custom:after {
     position: absolute;
     content: '';
@@ -879,20 +884,15 @@ p.title-p-2 {
     right: 50%;
     left: 50%;
     width: 0;
-    border-right: 25px solid #000000;
-    border-left: 25px solid #000000;
     height: 3px;
-    background-color: #6d7eff;
-    transition: .3s ease-in all;
+    background: linear-gradient(90deg,rgb(250, 25, 201),#6d7eff,rgb(250, 25, 201) ) ;
+    transition: .2s ease-in all;
 }
 .btn-login-custom:hover:after {
-    border-right: 25px solid #f65aff;
-    border-left: 25px solid #f65aff;
-    right: 13px;
+    right: 19px;
     left: 13px;
     width: 175px;
 }
-
 
 
 /*-----------------------------------------|  |-----------------------------------------------*/
