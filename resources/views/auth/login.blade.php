@@ -13,7 +13,7 @@
                 <!-- Username or Email -->
                 <div class="col-12 mt-2 mb-4 f-e-2">
                     <i class="fa fa-2x fa-user"></i>
-                    <input type="text" id="email" class="text-center @error('email') is-invalid @enderror" placeholder="ایمیل" name="email" value="test@test.com" required autocomplete="off" >
+                    <input type="text" id="email" class="text-center @error('email') is-invalid @enderror" placeholder="ایمیل" name="email" value="test@test.com" autocomplete="off" required >
                     @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -35,7 +35,7 @@
 
 
                 <!-- Remember Me -->
-                <div class="form-group d-flex justify-content-center">
+                <div class="form-group d-flex justify-content-center py-4 m-auto text-vsm">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                         <label class="form-check-label" for="remember">

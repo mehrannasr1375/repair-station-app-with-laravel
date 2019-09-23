@@ -4,32 +4,27 @@
 
 
 
-    <!-- Search bar ------------------------------------------------------------------------------------------------------------------------------>
-    @include('common.searchbar')
-
-
-
     <!-- Messages -------------------------------------------------------------------------------------------------------------------------------->
-    <span class="row mt-3">
-            <span class="col-12">
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul class="mb-0">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-            </span>
+    <span class="row mt-6">
+        <span class="col-12">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </span>
+    </span>
     <span class="row mt-3">
         <span class="col">
-                @if ( session()->has('success_res') )
-                    <div class="alert alert-success">
-                        {{ session()->get('success_res') }}
-                    </div>
-                @endif
+            @if ( session()->has('success_res') )
+                <div class="alert alert-success">
+                    {{ session()->get('success_res') }}
+                </div>
+            @endif
         </span>
     </span>
 

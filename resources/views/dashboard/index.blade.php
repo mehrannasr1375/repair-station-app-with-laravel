@@ -1,4 +1,5 @@
 @extends('layouts.frame')
+@section('page','پیشخوان')
 @section('content')
 
 

@@ -38,11 +38,13 @@ class LoginController extends Controller
     }
 
 
-    /*public function username()
+    
+    /* replace login with 'email' with 'name'
+    public function username()
     {
-        return 'username';
-    }*/
-
+        return 'email';
+    }
+ */
 
 
 }
