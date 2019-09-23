@@ -1,7 +1,7 @@
 <?php
 
 // Auth
-Auth::routes();
+Auth::routes(['register' => false]);
 Route::get('/logout', 'DashboardController@logout');
 
 
