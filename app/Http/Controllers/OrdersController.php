@@ -4,7 +4,6 @@ use App\Order;
 use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-//use Illuminate\Contracts\Validation\Validator; // for override error messages, which stores on session; for form validation error appearance
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\NewOrderFormRequest;
 use Hamcrest\Type\IsInteger;
@@ -13,11 +12,8 @@ use Verta;
 class OrdersController extends Controller
 {
 
-
-
-    public function index(Request $request) //ok
+    public function index(Request $request)
     {
-
         Verta::setStringformat('j / n / y H:i');
 
         $count = ($request->count) ? (int)($request->count) : 8;
@@ -27,64 +23,99 @@ class OrdersController extends Controller
         $this->aggregatePricesSum($orders);
 
         return view('orders.index', compact('orders','count'));
-
     }
 
-
-
-    public function create() //ok
+    public function create()
     {
-
         Verta::setStringformat("j / n / y");
 
         return view('orders.create');
-
     }
 
-
-
-    public function store(Request $request) //ok
+    public function store(Request $request)
     {
-
         if ( $request->rd_customer_status == 'old' ) {
-            $order_id = $this->newOrderOfExistingCustomer($request);
-            return redirect("/orders/$order_id/edit")->with('success_res', ' ثبت گردید.');
+            $validator2 = validator::make($request->all(), [
+                'old_customer_id' => 'required|numeric',
+                'problem' => 'required',
+            ], [
+                'old_customer_id.required' => 'وارد کردن شناسه مشتری الزامی است !',
+                'problem.required' => 'وارد کردن ایراد تعمیری الزامی است !',
+                'old_customer_id.numeric' => 'شناسه مشتری باید عددی باشد !',
+            ]);
+            if ( $validator2->fails() )
+                return redirect('orders/create')->withErrors($validator2)->withInput();
+            $customer = Customer::find($request->old_customer_id);
+            if ( $customer->first() ) {
+                $data['order'] = [
+                    'customer_id'      => $request->old_customer_id,
+                    'device_type'      => $request->device_type,
+                    'device_brand'     => $request->device_brand,
+                    'device_model'     => $request->device_model,
+                    'receive_date'     => new Verta(new \DateTime()),
+                    'problem'          => $request->problem,
+                    'problem_details'  => $request->problem_details,
+                    'opened_earlier'   => $request->has('opened_earlier') ? true:false,
+                    'participants_csv' => $request->participants_csv,
+                ];
+                $order_id = Order::create($data['order'])->id;
+            }
+            return redirect("/orders/$order_id/edit/")->with('success_res', ' ثبت گردید.');
         }
         else {
-            $order_id = $this->newOrderOfNewCustomer($request);
-            return redirect("/orders/$order_id/edit")->with('success_res', ' تعمیری با موفقیت ثبت گردید.');
+            $validator1 = validator::make($request->all(), [
+                'name' => 'required',
+                'problem' => 'required',
+            ], [
+                'name.required' => 'وارد کردن نام مشتری الزامی است !',
+                'problem.required' => 'وارد کردن ایراد تعمیری الزامی است !',
+            ]);
+            if ( $validator1->fails() )
+                return redirect('orders/create')->withErrors($validator1)->withInput();
+            $data['customer'] = [
+                'name'       => $request->name,
+                'is_partner' => $request->has('is_partner') ? true:false,
+                'created_at' => new Verta(new \DateTime()),
+                'tell_1'     => $request->tell_1,
+                'mobile_1'   => $request->mobile_1,
+                'address'    => $request->address,
+            ];
+            $data['order'] = [
+                'device_type'      => $request->device_type,
+                'device_brand'     => $request->device_brand,
+                'device_model'     => $request->device_model,
+                'receive_date'     => new Verta(new \DateTime()),
+                'problem'          => $request->problem,
+                'problem_details'  => $request->problem_details,
+                'opened_earlier'   => $request->has('opened_earlier') ? true:false,
+                'participants_csv' => $request->participants_csv,
+            ];
+            DB::beginTransaction();
+            $customer_id = Customer::create($data['customer'])->id;
+            $data['order']['customer_id'] = $customer_id;
+            $order_id = Order::create($data['order'])->id;
+            DB::commit();
+            return redirect("/orders/$order_id/edit/")->with('success_res', ' تعمیری با موفقیت ثبت گردید.');
         }
-
     }
 
-
-
-    public function show(Order $order) //ok
+    public function show(Order $order)
     {
-
         return view('orders.edit', compact('order'));
-
     }
 
-
-
-    public function edit(Order $order) //ok
+    public function edit(Order $order)
     {
-
         $order_details = $order->orderDetails;
         $payments      = $order->payments;
 
         $this->aggregatePricesSum(array($order));
 
         return view('orders.edit', compact('order','order_details','payments'));
-
     }
 
-
-
-    public function update(Request $request, Order $order) //ok
+    public function update(Request $request, Order $order)
     {
-
         if ( $request->rd_customer_status == 'new' ) // update order => with new customer
         {
             $messages = [
@@ -124,7 +155,6 @@ class OrdersController extends Controller
 
         else if ( $request->rd_customer_status == 'old' ) // update order => with old customer
         {
-
             $messages = [
                 'old_customer_id.required' => 'وارد کردن شناسه مشتری الزامی است !',
                 'old_customer_id.numeric'  => 'شناسه مشتری باید عددی باشد !',
@@ -153,34 +183,21 @@ class OrdersController extends Controller
 
             if ( $customer->first() )
                 $order->update($data['order']);
-
         }
 
         return redirect("orders/$order->id/edit")->with('success_res', ' اطلاعات تعمیری با موفقیت بروزرسانی شد.');
-
     }
 
-
-
-    public function destroy(Order $order) //ajax //ok
+    public function destroy(Order $order) //ajax
     {
-
         $order->delete();
 
         return response('true', 200);
-
     }
 
-
-
-    /*------------------------------------------------------------------------------------------------------------------------------------------*/
-
-
-
     // calculate 'paid' && 'should_pay' && 'sum' amount for order
-    public function aggregatePricesSum($orders) //ok
+    public function aggregatePricesSum($orders) 
     {
-
         foreach ($orders as $order) {
             $paid_sum = 0;
             foreach ($order->Payments as $payment) {
@@ -195,15 +212,11 @@ class OrdersController extends Controller
             $order->debt_status = 0;
             $order->debt_status = $order->should_pay - $order->paid;
         }
-
     }
-
-
 
     // get customers for create new order of existing customer via ajax
     public function getCustomers(Request $request) //ajax
     {
-
         if ( $request->type == 'id' )
         {
             $id = (int)($request->id);
@@ -244,95 +257,6 @@ class OrdersController extends Controller
                 return response('false', 200);
             }
         }
-
     }
-
-
-
-    /*------------------------------------------------------------------------------------------------------------------------------------------*/
-
-
-
-    public function newOrderOfNewCustomer($request) //ok
-    {
-
-        $messages = [
-            'name.required' => 'وارد کردن نام مشتری الزامی است !',
-            'problem.required' => 'وارد کردن ایراد تعمیری الزامی است !',
-        ];
-        $validator1 = validator::make($request->all(), [
-            'name' => 'required',
-            'problem' => 'required',
-        ], $messages);
-        if ( $validator1->fails() )
-            return redirect('orders/create')->withErrors($validator1)->withInput();
-
-        $data['customer'] = [
-            'name'       => $request->name,
-            'is_partner' => $request->has('is_partner') ? true:false,
-            'created_at' => new Verta(new \DateTime()),
-            'tell_1'     => $request->tell_1,
-            'mobile_1'   => $request->mobile_1,
-            'address'    => $request->address,
-        ];
-        $data['order']    = [
-            'device_type'      => $request->device_type,
-            'device_brand'     => $request->device_brand,
-            'device_model'     => $request->device_model,
-            'receive_date'     => new Verta(new \DateTime()),
-            'problem'          => $request->problem,
-            'problem_details'  => $request->problem_details,
-            'opened_earlier'   => $request->has('opened_earlier') ? true:false,
-            'participants_csv' => $request->participants_csv,
-        ];
-
-        DB::beginTransaction();
-            $customer_id = Customer::create($data['customer'])->id;
-            $data['order']['customer_id'] = $customer_id;
-            $order_id = Order::create($data['order'])->id;
-        DB::commit();
-
-        return $order_id;
-
-    }
-
-
-
-    public function newOrderOfExistingCustomer($request) //ok
-    {
-
-        $messages = [
-            'old_customer_id.required' => 'وارد کردن شناسه مشتری الزامی است !',
-            'problem.required' => 'وارد کردن ایراد تعمیری الزامی است !',
-            'old_customer_id.numeric' => 'شناسه مشتری باید عددی باشد !',
-        ];
-        $validator2 = validator::make($request->all(), [
-            'old_customer_id' => 'required|numeric',
-            'problem' => 'required',
-        ], $messages);
-        if ( $validator2->fails() )
-            return redirect('orders/create')->withErrors($validator2)->withInput();
-
-        $customer = Customer::find($request->old_customer_id);
-        if ( $customer->first() ) {
-            $data['order'] = [
-                'customer_id'      => $request->old_customer_id,
-                'device_type'      => $request->device_type,
-                'device_brand'     => $request->device_brand,
-                'device_model'     => $request->device_model,
-                'receive_date'     => new Verta(new \DateTime()),
-                'problem'          => $request->problem,
-                'problem_details'  => $request->problem_details,
-                'opened_earlier'   => $request->has('opened_earlier') ? true:false,
-                'participants_csv' => $request->participants_csv,
-            ];
-            $order_id = Order::create($data['order'])->id;
-        }
-
-        return $order_id;
-
-    }
-
-
 
 }
