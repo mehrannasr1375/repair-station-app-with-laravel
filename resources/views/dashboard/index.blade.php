@@ -4,67 +4,41 @@
 
 
 
-    <div id="dashboard">
+<div id="dashboard" class="">
 
-
-
-        <div id="dash-situation-summary">
-            <p class="title-p-1">خلاصه وضعیت:</p>
-            <div id="dash-top-con">
-                <div class="dash-part-con">
-                    <h3 class="text-info">68</h3>
-                    <div>
-                        <i class="fa fa-wrench"></i>
-                        <span>در حال تعمیر</span>
-                    </div>
-                </div>
-                <div class="dash-part-con">
-                    <h3 class="text-warning">5</h3>
-                    <div>
-                        <i class="fa fa-check"></i>
-                        <span>تعمیر شده</span>
-                    </div>
-                </div>
-                <div class="dash-part-con">
-                    <h3 class="text-danger">25</h3>
-                    <div>
-                        <i class="fa fa-close"></i>
-                        <span>تعمیر نشده</span>
-                    </div>
-                </div>
-                <div class="dash-part-con">
-                    <h3 class="text-success">12</h3>
-                    <div>
-                        <i class="fa fa-check-circle-o"></i>
-                        <span>آماده تحویل</span>
-                    </div>
-                </div>
-                <div class="dash-part-con">
-                    <h3 class="text-dark">127</h3>
-                    <div>
-                        <i class="fa fa-archive"></i>
-                        <span>قطعات موجود</span>
-                    </div>
-                </div>
-                <div class="dash-part-con">
-                    <h3 class="text-info">3</h3>
-                    <div>
-                        <i class="fa fa-clone"></i>
-                        <span>چک لیست من</span>
-                    </div>
-                </div>
+    <!-- first row -->
+    <div class="row">
+        <div class="col-7 dash-con">
+            <div class="dash-con-inner">
+                
             </div>
         </div>
-
-
-
-        <div>
-
+        <div class="col-5 dash-con">
+            <div class="dash-con-inner">
+                   
+            </div>    
         </div>
-
-
-
     </div>
+
+    <!-- diagram -->
+    <div class="row">
+        <div class="col dash-con">
+            <div class="dash-con-inner">
+                 
+            </div> 
+        </div>
+    </div>
+
+    <!--  -->
+    <div class="row">
+        <div class="col dash-con">
+            <div class="dash-con-inner">
+                  
+            </div> 
+        </div>
+    </div>
+
+</div>
 
 
 
