@@ -1,0 +1,90 @@
+
+table#cal1 {
+    /*display: inline;*/
+    margin: auto !important;
+    width: 100% !important;
+}
+
+
+
+/* calendar */
+.font-eng {
+}
+.font-fa {
+}
+.dayoff {    
+    color: red !important;  
+}
+.tdinfo {
+    margin: 2px 0px 2px 0px;
+}
+.fc-table {
+    background-color: #f9f9f9;
+    direction: rtl;    
+}
+.fc-table caption {
+    text-align: right;
+}
+.fc-table th,
+.fc-table td {
+    white-space: pre;
+    text-align: center;    
+    transition: all 0.2s;    
+    font-weight: 200;
+}
+.fc-table th {
+    background-color: #EF6C00;
+    color: white;
+    font-size: 12px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    width: 14.28% !important;
+
+}
+.fc-table td {
+    width: 14.28% !important;
+    height: 12.5% !important;  
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+.fc-table td.dayoff {
+    background-color: #fdefee;
+    color: red !important;  
+}
+.fc-table td b {    
+    font-size: 14px;  
+}
+.fc-table td span {
+    font-size: 12px;    
+    color: #5b5b5b;
+}
+
+@media (max-width: 768px) {
+    /*.fc-table th {        
+        font-size: 1.8vw;       
+    }
+    .fc-table td {         
+        width: 25px;
+        height: 25px;  
+    }
+    .fc-table td b {    
+        font-size: 2.5vw;   
+    }
+    .fc-table td span {        
+        font-size: 1vw;       
+    }*/
+}
+
+
+.fc-table td:hover {
+    cursor: pointer;  
+    box-shadow: 0px 0px 15px 0px rgba(95, 93, 93, 0.45);
+}
+.fc-table td:hover span {
+    color:#D3D3D3;    
+}
+
+
+
+
+

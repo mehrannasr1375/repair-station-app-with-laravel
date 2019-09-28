@@ -10,8 +10,18 @@ $(function(){
     });
 
 
+    function show_time() {
+        d = new Date();
+        H = d.getHours();
+        H = ( H < 10 ) ? "0" + H : H;
+        i = d.getMinutes();
+        i = ( i < 10 ) ? "0" + i : i;
+        s = d.getSeconds();
+        s = ( s < 10 ) ? "0" + s : s;
+        $("#show-time").html( H + ":" + i + ":" + s);
+        setInterval("show_time()", 1000); 
+    }
 
-
-    
+    show_time();
     
 })
