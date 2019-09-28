@@ -1,4 +1,4 @@
-/*-----------------------------------------| Fonts |--------------------------------------*/
+/*-----------------------------------------| Fonts |-----------------------------------------------------------------------------------*/
 
 
 @font-face {
@@ -33,7 +33,7 @@
 }
 
 
-/*-----------------------------------------| Public |--------------------------------------*/
+/*-----------------------------------------| Public |-----------------------------------------------------------------------------------*/
 
 
 * {
@@ -42,7 +42,7 @@
 body {
     direction: rtl !important;
     font-family: IRANSans;
-    background-color: white;
+    background-color: #f2f2f2;
 }
 a:hover {
     text-decoration: none !important;
@@ -215,7 +215,7 @@ a:hover {
 }
 
 
-/*---------------------------------------| Main Navbar |----------------------------------------*/
+/*---------------------------------------| Main Navbar |--------------------------------------------------------------------------------*/
 
 
 #main-navbar {
@@ -223,7 +223,7 @@ a:hover {
     top:0;
     right:180px;
     z-index: 100000;
-    background-color: #595c5e;
+    background-color: #393b3d;
     padding: 2px 10px;
     padding-left:200px;
     border-bottom: 1px solid #0ea1a4;
@@ -256,7 +256,7 @@ a:hover {
 }
 
 
-/*-----------------------------------------| top-search |-----------------------------------------*/
+/*-----------------------------------------| top-search |-------------------------------------------------------------------------------*/
 
 
 .top-search-con {
@@ -330,7 +330,7 @@ a:hover {
 }
 
 
-/*-----------------------------------------| Content |--------------------------------------------*/
+/*-----------------------------------------| Content |----------------------------------------------------------------------------------*/
 
 
 #content {
@@ -340,7 +340,7 @@ a:hover {
 }
 
 
-/*-----------------------------------------| Sidebar |-------------------------------------------*/
+/*-----------------------------------------| Sidebar |----------------------------------------------------------------------------------*/
 
 
 #sidebar {
@@ -355,8 +355,10 @@ a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /*padding-top: 36px;*/
     align-items: center;
     background: url("../images/m2.jpg");
+    box-shadow: 0 0 3px 2px darkgrey;
 }
 #sidebar:after {
     position: absolute;
@@ -366,37 +368,39 @@ a:hover {
     top: 0;
     bottom: 0;
     z-index: 10000;
-    background-color: rgba(64, 79, 87, 0.5);
+    background-color: rgba(64, 79, 87, 0.3);
 }
 #sidebar .sidebar-btn {
     position: relative;
     z-index: 100000;
     text-align: center;
     background-color: rgba(111, 111, 111, 0.5);
-    height: 85px;
+    background-color: #efece9;
+    height: 95px;
     width: 150px;
     padding: 12px;
     margin-bottom: 5px;
-    border-radius: 3px;
+    border-radius: 5px;
     transition: .2s ease all;
     cursor: pointer;
-    box-shadow: inset 0 0 20px 1px rgb(54, 52, 52);
     border: 1px solid rgb(107, 91, 3);
+}
+#sidebar .sidebar-btn img {
+    height: 50px;
+    width: 50px;
 }
 #sidebar .sidebar-btn:hover > i {
     /*color: rgb(69, 69, 69) !important;*/
 }
 #sidebar .sidebar-btn:hover {
-    /*background-color: rgba(255, 255, 255, 1);*/
-    box-shadow: inset 0 0 50px 1px rgb(158, 158, 136);
+    box-shadow: inset 0 0 0px 5px rgb(155, 133, 222);
 }
 #sidebar .sidebar-btn p {
-    text-shadow: 0 1px 5px black;
     font-size: 12px;
-    font-weight: 300;
+    font-weight: 500;
     line-height: 2;
     transition-duration: .3s;
-    color: #ffffff;
+    color: #000;
 }
 #sidebar .sidebar-btn:hover p {
     /*color: #000000;*/
@@ -404,7 +408,7 @@ a:hover {
 }
 
 
-/*-----------------------------------------| common |--------------------------------------------*/
+/*-----------------------------------------| common |----------------------------------------------------------------------------------*/
 
 
 table.tbl-1 {
@@ -428,9 +432,12 @@ table.tbl-1 tr {
     border-left: inset 2px transparent;
 }
 table.tbl-1 tr:nth-of-type(2n+1) {
-    background-color: rgba(129, 158, 174, 0.06);
+    background-color: whitesmoke;
     border-right: inset 2px transparent;
     border-left: inset 2px transparent;
+}
+table.tbl-1 tr:nth-of-type(2n) {
+    background-color: white;
 }
 table.tbl-1 tr td:first-child {
     padding-right: 20px;
@@ -442,7 +449,7 @@ table.tbl-1 tr:first-child {
     border-left: inset 2px transparent;
 }
 table.tbl-1 tr:hover {
-    background-color: rgba(111, 177, 255, 0.2);
+    background-color: rgb(211, 222, 255);
     border-right: inset 2px deepskyblue;
     border-left: inset 2px deepskyblue;
 }
@@ -498,7 +505,7 @@ input:focus, textarea:focus,select:focus,button:focus {
 }
 
 
-/*-----------------------------------------| modals |-----------------------------------------------*/
+/*-----------------------------------------| modals |----------------------------------------------------------------------------------*/
 
 
 .modal {
@@ -613,7 +620,7 @@ input:focus, textarea:focus,select:focus,button:focus {
 }
 
 
-/*-----------------------------------------| create & update Order Box |-----------------------------------------------*/
+/*-----------------------------------------| create & update Order Box |----------------------------------------------------------------------------------*/
 
 
 .form-box {
@@ -737,7 +744,7 @@ input:focus, textarea:focus,select:focus,button:focus {
 }
 
 
-/*-----------------------------------------| dashboard |-----------------------------------------------*/
+/*-----------------------------------------| dashboard |----------------------------------------------------------------------------------*/
 
 
 #dashboard {
@@ -749,13 +756,55 @@ input:focus, textarea:focus,select:focus,button:focus {
     padding: 14px;
 }
 .dash-con-inner {
-    border-radius: 10px;
-    box-shadow: 0 0 12px rgb(231, 229, 229);
+    position: relative;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 0 2px 0 #a1a1a1;
     min-height: 230px;
+}
+.dash-con-inner > div:first-child {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 54px;
+    background-color: #fbfbfb;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 2px 0px 0 rgba(166, 50, 255, 0.1);
+    padding: 4px 10px;
+    overflow: hidden;
+}
+.dash-con-inner > div:nth-child(2) {
+    overflow: hidden;
+    position: absolute;
+    padding: 20px;
+    top: 54px;
+}
+
+.dash-con-inner > div:first-child > img {
+    width: 48px;
+    height: 48px;
+
+}
+.dash-con-inner > div:first-child > p:first-of-type {
+    color: #681fa1;
+    font-weight: 900;
+    font-size: 14px;
+    display: inline;
+    margin-right: 20px;
+
+}
+.dash-con-inner > div:first-child > p:last-of-type {
+    color: rgba(151, 44, 234, 0.75);
+    font-weight: 500;
+    font-size: 10px;
+    display: inline;
+    margin-right: 14px;
+
 }
 
 
-/*-----------------------------------------| Login Page |-----------------------------------------------*/
+/*-----------------------------------------| Login Page |----------------------------------------------------------------------------------*/
 
 
 #login-wrapper {
@@ -868,7 +917,7 @@ input:focus, textarea:focus,select:focus,button:focus {
 }
 
 
-/*-----------------------------------------|  |-----------------------------------------------*/
+/*-----------------------------------------|  |--------------------------------------------------------------------------------------*/
 
 
 
