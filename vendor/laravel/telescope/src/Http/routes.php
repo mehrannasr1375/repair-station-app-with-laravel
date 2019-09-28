@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 // Mail entries...
 Route::post('/telescope-api/mail', 'MailController@index');
 Route::get('/telescope-api/mail/{telescopeEntryId}', 'MailController@show');
@@ -9,6 +11,7 @@ Route::get('/telescope-api/mail/{telescopeEntryId}/download', 'MailEmlController
 // Exception entries...
 Route::post('/telescope-api/exceptions', 'ExceptionController@index');
 Route::get('/telescope-api/exceptions/{telescopeEntryId}', 'ExceptionController@show');
+Route::put('/telescope-api/exceptions/{telescopeEntryId}', 'ExceptionController@update');
 
 // Dump entries...
 Route::post('/telescope-api/dumps', 'DumpController@index');
@@ -48,6 +51,10 @@ Route::get('/telescope-api/models/{telescopeEntryId}', 'ModelsController@show');
 // Requests entries...
 Route::post('/telescope-api/requests', 'RequestsController@index');
 Route::get('/telescope-api/requests/{telescopeEntryId}', 'RequestsController@show');
+
+// View entries...
+Route::post('/telescope-api/views', 'ViewsController@index');
+Route::get('/telescope-api/views/{telescopeEntryId}', 'ViewsController@show');
 
 // Artisan Commands entries...
 Route::post('/telescope-api/commands', 'CommandsController@index');

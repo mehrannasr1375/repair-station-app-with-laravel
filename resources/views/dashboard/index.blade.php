@@ -8,15 +8,15 @@
 
     <!-- first row -->
     <div class="row">
-        <div class="col-7 dash-con">
 
+        <div class="col-7 dash-con">
             <div class="dash-con-inner">
                 <div class="d-flex flex-row justify-content-between" style="line-height:3.4;">
-                    <img src="{{ asset('/images/icons/message.png') }}" alt="">
+                    <img src="{{ asset('/images/icons/message.png') }}">
                     <p>یاد آوری ها</p>
                     <p class="ml-auto" style="line-height:4;" >( 8 )</p>
                     <i id="btn-add-reminder" class="fa fa-2x fa-plus-circle"></i>
-                                        
+
                 </div>
                 <div class="tbl-2-con">
                     <table class="tbl-2">
@@ -72,8 +72,9 @@
 
         <div class="col-5 dash-con">
             <div class="dash-con-inner">
+
                 <div>
-                    <img src="{{ asset('/images/icons/calendar.png') }}" alt="">
+                    <img src="{{ asset('/images/icons/calendar.png') }}">
                     <p>زمان و تاریخ</p>
                     <p id="show-time"></p>
                 </div>
@@ -82,6 +83,7 @@
 
             </div>
         </div>
+
     </div>
 
 
@@ -89,11 +91,16 @@
     <div class="row">
         <div class="col dash-con">
             <div class="dash-con-inner">
+
                 <div>
-                    <img src="{{ asset('/images/icons/diagram.png') }}" alt="">
+                    <img src="{{ asset('/images/icons/diagram.png') }}">
                     <p>نمودار</p>
-                    <p>سود خالص ماهیانه</p>
+                    <p>سود خالص 30 روز اخیر</p>
                 </div>
+
+                <div id="pop_div" class="w-100 h-100 m-auto py-2"></div>
+                {!! Lava::render('AreaChart', 'Population', 'pop_div') !!}
+
             </div>
         </div>
     </div>

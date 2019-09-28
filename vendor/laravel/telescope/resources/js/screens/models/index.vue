@@ -19,7 +19,7 @@
 
 
         <template slot="row" slot-scope="slotProps">
-            <td>{{truncate(slotProps.entry.content.model, 80)}}</td>
+            <td>{{truncate(slotProps.entry.content.model, 70)}}</td>
 
             <td class="table-fit">
                 <span class="badge font-weight-light" :class="'badge-'+modelActionClass(slotProps.entry.content.action)">
@@ -27,7 +27,9 @@
                 </span>
             </td>
 
-            <td class="table-fit" :data-timeago="slotProps.entry.created_at">{{timeAgo(slotProps.entry.created_at)}}</td>
+            <td class="table-fit" :data-timeago="slotProps.entry.created_at" :title="slotProps.entry.created_at">
+                {{timeAgo(slotProps.entry.created_at)}}
+            </td>
 
             <td class="table-fit">
                 <router-link :to="{name:'model-preview', params:{id: slotProps.entry.id}}" class="control-action">

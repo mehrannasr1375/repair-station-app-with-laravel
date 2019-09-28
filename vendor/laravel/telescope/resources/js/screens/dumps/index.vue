@@ -7,10 +7,11 @@
          */
         data() {
             return {
+                dump: null,
                 entries: [],
                 ready: false,
                 newEntriesTimeout: null,
-                newEntriesTimeoutInSeconds: 2000,
+                newEntriesTimer: 2000,
                 recordingStatus: 'enabled'
             };
         },
@@ -38,16 +39,34 @@
         methods: {
             loadEntries(){
                 axios.post(Telescope.basePath + '/telescope-api/dumps').then(response => {
+                    this.ready = true;
+                    this.dump = response.data.dump;
                     this.entries = response.data.entries;
                     this.recordingStatus = response.data.status;
 
-                    this.ready = true;
-
-                    this.newEntriesTimeout = setTimeout(() => {
-                        this.loadEntries();
-                    }, this.newEntriesTimeoutInSeconds);
+                    this.checkForNewEntries();
                 });
-            }
+            },
+
+
+            /**
+             * Keep checking if there are new entries.
+             */
+            checkForNewEntries(){
+                this.newEntriesTimeout = setTimeout(() => {
+                    axios.post(Telescope.basePath + '/telescope-api/dumps?take=1').then(response => {
+                        this.recordingStatus = response.data.status;
+
+                        if (response.data.entries.length && !this.entries.length) {
+                            this.loadEntries();
+                        } else if (response.data.entries.length && _.first(response.data.entries).id !== _.first(this.entries).id) {
+                            this.loadEntries();
+                        } else {
+                            this.checkForNewEntries();
+                        }
+                    })
+                }, this.newEntriesTimer);
+            },
         }
     }
 </script>
@@ -65,6 +84,7 @@
             <span class="ml-1" v-if="recordingStatus == 'disabled'">Telescope is currently disabled.</span>
             <span class="ml-1" v-if="recordingStatus == 'paused'">Telescope recording is paused.</span>
             <span class="ml-1" v-if="recordingStatus == 'off'">This watcher is turned off.</span>
+            <span class="ml-1" v-if="recordingStatus == 'wrong-cache'">The 'array' cache cannot be used. Please use a persistent cache.</span>
         </p>
 
         <div v-if="!ready" class="d-flex align-items-center justify-content-center card-bg-secondary p-5 bottom-radius">
@@ -84,8 +104,13 @@
             <span>We didn't find anything - just empty space.</span>
         </div>
 
+        <div style="display: none;" v-if="dump">
+            <div v-html="dump"></div>
+        </div>
+
         <div v-if="ready && entries.length > 0" class="code-bg px-3 pt-3">
             <transition-group tag="div" name="list">
+                
                 <div v-for="entry in entries" :key="entry.id" class="mb-4">
                     <div class="entryPointDescription d-flex justify-content-between align-items-center">
                         <router-link :to="{name:'request-preview', params:{id: entry.content.entry_point_uuid}}" class="control-action" v-if="entry.content.entry_point_type == 'request'">

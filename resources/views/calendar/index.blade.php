@@ -1,48 +1,48 @@
-
 <div class="container p-0">
     <main class="">
         <table id="cal1" class="fc-table">
-                <caption>
-                    <form class="form-inline d-flex justify-content-center">
-                        <div class="form-group ml-4">
-                            <label for="fc-year">سال:</label>
-                            <select name="fc-year" class="fc-year mr-2 form-control form-control-sm">                               
-                                        <option value="1391">1391</option>
-                                        <option value="1392">1392</option>
-                                        <option value="1393">1393</option>
-                                        <option value="1394">1394</option>
-                                        <option value="1395">1395</option>
-                                        <option value="1396">1396</option>
-                                        <option value="1397">1397</option>
-                                        <option value="1398">1398</option>
-                                        <option value="1399">1399</option>
-                                        <option value="1400">1400</option>
-                                        <option value="1401">1401</option>
-                            </select>
-                        </div>
-                        <div class="form-group ">
-                            <label for="fc-month">ماه:</label>
-                            <select name="fc-month" class="fc-month mr-2 form-control form-control-sm">
-                                        <option value="0">فروردین</option>
-                                        <option value="1">اردیبهشت</option>
-                                        <option value="2">خرداد</option>
-                                        <option value="3">تیر</option>
-                                        <option value="4">مرداد</option>
-                                        <option value="5">شهریور</option>
-                                        <option value="6">مهر</option>
-                                        <option value="7">آبان</option>
-                                        <option value="8">آذر</option>
-                                        <option value="9">دی</option>
-                                        <option value="10">بهمن</option>
-                                        <option value="11">اسفند</option>
-                            </select>
-                        </div>
-                    </form>
-                    
 
-                    
-                </caption>
-                <tr>
+
+            <caption>
+                <form class="form-inline d-flex justify-content-center">
+                    <div class="form-group ml-4">
+                        <label for="fc-year">سال:</label>
+                        <select name="fc-year" class="fc-year mr-2 form-control form-control-sm">
+                                <option value="1391">1391</option>
+                                <option value="1392">1392</option>
+                                <option value="1393">1393</option>
+                                <option value="1394">1394</option>
+                                <option value="1395">1395</option>
+                                <option value="1396">1396</option>
+                                <option value="1397">1397</option>
+                                <option value="1398">1398</option>
+                                <option value="1399">1399</option>
+                                <option value="1400">1400</option>
+                                <option value="1401">1401</option>
+                            </select>
+                    </div>
+                    <div class="form-group ">
+                        <label for="fc-month">ماه:</label>
+                        <select name="fc-month" class="fc-month mr-2 form-control form-control-sm">
+                                <option value="0">فروردین</option>
+                                <option value="1">اردیبهشت</option>
+                                <option value="2">خرداد</option>
+                                <option value="3">تیر</option>
+                                <option value="4">مرداد</option>
+                                <option value="5">شهریور</option>
+                                <option value="6">مهر</option>
+                                <option value="7">آبان</option>
+                                <option value="8">آذر</option>
+                                <option value="9">دی</option>
+                                <option value="10">بهمن</option>
+                                <option value="11">اسفند</option>
+                            </select>
+                    </div>
+                </form>
+            </caption>
+
+
+            <tr>
                     <th>شنبه</th>
                     <th>یکشنبه</th>
                     <th>دوشنبه</th>
@@ -51,7 +51,7 @@
                     <th>پنچشنبه</th>
                     <th>جمعه</th>
                 </tr>
-                <tr>
+            <tr>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -60,7 +60,7 @@
                     <td></td>
                     <td></td>
                 </tr>
-                <tr>
+            <tr>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -69,7 +69,7 @@
                     <td></td>
                     <td></td>
                 </tr>
-                <tr>
+            <tr>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -78,7 +78,7 @@
                     <td></td>
                     <td></td>
                 </tr>
-                <tr>
+            <tr>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -87,7 +87,7 @@
                     <td></td>
                     <td></td>
                 </tr>
-                <tr>
+            <tr>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -96,7 +96,7 @@
                     <td></td>
                     <td></td>
                 </tr>
-                <tr>
+            <tr>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -105,8 +105,10 @@
                     <td></td>
                     <td></td>
                 </tr>
+
+
         </table>
-    </main>  
+    </main>
 </div>
 
 
@@ -115,7 +117,10 @@
 <script>
     $(document).ready(function () {
         InitCalendar($("#cal1"));
-        $('td span').hide();
+        // $('td span').hide();
+        $('#table#cal1 td').on('click', function (event) {
+            $(event.targe).closest('span').show();
+        });
     });
 
     var _year;
@@ -229,7 +234,7 @@
                     if (data.values.length == 0) {
                         content += "<li>" + "موردی یافت نشد" + "</li>";
                     } else {
-                        $.each(data.values, function (index, item) {                            
+                        $.each(data.values, function (index, item) {
                             if (item.dayoff == true) {
                                 content += "<li class='dayoff'>" + item.occasion + "</li>";
                             }
@@ -393,8 +398,8 @@
                 return false;
         }
     }
-    
+
 
 </script>
 
-</html>
+
