@@ -43,6 +43,7 @@ body {
     direction: rtl !important;
     font-family: IRANSans;
     background-color: #f2f2f2;
+    /*background-color: #ffffff;*/
 }
 a:hover {
     text-decoration: none !important;
@@ -422,6 +423,7 @@ table.tbl-1 {
     width: 100% !important;
     margin-bottom: 30px;
     border: 1px solid #e6e6e6;
+    box-shadow: 0 0 1px 0px rgb(171, 175, 175);
 }
 table.tbl-1 i {
     font-size:20px !important;
@@ -435,7 +437,7 @@ table.tbl-1 tr {
     border-left: inset 2px transparent;
 }
 table.tbl-1 tr:nth-of-type(2n+1) {
-    background-color: whitesmoke;
+    background-color: rgba(246, 246, 246, 1);
     border-right: inset 2px transparent;
     border-left: inset 2px transparent;
 }
@@ -452,7 +454,7 @@ table.tbl-1 tr:first-child {
     border-left: inset 2px transparent;
 }
 table.tbl-1 tr:hover {
-    background-color: rgb(211, 222, 255);
+    background-color: rgb(221, 229, 252);
     border-right: inset 2px deepskyblue;
     border-left: inset 2px deepskyblue;
 }
@@ -487,7 +489,7 @@ table.tbl-2 tr {
     border-bottom:  1px solid rgb(236, 235, 235);
     border-right: inset 2px transparent;
     border-left: inset 2px transparent;
-    height: 50px;
+    height: 42px;
     width: 100%;
 }
 table.tbl-2 tr:hover {
@@ -495,8 +497,12 @@ table.tbl-2 tr:hover {
     border-left: inset 2px deepskyblue;
     background-color: #e2e0e02c;
 }
+table.tbl-2 i {
+    margin-right: 16px;
+}
 table.tbl-2 i:hover {
     color: #0085b8 !important;
+    cursor: pointer;
 }
 
 
@@ -504,10 +510,10 @@ table.tbl-2 i:hover {
     color:rgb(179, 174, 174) !important;
 }
 .page-item.active .page-link {
-    background-color: #e8edf1 !important;
+    background-color: rgba(14, 161, 164, 0.08) !important;
     font-weight: 900;
     color: black;
-    border-color: rgb(224, 224, 224) !important;
+    border-color: rgba(14, 161, 164, 0.08) !important;
 }
 
 input:focus, textarea:focus,select:focus,button:focus {
@@ -758,11 +764,11 @@ input:focus, textarea:focus,select:focus,button:focus {
     border-radius: 10px 10px 10px 10px / 20px 20px 20px 20px;
     border: 1px solid rgba(195, 185, 214, .5);
     margin-bottom: 15px;
+    background-color: white;
 }
 .form-box .nav li a {
     color: #aeaeae !important;
     border: 0px !important;
-    transition: .3s ease color;
 }
 .form-box .nav li a.active {
     color: #0ea1a4 !important;
@@ -806,9 +812,9 @@ input:focus, textarea:focus,select:focus,button:focus {
     right: 0;
     left: 0;
     height: 54px;
-    background-color: #fbfbfb;
+    background-color: rgba(119, 7, 153, 0.06);
     border-radius: 6px 6px 0 0;
-    box-shadow: 0 2px 0px 0 rgba(166, 50, 255, 0.1);
+    /*box-shadow: 0 2px 0px 0 rgba(105, 23, 168, 0.5);*/
     padding: 4px 10px;
     overflow: hidden;
 }

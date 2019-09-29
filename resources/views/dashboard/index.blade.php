@@ -6,9 +6,13 @@
 
 <div id="dashboard">
 
-    <!-- first row -->
+
+
+    <!--  First Row ( Reminders & Date )  --------------------------------------------------------------------------------------------------------------------->
     <div class="row">
 
+
+        <!-- Reminder -->
         <div class="col-7 dash-con">
             <div class="dash-con-inner">
                 <div class="d-flex flex-row justify-content-between" style="line-height:3.4;">
@@ -19,46 +23,59 @@
 
                 </div>
                 <div class="tbl-2-con">
+
+                    <!-- Table -->
                     <table class="tbl-2">
                         <tr>
                             <td>1</td>
                             <td>ارسال پیام به حسن حسنی</td>
                             <td>
-                                <i class="fa fa-check-circle text-success mr-2"></i>
-                                <i class="fa fa-check-circle text-danger mr-2"></i>
-                                <i class="fa fa-info-circle text-info mr-2"></i>
+                                <i class="fa fa-check-circle text-success"></i>
+                                <i class="fa fa-check-circle text-danger"></i>
+                                <i class="fa fa-info-circle text-info"></i>
                             </td>
                         </tr>
                         <tr>
                             <td>2</td>
                             <td>تماس با رضا رضایی</td>
                             <td>
-                                <i class="fa fa-check-circle text-success mr-2"></i>
-                                <i class="fa fa-check-circle text-danger mr-2"></i>
-                                <i class="fa fa-info-circle text-info mr-2"></i>
+                                <i class="fa fa-check-circle text-success"></i>
+                                <i class="fa fa-check-circle text-danger"></i>
+                                <i class="fa fa-info-circle text-info"></i>
                             </td>
                         </tr>
                         <tr>
                             <td>3</td>
                             <td>تماس با قلی</td>
                             <td>
-                                <i class="fa fa-check-circle text-success mr-2"></i>
-                                <i class="fa fa-check-circle text-danger mr-2"></i>
-                                <i class="fa fa-info-circle text-info mr-2"></i>
+                                <i class="fa fa-check-circle text-success"></i>
+                                <i class="fa fa-check-circle text-danger"></i>
+                                <i class="fa fa-info-circle text-info"></i>
                             </td>
                         </tr>
                         <tr>
                             <td>4</td>
                             <td>ثبت تعمیری حسین حسینی</td>
                             <td>
-                                <i class="fa fa-check-circle text-success mr-2"></i>
-                                <i class="fa fa-check-circle text-danger mr-2"></i>
-                                <i class="fa fa-info-circle text-info mr-2"></i>
+                                <i class="fa fa-check-circle text-success"></i>
+                                <i class="fa fa-check-circle text-danger"></i>
+                                <i class="fa fa-info-circle text-info"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>ثبت تعمیری حسین حسینی</td>
+                            <td>
+                                <i class="fa fa-check-circle text-success"></i>
+                                <i class="fa fa-check-circle text-danger"></i>
+                                <i class="fa fa-info-circle text-info"></i>
                             </td>
                         </tr>
                     </table>
+
+                    <!-- Pagination -->
                     <div class="pt-4 d-flex justify-content-center">
-                        <ul class="pagination">
+                        <ul class="pagination pagination-sm">
                             <li class="page-item"><a class="page-link" href="#"><</a></li>
                             <li class="page-item"><a class="page-link" href="#">1</a></li>
                             <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -66,10 +83,13 @@
                             <li class="page-item"><a class="page-link" href="#">></a></li>
                         </ul>
                     </div>
+
                 </div>
             </div>
         </div>
 
+
+        <!-- Date -->
         <div class="col-5 dash-con">
             <div class="dash-con-inner">
 
@@ -84,10 +104,12 @@
             </div>
         </div>
 
+
     </div>
 
 
-    <!-- diagram -->
+
+    <!--  Diagram  ------------------------------------------------------------------------------------------------------------------------------------------>
     <div class="row">
         <div class="col dash-con">
             <div class="dash-con-inner">
@@ -104,6 +126,8 @@
             </div>
         </div>
     </div>
+
+
 
 </div>
 
