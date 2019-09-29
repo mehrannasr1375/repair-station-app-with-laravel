@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Reminder;
 use Illuminate\Http\Request;
 use Khill\Lavacharts\Lavacharts;
 use Lava;
@@ -10,8 +11,6 @@ class dashboardController extends Controller
 
     public function index()
     {
-        //Verta::setStringformat('y/n/');
-        //$current_date = Verta::now();
         $data = Lava::DataTable()
             ->addDateColumn('روز')
             ->addNumberColumn('سود خالص روزانه به تومان');
@@ -23,7 +22,9 @@ class dashboardController extends Controller
             'legend' => ['position' => 'in']
         ]);
 
-        return view('dashboard.index');
+        $reminders = Reminder::where('status_code', '>', '1')->orderBy('id', 'desc')->paginate(5);
+
+        return view('dashboard.index', compact('reminders'));
     }
 
 
@@ -31,6 +32,7 @@ class dashboardController extends Controller
     public function logout()
     {
         auth()->logout();
+
         return redirect('/');
     }
 

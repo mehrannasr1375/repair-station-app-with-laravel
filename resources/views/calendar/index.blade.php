@@ -1,5 +1,5 @@
 <div class="container p-0">
-    <main class="">
+    <main>
         <table id="cal1" class="fc-table">
 
 
@@ -114,12 +114,12 @@
 
 
 
+<!-- Scripts -->
 <script>
     $(document).ready(function () {
         InitCalendar($("#cal1"));
-        // $('td span').hide();
-        $('#table#cal1 td').on('click', function (event) {
-            $(event.targe).closest('span').show();
+        $("#cal span").each(function (e) {
+            //
         });
     });
 

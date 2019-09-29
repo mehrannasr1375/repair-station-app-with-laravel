@@ -8,7 +8,7 @@ Route::get('/logout', 'DashboardController@logout');
 
 // Dashboard & Home
 Route::get('/', 'DashboardController@index');
-//Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard', 'DashboardController@index');
 Route::get('/home', 'DashboardController@index');
 
 
@@ -56,3 +56,10 @@ Route::patch('/orders/{order}', 'OrdersController@update');
 Route::post('/orders/delete/{order}', 'OrdersController@destroy');
 Route::post('/orders/get', 'OrdersController@getCustomers');
 
+
+
+
+// Reminders
+Route::get('dashboard/reminder/create', 'RemindersController@create');
+Route::post('dashboard/reminder', 'RemindersController@store');
+Route::delete('dashboard/reminder/{reminder}', 'RemindersController@destroy');

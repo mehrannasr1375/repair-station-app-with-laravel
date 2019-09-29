@@ -210,6 +210,14 @@ a:hover {
     color:rgb(149, 56, 56) !important;
 }
 
+.btn-style-less, .btn-style-less:focus  {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    display: inline;
+}
+
 .input-group-append, .input-group-prepend, .pagination, .form-box, #chk_is_partner, #chk_is_repaired, .sidebar-btn {
     user-select: none;
 
@@ -471,6 +479,7 @@ table.tbl-1 i:hover {
 .tbl-2-con {
     width: 100% !important;
     margin: auto !important;
+    padding: 16px 8px !important;
 }
 table.tbl-2 {
     text-align: center;
@@ -492,13 +501,16 @@ table.tbl-2 tr {
     height: 42px;
     width: 100%;
 }
+table.tbl-2 tr:nth-child(2n) {
+    background-color: #f9f9f9;
+}
 table.tbl-2 tr:hover {
     border-right: inset 2px deepskyblue;
     border-left: inset 2px deepskyblue;
-    background-color: #e2e0e02c;
+    background-color: #eeeaff;
 }
 table.tbl-2 i {
-    margin-right: 16px;
+    margin-right: 8px;
 }
 table.tbl-2 i:hover {
     color: #0085b8 !important;
@@ -811,7 +823,7 @@ input:focus, textarea:focus,select:focus,button:focus {
     top: 0;
     right: 0;
     left: 0;
-    height: 54px;
+    height: 50px;
     background-color: rgba(119, 7, 153, 0.06);
     border-radius: 6px 6px 0 0;
     /*box-shadow: 0 2px 0px 0 rgba(105, 23, 168, 0.5);*/
@@ -821,12 +833,12 @@ input:focus, textarea:focus,select:focus,button:focus {
 .dash-con-inner > div:nth-child(2) {
     overflow: hidden;
     position: absolute;
-    top: 54px;
+    top: 50px;
 }
 
 .dash-con-inner > div:first-child > img {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
 
 }
 .dash-con-inner > div:first-child > p:first-of-type {
@@ -835,13 +847,13 @@ input:focus, textarea:focus,select:focus,button:focus {
     font-size: 14px;
     display: inline;
     margin-right: 20px;
-
+    line-height: 3;
 }
 .dash-con-inner > div:first-child > p:last-of-type {
     color: rgba(165, 138, 185, 0.75);
     font-weight: 500;
     font-size: 12px;
-    display: inline;
+    display: inline-block;
     margin-right: 14px;
 }
 
@@ -869,6 +881,7 @@ input:focus, textarea:focus,select:focus,button:focus {
     margin-top: -50px !important;
 }
 
+
 /*-----------------------------------------| Login Page |----------------------------------------------------------------------------------*/
 
 
@@ -881,6 +894,9 @@ input:focus, textarea:focus,select:focus,button:focus {
     background: url("../images/3.jpg");
     background-attachment: fixed;
     background-size: contain;
+}
+#login-wrapper {
+    color: #07d5e9;
 }
 #login-wrapper p, #login-wrapper .form-check-label, #login-wrapper input {
     color: rgba(4, 233, 255, 0.9) !important;

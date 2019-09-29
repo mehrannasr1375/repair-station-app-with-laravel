@@ -15,76 +15,42 @@
         <!-- Reminder -->
         <div class="col-7 dash-con">
             <div class="dash-con-inner">
+
                 <div class="d-flex flex-row justify-content-between" style="line-height:3.4;">
                     <img src="{{ asset('/images/icons/message.png') }}">
                     <p>یاد آوری ها</p>
-                    <p class="ml-auto" style="line-height:4;" >( 8 )</p>
-                    <i id="btn-add-reminder" class="fa fa-2x fa-plus-circle"></i>
-
+                    <p class="ml-auto" style="line-height:3.5;" >( {{ count($reminders) }} )</p>
+                    <a href="/dashboard/reminder/create"><i id="btn-add-reminder" class="fa fa-2x fa-plus-circle"></i></a>
                 </div>
+
                 <div class="tbl-2-con">
 
                     <!-- Table -->
                     <table class="tbl-2">
-                        <tr>
-                            <td>1</td>
-                            <td>ارسال پیام به حسن حسنی</td>
-                            <td>
-                                <i class="fa fa-check-circle text-success"></i>
-                                <i class="fa fa-check-circle text-danger"></i>
-                                <i class="fa fa-info-circle text-info"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>تماس با رضا رضایی</td>
-                            <td>
-                                <i class="fa fa-check-circle text-success"></i>
-                                <i class="fa fa-check-circle text-danger"></i>
-                                <i class="fa fa-info-circle text-info"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>تماس با قلی</td>
-                            <td>
-                                <i class="fa fa-check-circle text-success"></i>
-                                <i class="fa fa-check-circle text-danger"></i>
-                                <i class="fa fa-info-circle text-info"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>ثبت تعمیری حسین حسینی</td>
-                            <td>
-                                <i class="fa fa-check-circle text-success"></i>
-                                <i class="fa fa-check-circle text-danger"></i>
-                                <i class="fa fa-info-circle text-info"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>ثبت تعمیری حسین حسینی</td>
-                            <td>
-                                <i class="fa fa-check-circle text-success"></i>
-                                <i class="fa fa-check-circle text-danger"></i>
-                                <i class="fa fa-info-circle text-info"></i>
-                            </td>
-                        </tr>
+                        <?php $i=0; ?>
+                        @foreach($reminders as $reminder)
+                            <?php $i++ ?>
+                            <tr class="d-flex justify-content-between px-4 py-2">
+                                <td>{{ $i }}</td>
+                                <td>{{ $reminder->title }}</td>
+                                <td>
+                                    <form class="d-inline" action="/dashboard/reminder/{{ $reminder->id }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn-style-less" type="submit"><i class="fa fa-check-circle text-success"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                     </table>
 
                     <!-- Pagination -->
-                    <div class="pt-4 d-flex justify-content-center">
-                        <ul class="pagination pagination-sm">
-                            <li class="page-item"><a class="page-link" href="#"><</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">></a></li>
-                        </ul>
+                    <div class="pt-4 d-flex justify-content-center text-vvsm">
+                        {{ $reminders->links() }}
                     </div>
 
                 </div>
+
             </div>
         </div>
 
@@ -96,7 +62,7 @@
                 <div>
                     <img src="{{ asset('/images/icons/calendar.png') }}">
                     <p>زمان و تاریخ</p>
-                    <p id="show-time"></p>
+                    <p id="show-time" class="text-info py-2 px-4 border bg-light rounded"></p>
                 </div>
 
                 @include('calendar.index')
@@ -130,6 +96,15 @@
 
 
 </div>
+
+
+
+<!-- Scripts -------------------------------------------------------------------------------------------------------------------->
+<script type="text/javascript">
+    $(document).ready(function() {
+        //
+    });
+</script>
 
 
 

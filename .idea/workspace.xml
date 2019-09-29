@@ -2,98 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a5cc108-f79e-481d-b54c-fd72944980e9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/RepairStation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RepairStation.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/dashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/dashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/calendar.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/public.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/public.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/public.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/public.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/calendar/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/calendar/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/common/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/common/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Auth/Notifications/ResetPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Auth/Notifications/ResetPassword.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Cache/Repository.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Cache/Repository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Container/Container.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Container/Container.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Connectors/SqlServerConnector.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Connectors/SqlServerConnector.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasAttributes.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasAttributes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Relations/MorphOneOrMany.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Relations/MorphOneOrMany.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Query/Grammars/Grammar.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Query/Grammars/Grammar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Query/Grammars/MySqlGrammar.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Query/Grammars/MySqlGrammar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Query/Grammars/PostgresGrammar.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Query/Grammars/PostgresGrammar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Query/Grammars/SQLiteGrammar.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Query/Grammars/SQLiteGrammar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Seeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Filesystem/FilesystemManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Filesystem/FilesystemManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Application.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Events/DiscoverEvents.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Events/DiscoverEvents.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MocksApplicationServices.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MocksApplicationServices.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Testing/PendingCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Testing/PendingCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Http/Resources/DelegatesToResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Http/Resources/DelegatesToResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Http/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Http/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Log/ParsesLogConfiguration.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Log/ParsesLogConfiguration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Log/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Log/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Mail/TransportManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Mail/TransportManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Notifications/Messages/MailMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Notifications/Messages/MailMessage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Notifications/NotificationSender.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Notifications/NotificationSender.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Queue/Connectors/SqsConnector.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Queue/Connectors/SqsConnector.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Redis/Connections/PhpRedisConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Redis/Connections/PhpRedisConnection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Redis/Connectors/PhpRedisConnector.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Str.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Str.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Testing/Fakes/QueueFake.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Testing/Fakes/QueueFake.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Traits/Macroable.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Traits/Macroable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Validation/Concerns/FormatsMessages.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Validation/Concerns/FormatsMessages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Validation/Concerns/ReplacesAttributes.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Validation/Concerns/ReplacesAttributes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Validation/Concerns/ValidatesAttributes.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Validation/Concerns/ValidatesAttributes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Validation/ValidatesWhenResolvedTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Validation/ValidatesWhenResolvedTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/config/telescope.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/config/telescope.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/public/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/public/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/components/RelatedEntries.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/components/RelatedEntries.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/cache/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/cache/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/commands/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/commands/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/dumps/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/dumps/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/events/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/events/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/exceptions/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/exceptions/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/exceptions/preview.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/exceptions/preview.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/gates/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/gates/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/jobs/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/jobs/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/logs/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/logs/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/mail/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/mail/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/models/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/models/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/notifications/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/notifications/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/queries/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/queries/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/redis/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/redis/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/requests/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/requests/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/requests/preview.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/requests/preview.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/schedule/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/js/screens/schedule/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/resources/views/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/src/Console/InstallCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/src/Console/InstallCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/src/EntryType.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/src/EntryType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/src/Http/Controllers/DumpController.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/src/Http/Controllers/DumpController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/src/Http/Controllers/ExceptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/src/Http/Controllers/ExceptionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/src/Http/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/src/Http/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/src/IncomingEntry.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/src/IncomingEntry.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/src/ListensForStorageOpportunities.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/src/ListensForStorageOpportunities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/src/Storage/DatabaseEntriesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/src/Storage/DatabaseEntriesRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/src/Telescope.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/src/Telescope.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/src/TelescopeServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/src/TelescopeServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/src/Watchers/DumpWatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/src/Watchers/DumpWatcher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/src/Watchers/QueryWatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/src/Watchers/QueryWatcher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/src/Watchers/RequestWatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/src/Watchers/RequestWatcher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/laravel/telescope/stubs/TelescopeServiceProvider.stub" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/laravel/telescope/stubs/TelescopeServiceProvider.stub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11727,6 +11644,9 @@
       <workItem from="1569664551387" duration="4476000" />
       <workItem from="1569696895257" duration="1825000" />
       <workItem from="1569698804410" duration="8497000" />
+      <workItem from="1569777115818" duration="1758000" />
+      <workItem from="1569778924999" duration="259000" />
+      <workItem from="1569779232278" duration="11341000" />
     </task>
     <task id="LOCAL-00001" summary="Revert &quot;add readme.md&quot;&#10;&#10;This reverts commit 5104213d">
       <created>1565987124628</created>

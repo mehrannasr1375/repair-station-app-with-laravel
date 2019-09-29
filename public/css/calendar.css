@@ -7,7 +7,7 @@ table#cal1 td {
 }
 table#cal1 td span {
     position: absolute;
-    display: none;
+    visibility: hidden;
     top: 0;
     right: 0;
     background-color: white;
