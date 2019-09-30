@@ -13,7 +13,7 @@ $(function(){
 
 
     // show time
-    show_time();
+    /*show_time();
     function show_time() {
         d = new Date();
         H = d.getHours();
@@ -24,7 +24,7 @@ $(function(){
         s = ( s < 10 ) ? "0" + s : s;
         $("#show-time").html( s + " : " + i + " : " + H );
         setInterval(show_time, 1000);
-    }
+    }*/
 
 
 

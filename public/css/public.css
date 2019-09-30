@@ -476,48 +476,6 @@ table.tbl-1 i:hover {
     color: #0085b8 !important;
 }
 
-.tbl-2-con {
-    width: 100% !important;
-    margin: auto !important;
-    padding: 16px 8px !important;
-}
-table.tbl-2 {
-    text-align: center;
-    font-size: 12px !important;
-    width: 100% !important;
-    margin-top:0px;
-}
-table.tbl-2 i {
-    font-size:20px !important;
-}
-table.tbl-2 a {
-    color: grey !important;
-}
-table.tbl-2 tr {
-    border-top:  1px solid rgb(236, 235, 235);
-    border-bottom:  1px solid rgb(236, 235, 235);
-    border-right: inset 2px transparent;
-    border-left: inset 2px transparent;
-    height: 42px;
-    width: 100%;
-}
-table.tbl-2 tr:nth-child(2n) {
-    background-color: #f9f9f9;
-}
-table.tbl-2 tr:hover {
-    border-right: inset 2px deepskyblue;
-    border-left: inset 2px deepskyblue;
-    background-color: #eeeaff;
-}
-table.tbl-2 i {
-    margin-right: 8px;
-}
-table.tbl-2 i:hover {
-    color: #0085b8 !important;
-    cursor: pointer;
-}
-
-
 .page-item a {
     color:rgb(179, 174, 174) !important;
 }
@@ -807,70 +765,101 @@ input:focus, textarea:focus,select:focus,button:focus {
     margin-right: -16px !important;
     margin-left: -16px !important;
 }
-.dash-con {
+.dash-con-outer {
     padding: 14px;
 }
-.dash-con-inner {
-    position: relative;
+.dash-con {
     background-color: white;
     border-radius: 6px;
     box-shadow: 0 0 2px 0 #a1a1a1;
-    min-height: 340px;
+    min-height: 300px;
     height: auto !important;
 }
-.dash-con-inner > div:first-child {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
+.dash-con-header {
     height: 50px;
     background-color: rgba(119, 7, 153, 0.06);
     border-radius: 6px 6px 0 0;
-    /*box-shadow: 0 2px 0px 0 rgba(105, 23, 168, 0.5);*/
     padding: 4px 10px;
-    overflow: hidden;
 }
-.dash-con-inner > div:nth-child(2) {
-    overflow: hidden;
-    position: absolute;
-    top: 50px;
+.dash-con-header * {
+    display: inline-block;
 }
-
-.dash-con-inner > div:first-child > img {
+.dash-con-header p:nth-child(2) {
+    margin-bottom: 0 !important;
+    margin-right: 14px !important;
+    color: rgb(97, 20, 97);
+    font-weight: 900;
+}
+.dash-con-header p:nth-child(3) {
+    margin-bottom: 0 !important;
+    margin-right: 14px !important;
+    color: rgb(153, 46, 153);
+    font-size: 10px;
+    font-weight: 500;
+}
+.dash-con-header img {
     width: 40px;
     height: 40px;
-
 }
-.dash-con-inner > div:first-child > p:first-of-type {
-    color: #681fa1;
-    font-weight: 900;
-    font-size: 14px;
-    display: inline;
-    margin-right: 20px;
-    line-height: 3;
-}
-.dash-con-inner > div:first-child > p:last-of-type {
-    color: rgba(165, 138, 185, 0.75);
-    font-weight: 500;
-    font-size: 12px;
-    display: inline-block;
-    margin-right: 14px;
-}
-
-#show-time {
-    margin-right: 40px !important;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 500;
-}
-#btn-add-reminder {
+.dash-con-header #btn-add-reminder {
     color: rgb(179, 171, 171);
-    padding: 8px;
+    margin-right: 20px;
     cursor: pointer;
 }
-#btn-add-reminder:hover {
+.dash-con-header #btn-add-reminder:hover {
     color: rgb(127, 182, 45);
 }
+.dash-con-body {
+    width: 100% !important;
+    margin: auto !important;
+    padding: 16px 8px !important;
+    overflow: hidden !important;
+}
+
+
+
+
+
+
+
+
+
+table.tbl-2 {
+    text-align: center;
+    font-size: 12px !important;
+    width: 100% !important;
+    margin-top: 0px;
+}
+
+table.tbl-2 a {
+    color: grey !important;
+}
+table.tbl-2 tr {
+    border-bottom: 1px solid rgb(236, 235, 235);
+    border-right: inset 2px transparent;
+    border-left: inset 2px transparent;
+    height: 34px;
+    color: grey;
+    font-size: 12px;
+}
+table.tbl-2 tr:last-child {
+    border-bottom: none !important;
+}
+table.tbl-2 i {
+    font-size: 20px !important;
+}
+
+table.tbl-2 tr:hover {
+    border-right: inset 2px #e9e8e8;
+    border-left: inset 2px #e9e8e8;
+    background-color: #eeeeee75;
+}
+table.tbl-2 i:hover {
+    color: #0085b8 !important;
+    cursor: pointer;
+}
+
+
 
 #pop_div text {
     font-family: IranSans;

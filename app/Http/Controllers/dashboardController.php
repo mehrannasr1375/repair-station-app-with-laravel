@@ -22,7 +22,7 @@ class dashboardController extends Controller
             'legend' => ['position' => 'in']
         ]);
 
-        $reminders = Reminder::where('status_code', '>', '1')->orderBy('id', 'desc')->paginate(5);
+        $reminders = Reminder::where('status_code', '>=', '0')->orderBy('id', 'desc')->paginate(5);
 
         return view('dashboard.index', compact('reminders'));
     }

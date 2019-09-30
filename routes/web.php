@@ -60,6 +60,6 @@ Route::post('/orders/get', 'OrdersController@getCustomers');
 
 
 // Reminders
-Route::get('dashboard/reminder/create', 'RemindersController@create');
-Route::post('dashboard/reminder', 'RemindersController@store');
-Route::delete('dashboard/reminder/{reminder}', 'RemindersController@destroy');
+Route::get('/dashboard/reminder/create', 'RemindersController@create');
+Route::post('/dashboard/reminder', 'RemindersController@store');
+Route::post('/dashboard/removereminder/{reminder}', 'RemindersController@destroy');

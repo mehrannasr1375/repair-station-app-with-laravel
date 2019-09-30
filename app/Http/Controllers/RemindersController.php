@@ -23,11 +23,11 @@ class RemindersController extends Controller
         return redirect('/dashboard');
     }
 
-    public function destroy(Reminder $reminder)
+    public function destroy(Request $request)
     {
-        $reminder->delete();
+        Reminder::where('id', '=', $request->id)->delete();
 
-        return redirect('/dashboard');
+        return response('true', 200);
     }
 
 
