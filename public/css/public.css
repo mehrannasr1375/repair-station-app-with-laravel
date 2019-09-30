@@ -777,7 +777,7 @@ input:focus, textarea:focus,select:focus,button:focus {
 }
 .dash-con-header {
     height: 50px;
-    background-color: rgba(119, 7, 153, 0.06);
+    /*background-color: rgba(119, 7, 153, 0.06);*/
     border-radius: 6px 6px 0 0;
     padding: 4px 10px;
 }
@@ -816,11 +816,68 @@ input:focus, textarea:focus,select:focus,button:focus {
     overflow: hidden !important;
 }
 
+
+.dash-con-body.cal {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px !important;
+    overflow: hidden !important;
+    padding: 5px !important;
+}
+.cal-part {
+    border-radius: 6px;
+    padding: 18px 35px;
+    margin-bottom: 0;
+    box-shadow: 0 0 6px 0 #dcdcdc;
+}
+.day-big {
+    font-size: 50px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0;
+    color: #686868;
+}
+.month-num {
+    line-height: 4.5;
+    margin-right: 10px;
+    margin-bottom: 0;
+    font-weight: 500;
+    color: purple;
+}
+.month-str {
+    line-height: 1;
+    font-weight: 900;
+    font-size: 18px;
+    margin-left: 12px;
+    color: purple;
+    margin-bottom: 4px;
+}
+.year {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 2.2;
+    margin-bottom: 0 !important;
+    color: #b6b6b6;
+    padding-left: 8px;
+}
+#time {
+    direction: ltr;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    margin-top: 10px;
+    margin-bottom: 0 !important;
+    padding: 14px 5px !important;
+    color: #545454;
+}
+
+
 table.tbl-2 {
     text-align: center;
     font-size: 12px !important;
     width: 100% !important;
-    margin-top: 0px;
+    margin-top: 12px !important;
 }
 
 table.tbl-2 a {

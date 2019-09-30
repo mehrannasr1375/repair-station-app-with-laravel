@@ -24,7 +24,7 @@
 
                     <!-- Table -->
                     <table class="tbl-2">
-                        <?php $i=1; ?>
+                        <?php use Hekmatinasser\Verta\Verta;$i=1; ?>
                         @foreach($reminders as $reminder)
                             <tr>
                                 <td style="width:80px;">{{ $i++ }}</td>
@@ -47,24 +47,62 @@
 
 
         <!-- Date ------------------------------------------------------------------------------------------------------------------------------------------->
+        <?php
+            $hijri = Verta::now();
+            $miladi = getdate();
+        ?>
         <div class="dash-con-outer col-5">
             <div class="dash-con">
 
+
                 <div class="dash-con-header">
                     <img src="{{ asset('/images/icons/calendar.png') }}">
-                    <p>زمان و تاریخ</p>
+                    <p>امروز</p>
+                    <p></p>
                 </div>
 
-                <div class="dash-con-body" style="direction: ltr !important;">
-                    {{ Verta::now()->format('Y / F m / d') }}
-                    <br>
-                    {{ Verta()->DateTime()->format('Y / F m / d') }}
-                    <br>
-                    <div id="time"></div>
+
+                <div class="d-flex flex-column justify-content-around p-2">
+
+                    <div class="dash-con-body cal">
+
+                        <!-- jalali -->
+                        <div class="cal-part">
+                            <div class="d-flex flex-row justify-content-end">
+                                <p class="day-big">{{ $hijri->day < 10 ? '0'.$hijri->day : $hijri->day }}</p>
+                                <p class="month-num">/ {{ $hijri->month }}</p>
+                            </div>
+                            <div class="d-flex flex-column text-center">
+                                <p class="month-str">{{ (new Verta)->format('%B') }}</p>
+                                <p class="year">{{ $hijri->year }}</p>
+                            </div>
+                        </div>
+
+                        <!-- miladi -->
+                        <div class="cal-part">
+                            <div class="d-flex flex-row justify-content-end">
+                                <p class="day-big">{{ $miladi['mday'] < 10 ? '0'.$miladi['mday']:$miladi['mday'] }}</p>
+                                <p class="month-num">/ {{ $miladi['mon'] }}</p>
+                            </div>
+                            <div class="d-flex flex-column text-center">
+                                <p class="month-str">{{ $miladi['month'] }}</p>
+                                <p class="year">{{ $miladi['year'] }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- time -->
+                    <div class="p-1">
+                        <div id="time" class="cal-part"></div>
+                    </div>
+
                 </div>
+
 
             </div>
         </div>
+
 
 
     </div>
@@ -96,7 +134,7 @@
 
 
 
-<!-- Scripts --------------------------------------------------------------------------------------------------------------------------------------------c---->
+<!-- Scripts ----------------------------------------------------------------------------------------------------------------------------------------------->
 <script type="text/javascript">
     $(document).ready(function() {
 
@@ -121,6 +159,7 @@
         });
 
 
+
         // show time online
         function checkTime(i) {
             if (i < 10)  {i = "0" + i};
@@ -128,17 +167,16 @@
         }
         function showTime() {
             var now = new Date();
-            var h   = now.getHours();
+            var h   = checkTime(now.getHours());
             var m   = checkTime(now.getMinutes());
             var s   = checkTime(now.getSeconds());
-            $('#time').html ( h + " : " + m + " : " + s );
+            $('#time').html ( h + "<span class='font-weight-light px-3'> : </span>" + m + "<span class='font-weight-light px-3'> : </span>" + s );
             setInterval(showTime, 1000);
         }
         showTime();
 
+
+
     });
 </script>
-
-
-
 @endsection
