@@ -812,17 +812,9 @@ input:focus, textarea:focus,select:focus,button:focus {
 .dash-con-body {
     width: 100% !important;
     margin: auto !important;
-    padding: 16px 8px !important;
+    padding: 0px 8px !important;
     overflow: hidden !important;
 }
-
-
-
-
-
-
-
-
 
 table.tbl-2 {
     text-align: center;
@@ -848,7 +840,6 @@ table.tbl-2 tr:last-child {
 table.tbl-2 i {
     font-size: 20px !important;
 }
-
 table.tbl-2 tr:hover {
     border-right: inset 2px #e9e8e8;
     border-left: inset 2px #e9e8e8;
@@ -859,16 +850,20 @@ table.tbl-2 i:hover {
     cursor: pointer;
 }
 
-
-
+#pop_div {
+    position: relative;
+    margin-top: -6px !important;
+}
+#pop_div > div {
+    margin-top: 10px !important;
+    position: absolute;
+    top: 0;
+}
 #pop_div text {
     font-family: IranSans;
     font-size: 13px;
-    /*color: #9971ff !important;*/
 }
-#pop_div > div {
-    margin-top: -50px !important;
-}
+
 
 
 /*-----------------------------------------| Login Page |----------------------------------------------------------------------------------*/

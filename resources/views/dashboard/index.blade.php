@@ -9,14 +9,14 @@
 
 
 
-        <!-- Reminder -->
+        <!-- Reminder --------------------------------------------------------------------------------------------------------------------------------------->
         <div class="dash-con-outer col-7">
             <div class="dash-con">
 
                 <div class="dash-con-header">
                     <img src="{{ asset('/images/icons/message.png') }}">
                     <p>یاد آوری ها</p>
-                    <p>( {{ count($reminders) }} )</p>
+                    <p>( {{ $reminders_count }} )</p>
                     <a href="/dashboard/reminder/create"><i id="btn-add-reminder" class="fa fa-plus-circle"></i></a>
                 </div>
 
@@ -46,7 +46,7 @@
 
 
 
-        <!-- Date -->
+        <!-- Date ------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="dash-con-outer col-5">
             <div class="dash-con">
 
@@ -55,8 +55,12 @@
                     <p>زمان و تاریخ</p>
                 </div>
 
-                <div class="dash-con-body">
-
+                <div class="dash-con-body" style="direction: ltr !important;">
+                    {{ Verta::now()->format('Y / F m / d') }}
+                    <br>
+                    {{ Verta()->DateTime()->format('Y / F m / d') }}
+                    <br>
+                    <div id="time"></div>
                 </div>
 
             </div>
@@ -79,9 +83,8 @@
                 </div>
 
                 <div class="dash-con-body" id="pop_div">
-                    
+                    {!!Lava::render('AreaChart','Population','pop_div')!!}
                 </div>
-                {{--!!Lava::render('AreaChart','Population','pop_div')!!--}}
 
             </div>
         </div>
@@ -93,7 +96,7 @@
 
 
 
-<!-- Scripts -------------------------------------------------------------------------------------------------------------------->
+<!-- Scripts --------------------------------------------------------------------------------------------------------------------------------------------c---->
 <script type="text/javascript">
     $(document).ready(function() {
 
@@ -101,7 +104,7 @@
 
         // remove reminder
         $(".btn-delete-reminder").on('click', function(event){
-            var id = $(this).data('id');   
+            var id = $(this).data('id');
             $.ajax({
                 'url' : 'dashboard/removereminder/' + id,
                 'method' : 'POST',
@@ -118,6 +121,20 @@
         });
 
 
+        // show time online
+        function checkTime(i) {
+            if (i < 10)  {i = "0" + i};
+            return i;
+        }
+        function showTime() {
+            var now = new Date();
+            var h   = now.getHours();
+            var m   = checkTime(now.getMinutes());
+            var s   = checkTime(now.getSeconds());
+            $('#time').html ( h + " : " + m + " : " + s );
+            setInterval(showTime, 1000);
+        }
+        showTime();
 
     });
 </script>
