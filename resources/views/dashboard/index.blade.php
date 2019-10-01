@@ -30,9 +30,9 @@
                         <?php use Hekmatinasser\Verta\Verta;$i=1; ?>
                         @foreach($reminders as $reminder)
                             <tr>
-                                <td style="width:80px;">{{ $i++ }}</td>
-                                <td style="text-align:right; padding-right:150px">{{ $reminder->title }}</td>
-                                <td style="width:80px;"><span class="btn-delete-reminder ml-0" data-id="{{ $reminder->id }}"><i class="fa fa-calendar-check-o text-success"></i></span></td>
+                                <td>{{ $i++ }}</td>
+                                <td style="text-align:right; padding-right:50px">{{ $reminder->title }}</td>
+                                <td><span class="btn-delete-reminder ml-0" data-id="{{ $reminder->id }}"><i class="fa fa-calendar-check-o text-success"></i></span></td>
                             </tr>
                         @endforeach
                     </table>
@@ -144,7 +144,6 @@
     $(document).ready(function() {
 
 
-
         // remove reminder
         $(".btn-delete-reminder").on('click', function(event){
             var id = $(this).data('id');
@@ -161,7 +160,6 @@
                 }
             });
         });
-
 
 
     });

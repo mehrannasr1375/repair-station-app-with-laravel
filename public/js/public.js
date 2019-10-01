@@ -23,7 +23,7 @@ $(function(){
         var m   = checkTime(now.getMinutes());
         var s   = checkTime(now.getSeconds());
         $('#time').html ( h + "<span class='font-weight-light px-3'> : </span>" + m + "<span class='font-weight-light px-3'> : </span>" + s );
-        setInterval(showTime, 1000);
+        setTimeout(showTime, 1000);
     }
     showTime();
 

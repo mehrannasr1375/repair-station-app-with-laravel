@@ -44,6 +44,21 @@ a:hover {
     margin-top: 5rem !important;
 }
 
+.alert {
+    padding: 6px 20px;
+    border-radius: 0 !important;
+    line-height: 2;
+    font-size: 13px !important;
+    margin-bottom: 40px !important;
+}
+.alert-danger {
+    border-right:4px solid darkred;
+    background-color: rgba(255, 220, 220, 0.88);
+}
+.alert-success {
+    border-right:4px solid rgb(23, 149, 97);
+}
+
 .hover-e-1 {
     position: relative !important;
 }
@@ -147,20 +162,6 @@ a:hover {
     height: 100%;
 }
 
-.alert {
-    padding: 6px 20px;
-    border-radius: 0 !important;
-    line-height: 2;
-    font-size: 13px !important;
-    margin-bottom: 40px !important;
-}
-.alert-danger {
-    border-right:4px solid darkred;
-    background-color: rgba(255, 220, 220, 0.88);
-}
-.alert-success {
-    border-right:4px solid rgb(23, 149, 97);
-}
 .btn-border-less {
     position: relative;
     outline: none !important;
@@ -189,7 +190,6 @@ a:hover {
 .btn-border-less:hover:before {
     color:rgb(149, 56, 56) !important;
 }
-
 .btn-style-less, .btn-style-less:focus  {
     outline: none !important;
     border: none !important;
@@ -699,14 +699,12 @@ input:focus, textarea:focus,select:focus,button:focus {
 .form-box #n-o-objects span:hover:after {
     color:red !important;
 }
-
 .form-box .form-control, #new-order .form-control~* {
     height:35px !important;
 }
 .form-box #n-o-objects~.input-group-append {
     height:auto !important;
 }
-
 .form-box .nav {
     padding: 0 !important;
     text-align: center;
@@ -752,6 +750,7 @@ input:focus, textarea:focus,select:focus,button:focus {
     padding: 14px;
 }
 .dash-con {
+    overflow: hidden;
     background-color: white;
     border-radius: 6px;
     box-shadow: 0 0 2px 0 #a1a1a1;
@@ -853,6 +852,26 @@ input:focus, textarea:focus,select:focus,button:focus {
     padding: 14px 5px !important;
     color: #545454;
 }
+@media(max-width:1120px) {
+    .cal-part {
+        padding: 20px 30px;
+    }
+    .day-big {
+        font-size: 28px;
+        line-height: 2;
+    }
+    #time {
+        font-size: 18px;
+    }
+}
+@media(max-width:1000px) {
+    .cal-part {
+        padding: 15px;
+    }
+    .dash-con {
+        height: 300px !important;
+    }
+}
 
 
 table.tbl-2 {
@@ -861,7 +880,6 @@ table.tbl-2 {
     width: 100% !important;
     margin-top: 12px !important;
 }
-
 table.tbl-2 a {
     color: grey !important;
 }
@@ -888,6 +906,7 @@ table.tbl-2 i:hover {
     color: #0085b8 !important;
     cursor: pointer;
 }
+
 
 #pop_div {
     position: relative;
