@@ -4,7 +4,23 @@
     <list default="true" id="9a5cc108-f79e-481d-b54c-fd72944980e9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/public.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/public.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/fonts/AMosalas.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/fonts/BHoma.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/fonts/BTitrBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/fonts/IRANSansWeb300.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/fonts/IRANSansWeb400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/fonts/IRANSansWeb500.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/fonts/IRANSansWeb600.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/fonts/Vazir-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/fonts/Vazir-Medium.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/fonts/Vazir-Thin.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/fonts/Vazir.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/fonts/yekan.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/public.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/public.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/modals/basicModal.blade.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11643,7 +11659,7 @@
       <workItem from="1569779232278" duration="11465000" />
       <workItem from="1569838138619" duration="3112000" />
       <workItem from="1569870435264" duration="7264000" />
-      <workItem from="1569925394878" duration="219000" />
+      <workItem from="1569925394878" duration="2212000" />
     </task>
     <task id="LOCAL-00001" summary="Revert &quot;add readme.md&quot;&#10;&#10;This reverts commit 5104213d">
       <created>1565987124628</created>

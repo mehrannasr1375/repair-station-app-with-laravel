@@ -10,7 +10,7 @@ class dashboardController extends Controller
 
     public function index()
     {
-        $data = Lava::DataTable()
+        /*$data = Lava::DataTable()
             ->addDateColumn('روز')
             ->addNumberColumn('سود خالص روزانه به تومان');
         for ($a = 1; $a <= 30; $a++) {
@@ -19,7 +19,7 @@ class dashboardController extends Controller
         Lava::AreaChart('Population', $data, [
             'title' => '',
             'legend' => ['position' => 'in']
-        ]);
+        ]);*/
 
         $reminders = Reminder::where('status_code', '>=', '0')->orderBy('id', 'desc')->paginate(5);
         $reminders_count = count(Reminder::all()->toArray());

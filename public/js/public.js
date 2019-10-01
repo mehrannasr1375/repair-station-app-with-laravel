@@ -12,19 +12,20 @@ $(function(){
 
 
 
-    // show time
-    /*show_time();
-    function show_time() {
-        d = new Date();
-        H = d.getHours();
-        H = ( H < 10 ) ? "0" + H : H;
-        i = d.getMinutes();
-        i = ( i < 10 ) ? "0" + i : i;
-        s = d.getSeconds();
-        s = ( s < 10 ) ? "0" + s : s;
-        $("#show-time").html( s + " : " + i + " : " + H );
-        setInterval(show_time, 1000);
-    }*/
+    // show time online
+    function checkTime(i) {
+        if (i < 10)  {i = "0" + i};
+        return i;
+    }
+    function showTime() {
+        var now = new Date();
+        var h   = checkTime(now.getHours());
+        var m   = checkTime(now.getMinutes());
+        var s   = checkTime(now.getSeconds());
+        $('#time').html ( h + "<span class='font-weight-light px-3'> : </span>" + m + "<span class='font-weight-light px-3'> : </span>" + s );
+        setInterval(showTime, 1000);
+    }
+    showTime();
 
 
 

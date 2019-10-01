@@ -8,26 +8,6 @@
 }
 @font-face {
     font-family: IRANSans;
-    src: url("../fonts/IRANSansWeb300.woff");
-    font-weight: 300;
-}
-@font-face {
-    font-family: IRANSans;
-    src: url("../fonts/IRANSansWeb400.woff");
-    font-weight: 400;
-}
-@font-face {
-    font-family: IRANSans;
-    src: url("../fonts/IRANSansWeb500.woff");
-    font-weight: 500;
-}
-@font-face {
-    font-family: IRANSans;
-    src: url("../fonts/IRANSansWeb600.woff");
-    font-weight: 600;
-}
-@font-face {
-    font-family: IRANSans;
     src: url("../fonts/IRANSansWeb900.woff");
     font-weight: 900;
 }
@@ -89,7 +69,7 @@ a:hover {
     top: 0;
 }
 #lt {
-    font-weight: 300;
+    font-weight: 200;
     font-size: 22px;
     padding-left: 7px;
     padding-right: 8px;
@@ -324,7 +304,7 @@ a:hover {
 #btn-toggle-top-search {
     cursor: pointer;
     font-family: FontAwesome;
-    font-weight: 300;
+    font-weight: 200;
     font-size: 20px;
     margin-right: 45%;
     background-color: #0ea1a4;
@@ -408,7 +388,7 @@ a:hover {
 }
 #sidebar .sidebar-btn p {
     font-size: 12px;
-    font-weight: 300;
+    font-weight: 200;
     line-height: 2.5;
     transition-duration: .3s;
     /*color: #000;*/
@@ -535,8 +515,8 @@ input:focus, textarea:focus,select:focus,button:focus {
 .modal-header {
     padding: 10px 18px !important;
     padding-bottom: 6px !important;
-    font-family: "A Mosalas";
-    font-weight: 600;
+    font-family: "yekan";
+    font-weight: 900;
 }
 .modal-title {
     font-size: 13px !important;
@@ -620,7 +600,7 @@ input:focus, textarea:focus,select:focus,button:focus {
     padding: 8px 16px;
     box-shadow: 0px 4px 12px -6px grey;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 900;
     border-right: 2px solid #00b8ff;
     transition-duration: .2s;
 }
@@ -798,7 +778,6 @@ input:focus, textarea:focus,select:focus,button:focus {
     margin-right: 14px !important;
     color: rgb(153, 46, 153);
     font-size: 10px;
-    font-weight: 500;
 }
 .dash-con-header img {
     width: 40px;
@@ -844,7 +823,7 @@ input:focus, textarea:focus,select:focus,button:focus {
     line-height: 4.5;
     margin-right: 10px;
     margin-bottom: 0;
-    font-weight: 500;
+    font-weight: 900;
     color: purple;
 }
 .month-str {
@@ -857,7 +836,7 @@ input:focus, textarea:focus,select:focus,button:focus {
 }
 .year {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 900;
     line-height: 2.2;
     margin-bottom: 0 !important;
     color: #b6b6b6;
@@ -923,7 +902,6 @@ table.tbl-2 i:hover {
     font-family: IranSans;
     font-size: 13px;
 }
-
 
 
 /*-----------------------------------------| Login Page |----------------------------------------------------------------------------------*/
@@ -1042,6 +1020,9 @@ table.tbl-2 i:hover {
 }
 
 
+/*-----------------------------------------|  |--------------------------------------------------------------------------------------*/
+/*-----------------------------------------|  |--------------------------------------------------------------------------------------*/
+/*-----------------------------------------|  |--------------------------------------------------------------------------------------*/
 /*-----------------------------------------|  |--------------------------------------------------------------------------------------*/
 
 

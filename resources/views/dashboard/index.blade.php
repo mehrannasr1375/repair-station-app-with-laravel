@@ -5,6 +5,9 @@
 
 
 <div id="dashboard">
+
+
+
     <div class="row">
 
 
@@ -121,7 +124,9 @@
                 </div>
 
                 <div class="dash-con-body" id="pop_div">
-                    {!!Lava::render('AreaChart','Population','pop_div')!!}
+                    <!--
+                    {--!!Lava::render('AreaChart','Population','pop_div')!!--}
+                    -->
                 </div>
 
             </div>
@@ -147,7 +152,6 @@
                 'url' : 'dashboard/removereminder/' + id,
                 'method' : 'POST',
                 data:{
-                    '_token' : '<?php echo csrf_token() ?>',
                     'id' : id
                 },
                 success:function (data) {
@@ -157,23 +161,6 @@
                 }
             });
         });
-
-
-
-        // show time online
-        function checkTime(i) {
-            if (i < 10)  {i = "0" + i};
-            return i;
-        }
-        function showTime() {
-            var now = new Date();
-            var h   = checkTime(now.getHours());
-            var m   = checkTime(now.getMinutes());
-            var s   = checkTime(now.getSeconds());
-            $('#time').html ( h + "<span class='font-weight-light px-3'> : </span>" + m + "<span class='font-weight-light px-3'> : </span>" + s );
-            setInterval(showTime, 1000);
-        }
-        showTime();
 
 
 
