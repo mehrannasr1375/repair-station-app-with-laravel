@@ -765,6 +765,9 @@ input:focus, textarea:focus,select:focus,button:focus {
     margin-right: -16px !important;
     margin-left: -16px !important;
 }
+#dashboard * {
+    user-select: none;
+}
 .dash-con-outer {
     padding: 14px;
 }
