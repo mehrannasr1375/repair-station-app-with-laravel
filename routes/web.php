@@ -39,7 +39,7 @@ Route::post('/customers', 'CustomersController@store');
 Route::get('/customers/{customer}', 'CustomersController@show');
 Route::get('/customers/{customer}/edit', 'CustomersController@edit');
 Route::patch('/customers/{customer}', 'CustomersController@update');
-Route::delete('/customers/{customer}', 'CustomersController@destroy');
+Route::post('/customers/delete/{customer}', 'CustomersController@destroy');
 Route::get('/customers/{customer}/orders', 'CustomersController@getOrdersOfCustomer');
 Route::get('/customers/{customer}/bills', 'CustomersController@getBillsOfCustomer');
 
@@ -55,7 +55,6 @@ Route::get('/orders/{order}/edit', 'OrdersController@edit');
 Route::patch('/orders/{order}', 'OrdersController@update');
 Route::post('/orders/delete/{order}', 'OrdersController@destroy');
 Route::post('/orders/get', 'OrdersController@getCustomers');
-
 
 
 

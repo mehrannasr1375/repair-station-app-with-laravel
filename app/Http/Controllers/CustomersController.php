@@ -114,13 +114,6 @@ class CustomersController extends Controller
         return redirect("/customers/$customer->id/edit")->with('success', 'تغییرات با موفقیت ذخیره گردید !');
     }
 
-    public function destroy(Customer $customer)
-    {
-        //$customer->delete();
-
-        return redirect('/customers');
-    }
-
     public function getOrdersOfCustomer(Customer $customer)
     {
         Verta::setStringformat('H:i --- y/n/j');
@@ -128,7 +121,7 @@ class CustomersController extends Controller
         $orders = Order::allOrders()->OrderByDesc()->where('customer_id', $customer->id)->paginate(8);
 
         return view('customers.orders.index', compact('orders','customer'));
-    }//ok
+    }
 
     public function getBillsOfCustomer(Customer $customer)
     {
@@ -140,6 +133,15 @@ class CustomersController extends Controller
     }
 
 
+
+    public function destroy(Customer $customer)
+    {
+        //delete via ajax with route model binding on url
+
+        $customer->delete();
+
+        return response('true', 200);
+    }
 
     private function getAvailableOrders()
     {

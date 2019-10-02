@@ -42,7 +42,7 @@ class CreateOrdersTable extends Migration
             $table->boolean('checkout')->default(false);
             $table->string('participants_csv')->nullable();
 
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
 
         });
     }

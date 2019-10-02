@@ -188,16 +188,21 @@ class OrdersController extends Controller
         return redirect("orders/$order->id/edit")->with('success_res', ' اطلاعات تعمیری با موفقیت بروزرسانی شد.');
     }
 
-    public function destroy(Order $order) //ajax
+    public function destroy(Order $order)
     {
+        //delete via ajax with route model binding on url
+
         $order->delete();
 
         return response('true', 200);
     }
 
-    // calculate 'paid' && 'should_pay' && 'sum' amount for order
-    public function aggregatePricesSum($orders) 
+
+
+    public function aggregatePricesSum($orders)
     {
+        // calculate 'paid' && 'should_pay' && 'sum' amount for order
+
         foreach ($orders as $order) {
             $paid_sum = 0;
             foreach ($order->Payments as $payment) {
@@ -214,9 +219,10 @@ class OrdersController extends Controller
         }
     }
 
-    // get customers for create new order of existing customer via ajax
     public function getCustomers(Request $request) //ajax
     {
+        // get customers for create new order of existing customer via ajax
+
         if ( $request->type == 'id' )
         {
             $id = (int)($request->id);
