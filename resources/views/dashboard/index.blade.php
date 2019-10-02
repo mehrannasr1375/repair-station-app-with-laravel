@@ -151,6 +151,7 @@
                 'url' : 'dashboard/removereminder/' + id,
                 'method' : 'POST',
                 data:{
+                    '_token' : "<?php echo csrf_token() ?>",
                     'id' : id
                 },
                 success:function (data) {
