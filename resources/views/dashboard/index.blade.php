@@ -124,9 +124,9 @@
                 </div>
 
                 <div class="dash-con-body" id="pop_div">
-                    <!--
-                    {--!!Lava::render('AreaChart','Population','pop_div')!!--}
-                    -->
+
+                    {!!Lava::render('AreaChart','Population','pop_div')!!}
+
                 </div>
 
             </div>

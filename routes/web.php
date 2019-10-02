@@ -33,7 +33,7 @@ Route::post('/repairing/addrepaired', 'repairingOrdersController@addRepaired');
 
 
 // Customers
-Route::get('/customers', 'CustomersController@index');
+Route::get('/customers/return/{type}', 'CustomersController@index');
 Route::get('/customers/create', 'CustomersController@create');
 Route::post('/customers', 'CustomersController@store');
 Route::get('/customers/{customer}', 'CustomersController@show');

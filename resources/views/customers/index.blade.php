@@ -12,60 +12,28 @@
     <!-- Tiny btns ----------------------------------------------------------------------------------------------------------------------------->
     <div class="form-box pl-0 pr-2 mb-4">
         <ul class="nav nav-tabs nav-justified mt-4">
-            <li class="nav-item active">
-                <a class="nav-link active" href="#partner" data-toggle="tab">همکار</a>
+            <li class="nav-item {{ strpos(url()->current(), '/customers/return/all') ? "active":"" }} ">
+                <a href="/customers/return/all" class="nav-link {{ strpos(url()->current(), '/customers/return/all') ? "active":"" }} ">همه</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#normal" data-toggle="tab">مشتری</a>
+            <li class="nav-item {{ strpos(url()->current(), '/customers/return/partners') ? "active":"" }} ">
+                <a href="/customers/return/partners" class="nav-link {{ strpos(url()->current(), '/customers/return/partners') ? "active":"" }} ">همکار</a>
+            </li>
+            <li class="nav-item {{ strpos(url()->current(), '/customers/return/customers') ? "active":"" }} ">
+                <a href="/customers/return/customers" class="nav-link {{ strpos(url()->current(), '/customers/return/customers') ? "active":"" }} ">مشتری</a>
             </li>
         </ul>
     </div>
 
 
 
-    <!-- Customers && Partners container ------------------------------------------------------------------------------------------------------->
-    <div class="tab-content tbl-main-con">
+    <!-- Customers container ------------------------------------------------------------------------------------------------------->
+    <div class="tbl-main-con">
 
 
 
-        <!-- Partners Table -->
-        <div class="tab-pane active show" id="partner">
+        <!-- Table --->
+        <div id="normal">
             <table class="tbl-1">
-                <tr>
-                    <th style="width:60px;">شناسه مشتری</th>
-                    <th>نام و نام خانوادگی</th>
-                    <th>اطلاعات همکار</th>
-                    <th>لیست تمامی قطعات</th>
-                    <th>قطعات موجود</th>
-                    <th>قطعات آماده</th>
-                    <th>صورت حساب</th>
-                </tr>
-                @foreach ($partners as $partner)
-                    <tr>
-                        <td>{{ $partner->id }}</td>
-                        <td><a href="/customers/{{ $partner->id }}/edit">{{ $partner->name }}</a></td>
-                        <td><a href="/customers/{{ $partner->id }}"><i class="fa fa-2x text-secondary fa-info pl-2"></i></a></td>
-                        <td><a href="/customers/{{ $partner->id }}/orders"><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
-                        <td>{{ $partner->available_orders_count == 0 ? "-":$partner->available_orders_count }}</td>
-                        <td>{{ $partner->prepaired_orders_count == 0 ? "-":$partner->prepaired_orders_count }}</td>
-                        <td><a href="/customers/{{ $partner->id }}/bills"><i class="fa fa-2x text-success fa-money pl-2"></i></a></td>
-                    </tr>
-                @endforeach
-            </table>
-
-            <!-- Orders Pagination -->
-            <div class="row">
-                <div class="col-12 d-flex justify-content-center">
-                    {{ $partners->onEachSide(2)->links() }}
-                </div>
-            </div>
-        </div>
-
-
-
-        <!-- Customers Table --->
-        <div class="tab-pane" id="normal">
-            <table class="tab-pane tbl-1">
                 <tr>
                     <th style="width:60px;">شناسه مشتری</th>
                     <th>نام و نام خانوادگی</th>
@@ -87,7 +55,7 @@
                     </tr>
                 @endforeach
             </table>
-            <!-- Customers Pagination -->
+            <!-- Pagination -->
             <div class="row">
                 <div class="col-12 d-flex justify-content-center">
                     {{ $customers->onEachSide(2)->links() }}

@@ -16,70 +16,75 @@ use App\Http\Requests\getCustomerOrdersRequest;
 use App\Payment;
 use Verta;
 
-
 class CustomersController extends Controller
 {
 
-
-
     public function index()
     {
+        $available_orders = $this->getAvailableOrders();
+        $prepaired_orders = $this->getPrepairedOrders();
 
-        $available_orders = DB::table('orders')
-            ->select('customer_id')
-            ->addSelect(DB::raw('COUNT(orders.id) AS available_orders_count'))
-            ->where('checkout','=',false)
-            ->groupBy('customer_id');
-        $prepaired_orders = DB::table('orders')
-            ->select('customer_id')
-            ->addSelect(DB::raw('COUNT(orders.id) AS prepaired_orders_count'))
-            ->Where('status_code','!=','0')
-            ->groupBy('customer_id');
+        if ( strpos(url()->current(), '/customers/return/customers') ) {
+            $customers = DB::table('customers')
+                ->select('id', 'name','available_orders_count','prepaired_orders_count')
+                ->leftjoinSub($available_orders,'available_orders',function($join){
+                    $join->on('customers.id', '=', 'available_orders.customer_id');
+                })
+                ->leftjoinSub($prepaired_orders,'prepaired_orders',function($join){
+                    $join->on('customers.id', '=', 'prepaired_orders.customer_id');
+                })
+                ->where('is_partner', '=', '0')
+                ->orderBy('id','DESC')
+                ->paginate(8);
+        }
+        else if ( strpos(url()->current(), '/customers/return/partners') ) {
+            $customers = DB::table('customers')
+                ->select('id', 'name','prepaired_orders_count','available_orders_count')
+                ->leftjoinSub($available_orders,'available_orders',function($join){
+                    $join->on('customers.id', '=', 'available_orders.customer_id');
+                })
+                ->leftjoinSub($prepaired_orders,'prepaired_orders',function($join){
+                    $join->on('customers.id', '=', 'prepaired_orders.customer_id');
+                })
+                ->where('is_partner', '=', '1')
+                ->orderBy('id','DESC')
+                ->paginate(8);
+        }
+        else if ( strpos(url()->current(), '/customers/return/all') ) {
+            $customers = DB::table('customers')
+                ->select('id', 'name','prepaired_orders_count','available_orders_count')
+                ->leftjoinSub($available_orders,'available_orders',function($join){
+                    $join->on('customers.id', '=', 'available_orders.customer_id');
+                })
+                ->leftjoinSub($prepaired_orders,'prepaired_orders',function($join){
+                    $join->on('customers.id', '=', 'prepaired_orders.customer_id');
+                })
+                ->orderBy('id','DESC')
+                ->paginate(8);
+        }
+        else {
+            $customers = DB::table('customers')
+                ->select('id', 'name','prepaired_orders_count','available_orders_count')
+                ->leftjoinSub($available_orders,'available_orders',function($join){
+                    $join->on('customers.id', '=', 'available_orders.customer_id');
+                })
+                ->leftjoinSub($prepaired_orders,'prepaired_orders',function($join){
+                    $join->on('customers.id', '=', 'prepaired_orders.customer_id');
+                })
+                ->orderBy('id','DESC')
+                ->paginate(8);
+        }
 
-
-        $partners = DB::table('customers')
-            ->select('id', 'name','prepaired_orders_count','available_orders_count')
-            ->leftjoinSub($available_orders,'available_orders',function($join){
-                $join->on('customers.id', '=', 'available_orders.customer_id');
-            })
-            ->leftjoinSub($prepaired_orders,'prepaired_orders',function($join){
-                $join->on('customers.id', '=', 'prepaired_orders.customer_id');
-            })
-            ->where('is_partner', '=', true)
-            ->orderBy('id','DESC')
-            ->paginate(8);
-
-
-        $customers = DB::table('customers')
-            ->select('id', 'name','available_orders_count','prepaired_orders_count')
-            ->leftjoinSub($available_orders,'available_orders',function($join){
-                $join->on('customers.id', '=', 'available_orders.customer_id');
-            })
-            ->leftjoinSub($prepaired_orders,'prepaired_orders',function($join){
-                $join->on('customers.id', '=', 'prepaired_orders.customer_id');
-            })
-            ->where('is_partner', '=', false)
-            ->orderBy('id','DESC')
-            ->paginate(8);
-
-        return view('customers.index', compact('customers','partners'));
-
+        return view('customers.index', compact('customers'));
     }
-
-
 
     public function create()
     {
-
         return view('customers.create');
-
-    }//ok
-
-
+    }
 
     public function store(NewCustomerFromRequest $request)
     {
-
         $data                =  $request->validated();
         $data['is_partner']  =  $request->has('is_partner') ? true:false;
         $data['created_at']  =  new Verta(new \DateTime());
@@ -87,77 +92,76 @@ class CustomersController extends Controller
         $res = Customer::create($data);
 
         return redirect("/customers/$res->id/edit")->with('success', 'مشتری جدید با موفقیت ثبت گردید !');
-
-    }//ok
-
-
+    }
 
     public function show(Customer $customer)
     {
-
         return view('customers.edit', compact('customer'));
-
-    }//ok
-
-
+    }
 
     public function edit(Customer $customer)
     {
-
         return view('customers.edit', compact('customer'));
-
-    }//ok
-
-
+    }
 
     public function update(NewCustomerFromRequest $request, Customer $customer)
     {
-
         $data                =  $request->validated();
         $data['is_partner']  =  $request->has('is_partner') ? true:false;
 
         $customer->update($data);
 
         return redirect("/customers/$customer->id/edit")->with('success', 'تغییرات با موفقیت ذخیره گردید !');
-
-    }//ok
-
-
+    }
 
     public function destroy(Customer $customer)
     {
-
         //$customer->delete();
+
         return redirect('/customers');
-
     }
-
-
 
     public function getOrdersOfCustomer(Customer $customer)
     {
-
         Verta::setStringformat('H:i --- y/n/j');
 
         $orders = Order::allOrders()->OrderByDesc()->where('customer_id', $customer->id)->paginate(8);
 
         return view('customers.orders.index', compact('orders','customer'));
-
     }//ok
-
-
 
     public function getBillsOfCustomer(Customer $customer)
     {
-
         Verta::setStringformat('H:i y/n/j');
 
         $orders = Order::where('customer_id', '=', $customer->id)->with('OrderDetails','Payments')->paginate(2);
 
         return view('customers.bills.index', compact('orders','customer'));
-
     }
 
+
+
+    private function getAvailableOrders()
+    {
+        $available_orders = DB::table('orders')
+            ->select('customer_id')
+            ->addSelect(DB::raw('COUNT(orders.id) AS available_orders_count'))
+            ->where('checkout', '=', false)
+            ->groupBy('customer_id');
+
+        return $available_orders;
+    }
+
+    private function getPrepairedOrders()
+    {
+        $prepaired_orders = DB::table('orders')
+            ->select('customer_id')
+            ->addSelect(DB::raw('COUNT(orders.id) AS prepaired_orders_count'))
+            ->Where('status_code', '!=', '0')
+            ->groupBy('customer_id');
+
+        return $prepaired_orders;
+    }
 
 
 }
