@@ -19,12 +19,14 @@ use Verta;
 class CustomersController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
+        $count = ($request->count) ? (int)($request->count) : 8; // make pagination costomized with url:'count/x'
+
         $available_orders = $this->getAvailableOrders();
         $prepaired_orders = $this->getPrepairedOrders();
 
-        if ( strpos(url()->current(), '/customers/return/customers') ) {
+        if ( strpos(url()->current(), 'return/customers') ) {
             $customers = DB::table('customers')
                 ->select('id', 'name','available_orders_count','prepaired_orders_count')
                 ->leftjoinSub($available_orders,'available_orders',function($join){
@@ -35,9 +37,9 @@ class CustomersController extends Controller
                 })
                 ->where('is_partner', '=', '0')
                 ->orderBy('id','DESC')
-                ->paginate(8);
+                ->paginate($count);
         }
-        else if ( strpos(url()->current(), '/customers/return/partners') ) {
+        else if ( strpos(url()->current(), 'return/partners') ) {
             $customers = DB::table('customers')
                 ->select('id', 'name','prepaired_orders_count','available_orders_count')
                 ->leftjoinSub($available_orders,'available_orders',function($join){
@@ -48,9 +50,9 @@ class CustomersController extends Controller
                 })
                 ->where('is_partner', '=', '1')
                 ->orderBy('id','DESC')
-                ->paginate(8);
+                ->paginate($count);
         }
-        else if ( strpos(url()->current(), '/customers/return/all') ) {
+        else if ( strpos(url()->current(), 'return/all') ) {
             $customers = DB::table('customers')
                 ->select('id', 'name','prepaired_orders_count','available_orders_count')
                 ->leftjoinSub($available_orders,'available_orders',function($join){
@@ -60,7 +62,7 @@ class CustomersController extends Controller
                     $join->on('customers.id', '=', 'prepaired_orders.customer_id');
                 })
                 ->orderBy('id','DESC')
-                ->paginate(8);
+                ->paginate($count);
         }
         else {
             $customers = DB::table('customers')
@@ -72,10 +74,10 @@ class CustomersController extends Controller
                     $join->on('customers.id', '=', 'prepaired_orders.customer_id');
                 })
                 ->orderBy('id','DESC')
-                ->paginate(8);
+                ->paginate($count);
         }
 
-        return view('customers.index', compact('customers'));
+        return view('customers.index', compact('customers','count'));
     }
 
     public function create()
@@ -85,9 +87,9 @@ class CustomersController extends Controller
 
     public function store(NewCustomerFromRequest $request)
     {
-        $data                =  $request->validated();
-        $data['is_partner']  =  $request->has('is_partner') ? true:false;
-        $data['created_at']  =  new Verta(new \DateTime());
+        $data = $request->validated();
+        $data['is_partner'] = $request->has('is_partner') ? true:false;
+        $data['created_at'] = new Verta(new \DateTime());
 
         $res = Customer::create($data);
 
@@ -106,8 +108,8 @@ class CustomersController extends Controller
 
     public function update(NewCustomerFromRequest $request, Customer $customer)
     {
-        $data                =  $request->validated();
-        $data['is_partner']  =  $request->has('is_partner') ? true:false;
+        $data = $request->validated();
+        $data['is_partner'] = $request->has('is_partner') ? true:false;
 
         $customer->update($data);
 

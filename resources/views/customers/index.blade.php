@@ -4,21 +4,34 @@
 
 
 
-    <!-- search bar --------------------------------------------------------------------------------------------------------------------------->
+    <!-- search bar ---------------------------------------------------------------------------------------------------------------------------------------------------------->
     @include('common.searchbar')
 
 
 
-    <!-- Tiny btns ----------------------------------------------------------------------------------------------------------------------------->
+    <!-- Customize Paginator ------------------------------------------------------------------------------------------------------------------------------------------------->
+    <div class="row">
+        <div class="col-12 col-md-3 offset-9 input-group input-group-sm mb-4 mt-2">
+            <div class="input-group-prepend"><div class="input-group-text text-black-50 text-vsm"><span class="label">تعداد در صفحه : </span></div></div>
+            <input type="text" id="txt_paginator" class="form-control form-control-sm text-vsm text-center" placeholder="تعداد در صفحه" value="{{ $count }}"/>
+            <div class="input-group-append">
+                <button id="customize-paginator" class="btn btn-bordered text-vsm text-black-50" type="button">اعمال</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Tiny btns ----------------------------------------------------------------------------------------------------------------------------------------------------------->
     <div class="form-box pl-0 pr-2 mb-4">
         <ul class="nav nav-tabs nav-justified mt-4">
-            <li class="nav-item {{ strpos(url()->current(), '/customers/return/all') ? "active":"" }} ">
+            <li class="nav-item {{ strpos(url()->current(), 'return/all') ? "active":"" }} ">
                 <a href="/customers/return/all" class="nav-link {{ strpos(url()->current(), '/customers/return/all') ? "active":"" }} ">همه</a>
             </li>
-            <li class="nav-item {{ strpos(url()->current(), '/customers/return/partners') ? "active":"" }} ">
+            <li class="nav-item {{ strpos(url()->current(), 'return/partners') ? "active":"" }} ">
                 <a href="/customers/return/partners" class="nav-link {{ strpos(url()->current(), '/customers/return/partners') ? "active":"" }} ">همکار</a>
             </li>
-            <li class="nav-item {{ strpos(url()->current(), '/customers/return/customers') ? "active":"" }} ">
+            <li class="nav-item {{ strpos(url()->current(), 'return/customers') ? "active":"" }} ">
                 <a href="/customers/return/customers" class="nav-link {{ strpos(url()->current(), '/customers/return/customers') ? "active":"" }} ">مشتری</a>
             </li>
         </ul>
@@ -26,7 +39,7 @@
 
 
 
-    <!-- Customers container ------------------------------------------------------------------------------------------------------->
+    <!-- Customers container ---------------------------------------------------------------------------------------------------------------------------------------------------->
     <div class="tbl-main-con">
         <div id="normal">
 
@@ -68,7 +81,7 @@
 
 
 
-    <!-- New Customer Btn ---------------------------------------------------------------------------------------------------------------------->
+    <!-- New Customer Btn ---------------------------------------------------------------------------------------------------------------------------------------------------->
     <div class="row my-5">
         <div class="col-12 d-flex justify-content-end">
             <a href="/customers/create" class="btn btn-bordered">مشتری جدید</a>
@@ -77,7 +90,7 @@
 
 
 
-    <!-- Modals --------------------------------------------------------------------------------------------------------------------------------------------------->
+    <!-- Modals ------------------------------------------------------------------------------------------------------------------------------------------------------------------>
     <section id="customers-modals-con">
 
 
@@ -112,7 +125,7 @@
 
 
 
-    <!-- Modals Scripts ------------------------------------------------------------------------------------------------------------------------------------------->
+    <!-- Scripts ---------------------------------------------------------------------------------------------------------------------------------------------------------->
     <script type="text/javascript">
         $(window).on('load', function() {
 
@@ -160,9 +173,30 @@
 
 
 
+            //customize paginator
+            $("#customize-paginator").click(function (event) {
+                let current_url = document.location.href;
+
+                if ( current_url.includes('return/all') ) {
+                    document.location.href = "/customers/return/all/count/" + $(this).parent().siblings().closest('input').val();
+                }
+                else if ( current_url.includes('return/partners') ) {
+                    document.location.href = "/customers/return/partners/count/" + $(this).parent().siblings().closest('input').val();
+                }
+                else if ( current_url.includes('return/customers') ) {
+                    document.location.href = "/customers/return/customers/count/" + $(this).parent().siblings().closest('input').val();
+                }
+                else {
+                    document.location.href = "/customers/return/customers/count/" + $(this).parent().siblings().closest('input').val();
+                }
+
+            });
+
+
+
         });
     </script>
-    <!------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
 

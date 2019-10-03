@@ -19,87 +19,63 @@ use Verta;
 class repairingOrdersController extends Controller
 {
 
-
-
     public function index(Request $request)
     {
-
         Verta::setStringformat("j / n / y \n H:i");
 
-        $count = ($request->count) ? (int)($request->count) : 8;
+        $count = ($request->count) ? (int)($request->count) : 8; // make pagination costomized with url:'/repairing/count/x'
 
         $orders = Order::RepairingOrders()->orderByDesc()->paginate($count);
 
         return view('repairing.index', compact('orders', 'count'));
-
     }
-
 
 
 
     /* AJAX Requests ------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-
-
     //ajax: device is well
     public function healthy(updateOrderStatusRequest $request) //ok
     {
-
         Order::where('id',$request->order_id)->update([
             'status_code'=>3
         ]);
 
         return response($request->order_id, 200);
-
     }
-
-
 
     //ajax: device is unrepairable
     public function unrepairable(updateOrderStatusRequest $request) //ok
     {
-
         Order::where('id',$request->order_id)->update([
             'status_code'=>2
         ]);
 
         return response($request->order_id, 200);
-
     }
-
-
 
     //ajax: device has putted off by customer rejection
     public function putoff(updateOrderStatusRequest $request) //ok
     {
-
         Order::where('id',$request->order_id)->update([
             'status_code'=>4
         ]);
 
         return response($request->order_id, 200);
-
     }
-
-
 
     //ajax: add repairing_note
     public function addNote(addOrderNoteRequest $request)
     {
-
         Order::where('id',$request->order_id)->update([
             'delivery_note' => $request->note
         ]);
         return response('true', 200);
-
     }
-
-
 
     //ajax: device has repaired
     public function addRepaired(orderHasRepairedRequest $request)
     {
-
         $order_id = $request->order_id;
         $order_details_array = $request->array;
 
@@ -121,25 +97,6 @@ class repairingOrdersController extends Controller
         ]);
 
         return response('true', 200);
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

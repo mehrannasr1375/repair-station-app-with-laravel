@@ -15,12 +15,12 @@
                     <i class="fa fa-2x fa-user"></i>
                     <input type="text" id="email" class="text-center @error('email') is-invalid @enderror" placeholder="ایمیل" name="email" value="test@test.com" autocomplete="off" required >
                 </div>
-                
+
 
                 <!-- Password -->
                 <div class="col-12 mb-4 gradient-effect">
                     <i class="fa fa-2x fa-lock"></i>
-                    <input name="password" id="password" type="password" class="text-center @error('password') is-invalid @enderror" value="12345678" placeholder="رمز عبور" required >
+                    <input name="password" id="password" type="password" class="text-center @error('password') is-invalid @enderror" value="abcd1234" placeholder="رمز عبور" required >
                 </div>
                 @error('password')
                     <span class="login-error" role="alert">
