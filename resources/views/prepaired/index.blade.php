@@ -170,7 +170,9 @@
             });
             $(".btn_checkout").click(function (event) {
                 order_id = $(this).parent().siblings('td:first-child').text();
-                $("#modal_confirm_checkout_order").modal('show');
+                let modal = $("#modal_confirm_checkout_order");
+                modal.find('input').val('');
+                modal.modal('show');
             });
 
 

@@ -11,7 +11,11 @@
     src: url("../fonts/IRANSansWeb900.woff");
     font-weight: 900;
 }
-
+@font-face {
+    font-family: IRANSans;
+    src: url("../fonts/IRANSansWeb400.woff");
+    font-weight: 400;
+}
 
 /*-----------------------------------------| Public |-----------------------------------------------------------------------------------*/
 
@@ -408,6 +412,7 @@ table.tbl-1 {
     text-align: center;
     min-width: 480px;
     font-size: 12px !important;
+    font-weight: 400;
     width: 100% !important;
     margin-bottom: 30px;
     border: 1px solid #e6e6e6;

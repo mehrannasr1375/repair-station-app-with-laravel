@@ -129,7 +129,7 @@ class CustomersController extends Controller
     {
         Verta::setStringformat('H:i y/n/j');
 
-        $orders = Order::where('customer_id', '=', $customer->id)->with('OrderDetails','Payments')->paginate(2);
+        $orders = Order::where('customer_id', '=', $customer->id)->with('OrderDetails','Payments')->get();
 
         return view('customers.bills.index', compact('orders','customer'));
     }

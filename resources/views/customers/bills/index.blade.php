@@ -4,9 +4,6 @@
 
 
 
-
-
-
     <!-- Customer details ----------------------------------------------------------------------------------------------------------------->
     <div class="alert alert-info mt-6 mb-2">
         <div class="d-flex flex-wrap justify-content-between">
@@ -26,10 +23,6 @@
                 <span class="font-weight-bold"> {{ $customer->id }} </span>
             </div>
             <div>
-                <span> تعمیری ها در صفحه: </span>
-                <span class="font-weight-bold"> {{ count($orders) }}</span>
-            </div>
-            <div>
                 <span>شماره های تماس : </span>
                 <span class="font-weight-bold"> {{ $customer->mobile_1 }} و {{ $customer->tell_1 }} </span>
             </div>
@@ -42,6 +35,7 @@
     <div class="tbl-main-con">
         <div id="normal">
 
+            <!-- Table -->
             <table class="tbl-1">
                 @if ( count($orders) == 0 )
                     <p class="text-center text-sm-center text-secondary pt-5">
@@ -61,6 +55,8 @@
                     </tr>
                     <?php $i=1; ?>
                     @foreach ($orders as $order)
+
+                        <?php $order_details_sum = 0; ?>
                         @foreach ($order->OrderDetails as $orderDetail)
                             <tr class="text-danger">
                                 <td>{{ $i++ }}</td>
@@ -71,7 +67,9 @@
                                 <td>بدهکار</td>
                                 <td>-</td>
                             </tr>
+                                <?php $order_details_sum += $orderDetail->user_amount;?>
                         @endforeach
+                            <?php $payments_sum = 0; ?>
                         @foreach ($order->Payments as $payment)
                             <tr class="text-success">
                                 <td>{{ $i++ }}</td>
@@ -82,19 +80,30 @@
                                 <td>بستانکار</td>
                                 <td>{{ $payment->date }}</td>
                             </tr>
-                        @endforeach
+                                <?php $payments_sum += $payment->amount;?>
+                            @endforeach
 
                     @endforeach
-
                 @endif
             </table>
 
-            <!-- Pagination -->
+            <div class="m-auto d-block mb-5">
+                <table class="m-5 m-auto table-bordered ">
+                    <tr>
+                        <td class="px-4 text-vsm">وضعیت کلی:</td>
+                        <td>
+                            <input type="text" class="form-control form-control-sm text-center" disabled value="{{ ($order_details_sum - $payments_sum) > 0 ? $order_details_sum - $payments_sum.' بستانکار ':$payments_sum - $order_details_sum.' بدهکار ' }}" >
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Pagination
             <div class="row">
                 <div class="col-12 d-flex justify-content-center">
-                    {{ $orders->links() }}
+{{--                    {{ $orders->links() }}--}}
                 </div>
-            </div>
+            </div>-->
 
         </div>
     </div>
