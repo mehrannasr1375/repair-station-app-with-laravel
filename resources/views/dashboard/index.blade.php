@@ -8,6 +8,7 @@
 
 
 
+    <!-- Reminder & Date (First row) --------------------------------------------------------------------------------------------------------------------------------------->
     <div class="row">
 
 
@@ -20,7 +21,7 @@
                     <img src="{{ asset('/images/icons/message.png') }}">
                     <p>یاد آوری ها</p>
                     <p>( {{ $reminders_count }} )</p>
-                    <a href="/dashboard/reminder/create"><i id="btn-add-reminder" class="fa fa-plus-circle"></i></a>
+                    <a href="#" id="btn_add_reminder" class="mr-3 d-inline"><i class="fa fa-plus-circle"></i></a>
                 </div>
 
                 <div class="dash-con-body">
@@ -139,12 +140,112 @@
 
 
 
+<!-- Modals ------------------------------------------------------------------------------------------------------------------->
+<section id="dashboard-modals-con">
+
+
+    <!-- modal add reminder -->
+    <div id="modal_add_reminder" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg mt-5" role="document">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <span>افزودن یادآوری</span>
+                    <i class="fa fa-pencil"></i>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <form id="frm_send_reminder" method="POST">
+                        @csrf
+                        <div class="con">
+                            <div class="row">
+                                <!-- title -->
+                                <div class="col-12 form-group input-group">
+                                    <div class="input-group-prepend"><div class="input-group-text text-vsm"><span class="label">عنوان یادآوری :</span></div></div>
+                                    <input type="text" class="form-control border-fix text-vsm" name="title" autocomplete="off"/>
+                                </div>
+                                <!-- start_date -->
+                                <div class="col-6 form-group input-group">
+                                    <div class="input-group-prepend"><div class="input-group-text text-vsm"><span class="label">تاریخ آغاز :</span></div></div>
+                                    <input type="text" class="form-control text-center text-sm" name="start_date"  value="{{ Verta::now() }}" autocomplete="off" />
+                                </div>
+                                <!-- end_date -->
+                                <div class="col-6 form-group input-group">
+                                    <div class="input-group-prepend"><div class="input-group-text text-vsm"><span class="label">تاریخ پایان :</span></div></div>
+                                    <input type="text" class="form-control text-center text-sm" name="end_date"  value="{{ Verta::now() }}" autocomplete="off" />
+                                </div>
+                                <!-- description -->
+                                <div class="col-12 form-group input-group">
+                                    <div class="input-group-prepend"><div class="input-group-text text-vsm"><span class="label">توضیحات :</span></div></div>
+                                    <textarea class="form-control text-vsm" name="description" autocomplete="off" style="min-height:100px;" ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" id="btn_cancel" class="btn btn-sm btn-secondary" data-dismiss="modal">انصراف</button>
+                    <button type="button" data-type="add_reminder" class="btn_confirm btn btn-sm btn-primary">ثبت</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+
 <!-- Scripts ----------------------------------------------------------------------------------------------------------------------------------------------->
 <script type="text/javascript">
     $(document).ready(function() {
 
 
-        // remove reminder
+        // Show Modals on Click
+        $("#btn_add_reminder").click(function (event) {
+            $("#modal_add_reminder").modal('show');
+        });
+
+
+
+        // On Confirm Modal => send ajax request, and retreive response & take convenient action
+        $(".btn_confirm").click(function (event) {
+
+
+            // Add Reminder
+            if ( $(this).data('type') == 'add_reminder' )
+            {
+                form = $('#frm_send_reminder');
+                $.ajax({
+                    url:'/dashboard/reminder',
+                    method:"POST",
+                    data:{
+                        '_token'      :  '<?php echo csrf_token() ?>',
+                        'title'       :  form.find('input[name=title]').val(),
+                        'start_date'  :  form.find('input[name=start_date]').val(),
+                        'end_date'    :  form.find('input[name=end_date]').val(),
+                        'end_date'    :  form.find('input[name=end_date]').val(),
+                        'description' :  form.find('textarea[name=description]').val(),
+                    },
+                    success:function (data) {
+                        if ( data == 'true' ) {
+
+                            $(event.target).closest('.modal').modal('hide');
+
+                        }
+                        else
+                            console.log('error!');
+                    }
+                });
+            }
+
+
+        });
+
+
+
+        // Remove Reminder
         $(".btn-delete-reminder").on('click', function(event){
             var id = $(this).data('id');
             $.ajax({

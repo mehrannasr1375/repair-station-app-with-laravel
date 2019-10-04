@@ -256,9 +256,9 @@
 
             // add click event listeners for show modals && get 'order_id'
             $(".btn_well_order").click(function (event) {
-                    order_id = $(this).parent().siblings('td:first-child').text();
-                    $("#modal_confirm_well_order").modal('show');
-                });
+                order_id = $(this).parent().siblings('td:first-child').text();
+                $("#modal_confirm_well_order").modal('show');
+            });
             $(".btn_unrepairable_order").click(function (event) {
                     order_id = $(this).parent().siblings('td:first-child').text();
                     $("#modal_confirm_unrepairable_order").modal('show');

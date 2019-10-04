@@ -56,6 +56,5 @@ Route::post('/orders/addpayment', 'OrdersController@addPayment');
 
 
 // Reminders
-Route::get('/dashboard/reminder/create', 'RemindersController@create');
 Route::post('/dashboard/reminder', 'RemindersController@store');
 Route::post('/dashboard/removereminder/{reminder}', 'RemindersController@destroy');

@@ -9,18 +9,18 @@ use function Sodium\compare;
 class RemindersController extends Controller
 {
 
-    public function create()
-    {
-        Verta::setStringformat('j / n / y H:i');
-
-        return view('reminder.create');
-    }
-
     public function store(Request $request)
     {
-        Reminder::create($request->toArray());
+        $data = [
+            'title'        =>  $request->title,
+            'start_date'   =>  $request->start_date,
+            'end_date'     =>  $request->end_date,
+            'description'  =>  $request->description
+        ];
 
-        return redirect('/dashboard');
+        Reminder::create($data);
+
+        return 'true';
     }
 
     public function destroy(Request $request)
@@ -29,10 +29,5 @@ class RemindersController extends Controller
 
         return response('true', 200);
     }
-
-
-
-
-
 
 }
