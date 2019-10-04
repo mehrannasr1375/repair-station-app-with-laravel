@@ -48,7 +48,7 @@
                         <th>جزئیات</th>
                         <th>نوع دستگاه</th>
                         <th>عیب</th>
-                        <th>تاریخ دریافت</th>
+                        <th style="width:90px;">تاریخ دریافت</th>
                         <th style="width:80px">وضعیت</th>
                         <th style="width:60px">تحویل</th>
                     </tr>
@@ -59,7 +59,7 @@
                             <td><a href="/orders/{{ $order->id }}/edit"><i class="fa fa-2x text-secondary fa-info pl-2"></i></a></td>
                             <td>{{ $order->device_type }}</td>
                             <td style="max-width:150px; padding:14px;">{{ $order->problem }}</td>
-                            <td>{{ new Verta($order->receive_date) }}</td>
+                            <td>{{ Verta::persianNumbers($order->receive_date) }}</td>
                             <td>
                                 <?php
                                     if      ( $order->status_code == 'تعمیر شده' )         echo "<i class='fa fa-check text-success'></i>";

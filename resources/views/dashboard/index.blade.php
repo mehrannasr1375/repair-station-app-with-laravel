@@ -32,7 +32,7 @@
                         @foreach($reminders as $reminder)
                             <tr>
                                 <td>{{ $i++ }}</td>
-                                <td style="text-align:right; padding-right:50px">{{ $reminder->title }}</td>
+                                <td data-toggle="tooltip" data-placement="bottom" title="{{ $reminder->description }}" style="text-align:right; padding-right:50px">{{ $reminder->title }}</td>
                                 <td><span class="btn-delete-reminder ml-0" data-id="{{ $reminder->id }}"><i class="fa fa-calendar-check-o text-success"></i></span></td>
                             </tr>
                         @endforeach
@@ -62,12 +62,12 @@
                 <div class="dash-con-header">
                     <img src="{{ asset('/images/icons/calendar.png') }}">
                     <p>امروز</p>
-                    <p></p>
                 </div>
 
 
                 <div class="d-flex flex-column justify-content-around p-2">
 
+                    <!-- Date -->
                     <div class="dash-con-body cal">
 
                         <!-- jalali -->
@@ -202,9 +202,12 @@
     $(document).ready(function() {
 
 
+
         // Show Modals on Click
         $("#btn_add_reminder").click(function (event) {
-            $("#modal_add_reminder").modal('show');
+            let modal = $("#modal_add_reminder");
+            modal.find('textarea[name=description], input[name=title]').val('');
+            modal.modal('show');
         });
 
 
@@ -264,6 +267,10 @@
         });
 
 
+
     });
 </script>
+
+
+
 @endsection

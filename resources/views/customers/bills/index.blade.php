@@ -10,7 +10,7 @@
             <p class="text-right mb-3 text-black font-weight-bold">صورت حساب مشتری :</p>
             <div>
                 <span>تاریخ : </span>
-                <span class="font-weight-bold"> {{ new Verta(new \DateTime()) }} </span>
+                <span class="font-weight-bold"> {{ Verta::persianNumbers(new Verta(new \DateTime())) }} </span>
             </div>
         </div>
         <div class="d-flex flex-wrap justify-content-between">
@@ -51,7 +51,7 @@
                         <th>نوع پرداخت  (فقط پرداختی ها)</th>
                         <th>مبلغ</th>
                         <th>بدهکار / بستانکار</th>
-                        <th style="width:110px;">تاریخ</th>
+                        <th style="width:90px;">تاریخ</th>
                     </tr>
                     <?php $i=1; ?>
                     @foreach ($orders as $order)
@@ -78,7 +78,7 @@
                                 <td>{{ $payment->payment_type }}</td>
                                 <td>{{ $payment->amount }}</td>
                                 <td>بستانکار</td>
-                                <td>{{ $payment->date }}</td>
+                                <td>{{ Verta::persianNumbers($payment->date) }}</td>
                             </tr>
                                 <?php $payments_sum += $payment->amount;?>
                             @endforeach

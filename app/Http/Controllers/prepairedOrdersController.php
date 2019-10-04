@@ -20,8 +20,6 @@ class prepairedOrdersController extends Controller
 
     public function index(Request $request)
     {
-        Verta::setStringformat("j / n / y H:i");
-
         $count = ($request->count) ? (int)($request->count) : 8;
 
         $orders = Order::prepairedOrders()->undeliveredOrders()->orderByDesc()->with('OrderDetails','customer')->paginate($count);
