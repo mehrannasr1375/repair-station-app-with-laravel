@@ -25,6 +25,7 @@
     <!-- Repairing Orders --------------------------------------------------------------------------------------------------------->
     <div class="tbl-main-con">
 
+        <!-- Table -->
         <table class="tbl-1">
             <tr>
                 <th style="width:40px">شناسه</th>
@@ -42,7 +43,7 @@
                     <td>{{ $order->customer->name }}</td>
                     <td>{{ $order->device_type }}</td>
                     <td style="max-width:150px; padding:14px;">{{ $order->problem }}</td>
-                    <td style="width:40px;"><a href="/orders/{{ $order->id }}/edit"><i class="fa fa-2x fa-info text-secondary"></i></a></td>
+                    <td style="width:40px;"><a href="/orders/{{ $order->id }}/edit"><i class="fa fa-2x fa-info text-info"></i></a></td>
                     <td style="width:40px;"><a class="btn_add_delivery_note" href="#"><i class="fa fa-2x text-secondary fa-pencil-square-o"></i></a></td>
                     <td style="width:200px;">
                         <a href="#" class="btn_repaired_order"><i class="fa fa-2x text-success fa-check pl-2"></i></a>
@@ -50,7 +51,7 @@
                         <a href="#" class="btn_well_order"><i class="fa fa-2x text-info fa-heartbeat pl-2"></i></a>
                         <a href="#" class="btn_putoff_order"><i class="fa fa-2x text-secondary fa-eye-slash"></i></a>
                     </td>
-                    <td>{{ new Verta($order->receive_date) }}</td>
+                    <td>{{ $order->receive_date }}</td>
                 </tr>
             @endforeach
         </table>

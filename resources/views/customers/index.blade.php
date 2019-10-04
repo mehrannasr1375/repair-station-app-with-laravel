@@ -59,7 +59,7 @@
                     <tr>
                         <td>{{ $customer->id }}</td>
                         <td><a href="/customers/{{ $customer->id }}/edit">{{ $customer->name }}</a></td>
-                        <td><a href="/customers/{{ $customer->id }}"><i class="fa fa-2x text-secondary fa-info pl-2"></i></a></td>
+                        <td><a href="/customers/{{ $customer->id }}"><i class="fa fa-2x text-info fa-info pl-2"></i></a></td>
                         <td><a href="/customers/{{ $customer->id }}/orders"><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
                         <td>{{ $customer->available_orders_count == 0 ? "-":$customer->available_orders_count }}</td>
                         <td>{{ $customer->prepaired_orders_count == 0 ? "-":$customer->prepaired_orders_count }}</td>

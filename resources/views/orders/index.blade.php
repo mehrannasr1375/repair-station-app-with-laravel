@@ -51,7 +51,7 @@
                 <td>{{ $order->customer->name }}</td>
                 <td>{{ $order->device_type }}</td>
                 <td style="max-width:150px; padding:14px;">{{ $order->problem }}</td>
-                <td><a href="/orders/{{ $order->id }}/edit"><i class="fa fa-2x text-secondary fa-info pl-2"></i></a></td>
+                <td><a href="/orders/{{ $order->id }}/edit"><i class="fa fa-2x text-info fa-info pl-2"></i></a></td>
                 <td style="width:80px;">{{ $order->receive_date }}</td>
                 <td>
                     <?php

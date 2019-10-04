@@ -25,6 +25,7 @@
     <!-- Prepaired Orders ----------------------------------------------------------------------------------------------------------------------------------------->
     <div class="tbl-main-con">
 
+        <!-- Table -->
         <table class="tbl-1">
             <tr>
                 <th style="width:40px">شناسه</th>
@@ -46,7 +47,7 @@
                     <td style="max-width:180px; padding-top:14px; padding-bottom:14px;">{{ $order->problem }}</td>
                     <td><a href="/orders/{{ $order->id }}/edit"><i class="fa fa-2x fa-info text-info"></i></a></td>
                     <td><a href="#" class="btn_add_note"><i class="fa fa-2x text-secondary fa-pencil-square-o"></i></a></td>
-                    <td><a href="#" class="btn_checkout"><i class="fa fa-2x text-danger fa-plane pl-2"></i></a></td>
+                    <td><a href="#" class="btn_checkout"><i class="fa fa-2x text-danger fa-external-link-square pl-2"></i></a></td>
                     <td style="width:90px;">
                         <?php
                         if      ( $order->status_code == 'تعمیر شده' )         echo "<i class='fa fa-check text-success'></i>";
@@ -56,7 +57,7 @@
                         else if ( $order->status_code == 'ایراد ندارد' )         echo "<i class='fa fa-heartbeat text-success'></i>";
                         ?>
                     </td>
-                    <td>{{ new Verta($order->receive_date) }}</td>
+                    <td>{{ $order->receive_date }}</td>
                     <td>{{ $order->total_cost }}</td>
                 </tr>
             @endforeach
