@@ -41,7 +41,7 @@
             <th style="width:60px; margin-right:20px;">جزئیات</th>
             <th>تاریخ دریافت</th>
             <th style="width:60px">وضعیت</th>
-            <th style="width:50px">تحویل</th>
+            <th>افزودن پرداختی</th>
             <th style="width:80px">وضعیت بدهی</th>
             <th style="width:50px">حذف</th>
         </tr>
@@ -52,7 +52,7 @@
                 <td>{{ $order->device_type }}</td>
                 <td style="max-width:150px; padding:14px;">{{ $order->problem }}</td>
                 <td><a href="/orders/{{ $order->id }}/edit"><i class="fa fa-2x text-secondary fa-info pl-2"></i></a></td>
-                <td style="width:80px;">{{ new Verta($order->receive_date) }}</td>
+                <td style="width:80px;">{{ $order->receive_date }}</td>
                 <td>
                     <?php
                         if      ( $order->status_code == 'تعمیر شده' )         echo "<i class='fa fa-check text-success'></i>";
@@ -62,12 +62,7 @@
                         else if ( $order->status_code == 'ایراد ندارد' )         echo "<i class='fa fa-heartbeat text-success'></i>";
                     ?>
                 </td>
-                <td>
-                    <?php
-                        if ( $order->checkout )   echo "<i class='fa fa-plane text-success'></i>";
-                        else                      echo " - ";
-                    ?>
-                </td>
+                <td><a href="#" class="btn_add_payment"><i class="fa fa-2x text-black-50 fa-credit-card pl-2"></i></a></td>
                 <td>
                     <?php
                         if     ( $order->debt_status > 0 )   echo $order->debt_status . ' بد ';
@@ -105,6 +100,7 @@
     <!-- Modals ----------------------------------------------------------------------------------------------------------------------------------------------------->
     <section>
 
+
         <!-- modal confirm delete row -->
         <div id="modal_confirm_delete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -129,8 +125,58 @@
             </div>
         </div>
 
-    </section>
 
+        <!-- modal add_order_payment -->
+        <div id="modal_add_order_payment" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <span>افزودن پرداختی</span>
+                        <i class="fa fa-gears"></i>
+                    </div>
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+
+                        <div id="add_repair_rows_con">
+                            <div class="modal-body-row d-flex justify-content-between shadow-sm">
+                                <div class="d-flex">
+                                    <label for="payment_amount" style="width:110px;">مبلغ پرداختی:</label>
+                                    <input type="text" id="payment_amount" name="payment_amount" class="payment_amount numericOnly form-control form-control-sm text-vsm">
+                                </div>
+                                <div class="d-flex">
+                                    <label for="payment_type" style="width:70px;margin-right:20px;">نوع پرداخت:</label>
+                                    <select id="payment_type"style="width:100px;" name="payment_type" class="payment_type custom-control form-control form-control-sm text-vvsm">
+                                        <option value="با کارتخوان">با کارتخوان</option>
+                                        <option value="نقد">نقد</option>
+                                        <option value="چک">چک</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="add_row d-flex justify-content-center my-3"><i id="add_row" class="fa fa-2x fa-plus-circle text-secondary"></i></span>
+
+                        <hr>
+
+                        <div class="d-flex justify-content-end mb-0">
+                            <label style="line-height:2.2;padding-left:6px" class="text-vsm" for="price">جمع کل :</label>
+                            <input style="width:140px;border:none !important; " type="text" id="price" class="form-control form-control-sm text-center" disabled >
+                            <span style="line-height:3;padding-right:6px" class="text-vvsm">تومان</span>
+                        </div>
+
+                    </div>
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="button" id="btn_cancel" class="btn btn-sm btn-secondary" data-dismiss="modal">انصراف</button>
+                        <button type="button" data-type="add_payment" class="btn_confirm btn btn-sm btn-primary">ثبت</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
 
 
 
@@ -139,15 +185,29 @@
         $(window).on('load', function() {
 
 
+
             //add click event listeners for show modals && get 'order_id'
             $(".btn-delete-order").click(function (event) {
                 order_id = $(this).parent().siblings('td:first-child').text();
                 $("#modal_confirm_delete").modal('show');
             });
+            $(".btn_add_payment").click(function (event) {
+                order_id = $(this).parent().siblings('td:first-child').text();
+                //customer_name = $(this).parent().siblings('td:nth-child(2)').text();
+                let modal = $("#modal_add_order_payment");
+                modal.find('input').val('');
+                //$("#span_customer_name").text(customer_name);
+                modal.modal('show');
+            });
+
 
 
             //on confirm modal
             $(".btn_confirm").click(function (event) {
+
+
+
+                //delete order
                 if ( $(this).data('type') == 'delete-order' )
                 {
                     $.ajax({
@@ -169,6 +229,82 @@
                         }
                     });
                 }
+
+
+
+                //add payment
+                else if ( $(this).data('type') == 'add_payment' )
+                {
+                    console.log('fired!');
+                    var i = 0;
+                    var payments_array = [];
+                    $('.payment_amount').each(function(event) {
+                        if ( $(this).val() != '' ) {
+                            payments_array[i] = [];
+                            payments_array[i][0] = $(this).val();
+                            payments_array[i][1] = $(this).parent().siblings('.d-flex').find('.payment_type').val();
+                            i++;
+                        } else
+                            console.log('empty fields');
+                    });
+                    console.log(payments_array);
+                    $.ajax({
+                        url:'/orders/addpayment',
+                        method:"POST",
+                        data:{
+                            '_token' : '<?php echo csrf_token() ?>',
+                            'order_id' : order_id,
+                            'array' : payments_array
+                        },
+                        success:function (data) {
+                            if (data == 'true' ) {
+                                $(event.target).closest('.modal').modal('hide'); //hide modal
+                                $(".tbl-1 td").filter(function() { //notice  updated table row from view
+                                    return $(this).text() == order_id;
+                                }).closest("tr").html('<td class="text-black-50 text-center" colspan=10>تغییرات ذخیره گردید. برای نمایش تغییرات اعمال شده در این رکورد صفحه را رفرش نمایید!</td>');
+                                console.log('saved to DB!')
+                            } else
+                                console.log('error : ' + data);
+                        }
+                    });
+                }
+
+
+
+            });
+
+
+
+            // btn plus 'order_detail' row
+            $(".add_row").click(function () {
+                elem =  `<div>\n
+                            <div class="modal-body-row d-flex justify-content-between shadow-sm">\n
+                                <div class="d-flex">\n
+                                    <label for="payment_amount" style="width:110px;">مبلغ پرداختی:</label>\n
+                                    <input type="text" id="payment_amount" name="payment_amount" class="payment_amount numericOnly form-control form-control-sm text-vsm">\n
+                                </div>\n
+                                <div class="d-flex">\n
+                                    <label for="payment_type" style="width:70px;margin-right:20px;">نوع پرداخت:</label>\n
+                                    <select id="payment_type"style="width:100px;" name="payment_type" class="payment_type custom-control form-control form-control-sm text-vvsm">\n
+                                        <option value="با کارتخوان">با کارتخوان</option>\n
+                                        <option value="نقد">نقد</option>\n
+                                        <option value="چک">چک</option>\n
+                                    </select>\n
+                                </div>\n
+                            </div>\n
+                        </div>\n`;
+                $("#add_repair_rows_con").append(elem);
+            });
+
+
+
+            // 'keyup' event listener
+            $("#add_repair_rows_con").on('keyup', '.payment_amount', function() { // Event Delegation
+                let sum = 0;
+                $('.payment_amount').each(function() {
+                    sum += Number($(this).val());
+                });
+                $('#price').val(sum);
             });
 
 
@@ -182,7 +318,6 @@
         });
     </script>
     <!--------------------------------------------------------------------------------------------------------------------------------------------------------------->
-
 
 
 

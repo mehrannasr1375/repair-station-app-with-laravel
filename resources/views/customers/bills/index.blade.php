@@ -87,23 +87,18 @@
                 @endif
             </table>
 
-            <div class="m-auto d-block mb-5">
-                <table class="m-5 m-auto table-bordered ">
+            <div class="m-auto d-block ">
+                <table class="m-5 mx-auto table-bordered">
                     <tr>
                         <td class="px-4 text-vsm">وضعیت کلی:</td>
                         <td>
-                            <input type="text" class="form-control form-control-sm text-center" disabled value="{{ ($order_details_sum - $payments_sum) > 0 ? $order_details_sum - $payments_sum.' بستانکار ':$payments_sum - $order_details_sum.' بدهکار ' }}" >
+                            <input type="text" class="form-control form-control-sm text-center" disabled value="{{ @($order_details_sum - $payments_sum) > 0 ? @($order_details_sum - $payments_sum).' بدهکار ':@($payments_sum - $order_details_sum).' بستانکار ' }}" >
                         </td>
                     </tr>
                 </table>
             </div>
 
-            <!-- Pagination
-            <div class="row">
-                <div class="col-12 d-flex justify-content-center">
-{{--                    {{ $orders->links() }}--}}
-                </div>
-            </div>-->
+
 
         </div>
     </div>

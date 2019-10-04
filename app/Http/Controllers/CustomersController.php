@@ -8,6 +8,7 @@
 */
 namespace App\Http\Controllers;
 use App\Customer;
+use App\Http\Requests\updateOrderStatusRequest;
 use App\Order;
 use App\Http\Requests\NewCustomerFromRequest;
 use Illuminate\Http\Request;
@@ -132,17 +133,6 @@ class CustomersController extends Controller
         $orders = Order::where('customer_id', '=', $customer->id)->with('OrderDetails','Payments')->get();
 
         return view('customers.bills.index', compact('orders','customer'));
-    }
-
-
-
-    public function destroy(Customer $customer)
-    {
-        //delete via ajax with route model binding on url
-
-        $customer->delete();
-
-        return response('true', 200);
     }
 
     private function getAvailableOrders()

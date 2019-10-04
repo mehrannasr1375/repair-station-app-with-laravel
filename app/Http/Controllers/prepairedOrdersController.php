@@ -18,11 +18,8 @@ use Verta;
 class prepairedOrdersController extends Controller
 {
 
-
-
-    public function index(Request $request) //ok
+    public function index(Request $request)
     {
-
         Verta::setStringformat("j / n / y H:i");
 
         $count = ($request->count) ? (int)($request->count) : 8;
@@ -39,15 +36,11 @@ class prepairedOrdersController extends Controller
         }
 
         return view('prepaired.index', compact('orders', 'count'));
-
     }
 
 
 
-
     /* AJAX Requests------------------------------------------------------------------------------------------------------------------------------------------------*/
-
-
 
     // ajax for checkout order
     public function checkOut(updateOrderStatusRequest $request)
@@ -74,8 +67,6 @@ class prepairedOrdersController extends Controller
         return response($request->order_id, 200);
 
     }
-
-
 
     // ajax for add order note
     public function addNote(addOrderNoteRequest $request) //ok

@@ -467,19 +467,9 @@
             $("#add_repair_rows_con").on('keyup', '.cost_user', function() { // Event Delegation
                 let sum = 0;
                 $('.cost_user').each(function() {
-                    console.log('parameter = ' + $(this).val());
                     sum += Number($(this).val());
                 });
                 $('#price').val(sum);
-                console.log('>>>>>>> sum = ' + sum);
-            });
-
-
-
-            // numeric text boxes
-            $(document).on('keypress', '.numericOnly', function (e) {
-                if ( String.fromCharCode(e.keyCode).match(/[^0-9]/g) )
-                    return false;
             });
 
 

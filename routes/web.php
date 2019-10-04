@@ -52,6 +52,7 @@ Route::get('/orders/{order}/edit', 'OrdersController@edit');
 Route::patch('/orders/{order}', 'OrdersController@update');
 Route::post('/orders/delete/{order}', 'OrdersController@destroy');
 Route::post('/orders/get', 'OrdersController@getCustomers');
+Route::post('/orders/addpayment', 'OrdersController@addPayment');
 
 
 // Reminders

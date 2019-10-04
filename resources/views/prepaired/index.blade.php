@@ -272,19 +272,9 @@
             $("#add_repair_rows_con").on('keyup', '.payment_amount', function() { // Event Delegation
                 let sum = 0;
                 $('.payment_amount').each(function() {
-                    console.log('parameter = ' + $(this).val());
                     sum += Number($(this).val());
                 });
                 $('#price').val(sum);
-                console.log('>>>>>>> sum = ' + sum);
-            });
-
-
-
-            // numeric text boxes
-            $(document).on('keypress', '.numericOnly', function (e) {
-                if ( String.fromCharCode(e.keyCode).match(/[^0-9]/g) )
-                    return false;
             });
 
 

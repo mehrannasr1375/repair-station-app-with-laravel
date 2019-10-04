@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Controllers;
+use App\Http\Requests\updateOrderStatusRequest;
 use App\Order;
 use App\Customer;
+use App\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -16,7 +18,7 @@ class OrdersController extends Controller
     {
         Verta::setStringformat('j / n / y H:i');
 
-        $count = ($request->count) ? (int)($request->count) : 8;
+        $count = ($request->count) ? (int)($request->count) : 9;
 
         $orders = Order::allOrders()->OrderByDesc()->with('Payments', 'OrderDetails', 'customer')->paginate($count);
 
@@ -199,6 +201,7 @@ class OrdersController extends Controller
 
 
 
+    // Aggregate with ORM ---------------------------------------------------------------------------------------------------------------
     public function aggregatePricesSum($orders)
     {
         // calculate 'paid' && 'should_pay' && 'sum' amount for order
@@ -219,7 +222,11 @@ class OrdersController extends Controller
         }
     }
 
-    public function getCustomers(Request $request) //ajax
+
+
+    // Ajax Requests ----------------------------------------------------------------------------------------------------------------------------
+
+    public function getCustomers(Request $request)
     {
         // get customers for create new order of existing customer via ajax
 
@@ -264,5 +271,25 @@ class OrdersController extends Controller
             }
         }
     }
+
+    public function addPayment(updateOrderStatusRequest $request)
+    {
+        $order_id        =  $request->order_id;
+        $payments_array  =  $request->array;
+
+        for ($i=0; $i<count($payments_array); $i++) {
+            $amount        =  $payments_array[$i][0];
+            $payment_type  =  $payments_array[$i][1];
+            Payment::create([
+                'order_id'      =>  $order_id,
+                'amount'        =>  $amount,
+                'payment_type'  =>  $payment_type,
+                'date'         =>  new Verta(new \DateTime()),
+            ]);
+        }
+
+        return response('true', 200);
+    }
+
 
 }
