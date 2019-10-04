@@ -21,14 +21,28 @@
     <link href="{{ asset('css/public.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
 
 
+<!--  Spinner  --------------------------------------------------------------------------------------------------------------------------------------------------->
 
-         @yield('body')
-
-
-
+<?php
+if (Config::get('app.developing_mode') == false)  echo '
+    <div class="d-flex justify-content-center" style="margin-top: 300px;">
+        <span class="ouro">
+            <span class="left"><span class="anim"></span></span>
+            <span class="right"><span class="anim"></span></span>
+        </span>
     </div>
+';
+?>
+
+
+
+<!--  ALL VIEW  --------------------------------------------------------------------------------------------------------------------------------------------------->
+<div id="app">
+    @yield('body')
+</div>
+
+
 </body>
 </html>

@@ -2,6 +2,11 @@
 
 return [
 
+
+    // Spinner show or hide
+    'developing_mode' => false,
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

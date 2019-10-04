@@ -36,4 +36,20 @@ $(function(){
 
 
 
+    // waiting spinner for load page
+    $(window).on("load",function() {
+        if ($(".ouro").css('display') == 'block') {
+            setTimeout(function(){
+                $('.ouro').parent().css('margin-top', '0px');
+                $('#app').show();
+                $('.ouro').hide();
+                new WOW().init();
+            }, 700);
+        } else
+            $('#app').show();
+
+    });
+
+
+
 })

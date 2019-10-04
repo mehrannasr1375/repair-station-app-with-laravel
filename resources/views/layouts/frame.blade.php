@@ -17,6 +17,7 @@
 
 
 
+
         <!-- Customizable Content -->
         <div id="content" class="px-3">
             @yield('content')
