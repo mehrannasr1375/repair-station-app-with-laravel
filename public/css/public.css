@@ -995,7 +995,7 @@ table.tbl-2 i:hover {
 
 
 table.tbl-res {
-    display: none;
+    /*display: none;*/
     width: 100%;
     margin-top: 50px;
     margin-bottom: 20px;
@@ -1007,12 +1007,12 @@ table.tbl-res tr:first-child {
     color: #6c6c6c;
     font-size: 12px;
     font-weight: 200 !important;
-    border-bottom: 2px solid whitesmoke;
+    border-bottom: 2px solid #92bdbe;
 }
 table.tbl-res tr td {
     line-height: 3;
     font-size: 13px;
-    background-color: whitesmoke;
+    background-color: #f1f4ff;
 }
 table.tbl-res i {
     font-size: 20px;

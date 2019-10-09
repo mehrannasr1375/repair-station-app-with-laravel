@@ -124,7 +124,6 @@
                         <div class="input-group-prepend">
                             <select class="custom-select" id="sel_search">
                                 <option value="order_id" selected>شناسه تعمیری</option>
-                                <option value="customer_id">شناسه مشتری</option>
                             </select>
                         </div>
                         <input type="text" id="txt_search" class="form-control" placeholder="...">
