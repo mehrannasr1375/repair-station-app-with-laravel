@@ -8,8 +8,6 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 class addOrderNoteRequest extends FormRequest
 {
 
-
-
     public function rules()
     {
         return [
@@ -17,8 +15,6 @@ class addOrderNoteRequest extends FormRequest
             'note'=>'required',
         ];
     }
-
-
 
     public function messages()
     {
@@ -29,48 +25,15 @@ class addOrderNoteRequest extends FormRequest
         ];
     }
 
-
-
     public function formatErrors(Validator $validator)
     {
         return $validator->errors()->all();
     }
-
-
 
     //change '402 status code' for response (for ajax requests)
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json(['errors'=>$validator->errors()->all()], 200));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

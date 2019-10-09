@@ -10,12 +10,9 @@
 
     <!-- Reminder & Date (First row) --------------------------------------------------------------------------------------------------------------------------------------->
     <div class="row">
-
-
-
         <!-- Reminder --------------------------------------------------------------------------------------------------------------------------------------->
         <div class="dash-con-outer col-7">
-            <div class="dash-con">
+            <div class="dash-con" style="height:300px !important;">
 
                 <div class="dash-con-header">
                     <img src="{{ asset('/images/icons/message.png') }}">
@@ -56,7 +53,7 @@
             $miladi = getdate();
         ?>
         <div class="dash-con-outer col-5">
-            <div class="dash-con">
+            <div class="dash-con" style="height:300px !important;">
 
 
                 <div class="dash-con-header">
@@ -106,9 +103,46 @@
 
             </div>
         </div>
+    </div>
 
 
+    <!--  Status Check  ------------------------------------------------------------------------------------------------------------------------------------------>
+    <div class="row">
+        <div class="dash-con-outer col-12">
+            <div class="dash-con" id="status-frame">
 
+
+                <div class="dash-con-header bg-transparent">
+                    <img src="{{ asset('/images/icons/status.png') }}">
+                    <p>استعلام وضعیت</p>
+                </div>
+
+
+                <!-- search-box -->
+                <div id="search-form-con">
+                    <div class="input-group shadow-custom">
+                        <div class="input-group-prepend">
+                            <select class="custom-select" id="sel_search">
+                                <option value="order_id" selected>شناسه تعمیری</option>
+                                <option value="customer_id">شناسه مشتری</option>
+                            </select>
+                        </div>
+                        <input type="text" id="txt_search" class="form-control" placeholder="...">
+                        <div class="input-group-append">
+                            <button type="button" id="btn_search">جستجو</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- search-res -->
+                <table class="tbl-res">
+
+                </table>
+
+
+            </div>
+        </div>
     </div>
 
 
@@ -119,14 +153,14 @@
             <div class="dash-con">
 
                 <div class="dash-con-header">
-                    <img src="{{ asset('/images/icons/diagram.png') }}">
+                    <img src="{{ asset('/images/icons/diagram-2.png') }}">
                     <p>نمودار</p>
                     <p>سود خالص 30 روز اخیر</p>
                 </div>
 
-                <div class="dash-con-body" id="pop_div">
+                <div class="dash-con-body" id="pop_div"  style="height:250px !important;">
 
-                    {!!Lava::render('AreaChart','Population','pop_div')!!}
+                    {--!!Lava::render('AreaChart','Population','pop_div')!!--}
 
                 </div>
 
@@ -266,6 +300,55 @@
             });
         });
 
+
+
+        // Search Status
+        $('#btn_search').on('click', function (event) {
+
+           let search_type = $('#sel_search').val();
+           let search_title = $('#txt_search').val();
+
+           $.ajax({
+               url: '/dashboard/search',
+               method: 'POST',
+               data: {
+                   '_token' : '<?php echo csrf_token() ?>',
+                   search_type : search_type,
+                   search_title : search_title,
+               },
+               success:function (data) {
+                   let tbl = $('.tbl-res');
+                    if ( data == 'false' ) {
+                        console.log('nothing found!');
+                        tbl.html('<tr><td colspan=8>چیزی یافت نشد !</td></tr>');
+                    } else {
+                        let order = JSON.parse(data);
+                        console.log(order);
+                        tbl.html(`
+                            <tr>
+                                <th>شناسه</th>
+                                <th>مشتری</th>
+                                <th>نوع دستگاه</th>
+                                <th>ایراد</th>
+                                <th>وضعیت</th>
+                                <th>تاریخ دریافت</th>
+                            </tr>
+                            <tr>
+                                <td><a href='/orders/`+order.id+`/edit'>`+order.id+`</a></td>
+                                <td>`+order.customer.name+`</td>
+                                <td>`+order.device_type+`</td>
+                                <td>`+order.problem+`</td>
+                                <td>`+order.status_code+`</td>
+                                <td>`+order.receive_date+`</td>
+                            </tr>
+                        `);
+                        tbl.show();
+
+                    }
+               }
+           });
+
+        });
 
 
     });

@@ -205,7 +205,6 @@ class OrdersController extends Controller
     public function aggregatePricesSum($orders)
     {
         // calculate 'paid' && 'should_pay' && 'sum' amount for order
-
         foreach ($orders as $order) {
             $paid_sum = 0;
             foreach ($order->Payments as $payment) {

@@ -9,6 +9,7 @@ Route::get('/logout', 'DashboardController@logout');
 Route::get('/', 'DashboardController@index');
 Route::get('/dashboard', 'DashboardController@index');
 Route::get('/home', 'DashboardController@index');
+Route::post('/dashboard/search', 'DashboardController@search');
 
 
 // Prepaired Orders
@@ -31,7 +32,7 @@ Route::post('/repairing/addrepaired', 'repairingOrdersController@addRepaired');
 // Customers
 Route::get('/customers', 'CustomersController@index');
 Route::get('/customers/return/{type}', 'CustomersController@index');
-Route::get('/customers/return/{type}/count/{count}', 'CustomersController@index'); //for Customize Paginator & customers type
+Route::get('/customers/return/{type}/count/{count}', 'CustomersController@index'); //for Paginator & customers type
 Route::get('/customers/create', 'CustomersController@create');
 Route::post('/customers', 'CustomersController@store');
 Route::get('/customers/{customer}', 'CustomersController@show');

@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Order;
 use App\Reminder;
 use Illuminate\Http\Request;
 use Khill\Lavacharts\Lavacharts;
@@ -32,6 +33,28 @@ class dashboardController extends Controller
         auth()->logout();
 
         return redirect('/');
+    }
+
+
+
+    /* Ajax Requests -------------------------------------------------------------------------------------------------------------------------*/
+    public function search( Request $request )
+    {
+        $search_type = $request->search_type;
+        $search_title = $request->search_title;
+
+        if ( $search_type == 'order_id' )
+            $order = Order::where('id', '=', (int)$search_title)->with('customer');
+        else if ( $search_type == 'customer_id' )
+            $order = Order::where('customer_id', '=', (int)$search_title)->with('customer');
+
+        if ( $order->first() ) {
+            return response(json_encode($order->first()), 200);
+
+        } else {
+            return response('false', 200);
+
+        }
     }
 
 }

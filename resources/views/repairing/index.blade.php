@@ -201,7 +201,7 @@
                     <!-- Modal Header -->
                     <div class="modal-header">
                         <span> ثبت هزینه ی تعمیر با شناسه <span id="modal-repaired-order-id"></span></span>
-                        <i class="fa fa-gears"></i>
+                        <i class="fa fa-check"></i>
                     </div>
                     <!-- Modal Body -->
                     <div class="modal-body">

@@ -4,7 +4,7 @@ return [
 
 
     // Spinner show or hide
-    'developing_mode' => false,
+    'developing_mode' => true,
 
 
     /*

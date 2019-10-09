@@ -85,7 +85,7 @@
                     <!-- Modal Header -->
                     <div class="modal-header">
                         <span>تحویل تعمیری</span>
-                        <i class="fa fa-gears"></i>
+                        <i class="fa fa-credit-card"></i>
                     </div>
                     <!-- Modal Body -->
                     <div class="modal-body">

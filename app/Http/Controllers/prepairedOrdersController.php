@@ -43,7 +43,6 @@ class prepairedOrdersController extends Controller
     // ajax for checkout order
     public function checkOut(updateOrderStatusRequest $request)
     {
-
         $order_id        =  $request->order_id;
         $payments_array  =  $request->array;
 
@@ -63,21 +62,16 @@ class prepairedOrdersController extends Controller
         ]);
 
         return response($request->order_id, 200);
-
     }
 
     // ajax for add order note
     public function addNote(addOrderNoteRequest $request) //ok
     {
-
         Order::where('id',$request->order_id)->update([
             'delivery_note' => $request->note
         ]);
 
         return response('true', 200);
-
     }
-
-
 
 }
