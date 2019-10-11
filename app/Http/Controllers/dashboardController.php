@@ -47,11 +47,9 @@ class dashboardController extends Controller
             $order = Order::where('id', '=', (int)$search_title)->with('customer');
 
         if ( $order->first() ) {
-            return response(json_encode($order->first()), 200);
-
+            return json_encode($order->first());
         } else {
-            return response('false', 200);
-
+            return 'false';
         }
     }
 

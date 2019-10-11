@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\updateOrderStatusRequest;
 use App\Order;
 use App\Customer;
+use App\OrderDetail;
 use App\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -118,7 +119,7 @@ class OrdersController extends Controller
 
     public function update(Request $request, Order $order)
     {
-        if ( $request->rd_customer_status == 'new' ) // update order => with new customer
+       /* if ( $request->rd_customer_status == 'new' ) // update order => with new customer
         {
             $messages = [
                 'name.required' => 'وارد کردن نام مشتری الزامی است !',
@@ -154,10 +155,10 @@ class OrdersController extends Controller
             $data['order']['customer_id'] = $customer_id;
             $order->update($data['order']);
         }
-
-        else if ( $request->rd_customer_status == 'old' ) // update order => with old customer
+*/
+        if ( $request->rd_customer_status == 'old' ) // update order => with old customer
         {
-            $messages = [
+            /*$messages = [
                 'old_customer_id.required' => 'وارد کردن شناسه مشتری الزامی است !',
                 'old_customer_id.numeric'  => 'شناسه مشتری باید عددی باشد !',
                 'problem.required'         => 'وارد کردن ایراد تعمیری الزامی است !',
@@ -180,14 +181,27 @@ class OrdersController extends Controller
                 'opened_earlier'   => $request->has('opened_earlier') ? true:false,
                 'participants_csv' => $request->participants_csv,
             ];
+            */
 
-            $customer = Customer::find($request->old_customer_id);
+            foreach ($request->key as $row)
+                $data['order_details'][] = $row;
+
+            foreach ($request->user_amount as $row)
+                $data['user_amount'][] = $row;
+
+            foreach ($request->shop_amount as $row)
+                $data['shop_amount'][] = $row;
+
+
+            dd($data);
+
+            /*$customer = Customer::find($request->old_customer_id);
 
             if ( $customer->first() )
-                $order->update($data['order']);
+                $order->update($data['order']);*/
         }
 
-        return redirect("orders/$order->id/edit")->with('success_res', ' اطلاعات تعمیری با موفقیت بروزرسانی شد.');
+        //return redirect("orders/$order->id/edit")->with('success_res', ' اطلاعات تعمیری با موفقیت بروزرسانی شد.');
     }
 
     public function destroy(Order $order)
