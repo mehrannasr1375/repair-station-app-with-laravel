@@ -8,8 +8,8 @@ $factory->define(Customer::class, function (Faker $faker) {
         'name' => $faker->name,
         'created_at' => now(),
         'is_partner' => 1 ,
-        'mobile_1' => $faker->phoneNumber,
-        'tell_1' => $faker->phoneNumber,
+        'mobile_1' => $faker->numberBetween(90000000,99999999),
+        'tell_1' => $faker->numberBetween(1000000,9999999),
         'address' => $faker->address,
     ];
 });
