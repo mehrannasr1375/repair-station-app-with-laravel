@@ -139,29 +139,29 @@
             <div class="row">
                 <!-- device_type -->
                 <div class="col-12 col-lg-5 form-group input-group">
-                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">نوع قطعه:</span></div></div>
-                        <select style="direction:ltr;" class="form-control custom-select text-vsm" name="device_type" >
-                            <option {{ $order->device_type=='لپ تاپ'   ? 'selected':'' }} value="لپ تاپ">لپ تاپ</option>
-                            <option {{ $order->device_type=='کیس'     ? 'selected':'' }} value="کیس">کیس</option>
-                            <option {{ $order->device_type=='مادربرد'   ? 'selected':'' }} value="مادربرد">مادربرد</option>
-                            <option {{ $order->device_type=='پاور'     ? 'selected':'' }} value="پاور">پاور</option>
-                            <option {{ $order->device_type=='کیبورد'    ? 'selected':'' }} value="کیبورد">کیبورد</option>
-                            <option {{ $order->device_type=='مانیتور'    ? 'selected':'' }} value="مانیتور">مانیتور</option>
-                            <option {{ $order->device_type=='اسپیکر'    ? 'selected':'' }} value="اسپیکر">اسپیکر</option>
-                            <option {{ $order->device_type=='DVD Rom' ? 'selected':'' }} value="DVD Rom">DVD Rom</option>
-                            <option {{ $order->device_type=='HDD'     ? 'selected':'' }} value="HDD">HDD</option>
-                            <option {{ $order->device_type=='کارت گرافیک' ? 'selected':'' }} value="کارت گرافیک">کارت گرافیک</option>
-                            <option {{ $order->device_type=='مودم'     ? 'selected':'' }} value="مودم">مودم</option>
-                            <option {{ $order->device_type=='پرینتر'    ? 'selected':'' }} value="پرینتر">پرینتر</option>
-                            <option {{ $order->device_type=='اسکنر'    ? 'selected':'' }} value="اسکنر">اسکنر</option>
-                            <option {{ $order->device_type=='کارتریج'   ? 'selected':'' }} value="کارتریج">کارتریج</option>
-                            <option {{ $order->device_type=='تبلت'     ? 'selected':'' }} value="تبلت">تبلت</option>
-                            <option {{ $order->device_type=='ماوس'    ? 'selected':'' }} value="ماوس">ماوس</option>
-                            <option {{ $order->device_type=='تلویزیون'  ? 'selected':'' }} value="تلویزیون">تلویزیون</option>
-                            <option {{ $order->device_type=='هدست'   ? 'selected':'' }} value="هدست">هدست</option>
-                            <option {{ $order->device_type=='دیگر'    ? 'selected':'' }} value="دیگر">دیگر</option>
-                        </select>
-                    </div>
+                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">نوع قطعه:</span></div></div>
+                    <select style="direction:ltr;" class="form-control custom-select text-vsm" name="device_type" >
+                        <option {{ $order->device_type=='لپ تاپ'   ? 'selected':'' }} value="لپ تاپ">لپ تاپ</option>
+                        <option {{ $order->device_type=='کیس'     ? 'selected':'' }} value="کیس">کیس</option>
+                        <option {{ $order->device_type=='مادربرد'   ? 'selected':'' }} value="مادربرد">مادربرد</option>
+                        <option {{ $order->device_type=='پاور'     ? 'selected':'' }} value="پاور">پاور</option>
+                        <option {{ $order->device_type=='کیبورد'    ? 'selected':'' }} value="کیبورد">کیبورد</option>
+                        <option {{ $order->device_type=='مانیتور'    ? 'selected':'' }} value="مانیتور">مانیتور</option>
+                        <option {{ $order->device_type=='اسپیکر'    ? 'selected':'' }} value="اسپیکر">اسپیکر</option>
+                        <option {{ $order->device_type=='DVD Rom' ? 'selected':'' }} value="DVD Rom">DVD Rom</option>
+                        <option {{ $order->device_type=='HDD'     ? 'selected':'' }} value="HDD">HDD</option>
+                        <option {{ $order->device_type=='کارت گرافیک' ? 'selected':'' }} value="کارت گرافیک">کارت گرافیک</option>
+                        <option {{ $order->device_type=='مودم'     ? 'selected':'' }} value="مودم">مودم</option>
+                        <option {{ $order->device_type=='پرینتر'    ? 'selected':'' }} value="پرینتر">پرینتر</option>
+                        <option {{ $order->device_type=='اسکنر'    ? 'selected':'' }} value="اسکنر">اسکنر</option>
+                        <option {{ $order->device_type=='کارتریج'   ? 'selected':'' }} value="کارتریج">کارتریج</option>
+                        <option {{ $order->device_type=='تبلت'     ? 'selected':'' }} value="تبلت">تبلت</option>
+                        <option {{ $order->device_type=='ماوس'    ? 'selected':'' }} value="ماوس">ماوس</option>
+                        <option {{ $order->device_type=='تلویزیون'  ? 'selected':'' }} value="تلویزیون">تلویزیون</option>
+                        <option {{ $order->device_type=='هدست'   ? 'selected':'' }} value="هدست">هدست</option>
+                        <option {{ $order->device_type=='دیگر'    ? 'selected':'' }} value="دیگر">دیگر</option>
+                    </select>
+                </div>
                 <!-- status -->
                 <div class="col-12 col-lg-3 form-group input-group">
                     <div class="input-group-prepend"><div class="input-group-text"><span class="label">وضعیت:</span></div></div>
@@ -175,48 +175,49 @@
                 </div>
                 <!-- receive_date -->
                 <div class="col-12 col-lg-4 form-group input-group mr-auto">
-                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">تاریخ:</span></div></div>
-                        <input type="text" class="form-control text-center" name="receive_date" value="{{ old('receive_date') ?? Verta::persianNumbers($order->receive_date) }}" autocomplete="off" />
-                    </div>
+                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">تاریخ:</span></div></div>
+                    <input type="text" class="form-control text-center" name="receive_date" value="{{ old('receive_date') ?? Verta::persianNumbers($order->receive_date) }}" autocomplete="off" />
+                </div>
                 <!-- device_brand -->
                 <div class="col-12 col-lg-3 form-group input-group">
-                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">برند:</span></div></div>
-                        <input type="text" class="form-control" name="device_brand" value="{{ old('device_brand') ?? $order->device_brand }}" autocomplete="off" />
-                    </div>
+                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">برند:</span></div></div>
+                    <input type="text" class="form-control" name="device_brand" value="{{ old('device_brand') ?? $order->device_brand }}" autocomplete="off" />
+                </div>
                 <!-- device_model -->
                 <div class="col-12 col-lg-3 form-group input-group">
-                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">مدل:</span></div></div>
-                        <input type="text" class="form-control" name="device_model" value="{{ old('device_model') ?? $order->device_model }}" autocomplete="off" />
-                    </div>
+                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">مدل:</span></div></div>
+                    <input type="text" class="form-control" name="device_model" value="{{ old('device_model') ?? $order->device_model }}" autocomplete="off" />
+                </div>
                 <!-- opened_earlier -->
                 <div id="chk_is_repaired" class="col-12 col-lg-3 form-group input-group">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <input type="checkbox" name="opened_earlier" {{ $order->opened_earlier==true ? 'checked':'' }} />
-                            </div>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="checkbox" name="opened_earlier" {{ $order->opened_earlier==true ? 'checked':'' }} />
                         </div>
-                        <div class="input-group-append"><div class="input-group-text label bg-white">قبلا تعمیر شده</div></div>
                     </div>
+                    <div class="input-group-append"><div class="input-group-text label bg-white">قبلا تعمیر شده</div></div>
+                </div>
                 <!-- order_id -->
                 <div class="col-12 col-lg-3 form-group input-group">
-                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه فاکتور:</span></div></div>
-                        <input type="text" class="form-control text-center font-weight-bold text-danger" name="order_id" value="{{ $order->id }}" disabled />
-                    </div>
+                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">شناسه فاکتور:</span></div></div>
+                    <input type="text" class="form-control text-center font-weight-bold text-danger" name="order_id" value="{{ $order->id }}" disabled />
+                    <input type="hidden" name="order_id" value="{{ $order->id }}" />
+                </div>
                 <!-- problem -->
                 <div class="col-12 form-group input-group">
-                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">ایراد:</span></div></div>
-                        <textarea style="min-height:60px;" class="form-control text-vsm" name="problem">{{ old('problem') ?? $order->problem }}</textarea>
-                    </div>
+                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">ایراد:</span></div></div>
+                    <textarea style="min-height:60px;" class="form-control text-vsm" name="problem">{{ old('problem') ?? $order->problem }}</textarea>
+                </div>
                 <!-- problem_details -->
                 <div class="col-12 form-group input-group">
-                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">توضیحات:</span></div></div>
-                        <textarea style="min-height:60px;" class="form-control text-vsm" name="problem_details">{{ old('problem_details') ?? $order->problem_details }}</textarea>
-                    </div>
+                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">توضیحات:</span></div></div>
+                    <textarea style="min-height:60px;" class="form-control text-vsm" name="problem_details">{{ old('problem_details') ?? $order->problem_details }}</textarea>
+                </div>
                 <!-- participants -->
                 <div class="col-12 form-group input-group">
-                        <div class="input-group-prepend"><div class="input-group-text"><span class="label">قطعات همراه:</span></div></div>
-                        <textarea class="form-control text-vsm" name="participants_csv">{{ old('participants_csv') ?? $order->participants_csv }}</textarea>
-                    </div>
+                    <div class="input-group-prepend"><div class="input-group-text"><span class="label">قطعات همراه:</span></div></div>
+                    <textarea class="form-control text-vsm" name="participants_csv">{{ old('participants_csv') ?? $order->participants_csv }}</textarea>
+                </div>
             </div>
         </div>
 
@@ -239,7 +240,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text text-vsm"> عنوان : </span>
                                 </div>
-                                <input type="text" name="order_detail_key[]" class="form-control form-control-sm" value="{{ $order_detail->key }}" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                <input type="text" name="order_detail_key[]" class="form-control form-control-sm" value="{{ $order_detail->key }}" autocomplete="off" >
                             </div>
                         </div>
                         <!-- order_detail_user_amount -->
@@ -248,7 +249,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text text-vsm"> هزینه مشتری : </span>
                                 </div>
-                                <input type="text" name="order_detail_user_amount[]" class="form-control form-control-sm text-center" value="{{ $order_detail->user_amount }}" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                <input type="text" name="order_detail_user_amount[]" class="form-control form-control-sm text-center" value="{{ $order_detail->user_amount }}" autocomplete="off" >
                             </div>
                         </div>
                         <!-- order_detail_shop_amount -->
@@ -257,26 +258,25 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text text-vsm"> هزینه تعمیرگاه : </span>
                                 </div>
-                                <input type="text" name="order_detail_shop_amount[]" class="form-control form-control-sm text-center" value="{{ $order_detail->shop_amount }}" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                <input type="text" name="order_detail_shop_amount[]" class="form-control form-control-sm text-center" value="{{ $order_detail->shop_amount }}" autocomplete="off" >
                             </div>
                         </div>
                         <!-- btn order_detail_delete -->
                         <div class="col-12 col-lg-1 mb-2">
-                            <i class="fa fa-remove text-danger remove-row" style="line-height: 2 !important; cursor:pointer;"></i>
+                            <i class="fa fa-remove remove-row"></i>
                         </div>
                     </div>
-                    <hr class="mt-2 mb-3">
                 @endforeach
             </div>
-            <div class="d-flex justify-content-end">
-                <p class="mb-0 p-2 text-vsm should_pay_sum">
-                    جمع کل :
-                    <span class="font-weight-bold">
-                        {{ $order->should_pay }}
-                    </span>
-                    تومان
-                </p>
-            </div>
+{{--            <div class="d-flex justify-content-end">--}}
+{{--                <p class="mb-0 p-2 text-vsm should_pay_sum">--}}
+{{--                    جمع کل :--}}
+{{--                    <span class="font-weight-bold">--}}
+{{--                        {{ $order->should_pay }}--}}
+{{--                    </span>--}}
+{{--                    تومان--}}
+{{--                </p>--}}
+{{--            </div>--}}
         </div>
 
 
@@ -293,21 +293,18 @@
                 @foreach ($payments as $payment)
                     <div class="row">
                         <!-- payment_price -->
-                        <div class="col-12 col-lg-4 mb-2">
+                        <div class="col-12 col-lg-3 mb-2">
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text text-vsm"> مبلغ : </span>
                                 </div>
-                                <input type="text" class="form-control form-control-sm" value="{{ $payment->amount }}" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                <input type="text" name="payment_amount[]" class="form-control form-control-sm text-center" value="{{ $payment->amount }}" autocomplete="off" >
                             </div>
                         </div>
                         <!-- payment_type -->
                         <div class="col-12 col-lg-3 mb-2">
                             <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text text-vsm"> نوع پرداخت : </span>
-                                </div>
-                                <select style="direction:ltr;" class="form-control custom-select text-vsm" name="device_type" >
+                                <select name="payment_type[]" class="form-control custom-select text-vsm" style="direction:ltr;">
                                     <option {{ $payment->payment_type=='نقد'         ? 'selected':'' }} value="نقد">نقد</option>
                                     <option {{ $payment->payment_type=='با کارتخوان' ? 'selected':'' }} value="با کارتخوان">با کارتخوان</option>
                                     <option {{ $payment->payment_type=='چک'          ? 'selected':'' }} value="چک">چک</option>
@@ -315,31 +312,30 @@
                             </div>
                         </div>
                         <!-- payment_date -->
-                        <div class="col-12 col-lg-4 mb-2">
+                        <div class="col-12 col-lg-5 mb-2">
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text text-vsm"> تاریخ پرداخت : </span>
                                 </div>
-                                <input type="text" class="form-control form-control-sm text-center text-vsm" value="{{ Verta::persianNumbers($payment->date) }}" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                <input type="text" name="payment_date[]" class="form-control form-control-sm text-center text-vsm" value="{{ Verta::persianNumbers($payment->date) }}" autocomplete="off" >
                             </div>
                         </div>
                         <!-- btn payment_delete -->
                         <div class="col-12 col-lg-1 mb-2">
-                            <i class="fa fa-remove text-danger remove-row" style="line-height: 2 !important; cursor:pointer;"></i>
+                            <i class="fa fa-remove remove-row"></i>
                         </div>
                     </div>
-                    <hr class="mt-2 mb-3">
                 @endforeach
             </div>
-            <div class="d-flex justify-content-end">
-                <p class="mb-0 p-2 text-vsm payments_sum">
-                    جمع کل :
-                    <span class="font-weight-bold">
-                                {{ $order->paid }}
-                            </span>
-                    تومان
-                </p>
-            </div>
+{{--            <div class="d-flex justify-content-end">--}}
+{{--                <p class="mb-0 p-2 text-vsm payments_sum">--}}
+{{--                    جمع کل :--}}
+{{--                    <span class="font-weight-bold">--}}
+{{--                        {{ $order->paid }}--}}
+{{--                    </span>--}}
+{{--                    تومان--}}
+{{--                </p>--}}
+{{--            </div>--}}
         </div>
 
 
@@ -447,12 +443,10 @@
             // remove 'order_details'
             $('#repair-details-con').on('click', '.remove-row', function(event){
                 $(this).closest('.row').remove();
-                $('.should_pay_sum').text('');
             });
             // remove 'payments' row
             $('#payment-details-con').on('click', '.remove-row', function(event){
                 $(this).closest('.row').remove();
-                $('.payments_sum').text('');
             });
 
 
@@ -460,74 +454,69 @@
             $('.add-order-detail-row').on('click', function(event){
                 $('#repair-details-con').append(`
                     <div class="row">
-
-                    <div class="col-12 col-lg-5 mb-2">
-                    <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
-                    <span class="input-group-text text-vsm"> عنوان : </span>
+                        <div class="col-12 col-lg-5 mb-2">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-vsm"> عنوان : </span>
+                                </div>
+                                <input type="text" name="order_detail_key[]" class="form-control form-control-sm" autocomplete="off" >
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-3 mb-2">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-vsm"> هزینه مشتری : </span>
+                                </div>
+                                <input type="text" name="order_detail_user_amount[]" class="form-control form-control-sm text-center" autocomplete="off" >
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-3 mb-2">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-vsm"> هزینه تعمیرگاه : </span>
+                                </div>
+                                <input type="text" name="order_detail_shop_amount[]" class="form-control form-control-sm text-center" autocomplete="off" >
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-1 mb-2">
+                            <i class="fa fa-remove remove-row"></i>
+                        </div>
                     </div>
-                    <input type="text" name="order_detail_key[]" class="form-control form-control-sm">
-                    </div>
-                    </div>
-
-                    <div class="col-12 col-lg-3 mb-2">
-                    <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
-                    <span class="input-group-text text-vsm"> هزینه مشتری : </span>
-                    </div>
-                    <input type="text" name="order_detail_user_amount[]" class="form-control form-control-sm text-center">
-                    </div>
-                    </div>
-
-                    <div class="col-12 col-lg-3 mb-2">
-                    <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
-                    <span class="input-group-text text-vsm"> هزینه تعمیرگاه : </span>
-                    </div>
-                    <input type="text" name="order_detail_shop_amount[]" class="form-control form-control-sm text-center">
-                    </div>
-                    </div>
-
-                    <div class="col-12 col-lg-1 mb-2">
-                    <i class="fa fa-remove text-danger remove-row" style="line-height: 2 !important; cursor:pointer;"></i>
-                    </div>
-                    </div>
-                    <hr class="mt-2 mb-3">
                 `);
             });
             // add 'payments' row
             $('.add-payment-row').on('click', function(event){
                 $('#payment-details-con').append(`
                     <div class="row">
-                    <div class="col-12 col-lg-4 mb-2">
-                    <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
-                    <span class="input-group-text text-vsm"> مبلغ : </span>
+                        <div class="col-12 col-lg-3 mb-2">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-vsm"> مبلغ : </span>
+                                </div>
+                                <input type="text" name="payment_amount[]" class="form-control form-control-sm text-center" autocomplete="off" >
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-3 mb-2">
+                            <div class="input-group input-group-sm">
+                                <select name="payment_type[]" class="form-control custom-select text-vsm" style="direction:ltr;">
+                                    <option value="نقد">نقد</option>
+                                    <option value="با کارتخوان">با کارتخوان</option>
+                                    <option value="چک">چک</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-5 mb-2">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text text-vsm"> تاریخ پرداخت : </span>
+                                </div>
+                                <input type="text" name="payment_date[]" class="form-control form-control-sm text-center text-vsm" autocomplete="off" >
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-1 mb-2">
+                            <i class="fa fa-remove remove-row"></i>
+                        </div>
                     </div>
-                    <input type="text" class="form-control form-control-sm">
-                    </div>
-                    </div>
-                    <div class="col-12 col-lg-3 mb-2">
-                    <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
-                    <span class="input-group-text text-vsm"> نوع پرداخت : </span>
-                    </div>
-                    <input type="text" class="form-control form-control-sm">
-                    </div>
-                    </div>
-                    <div class="col-12 col-lg-4 mb-2">
-                    <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
-                    <span class="input-group-text text-vsm"> تاریخ پرداخت : </span>
-                    </div>
-                    <input type="text" class="form-control form-control-sm text-center text-vsm">
-                    </div>
-                    </div>
-                    <div class="col-12 col-lg-1 mb-2">
-                    <i class="fa fa-remove text-danger remove-row" style="line-height: 2 !important; cursor:pointer;"></i>
-                    </div>
-                    </div>
-                    <hr class="mt-2 mb-3">
                 `);
             });
 

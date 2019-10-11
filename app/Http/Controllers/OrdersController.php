@@ -112,14 +112,14 @@ class OrdersController extends Controller
         $order_details = $order->orderDetails;
         $payments      = $order->payments;
 
-        $this->aggregatePricesSum(array($order));
+        //$this->aggregatePricesSum(array($order));
 
         return view('orders.edit', compact('order','order_details','payments'));
     }
 
     public function update(Request $request, Order $order)
     {
-       /* if ( $request->rd_customer_status == 'new' ) // update order => with new customer
+        if ( $request->rd_customer_status == 'new' ) // update order => with new customer
         {
             $messages = [
                 'name.required' => 'وارد کردن نام مشتری الزامی است !',
@@ -151,14 +151,40 @@ class OrdersController extends Controller
                 'participants_csv' => $request->participants_csv,
             ];
 
+            // delete all old 'order_details' & 'payments'
+            $order->orderDetails()->delete();
+            $order->payments()->delete();
+
+            // insert new 'order_details' & 'payments' to DB
+            for ($i=0; $i<@count($request->order_detail_key) ; $i++) {
+                if ($request->order_detail_key[$i] != '') {
+                    OrderDetail::create([
+                        'order_id'     => $request->order_id,
+                        'key'          => $request->order_detail_key[$i],
+                        'user_amount'  => $request->order_detail_user_amount[$i],
+                        'shop_amount'  => $request->order_detail_shop_amount[$i],
+                    ]);
+                }
+            }
+            for ($i=0; $i<@count($request->payment_amount); $i++) {
+                if ($request->payment_amount[$i] != '') {
+                    Payment::create([
+                        'order_id'     => $request->order_id,
+                        'amount'       => $request->payment_amount[$i],
+                        'payment_type' => $request->payment_type[$i],
+                        'date'         => $request->payment_date[$i],
+                    ]);
+                }
+            }
+
             $customer_id = Customer::create($data['customer'])->id;
             $data['order']['customer_id'] = $customer_id;
             $order->update($data['order']);
         }
-*/
-        if ( $request->rd_customer_status == 'old' ) // update order => with old customer
+
+        else if ( $request->rd_customer_status == 'old' ) // update order => with old customer
         {
-            /*$messages = [
+            $messages = [
                 'old_customer_id.required' => 'وارد کردن شناسه مشتری الزامی است !',
                 'old_customer_id.numeric'  => 'شناسه مشتری باید عددی باشد !',
                 'problem.required'         => 'وارد کردن ایراد تعمیری الزامی است !',
@@ -181,27 +207,40 @@ class OrdersController extends Controller
                 'opened_earlier'   => $request->has('opened_earlier') ? true:false,
                 'participants_csv' => $request->participants_csv,
             ];
-            */
 
-            foreach ($request->key as $row)
-                $data['order_details'][] = $row;
+            // delete all old 'order_details' & 'payments'
+            $order->orderDetails()->delete();
+            $order->payments()->delete();
 
-            foreach ($request->user_amount as $row)
-                $data['user_amount'][] = $row;
+            // insert new 'order_details' & 'payments' to DB
+            for ($i=0; $i<@count($request->order_detail_key) ; $i++) {
+                if ($request->order_detail_key[$i] != '') {
+                    OrderDetail::create([
+                        'order_id'     => $request->order_id,
+                        'key'          => $request->order_detail_key[$i],
+                        'user_amount'  => $request->order_detail_user_amount[$i],
+                        'shop_amount'  => $request->order_detail_shop_amount[$i],
+                    ]);
+                }
+            }
+            for ($i=0; $i<@count($request->payment_amount); $i++) {
+                if ($request->payment_amount[$i] != '') {
+                    Payment::create([
+                        'order_id'     => $request->order_id,
+                        'amount'       => $request->payment_amount[$i],
+                        'payment_type' => $request->payment_type[$i],
+                        'date'         => $request->payment_date[$i],
+                    ]);
+                }
+            }
 
-            foreach ($request->shop_amount as $row)
-                $data['shop_amount'][] = $row;
-
-
-            dd($data);
-
-            /*$customer = Customer::find($request->old_customer_id);
+            $customer = Customer::find($request->old_customer_id);
 
             if ( $customer->first() )
-                $order->update($data['order']);*/
+                $order->update($data['order']);
         }
 
-        //return redirect("orders/$order->id/edit")->with('success_res', ' اطلاعات تعمیری با موفقیت بروزرسانی شد.');
+        return redirect("orders/$order->id/edit")->with('success_res', ' اطلاعات تعمیری با موفقیت بروزرسانی شد.');
     }
 
     public function destroy(Order $order)
@@ -238,7 +277,6 @@ class OrdersController extends Controller
 
 
     // Ajax Requests ----------------------------------------------------------------------------------------------------------------------------
-
     public function getCustomers(Request $request)
     {
         // get customers for create new order of existing customer via ajax
@@ -303,6 +341,7 @@ class OrdersController extends Controller
 
         return response('true', 200);
     }
+
 
 
 }

@@ -822,6 +822,15 @@ input:focus, textarea:focus,select:focus,button:focus {
 }
 
 
+.remove-row {
+    color: #810010;
+    line-height: 2;
+    cursor: pointer;
+    transition: .2s ease all;
+}
+.remove-row:hover {
+    color: #ff0020;
+}
 .add-payment-row, .add-order-detail-row {
     color: #86c524;
     padding: 0px 12px;
