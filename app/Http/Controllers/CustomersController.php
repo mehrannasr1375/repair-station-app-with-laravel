@@ -157,6 +157,12 @@ class CustomersController extends Controller
         return $prepaired_orders;
     }
 
+    public function destroy(Customer $customer)
+    {
+        $customer->delete();
+
+        return 'true';
+    }
 
 }
 
