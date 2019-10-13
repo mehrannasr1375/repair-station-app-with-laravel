@@ -183,7 +183,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         // lavacharts service provider
-        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
+        //Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
 
     ],
 
@@ -238,7 +238,7 @@ return [
         'Verta' => Hekmatinasser\Verta\Verta::class,
 
         // lavachart alias
-        'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
+        //'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
 
     ],
 

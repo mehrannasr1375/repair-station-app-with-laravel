@@ -158,9 +158,7 @@
                     <p>سود خالص 30 روز اخیر</p>
                 </div>
 
-                <div class="dash-con-body" id="pop_div"  style="height:280px !important; padding-bottom: 50px !important;">
-
-                    {!!Lava::render('AreaChart','Population','pop_div')!!}
+                <div class="dash-con-body" id="pop_div">
 
                 </div>
 
