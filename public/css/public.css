@@ -447,7 +447,7 @@ a:hover {
     text-align: center;
     background-color: rgba(44, 44, 44, 0.9);
     /*background-color: rgba(144, 144, 133, 0.71);*/
-    height: 95px;
+    height: 86px;
     width: 150px;
     padding: 12px;
     margin-bottom: 6px;
@@ -508,7 +508,7 @@ table.tbl-1 tr {
     border-left: inset 2px transparent;
 }
 table.tbl-1 tr:nth-of-type(2n+1) {
-    background-color: rgba(246, 246, 246, 1);
+    background-color: rgb(233, 233, 233);
     border-right: inset 2px transparent;
     border-left: inset 2px transparent;
 }
@@ -1134,7 +1134,7 @@ table.tbl-res i:hover {
     left: 0;
     background: url("../images/3.jpg");
     background-attachment: fixed;
-    background-size: contain;
+    background-size: cover;
 }
 #login-wrapper {
     color: #07d5e9;
@@ -1143,6 +1143,7 @@ table.tbl-res i:hover {
     color: rgba(4, 233, 255, 0.9) !important;
 }
 #login-wrapper .login-error {
+    z-index: 10000;
     color: rgba(190, 41, 41, 0.9) !important;
     font-size: 12px;
     padding:14px 0;
@@ -1150,7 +1151,7 @@ table.tbl-res i:hover {
 }
 #login-wrapper > div:first-child {
     position: relative;
-    top: 20%;
+    top: 10%;
     margin: auto;
     padding: 40px 30px;
     padding-top: 15px;

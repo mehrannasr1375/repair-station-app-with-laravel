@@ -12,6 +12,7 @@ class Customer extends Model
     ];
 
 
+
     /* Relations */
     public function orders() {
         return $this->hasMany(\App\Order::class);

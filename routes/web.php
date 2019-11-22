@@ -3,6 +3,9 @@
 // Auth
 Auth::routes(['register' => false]);
 Route::get('/logout', 'DashboardController@logout');
+Route::get('/login', 'Auth\LoginController@showLoginForm')->middleware('hasAdmin')->name('login');
+Route::view('/signup', 'auth.signup');
+Route::post('/signup', 'SignupController@store');
 
 
 // Dashboard & Home
@@ -14,7 +17,7 @@ Route::post('/dashboard/search', 'DashboardController@search');
 
 // Prepaired Orders
 Route::get('/prepaired', 'PrepairedOrdersController@index');
-Route::get('/prepaired/count/{count}', 'PrepairedOrdersController@index'); //For Paginator
+Route::get('/prepaired/count/{count}', 'PrepairedOrdersController@index'); // For Paginator
 Route::post('/prepaired/checkout','prepairedOrdersController@checkOut');
 Route::post('/prepaired/addnote', 'prepairedOrdersController@addNote');
 

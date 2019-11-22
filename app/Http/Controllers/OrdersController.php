@@ -8,7 +8,7 @@ use App\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\NewOrderFormRequest;
+use App\Http\Requests\newUserFormRequest;
 use Hamcrest\Type\IsInteger;
 use Verta;
 
