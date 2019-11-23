@@ -49,15 +49,17 @@ class prepairedOrdersController extends Controller
         for ($i=0; $i<count($payments_array); $i++) {
             $amount        =  $payments_array[$i][0];
             $payment_type  =  $payments_array[$i][1];
-            Payment::create([
-                'order_id'      =>  $order_id,
-                'amount'        =>  $amount,
-                'payment_type'  =>  $payment_type,
-                'date'         =>  new Verta(new \DateTime()),
-            ]);
+            if ($amount != 0) {
+                Payment::create([
+                    'order_id'      =>  $order_id,
+                    'amount'        =>  $amount,
+                    'payment_type'  =>  $payment_type,
+                    'date'         =>  new Verta(new \DateTime()),
+                ]);
+            }
         }
 
-        Order::where('id',$order_id)->update([
+        Order::where('id', $order_id)->update([
             'checkout' => true
         ]);
 

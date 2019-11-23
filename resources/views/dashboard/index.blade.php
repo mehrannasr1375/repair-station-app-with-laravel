@@ -318,8 +318,9 @@
                    let tbl = $('.tbl-res');
                     if ( data == 'false' ) {
                         console.log('nothing found!');
-                        tbl.html('<tr><td colspan=8>چیزی یافت نشد !</td></tr>');
-                    } else {
+                        tbl.html('<tr><td class="font-weight-bold" colspan=8>چیزی یافت نشد !</td></tr>').css('animation', 'change_border_color 6s linear 3');
+                    }
+                    else {
                         let order = JSON.parse(data);
                         console.log(order);
                         tbl.html(`
@@ -340,7 +341,7 @@
                                 <td>`+order.receive_date+`</td>
                             </tr>
                         `);
-                        tbl.show();
+                        tbl.show().css('animation', 'change_border_color 6s linear 3');
 
                     }
                }

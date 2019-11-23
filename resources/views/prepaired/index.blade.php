@@ -7,7 +7,7 @@
     <!-- Customize Paginator ----------------------------------------------------------------------------------------------------------------------------------------->
     <div class="row p-2 mb-4 bg-light shadow-sm">
         <div class="col-12 col-lg-3 offset-lg-9 input-group input-group-sm p-2">
-            <div class="input-group-prepend"><div class="input-group-text text-black-50 text-vsm"><span class="label">تعداد در صفحه : </span></div></div>
+            <div class="input-group-prepend"><div class="input-group-text text-black-50 text-vsm"><span class="label font-weight-bold">تعداد در صفحه : </span></div></div>
             <input type="text" id="txt_paginator" class="form-control form-control-sm text-vsm text-center" placeholder="تعداد در صفحه" value="{{ $count }}"/>
             <div class="input-group-append">
                 <button id="customize-paginator" class="btn btn-bordered text-vsm text-black-50" type="button">اعمال</button>
@@ -177,19 +177,16 @@
             $(".btn_confirm").click(function (event) {
 
 
-                //checkout order
+                // checkout order
                 if ( $(this).data('type') == 'checkout' )
                 {
                     var i = 0;
                     var payments_array = [];
                     $('.payment_amount').each(function(event) {
-                        if ( $(this).val() != '' ) {
-                            payments_array[i] = [];
-                            payments_array[i][0] = $(this).val();
-                            payments_array[i][1] = $(this).parent().siblings('.d-flex').find('.payment_type').val();
-                            i++;
-                        } else
-                            console.log('empty fields');
+                        payments_array[i] = [];
+                        payments_array[i][0] = $(this).val();
+                        payments_array[i][1] = $(this).parent().siblings('.d-flex').find('.payment_type').val();
+                        i++;
                     });
                     console.log(payments_array);
                     $.ajax({
@@ -214,7 +211,7 @@
                 }
 
 
-                //add delivery_note
+                // add delivery_note
                 else if ( $(this).data('type') == 'add_note' )
                 {
                     note = $('#txt_note').val();
@@ -275,7 +272,7 @@
 
 
 
-            //customize paginator
+            // customize paginator
             $("#customize-paginator").click(function (event) {
                 document.location.href = "/prepaired/count/" + $(this).parent().siblings().closest('input').val();
             });

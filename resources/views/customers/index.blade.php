@@ -9,7 +9,7 @@
 
         <!-- search customer by name form -->
         <div class="col-12 col-md-5 input-group input-group-sm p-2">
-            <div class="input-group-prepend"><div class="input-group-text text-black-50 text-vsm"><span class="label">جستجو بر اساس نام : </span></div></div>
+            <div class="input-group-prepend"><div class="input-group-text text-black-50 text-vsm"><span class="label font-weight-bold">جستجو بر اساس نام : </span></div></div>
             <input type="text" id="search_title" class="form-control form-control-sm text-vsm text-center" placeholder="..." autocomplete="off" />
             <div class="input-group-append">
                 <button id="search_customer" class="btn btn-bordered text-vsm text-black-50" type="button">جستجو کن</button>
@@ -18,7 +18,7 @@
 
         <!-- customize paginator form -->
         <div class="col-12 col-lg-3 offset-lg-4 input-group input-group-sm p-2">
-            <div class="input-group-prepend"><div class="input-group-text text-black-50 text-vsm"><span class="label">تعداد در صفحه : </span></div></div>
+            <div class="input-group-prepend"><div class="input-group-text text-black-50 text-vsm"><span class="label font-weight-bold">تعداد در صفحه : </span></div></div>
             <input type="text" id="txt_paginator" class="form-control form-control-sm text-vsm text-center" placeholder="تعداد در صفحه" value="{{ $count }}" autocomplete="off" />
             <div class="input-group-append">
                 <button id="customize-paginator" class="btn btn-bordered text-vsm text-black-50" type="button">اعمال</button>

@@ -218,7 +218,7 @@
             <!-- Btns -->
             <div class="d-flex justify-content-center my-3 mb-5 mr-auto">
                 <button class="btn btn-bordered m-1" type="button" name="btn-print-order" > چاپ <i class="fa fa-navicon pr-4"></i></button>
-                <button class="btn btn-bordered m-1" type="submit" name="btn-submit-order" > ثبت <i class="fa fa-check pr-4"></i></button>
+                <button class="btn btn-bordered mb-4" type="submit" name="btn-submit-order" > ثبت <i class="fa fa-check pr-4"></i></button>
             </div>
 
 

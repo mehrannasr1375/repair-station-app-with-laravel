@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9a5cc108-f79e-481d-b54c-fd72944980e9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/prepairedOrdersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/prepairedOrdersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/public.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/public.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/customers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/customers/search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/search.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/orders/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/orders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/prepaired/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/prepaired/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/repairing/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/repairing/index.blade.php" afterDir="false" />
@@ -11705,6 +11707,10 @@
       <workItem from="1574495212236" duration="1761000" />
       <workItem from="1574497032323" duration="1767000" />
       <workItem from="1574498849537" duration="158000" />
+      <workItem from="1574518465856" duration="1763000" />
+      <workItem from="1574520280396" duration="1771000" />
+      <workItem from="1574522086238" duration="1856000" />
+      <workItem from="1574524025094" duration="727000" />
     </task>
     <task id="LOCAL-00001" summary="Revert &quot;add readme.md&quot;&#10;&#10;This reverts commit 5104213d">
       <created>1565987124628</created>
