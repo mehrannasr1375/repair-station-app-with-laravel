@@ -1,5 +1,5 @@
 @extends('layouts.frame')
-@section('page','مشتریان')
+@section('page','جستجوی مشتری')
 @section('content')
 
 
@@ -10,38 +10,17 @@
         <!-- search customer by name form -->
         <div class="col-12 col-md-5 input-group input-group-sm p-2">
             <div class="input-group-prepend"><div class="input-group-text text-black-50 text-vsm"><span class="label">جستجو بر اساس نام : </span></div></div>
-            <input type="text" id="search_title" class="form-control form-control-sm text-vsm text-center" placeholder="..." autocomplete="off" />
+            <input type="text" id="search_title" class="form-control form-control-sm text-vsm text-center" value="{{ $search_title }}" autocomplete="off" />
             <div class="input-group-append">
                 <button id="search_customer" class="btn btn-bordered text-vsm text-black-50" type="button">جستجو کن</button>
             </div>
         </div>
 
-        <!-- customize paginator form -->
-        <div class="col-12 col-md-3 offset-4 input-group input-group-sm p-2">
-            <div class="input-group-prepend"><div class="input-group-text text-black-50 text-vsm"><span class="label">تعداد در صفحه : </span></div></div>
-            <input type="text" id="txt_paginator" class="form-control form-control-sm text-vsm text-center" placeholder="تعداد در صفحه" value="{{ $count }}" autocomplete="off" />
-            <div class="input-group-append">
-                <button id="customize-paginator" class="btn btn-bordered text-vsm text-black-50" type="button">اعمال</button>
-            </div>
+        <!-- btn back to customers list -->
+        <div class="col-12 col-md-3 offset-md-4 py-2">
+            <a href="/customers/return/all" class="btn btn-bordered text-vsm text-black-50">بازگشت به لیست مشتری ها<i class="fa fa-backward pr-3"></i></a>
         </div>
 
-    </div>
-
-
-
-    <!-- Tiny btns ----------------------------------------------------------------------------------------------------------------------------------------------------------->
-    <div class="form-box pl-0 pr-2 mb-4">
-        <ul class="nav nav-tabs nav-justified mt-4">
-            <li class="nav-item {{ strpos(url()->current(), 'return/all') ? "active":"" }} ">
-                <a href="/customers/return/all" class="nav-link {{ strpos(url()->current(), '/customers/return/all') ? "active":"" }} ">همه</a>
-            </li>
-            <li class="nav-item {{ strpos(url()->current(), 'return/partners') ? "active":"" }} ">
-                <a href="/customers/return/partners" class="nav-link {{ strpos(url()->current(), '/customers/return/partners') ? "active":"" }} ">همکار</a>
-            </li>
-            <li class="nav-item {{ strpos(url()->current(), 'return/customers') ? "active":"" }} ">
-                <a href="/customers/return/customers" class="nav-link {{ strpos(url()->current(), '/customers/return/customers') ? "active":"" }} ">مشتری</a>
-            </li>
-        </ul>
     </div>
 
 
@@ -50,48 +29,58 @@
     <div class="tbl-main-con">
         <div id="normal">
 
-            <!-- Table --->
-            <table class="tbl-1">
-                <tr>
-                    <th style="width:60px;">شناسه مشتری</th>
-                    <th>نام و نام خانوادگی</th>
-                    <th>اطلاعات مشتری</th>
-                    <th>لیست تمامی قطعات</th>
-                    <th>قطعات موجود</th>
-                    <th>قطعات آماده</th>
-                    <th>صورت حساب</th>
-                    <th>حذف مشتری</th>
-                </tr>
-                @foreach ($customers as $customer)
-                    <tr>
-                        <td>{{ $customer->id }}</td>
-                        <td><a href="/customers/{{ $customer->id }}/edit">{{ $customer->name }}</a></td>
-                        <td><a href="/customers/{{ $customer->id }}"><i class="fa fa-2x text-info fa-info pl-2"></i></a></td>
-                        <td><a href="/customers/{{ $customer->id }}/orders"><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
-                        <td>{{ $customer->available_orders_count == 0 ? "-":$customer->available_orders_count }}</td>
-                        <td>{{ $customer->prepaired_orders_count == 0 ? "-":$customer->prepaired_orders_count }}</td>
-                        <td><a href="/customers/{{ $customer->id }}/bills"><i class="fa fa-2x text-secondary fa-money pl-2"></i></a></td>
-                        <td><a href="#" class="btn_delete_customer"><i class="fa fa-2x text-danger fa-close pl-2"></i></a></td>
-                    </tr>
-                @endforeach
-            </table>
 
-            <!-- Pagination -->
-            <div class="row">
-                <div class="col-12 d-flex justify-content-center">
-                    {{ $customers->onEachSide(2)->links() }}
-                </div>
+
+            <!-- search result title --->
+            <div class="alert alert-info mt-5 d-flex justify-content-between">
+                <span>
+                    نتایج حاصل از جستجوی
+                    <span class="font-weight-bold mb-1 mx-2 text-dark">{{ $search_title }}</span>
+                    در لیست مشتری ها :
+                </span>
+                <span>
+                    {{ count($customers) }}
+                    مورد یافت شد
+                </span>
             </div>
 
-        </div>
-    </div>
+
+
+            <!-- Table --->
+            <table class="tbl-1">
+                @if (count($customers) == 0)
+                    <div class="d-flex justify-content-center flex-row p-5">
+                        <i class='fa fa-3x fa-frown-o'></i>
+                        <p class='p-2 text-center' style="font-size: 18px;">اینجا خبری نیست!</p>
+                    </div>
+                @else
+                    <tr>
+                        <th style="width:60px;">شناسه مشتری</th>
+                        <th>نام و نام خانوادگی</th>
+                        <th>اطلاعات مشتری</th>
+                        <th>لیست تمامی قطعات</th>
+                        <th>قطعات موجود</th>
+                        <th>قطعات آماده</th>
+                        <th>صورت حساب</th>
+                        <th>حذف مشتری</th>
+                    </tr>
+                    @foreach ($customers as $customer)
+                        <tr>
+                            <td>{{ $customer->id }}</td>
+                            <td><a href="/customers/{{ $customer->id }}/edit">{{ $customer->name }}</a></td>
+                            <td><a href="/customers/{{ $customer->id }}"><i class="fa fa-2x text-info fa-info pl-2"></i></a></td>
+                            <td><a href="/customers/{{ $customer->id }}/orders"><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
+                            <td>{{ $customer->available_orders_count == 0 ? "-":$customer->available_orders_count }}</td>
+                            <td>{{ $customer->prepaired_orders_count == 0 ? "-":$customer->prepaired_orders_count }}</td>
+                            <td><a href="/customers/{{ $customer->id }}/bills"><i class="fa fa-2x text-secondary fa-money pl-2"></i></a></td>
+                            <td><a href="#" class="btn_delete_customer"><i class="fa fa-2x text-danger fa-close pl-2"></i></a></td>
+                        </tr>
+                    @endforeach
+                @endif
+            </table>
 
 
 
-    <!-- New Customer Btn ---------------------------------------------------------------------------------------------------------------------------------------------------->
-    <div class="row my-5">
-        <div class="col-12 d-flex justify-content-end">
-            <a href="/customers/create" class="btn btn-bordered">مشتری جدید</a>
         </div>
     </div>
 
@@ -132,8 +121,7 @@
 
     <!-- Scripts ---------------------------------------------------------------------------------------------------------------------------------------------------------->
     <script type="text/javascript">
-        $(window).on('load', function(){
-
+        $(window).on('load', function() {
 
 
             // add click event listeners for show modals && get 'customer_id'
@@ -143,7 +131,6 @@
                 $("#span_customer_name").text(customer_name);
                 $("#modal_delete_customer").modal('show');
             });
-
 
 
             // on confirm modal => send ajax request, and retreive response & take convenient action
@@ -174,35 +161,12 @@
             });
 
 
-
-            // customize paginator
-            $("#customize-paginator").click(function (event) {
-                let current_url = document.location.href;
-
-                if ( current_url.includes('return/all') ) {
-                    document.location.href = "/customers/return/all/count/" + $(this).parent().siblings().closest('input').val();
-                }
-                else if ( current_url.includes('return/partners') ) {
-                    document.location.href = "/customers/return/partners/count/" + $(this).parent().siblings().closest('input').val();
-                }
-                else if ( current_url.includes('return/customers') ) {
-                    document.location.href = "/customers/return/customers/count/" + $(this).parent().siblings().closest('input').val();
-                }
-                else {
-                    document.location.href = "/customers/return/customers/count/" + $(this).parent().siblings().closest('input').val();
-                }
-
-            });
-
-
-
             // search customer by name
             $("#search_customer").click(function (event) {
                 let search = $('#search_title').val();
                 if (search != '')
                     document.location.href = '/customers/search/' + search;
             });
-
 
 
         });

@@ -9,7 +9,7 @@
         <div class="d-flex flex-wrap justify-content-between">
             <p class="text-right mb-3 text-black font-weight-bold">صورت حساب مشتری :</p>
             <div>
-                <span>تاریخ : </span>
+                <span>زمان : </span>
                 <span class="font-weight-bold"> {{ Verta::persianNumbers(new Verta(new \DateTime())) }} </span>
             </div>
         </div>

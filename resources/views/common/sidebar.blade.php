@@ -52,7 +52,7 @@
 
     <!-- Copyright -->
     <a>
-        <i class="fa fa-3x fa-angle-double-right text-light"></i>
+        <i class="fa fa-3x fa-angle-double-down text-light"></i>
     </a>
 
 

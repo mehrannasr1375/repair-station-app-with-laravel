@@ -281,7 +281,7 @@
             $(".btn_confirm").click(function (event) {
 
 
-                //add delivery_note
+                // add delivery_note
                 if ( $(this).data('type')=='add_delivery_note' )
                 {
                     note = $('#txt_note').val();
@@ -304,7 +304,7 @@
                 }
 
 
-                //add repaired costs
+                // add repaired costs
                 else if ( $(this).data('type')=='repaired' )
                 {
                     var i = 0;
@@ -316,8 +316,7 @@
                             order_datails_array[i][1] = $(this).parent().siblings('.d-flex').find('.cost_user').val();
                             order_datails_array[i][2] = $(this).parent().siblings('.d-flex').find('.cost_shop').val();
                             i++;
-                        } else
-                            console.log('empty fields');
+                        }
                     });
                     console.log(order_datails_array);
                     $.ajax({
@@ -344,7 +343,7 @@
                 }
 
 
-                //well order
+                // well order
                 else if ( $(this).data('type')=='well_order' )
                 {
                     $.ajax({
@@ -374,7 +373,7 @@
                 }
 
 
-                //unrepairable
+                // unrepairable
                 else if ( $(this).data('type')=='unrepairable' )
                 {
                     $.ajax({
@@ -404,7 +403,7 @@
                 }
 
 
-                //putoff
+                // putoff
                 else if ( $(this).data('type')=='putoff' )
                 {
                     $.ajax({
@@ -470,7 +469,7 @@
 
 
 
-            //customize paginator
+            // customize paginator
             $("#customize-paginator").click(function (event) {
                 document.location.href = "/repairing/count/" + $(this).parent().siblings().closest('input').val();
             });

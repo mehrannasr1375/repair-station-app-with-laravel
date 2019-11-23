@@ -164,5 +164,34 @@ class CustomersController extends Controller
         return 'true';
     }
 
+    public function searchCustomer(Request $request)
+    {
+        $search_title = $request->search;
+
+//        $customer = Customer::where()->get();
+
+
+        $available_orders = $this->getAvailableOrders();
+        $prepaired_orders = $this->getPrepairedOrders();
+
+        $customers = DB::table('customers')
+            ->select('id', 'name', 'available_orders_count', 'prepaired_orders_count')
+            ->leftjoinSub($available_orders,'available_orders',function($join){
+                $join->on('customers.id', '=', 'available_orders.customer_id');
+            })
+            ->leftjoinSub($prepaired_orders,'prepaired_orders',function($join){
+                $join->on('customers.id', '=', 'prepaired_orders.customer_id');
+            })
+            ->where('name', 'LIKE', "%{$search_title}%")
+            ->orderBy('id','DESC')->get();
+
+
+                return view('customers.search', compact('customers', 'search_title'));
+
+
+//        dd($customers);
+
+    }
+
 }
 

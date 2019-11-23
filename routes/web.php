@@ -34,6 +34,7 @@ Route::post('/repairing/addrepaired', 'repairingOrdersController@addRepaired');
 
 // Customers
 Route::get('/customers', 'CustomersController@index');
+Route::get('/customers/search/{search}', 'CustomersController@searchCustomer');
 Route::get('/customers/return/{type}', 'CustomersController@index');
 Route::get('/customers/return/{type}/count/{count}', 'CustomersController@index'); //for Paginator & customers type
 Route::get('/customers/create', 'CustomersController@create');
