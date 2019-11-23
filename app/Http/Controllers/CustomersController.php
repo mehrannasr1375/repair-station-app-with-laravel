@@ -168,9 +168,6 @@ class CustomersController extends Controller
     {
         $search_title = $request->search;
 
-//        $customer = Customer::where()->get();
-
-
         $available_orders = $this->getAvailableOrders();
         $prepaired_orders = $this->getPrepairedOrders();
 
@@ -185,12 +182,7 @@ class CustomersController extends Controller
             ->where('name', 'LIKE', "%{$search_title}%")
             ->orderBy('id','DESC')->get();
 
-
-                return view('customers.search', compact('customers', 'search_title'));
-
-
-//        dd($customers);
-
+        return view('customers.search', compact('customers', 'search_title'));
     }
 
 }

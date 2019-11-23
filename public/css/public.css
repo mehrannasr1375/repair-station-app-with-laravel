@@ -905,7 +905,7 @@ input:focus, textarea:focus,select:focus,button:focus {
     border-radius: 6px;
     padding: 18px 35px;
     margin-bottom: 0;
-    box-shadow: 0 0 6px 0 #dcdcdc;
+    box-shadow: 0 0 10px 2px #dcdcdc;
 }
 .day-big {
     font-size: 50px;
@@ -996,7 +996,7 @@ table.tbl-2 i {
 table.tbl-2 tr:hover {
     border-right: inset 2px #e9e8e8;
     border-left: inset 2px #e9e8e8;
-    background-color: #eeeeee75;
+    background-color: rgba(233, 233, 233, 0.8);
 }
 table.tbl-2 i:hover {
     color: #0085b8 !important;
@@ -1088,7 +1088,6 @@ table.tbl-res i:hover {
     outline-color: transparent !important;
     box-shadow: inset 0 0 2px transparent !important;
     border-color: rgba(140, 10, 255, 0.3) !important;
-
     transition: .3s ease all;
     height: 48px;
     background-color: white;
@@ -1102,13 +1101,13 @@ table.tbl-res i:hover {
     border-left-width: 1px !important;
 }
 #txt_search:focus, #sel_search:focus, #btn_search:focus {
-    background-color: whitesmoke;
+    background-color: #ebe6ee;
 }
 #txt_search:hover, #sel_search:hover, #btn_search:hover {
     outline-color: transparent !important;
     box-shadow: none !important;
     border-color: #b2b2b2;
-    background-color: whitesmoke;
+    background-color: #ebe6ee;
 }
 
 

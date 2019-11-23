@@ -5,7 +5,7 @@
 
 
     <!-- Customize Paginator ------------------------------------------------------------------------------------------------------------------------------------------------->
-    <div class="row p-2 bg-light shadow">
+    <div class="row p-2 bg-light shadow-sm">
 
         <!-- search customer by name form -->
         <div class="col-12 col-md-5 input-group input-group-sm p-2">
@@ -17,7 +17,7 @@
         </div>
 
         <!-- customize paginator form -->
-        <div class="col-12 col-md-3 offset-4 input-group input-group-sm p-2">
+        <div class="col-12 col-lg-3 offset-lg-4 input-group input-group-sm p-2">
             <div class="input-group-prepend"><div class="input-group-text text-black-50 text-vsm"><span class="label">تعداد در صفحه : </span></div></div>
             <input type="text" id="txt_paginator" class="form-control form-control-sm text-vsm text-center" placeholder="تعداد در صفحه" value="{{ $count }}" autocomplete="off" />
             <div class="input-group-append">

@@ -5,10 +5,10 @@
 
 
     <!-- Customize Paginator ------------------------------------------------------------------------------------------------------------------------------------------------->
-    <div class="row p-2 bg-light shadow">
+    <div class="row p-2 bg-light shadow-sm">
 
         <!-- search customer by name form -->
-        <div class="col-12 col-md-5 input-group input-group-sm p-2">
+        <div class="col-12 col-lg-5 input-group input-group-sm p-2">
             <div class="input-group-prepend"><div class="input-group-text text-black-50 text-vsm"><span class="label">جستجو بر اساس نام : </span></div></div>
             <input type="text" id="search_title" class="form-control form-control-sm text-vsm text-center" value="{{ $search_title }}" autocomplete="off" />
             <div class="input-group-append">
@@ -17,7 +17,7 @@
         </div>
 
         <!-- btn back to customers list -->
-        <div class="col-12 col-md-3 offset-md-4 py-2">
+        <div class="col-12 col-lg-3 offset-lg-4 py-2">
             <a href="/customers/return/all" class="btn btn-bordered text-vsm text-black-50">بازگشت به لیست مشتری ها<i class="fa fa-backward pr-3"></i></a>
         </div>
 
