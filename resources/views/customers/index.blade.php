@@ -4,11 +4,11 @@
 
 
 
-    <!-- Customize Paginator ------------------------------------------------------------------------------------------------------------------------------------------------->
+    <!-- Top btns ------------------------------------------------------------------------------------------------------------------------------------------------->
     <div class="row p-2 bg-light shadow-sm">
 
         <!-- search customer by name form -->
-        <div class="col-12 col-md-5 input-group input-group-sm p-2">
+        <div class="col-12 col-md-6 input-group input-group-sm p-2">
             <div class="input-group-prepend"><div class="input-group-text text-black-50 text-vsm"><span class="label font-weight-bold">جستجو بر اساس نام : </span></div></div>
             <input type="text" id="search_title" class="form-control form-control-sm text-vsm text-center" placeholder="..." autocomplete="off" />
             <div class="input-group-append">
@@ -16,8 +16,13 @@
             </div>
         </div>
 
+        <!-- New Customer Btn -->
+        <div class="col-12 col-md-1 offset-lg-1 p-2">
+            <a href="/customers/create" class="btn btn-bordered p-1 px-3 text-vsm font-weight-bold">مشتری جدید<i class="fa fa-plus-circle pr-2"></i></a>
+        </div>
+
         <!-- customize paginator form -->
-        <div class="col-12 col-lg-3 offset-lg-4 input-group input-group-sm p-2">
+        <div class="col-12 col-lg-3 offset-lg-1 input-group input-group-sm p-2">
             <div class="input-group-prepend"><div class="input-group-text text-black-50 text-vsm"><span class="label font-weight-bold">تعداد در صفحه : </span></div></div>
             <input type="text" id="txt_paginator" class="form-control form-control-sm text-vsm text-center" placeholder="تعداد در صفحه" value="{{ $count }}" autocomplete="off" />
             <div class="input-group-append">
@@ -70,7 +75,7 @@
                         <td><a href="/customers/{{ $customer->id }}/orders"><i class="fa fa-2x text-dark fa-microchip pl-2"></i></a></td>
                         <td>{{ $customer->available_orders_count == 0 ? "-":$customer->available_orders_count }}</td>
                         <td>{{ $customer->prepaired_orders_count == 0 ? "-":$customer->prepaired_orders_count }}</td>
-                        <td><a href="/customers/{{ $customer->id }}/bills"><i class="fa fa-2x text-secondary fa-money pl-2"></i></a></td>
+                        <td><a href="/customers/{{ $customer->id }}/bills"><i class="fa fa-2x text-secondary fa-dollar pl-2"></i></a></td>
                         <td><a href="#" class="btn_delete_customer"><i class="fa fa-2x text-danger fa-close pl-2"></i></a></td>
                     </tr>
                 @endforeach
@@ -83,15 +88,6 @@
                 </div>
             </div>
 
-        </div>
-    </div>
-
-
-
-    <!-- New Customer Btn ---------------------------------------------------------------------------------------------------------------------------------------------------->
-    <div class="row my-5">
-        <div class="col-12 d-flex justify-content-end">
-            <a href="/customers/create" class="btn btn-bordered">مشتری جدید</a>
         </div>
     </div>
 

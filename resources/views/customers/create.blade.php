@@ -4,13 +4,8 @@
 
 
 
-    <!-- search bar ---------------------------------------------------------------------------------------------------------------->
-    @include('common.searchbar')
-
-
-
     <!-- Messages ------------------------------------------------------------------------------------------------------------------>
-    <span class="row my-2">
+    <span class="row my-4">
             <span class="col-12">
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -87,6 +82,12 @@
                 </div>
 
 
+            </div>
+
+
+            <!-- back to customers list link -->
+            <div class="d-flex justify-content-end">
+                <a class="btn-bordered" href="/customers/return/all"> بازگشت به لیست مشتری ها <i class="fa fa-angle-double-left"></i></a>
             </div>
 
 

@@ -268,15 +268,6 @@
                     </div>
                 @endforeach
             </div>
-{{--            <div class="d-flex justify-content-end">--}}
-{{--                <p class="mb-0 p-2 text-vsm should_pay_sum">--}}
-{{--                    جمع کل :--}}
-{{--                    <span class="font-weight-bold">--}}
-{{--                        {{ $order->should_pay }}--}}
-{{--                    </span>--}}
-{{--                    تومان--}}
-{{--                </p>--}}
-{{--            </div>--}}
         </div>
 
 
@@ -327,15 +318,6 @@
                     </div>
                 @endforeach
             </div>
-{{--            <div class="d-flex justify-content-end">--}}
-{{--                <p class="mb-0 p-2 text-vsm payments_sum">--}}
-{{--                    جمع کل :--}}
-{{--                    <span class="font-weight-bold">--}}
-{{--                        {{ $order->paid }}--}}
-{{--                    </span>--}}
-{{--                    تومان--}}
-{{--                </p>--}}
-{{--            </div>--}}
         </div>
 
 

@@ -4,16 +4,11 @@
 
 
 
-    <!-- search bar -->
-    @include('common.searchbar')
-
-
-
     <div class="form-box">
 
 
         <!-- Messages -->
-        <span class="row my-2">
+        <span class="row my-4">
             <span class="col-12">
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -98,6 +93,15 @@
 
             @csrf
         </form>
+
+
+
+        <!-- back to customers list link -->
+        <div class="d-flex justify-content-end">
+            <a class="btn-bordered" href="/customers/{{ $customer->id }}/bills"> پرداختی ها <i class="fa fa-dollar"></i></a>
+            <a class="btn-bordered mx-2" href="/customers/{{ $customer->id }}/orders"> تعمیری ها <i class="fa fa-microchip"></i></a>
+            <a class="btn-bordered" href="/customers/return/all"> بازگشت به لیست مشتری ها <i class="fa fa-angle-double-left"></i></a>
+        </div>
 
 
 

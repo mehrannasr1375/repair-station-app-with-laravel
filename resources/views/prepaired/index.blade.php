@@ -53,7 +53,7 @@
                         ?>
                     </td>
                     <td>{{ Verta::persianNumbers($order->receive_date) }}</td>
-                    <td>{{ $order->total_cost }}</td>
+                    <td class="cost-separate">{{ $order->total_cost }}</td>
                 </tr>
             @endforeach
         </table>

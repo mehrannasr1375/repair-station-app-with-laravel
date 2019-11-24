@@ -94,7 +94,7 @@ class CustomersController extends Controller
 
         $res = Customer::create($data);
 
-        return redirect("/customers/$res->id/edit")->with('success', 'مشتری جدید با موفقیت ثبت گردید !');
+        return redirect("/customers/return/all")->with('success', 'مشتری جدید با موفقیت ثبت گردید !');
     }
 
     public function show(Customer $customer)
@@ -114,7 +114,7 @@ class CustomersController extends Controller
 
         $customer->update($data);
 
-        return redirect("/customers/$customer->id/edit")->with('success', 'تغییرات با موفقیت ذخیره گردید !');
+        return redirect("/customers/return/all")->with('success', 'تغییرات با موفقیت ذخیره گردید !');
     }
 
     public function getOrdersOfCustomer(Customer $customer)

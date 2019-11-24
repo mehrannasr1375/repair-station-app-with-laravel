@@ -52,10 +52,25 @@ $(function(){
 
 
 
-    //Enable bootstrap tooltips
+    // Enable bootstrap tooltips
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
+
+
+
+    // cost seaparate
+    function addComma(str) {
+        var objRegex = new RegExp('(-?[0-9]+)([0-9]{3})');
+        while (objRegex.test(str)) {
+            str = str.replace(objRegex, '$1,$2');
+        }
+        return str;
+    }
+    $('.cost-separate').each(function () {
+        $(this).text(addComma($(this).text()));
+    });
+
 
 
 })

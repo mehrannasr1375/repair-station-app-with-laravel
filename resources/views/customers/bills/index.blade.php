@@ -63,7 +63,7 @@
                                 <td>{{ $order->id }}</td>
                                 <td>{{ $orderDetail->key }}</td>
                                 <td>-</td>
-                                <td>{{ $orderDetail->user_amount }}</td>
+                                <td class="cost-separate">{{ $orderDetail->user_amount }}</td>
                                 <td>بدهکار</td>
                                 <td>-</td>
                             </tr>
@@ -76,7 +76,7 @@
                                 <td>{{ $order->id }}</td>
                                 <td>مبلغ دریافتی از مشتری</td>
                                 <td>{{ $payment->payment_type }}</td>
-                                <td>{{ $payment->amount }}</td>
+                                <td class="cost-separate">{{ $payment->amount }}</td>
                                 <td>بستانکار</td>
                                 <td>{{ Verta::persianNumbers($payment->date) }}</td>
                             </tr>

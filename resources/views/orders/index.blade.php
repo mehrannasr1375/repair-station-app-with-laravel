@@ -58,7 +58,7 @@
                     ?>
                 </td>
                 <td><a href="#" class="btn_add_payment"><i class="fa fa-2x text-black-50 fa-credit-card pl-2"></i></a></td>
-                <td>
+                <td class="cost-separate">
                     <?php
                         if     ( $order->debt_status > 0 )   echo $order->debt_status . ' بد ';
                         elseif ( $order->debt_status < 0 )   echo str_replace('-', ' ', $order->debt_status) . ' بس ';
@@ -181,7 +181,7 @@
 
 
 
-            //add click event listeners for show modals && get 'order_id'
+            // add click event listeners for show modals && get 'order_id'
             $(".btn-delete-order").click(function (event) {
                 order_id = $(this).parent().siblings('td:first-child').text();
                 $("#modal_confirm_delete").modal('show');
@@ -197,7 +197,7 @@
 
 
 
-            //on confirm modal
+            // on confirm modal
             $(".btn_confirm").click(function (event) {
 
 
@@ -304,10 +304,11 @@
 
 
 
-            //customize paginator
+            // customize paginator
             $("#customize-paginator").click(function (event) {
                 document.location.href = "/orders/count/" + $(this).parent().siblings().closest('input').val();
             });
+
 
 
         });
