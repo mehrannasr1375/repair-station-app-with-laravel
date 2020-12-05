@@ -169,7 +169,7 @@
                     <!-- receive_date -->
                     <div class="col-12 col-lg-4 form-group input-group mr-auto">
                         <div class="input-group-prepend"><div class="input-group-text"><span class="label">تاریخ:</span></div></div>
-                        <input type="text" class="form-control text-center" name="receive_date" value="{{ Verta::persianNumbers(Verta::now()) }}" autocomplete="off" />
+                        <input type="text" class="form-control text-center" name="receive_date" value="{{ new Verta('now') }}" autocomplete="off" />
                     </div>
                     <!-- device_brand -->
                     <div class="col-12 col-lg-3 form-group input-group">

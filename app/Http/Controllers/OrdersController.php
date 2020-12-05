@@ -87,7 +87,7 @@ class OrdersController extends Controller
                 'device_type'      => $request->device_type,
                 'device_brand'     => $request->device_brand,
                 'device_model'     => $request->device_model,
-                'receive_date'     => new Verta(new \DateTime()),
+                'receive_date'     => new \DateTime(),
                 'problem'          => $request->problem,
                 'problem_details'  => $request->problem_details,
                 'opened_earlier'   => $request->has('opened_earlier') ? true:false,
@@ -109,6 +109,7 @@ class OrdersController extends Controller
 
     public function edit(Order $order)
     {
+        Verta::setStringformat('j / n / y - H:i');
         $order_details = $order->orderDetails;
         $payments      = $order->payments;
 

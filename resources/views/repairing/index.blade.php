@@ -46,7 +46,7 @@
                         <a href="#" class="btn_well_order"><i class="fa fa-2x text-info fa-heartbeat pl-2"></i></a>
                         <a href="#" class="btn_putoff_order"><i class="fa fa-2x text-secondary fa-eye-slash"></i></a>
                     </td>
-                    <td>{{ Verta::persianNumbers($order->receive_date) }}</td>
+                    <td>{{ $order->receive_date ? new Verta($order->receive_date) : '-' }}</td>
                 </tr>
             @endforeach
         </table>

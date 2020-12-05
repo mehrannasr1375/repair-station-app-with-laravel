@@ -29,7 +29,7 @@ return [
     'asset_url' => env('ASSET_URL', null),
 
     // Application Timezone
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Tehran',
 
     /*
     |--------------------------------------------------------------------------

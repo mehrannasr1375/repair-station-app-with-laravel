@@ -52,7 +52,7 @@
                         else if ( $order->status_code == 'ایراد ندارد' )         echo "<i class='fa fa-heartbeat text-success'></i>";
                         ?>
                     </td>
-                    <td>{{ Verta::persianNumbers($order->receive_date) }}</td>
+                    <td>{{ $order->receive_date ? new Verta($order->receive_date) : '-' }}</td>
                     <td class="cost-separate">{{ $order->total_cost }}</td>
                 </tr>
             @endforeach

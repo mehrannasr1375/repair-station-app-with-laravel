@@ -176,7 +176,7 @@
                 <!-- receive_date -->
                 <div class="col-12 col-lg-4 form-group input-group mr-auto">
                     <div class="input-group-prepend"><div class="input-group-text"><span class="label">تاریخ:</span></div></div>
-                    <input type="text" class="form-control text-center" name="receive_date" value="{{ old('receive_date') ?? Verta::persianNumbers($order->receive_date) }}" autocomplete="off" />
+                    <input type="text" class="form-control text-center" name="receive_date" value="{{ old('receive_date') ?? new Verta($order->receive_date) }}" autocomplete="off" />
                 </div>
                 <!-- device_brand -->
                 <div class="col-12 col-lg-3 form-group input-group">
@@ -308,7 +308,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text text-vsm"> تاریخ پرداخت : </span>
                                 </div>
-                                <input type="text" name="payment_date[]" class="form-control form-control-sm text-center text-vsm" value="{{ Verta::persianNumbers($payment->date) }}" autocomplete="off" >
+                                <input type="text" name="payment_date[]" class="form-control form-control-sm text-center text-vsm" value="{{ new Verta($payment->date) }}" autocomplete="off" >
                             </div>
                         </div>
                         <!-- btn payment_delete -->

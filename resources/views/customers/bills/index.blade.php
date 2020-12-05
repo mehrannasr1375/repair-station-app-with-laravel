@@ -10,7 +10,7 @@
             <p class="text-right mb-3 text-black font-weight-bold">صورت حساب مشتری :</p>
             <div>
                 <span>زمان : </span>
-                <span class="font-weight-bold"> {{ Verta::persianNumbers(new Verta(new \DateTime())) }} </span>
+                <span class="font-weight-bold"> {{ new Verta('now') }} </span>
             </div>
         </div>
         <div class="d-flex flex-wrap justify-content-between">
@@ -78,7 +78,7 @@
                                 <td>{{ $payment->payment_type }}</td>
                                 <td class="cost-separate">{{ $payment->amount }}</td>
                                 <td>بستانکار</td>
-                                <td>{{ Verta::persianNumbers($payment->date) }}</td>
+                                <td>{{ new Verta($payment->date) }}</td>
                             </tr>
                                 <?php $payments_sum += $payment->amount;?>
                             @endforeach
