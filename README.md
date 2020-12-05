@@ -64,6 +64,7 @@
     - run `git clone https://www.github.com/mehrannasr375/repair-station-app-with-laravel.git`
     - `cd` to project directory
     - run `composer update`
+    - create a database and call it `repair_station_db`
     - add a user to mysql and use it in `.env` file on `DB_USERNAME` and `DB_PASSWORD`
     - run `php artisan migrate:fresh --seed` for make and seed the database
     - search for `localhost:8000` with a browser to run the project
